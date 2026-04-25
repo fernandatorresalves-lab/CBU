@@ -1245,7 +1245,6 @@ function renderCard(p) {
   return `
     <div class="product-card" id="card-${p.id}">
       ${p.star ? '<div class="star-badge">♡</div>' : ''}
-      ${p.video ? '<div class="video-badge">▶ VIDEO</div>' : ''}
       ${productImages[p.id] ? `<img class="product-img" src="${productImages[p.id]}" alt="${p.name}" loading="lazy">` : `<div class="product-img-placeholder">${p.emoji}</div>`}
       <div class="product-info">
         <div class="product-brand">${p.brand}</div>
