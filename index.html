@@ -125,21 +125,53 @@
     font-weight: 600;
   }
 
-  /* FILTERS */
-  .filters {
-    padding: 20px 16px 12px;
+  /* FILTERS — nueva barra */
+  .filters-bar {
     display: flex;
+    align-items: center;
     gap: 8px;
-    overflow-x: auto;
-    scrollbar-width: none;
+    padding: 14px 16px 12px;
     background: var(--warm-white);
     border-bottom: 1px solid var(--light-border);
   }
 
-  .filters::-webkit-scrollbar { display: none; }
+  /* Botón Categorías — texto link sin caja */
+  .cat-toggle-btn {
+    background: none;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--medium);
+    cursor: pointer;
+    padding: 4px 0;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: color 0.2s;
+    letter-spacing: 0.03em;
+  }
+  .cat-toggle-btn:hover,
+  .cat-toggle-btn.open {
+    color: var(--dark);
+  }
 
-  .filter-btn {
-    padding: 8px 16px;
+  /* Separador vertical */
+  .filter-divider {
+    width: 1px;
+    height: 24px;
+    background: var(--light-border);
+    flex-shrink: 0;
+  }
+
+  /* Chips principales */
+  .main-chips {
+    display: flex;
+    gap: 6px;
+    flex: 1;
+  }
+
+  .chip {
+    padding: 7px 14px;
     border-radius: 50px;
     border: 1px solid var(--light-border);
     background: transparent;
@@ -153,11 +185,48 @@
     letter-spacing: 0.03em;
   }
 
-  .filter-btn.active, .filter-btn:hover {
-    background: var(--dark);
-    color: var(--cream);
-    border-color: var(--dark);
+  .chip.active { background: #C49A9C; color: white; border-color: #C49A9C; }
+  .chip:hover:not(.active) { border-color: #C49A9C; color: #C49A9C; }
+
+  .chip.chip-stock { border-color: var(--light-border); color: var(--medium); }
+  .chip.chip-stock.active { background: #C49A9C; color: white; border-color: #C49A9C; }
+  .chip.chip-stock:hover:not(.active) { border-color: #C49A9C; color: #C49A9C; }
+
+  .chip.chip-favoritos { border-color: var(--light-border); color: var(--medium); }
+  .chip.chip-favoritos.active { background: #C49A9C; color: white; border-color: #C49A9C; }
+  .chip.chip-favoritos:hover:not(.active) { border-color: #C49A9C; color: #C49A9C; }
+
+  .chip.chip-resenas { border-color: var(--light-border); color: var(--medium); }
+  .chip.chip-resenas.active { background: #C49A9C; color: white; border-color: #C49A9C; }
+  .chip.chip-resenas:hover:not(.active) { border-color: #C49A9C; color: #C49A9C; }
+
+  /* Panel de categorías (dropdown) */
+  .category-panel {
+    display: none;
+    background: var(--warm-white);
+    border-bottom: 1px solid var(--light-border);
+    padding: 12px 16px 16px;
+    gap: 8px;
+    flex-wrap: wrap;
   }
+  .category-panel.open { display: flex; }
+
+  .cat-btn {
+    padding: 7px 14px;
+    border-radius: 50px;
+    border: 1px solid var(--light-border);
+    background: var(--cream);
+    color: var(--medium);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.03em;
+  }
+  .cat-btn.active { background: var(--dark); color: var(--cream); border-color: var(--dark); }
+  .cat-btn:hover:not(.active) { border-color: var(--medium); color: var(--dark); }
 
   .search-fav-row {
     display: flex;
@@ -209,20 +278,7 @@
   }
 
   .fav-link-btn:hover { background-color: #b8888a; }
-
-  .fav-link-btn.active {
-    background-color: #a07274;
-  }
-
-  .filter-btn.stock-btn {
-    border-color: var(--gold);
-    color: var(--gold);
-  }
-  .filter-btn.stock-btn.active, .filter-btn.stock-btn:hover {
-    background: var(--gold);
-    color: white;
-    border-color: var(--gold);
-  }
+  .fav-link-btn.active { background-color: #a07274; }
 
   .stock-notice {
     margin: 0 16px 16px;
@@ -233,16 +289,6 @@
     font-size: 12px;
     color: var(--medium);
     line-height: 1.6;
-  }
-
-  .filter-btn.fav-btn {
-    border-color: var(--gold);
-    color: var(--gold);
-  }
-  .filter-btn.fav-btn.active, .filter-btn.fav-btn:hover {
-    background: var(--gold);
-    color: white;
-    border-color: var(--gold);
   }
 
   /* SECTION TITLE */
@@ -740,6 +786,59 @@
     text-decoration: underline;
     text-underline-offset: 3px;
   }
+
+  /* VIDEO BUTTON */
+  .video-btn {
+    width: 100%;
+    padding: 6px 7px;
+    background: transparent;
+    color: #C49A9C;
+    border: 1px solid #C49A9C;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.03em;
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    text-decoration: none;
+  }
+  .video-btn:hover {
+    background: #C49A9C;
+    color: white;
+  }
+
+  /* VIDEO BADGE en la card */
+  .video-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: rgba(196,154,156,0.85);
+    color: white;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 3px 7px;
+    border-radius: 20px;
+    backdrop-filter: blur(4px);
+  }
+
+  /* FILTER reseñas */
+  .filter-btn.resenas-btn {
+    border-color: #C49A9C;
+    color: #C49A9C;
+  }
+  .filter-btn.resenas-btn.active,
+  .filter-btn.resenas-btn:hover {
+    background: #C49A9C;
+    color: white;
+    border-color: #C49A9C;
+  }
 </style>
 </head>
 <body>
@@ -767,26 +866,36 @@
 </div>
 
 
-<div class="filters">
-  <button class="filter-btn stock-btn" onclick="filterCategory('stock', this)">En Stock</button>
-  <button class="filter-btn active" onclick="filterCategory('all', this)">Todo</button>
-  <button class="filter-btn" onclick="filterCategory('truss', this)">Capilar Truss</button>
-  <button class="filter-btn" onclick="filterCategory('otros-cap', this)">Capilar Otros</button>
-  <button class="filter-btn" onclick="filterCategory('makeup', this)">Make Up</button>
-  <button class="filter-btn" onclick="filterCategory('corporal', this)">Corporal</button>
-  <button class="filter-btn" onclick="filterCategory('skincare', this)">Skincare</button>
-  <button class="filter-btn" onclick="filterCategory('otros', this)">Otros</button>
+<!-- BARRA DE FILTROS -->
+<div class="filters-bar">
+  <button class="cat-toggle-btn" id="hamburgerBtn" onclick="toggleCategoryPanel()">Categorías ▾</button>
+  <div class="filter-divider"></div>
+  <div class="main-chips">
+    <button class="chip chip-stock" id="chip-stock" onclick="selectChip('stock', this)">En Stock</button>
+    <button class="chip active" id="chip-all" onclick="selectChip('all', this)">Todo</button>
+    <button class="chip chip-favoritos" id="chip-favoritos" onclick="selectChip('favoritos', this)">♡ Favoritos</button>
+    <button class="chip chip-resenas" id="chip-resenas" onclick="selectChip('resenas', this)">▶ Reseñas</button>
+  </div>
+</div>
+
+<!-- PANEL DE CATEGORÍAS -->
+<div class="category-panel" id="categoryPanel">
+  <button class="cat-btn" onclick="selectCatBtn('truss', this)">Capilar Truss</button>
+  <button class="cat-btn" onclick="selectCatBtn('otros-cap', this)">Capilar Otros</button>
+  <button class="cat-btn" onclick="selectCatBtn('makeup', this)">Make Up</button>
+  <button class="cat-btn" onclick="selectCatBtn('corporal', this)">Corporal</button>
+  <button class="cat-btn" onclick="selectCatBtn('skincare', this)">Skincare</button>
+  <button class="cat-btn" onclick="selectCatBtn('otros', this)">Otros</button>
 </div>
 
 <div class="search-fav-row">
-  <div class="search-box">
+  <div class="search-box" style="flex: 1;">
     <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
       <circle cx="6.5" cy="6.5" r="5" stroke="#C49A9C" stroke-width="1.5"/>
       <line x1="10.5" y1="10.5" x2="14" y2="14" stroke="#C49A9C" stroke-width="1.5" stroke-linecap="round"/>
     </svg>
     <input type="text" id="searchInput" placeholder="buscar producto..." oninput="searchProducts(this.value)" />
   </div>
-  <button class="fav-link-btn" id="favLinkBtn" onclick="filterCategory('favoritos', this)">♡ Ver favoritos de Feñi</button>
 </div>
 
 <div id="stock-notice" style="display:none;" class="stock-notice">
@@ -972,7 +1081,7 @@ const products = [
   { id:8,  brand:'TRUSS', name:'Uso Obrigatorio', desc:'Suavidad y nutrición', price:23000, size:'300ml', cat:'truss', emoji:'💚', star:false, variants:[{name:'Shampoo',price:23000},{name:'Acondicionador',price:23000},{name:'Kit Shampoo + Acondicionador 🌟',price:44000}] },
   { id:9,  brand:'TRUSS', name:'Frizz Zero', desc:'Efectivo contra frizz', price:23000, size:'300ml', cat:'truss', emoji:'🌬️', star:false, variants:[{name:'Shampoo',price:23000},{name:'Acondicionador',price:23000},{name:'Kit Shampoo + Acondicionador 🌟',price:44000}] },
   { id:10, brand:'TRUSS', name:'Night Spa', desc:'Hidratación intensa nocturna', price:35000, size:'250ml', cat:'truss', emoji:'🌙', star:false },
-  { id:11, brand:'TRUSS', name:'Amino Spray', desc:'Termoprotector e hidratante', price:37000, size:'225ml', cat:'truss', emoji:'💫', star:true },
+  { id:11, brand:'TRUSS', name:'Amino Spray', desc:'Termoprotector e hidratante', price:37000, size:'225ml', cat:'truss', emoji:'💫', star:true, video:'https://www.tiktok.com/@iamandaventura/video/7544476732309376312?is_from_webapp=1&sender_device=pc&web_id=7611920635804108309' },
   { id:12, brand:'TRUSS', name:'Brush Keratin Leave In', desc:'Proteínas y aminoácidos', price:35000, size:'250ml', cat:'truss', emoji:'🪄', star:false },
   { id:13, brand:'TRUSS', name:'Day By Day Spray', desc:'Nutrición diaria sin enjuague', price:30000, size:'250ml', cat:'truss', emoji:'☀️', star:false },
   { id:14, brand:'TRUSS', name:'Hair Protector Crema', desc:'Protector de calor sin enjuague', price:32000, size:'250ml', cat:'truss', emoji:'🛡️', star:false },
@@ -983,66 +1092,66 @@ const products = [
   { id:19, brand:'TRUSS', name:'Uso Obrigatorio Mask', desc:'Nutrición y reparación', price:32000, size:'180gr', cat:'truss', emoji:'💚', star:true },
   { id:20, brand:'TRUSS', name:'Blond Revolution Mask', desc:'Antioxidante intenso', price:32000, size:'180gr', cat:'truss', emoji:'🟣', star:false },
   { id:21, brand:'TRUSS', name:'Frizz Zero Máscara Líquida', desc:'Tratamiento frizz', price:32000, size:'260ml', cat:'truss', emoji:'💙', star:false },
-  { id:22, brand:'TRUSS', name:'Iluminate Oil', desc:'Restaura puntas, disminuye frizz', price:27000, size:'60ml', cat:'truss', emoji:'🌟', star:true },
-  { id:23, brand:'TRUSS', name:'Uso Obrigatorio Oil 30ml', desc:'Reconstructor', price:15000, size:'30ml', cat:'truss', emoji:'💚', star:true },
-  { id:24, brand:'TRUSS', name:'Uso Obrigatorio Oil 60ml', desc:'Reconstructor', price:25000, size:'60ml', cat:'truss', emoji:'💚', star:false },
+  { id:22, brand:'TRUSS', name:'Iluminate Oil', desc:'Restaura puntas, disminuye frizz', price:27000, size:'60ml', cat:'truss', emoji:'🌟', star:true, video:'https://www.tiktok.com/@radiancehaircare/video/7478893948434418950?is_from_webapp=1&sender_device=pc&web_id=7611920635804108309' },
+  { id:23, brand:'TRUSS', name:'Uso Obrigatorio Oil 30ml', desc:'Reconstructor', price:15000, size:'30ml', cat:'truss', emoji:'💚', star:true, video:'https://www.tiktok.com/@rodriguesmirella/video/7448382199130361093?is_from_webapp=1&sender_device=pc&web_id=7611920635804108309' },
+  { id:24, brand:'TRUSS', name:'Uso Obrigatorio Oil 60ml', desc:'Reconstructor', price:25000, size:'60ml', cat:'truss', emoji:'💚', star:false, video:'https://www.tiktok.com/@rodriguesmirella/video/7448382199130361093?is_from_webapp=1&sender_device=pc&web_id=7611920635804108309' },
   { id:25, brand:'TRUSS', name:'Blond Revolution Spray', desc:'Protege el color', price:27000, size:'100ml', cat:'truss', emoji:'💜', star:false },
   // CAPILAR OTROS (incl. Jacques Janine)
   { id:26, brand:'JACQUES JANINE', name:'Just One Minute Spray', desc:'Protege contra humedad y frizz', price:15000, size:'120ml', cat:'otros-cap', emoji:'⚡', star:false },
   { id:27, brand:'JACQUES JANINE', name:'Máscara Cachos Perfeitos', desc:'Fija rulos', price:10000, size:'80gr', cat:'otros-cap', emoji:'🌀', star:true, stock:3 },
   { id:28, brand:'JACQUES JANINE', name:'Humedecedor Cachos Spray', desc:'Mantiene y controla frizz', price:10000, size:'60ml', cat:'otros-cap', emoji:'💧', star:true, stock:1 },
-  { id:29, brand:'JACQUES JANINE', name:'J18 Leave In', desc:'Tratamiento intensivo reparación', price:20000, size:'30ml', cat:'otros-cap', emoji:'🔬', star:true },
+  { id:29, brand:'JACQUES JANINE', name:'J18 Leave In', desc:'Tratamiento intensivo reparación', price:20000, size:'30ml', cat:'otros-cap', emoji:'🔬', star:true, video:'https://www.tiktok.com/@jacquesjanine_cl/video/7480247382182202630?is_from_webapp=1&sender_device=pc&web_id=7611920635804108309' },
   { id:30, brand:'JACQUES JANINE', name:'Máscara J18', desc:'Tratamiento intensivo reparación', price:15000, size:'80gr', cat:'otros-cap', emoji:'🧴', star:false },
   { id:31, brand:'SALON LINE', name:'Crema Rulo Niña(o)', desc:'Definición rulos niña(o)', price:12000, size:'120ml', cat:'otros-cap', emoji:'🌺', star:false },
-  { id:32, brand:'RICCA', name:'Shampoo Seco Spray', desc:'Limpia y absorbe oleosidad', price:10000, size:'150ml', cat:'otros-cap', emoji:'🧼', star:true, stock:1 },
-  { id:33, brand:'SALON LINE', name:'Modeladora Crema', desc:'Crema clean look', price:10000, size:'120gr', cat:'otros-cap', emoji:'💜', star:true },
+  { id:32, brand:'RICCA', name:'Shampoo Seco Spray', desc:'Limpia y absorbe oleosidad', price:10000, size:'150ml', cat:'otros-cap', emoji:'🧼', star:true, stock:1, video:'https://www.tiktok.com/@lanalauralawisch/video/7523038943273618693?is_from_webapp=1&sender_device=pc&web_id=7611920635804108309' },
+  { id:33, brand:'SALON LINE', name:'Modeladora Crema', desc:'Crema clean look', price:10000, size:'120gr', cat:'otros-cap', emoji:'💜', star:true, video:'https://www.instagram.com/reel/DPEA73oDSa5/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==' },
   { id:34, brand:'ACQUAFLORA', name:'Fuerza y Crecimiento Spray', desc:'Fuerza y resistencia', price:13000, size:'150ml', cat:'otros-cap', emoji:'🌱', star:true, stock:1 },
   { id:35, brand:'SALON LINE', name:'Modeladora Gel', desc:'Gel clean look', price:10000, size:'120gr', cat:'otros-cap', emoji:'💚', star:true },
   { id:36, brand:'NOVEX', name:'Recarga Keratina Capilar', desc:'Reconstrucción', price:8000, size:'80gr', cat:'otros-cap', emoji:'💎', star:false },
-  { id:37, brand:'XÔ FRIZZ', name:'Rimel Baby Hairs', desc:'Delineador para cabellos', price:12000, size:'', cat:'otros-cap', emoji:'🖊️', star:true, stock:2 },
+  { id:37, brand:'XÔ FRIZZ', name:'Rimel Baby Hairs', desc:'Delineador para cabellos', price:12000, size:'', cat:'otros-cap', emoji:'🖊️', star:true, stock:2, video:'https://www.tiktok.com/@eujulianamotta/video/7267625989520362757?is_from_webapp=1&sender_device=pc&web_id=7611920635804108309' },
   { id:38, brand:'LACAN', name:'Voluminizador', desc:'Efecto volumen capa por capa', price:14000, size:'120ml', cat:'otros-cap', emoji:'💨', star:true },
   { id:39, brand:'LOLA', name:'Rapunzel Tónico', desc:'Crecimiento', price:13000, size:'250ml', cat:'otros-cap', emoji:'🌿', star:false, stock:1 },
-  { id:40, brand:'INOAR', name:'Agua Milagrosa Spray', desc:'Tratamiento regenerador', price:22000, size:'200ml', cat:'otros-cap', emoji:'✨', star:true, stock:2 },
-  { id:41, brand:'SALON LINE', name:'Gel Modelador Clean Look Suave', desc:'Hidratación antifrizz', price:7000, size:'', cat:'otros-cap', emoji:'💙', star:true, stock:1 },
-  { id:42, brand:'RICCA', name:'Cera Fijadora Stick', desc:'Cera pelitos clean look', price:13000, size:'15gr', cat:'otros-cap', emoji:'🟣', star:true },
-  { id:43, brand:'RICCA', name:'Ricca Flex', desc:'Cepillo anti quiebre', price:11000, size:'', cat:'otros-cap', emoji:'🪮', star:false },
-  { id:44, brand:'RICCA', name:'Ricca Cachos', desc:'Separa y ayuda a definir rulos', price:11000, size:'', cat:'otros-cap', emoji:'🌸', star:true },
+  { id:40, brand:'INOAR', name:'Agua Milagrosa Spray', desc:'Tratamiento regenerador', price:22000, size:'200ml', cat:'otros-cap', emoji:'✨', star:true, stock:2, video:'https://www.tiktok.com/@inoar.guatemala/video/7505072601073503493?is_from_webapp=1&sender_device=pc&web_id=7611920635804108309' },
+  { id:41, brand:'SALON LINE', name:'Gel Modelador Clean Look Suave', desc:'Hidratación antifrizz', price:7000, size:'', cat:'otros-cap', emoji:'💙', star:true, stock:1, video:'https://www.tiktok.com/@fertorresalves/video/7632431685891525896?is_from_webapp=1&sender_device=pc&web_id=7611920635804108309' },
+  { id:42, brand:'RICCA', name:'Cera Fijadora Stick', desc:'Cera pelitos clean look', price:13000, size:'15gr', cat:'otros-cap', emoji:'🟣', star:true, video:'https://www.tiktok.com/@giovannacreator/video/7608997609625357588?is_from_webapp=1&sender_device=pc&web_id=7611920635804108309' },
+  { id:43, brand:'RICCA', name:'Ricca Flex', desc:'Cepillo anti quiebre', price:11000, size:'', cat:'otros-cap', emoji:'🪮', star:false, video:'https://www.tiktok.com/@jesyafernandes/video/7480660425227373879?is_from_webapp=1&sender_device=pc&web_id=7611920635804108309' },
+  { id:44, brand:'RICCA', name:'Ricca Cachos', desc:'Separa y ayuda a definir rulos', price:11000, size:'', cat:'otros-cap', emoji:'🌸', star:true, video:'https://www.tiktok.com/@eududasilva08/video/7532496926839737606?is_from_webapp=1&sender_device=pc&web_id=7611920635804108309' },
   // MAKE UP
-  { id:46, brand:'VIZZELA', name:'Fijador Cejas Incoloro', desc:'', price:12000, size:'', cat:'makeup', emoji:'🤎', star:true },
-  { id:47, brand:'VIZZELA', name:'Corrector Alta Cobertura', desc:'Soft matte, larga duración', price:16000, size:'', cat:'makeup', emoji:'🌟', star:true },
+  { id:46, brand:'VIZZELA', name:'Fijador Cejas Incoloro', desc:'', price:12000, size:'', cat:'makeup', emoji:'🤎', star:true, video:'https://www.tiktok.com/@fabinhofiufiu/video/7579287458551008519?is_from_webapp=1&sender_device=pc&web_id=7611920635804108309' },
+  { id:47, brand:'VIZZELA', name:'Corrector Alta Cobertura', desc:'Soft matte, larga duración', price:16000, size:'', cat:'makeup', emoji:'🌟', star:true, video:'https://www.tiktok.com/@amandaoligon/video/7345247563991289094?is_from_webapp=1&sender_device=pc&web_id=7611920635804108309' },
   { id:48, brand:'VIZZELA', name:'Polvo Translúcido', desc:'Disimula poros', price:13000, size:'', cat:'makeup', emoji:'✨', star:false },
   { id:49, brand:'VIZZELA', name:'Fijador Maquillaje', desc:'Alta fijación', price:18000, size:'150ml', cat:'makeup', emoji:'💦', star:true },
-  { id:50, brand:'EUDORA', name:'Brocha Base', desc:'Pincel density', price:18000, size:'', cat:'makeup', emoji:'🖌️', star:true },
+  { id:50, brand:'EUDORA', name:'Brocha Base', desc:'Pincel density', price:18000, size:'', cat:'makeup', emoji:'🖌️', star:true, video:'https://www.tiktok.com/@niinasecrets/video/7392287121484107013?is_from_webapp=1&sender_device=pc&web_id=7611920635804108309' },
   { id:51, brand:'VIZZELA', name:'Contorno Stick Cremoso', desc:'', price:13000, size:'', cat:'makeup', emoji:'🤎', star:false },
-  { id:52, brand:'BRUNA TAVARES', name:'Labial Resistente Hermione', desc:'Natural rosado', price:13000, size:'', cat:'makeup', emoji:'🌸', star:true },
+  { id:52, brand:'BRUNA TAVARES', name:'Labial Resistente Hermione', desc:'Natural rosado', price:13000, size:'', cat:'makeup', emoji:'🌸', star:true, video:'https://www.tiktok.com/@brunatavares.bt/video/7483940809344142597?is_from_webapp=1&sender_device=pc&web_id=7611920635804108309' },
   { id:53, brand:'BRUNA TAVARES', name:'Juicy Lip Oil', desc:'Variedad de colores y PH', price:15000, size:'', cat:'makeup', emoji:'💋', star:false },
-  { id:54, brand:'OCEANE', name:'Trio Sombras', desc:'', price:20000, size:'', cat:'makeup', emoji:'👁️', star:false },
-  { id:55, brand:'BRUNA TAVARES', name:'Lip Oil Color', desc:'Destellos rojos', price:15000, size:'', cat:'makeup', emoji:'❤️', star:false },
-  { id:56, brand:'FRAN', name:'Paleta Iluminadores', desc:'4 tonos', price:28000, size:'', cat:'makeup', emoji:'🌟', star:true },
-  { id:57, brand:'MELU', name:'Cejas', desc:'Kit cejas completo', price:8000, size:'', cat:'makeup', emoji:'🤎', star:true },
-  { id:58, brand:'BOCA ROSA', name:'Base Stick', desc:'Variedad de colores', price:22000, size:'', cat:'makeup', emoji:'💄', star:false },
-  { id:59, brand:'BOCA ROSA', name:'Máscara Café', desc:'', price:16000, size:'', cat:'makeup', emoji:'👁️', star:true },
-  { id:60, brand:'MASCAVO', name:'Bronzer Mascavo', desc:'Textura cremosa, brillo increíble', price:25000, size:'', cat:'makeup', emoji:'☀️', star:true },
-  { id:61, brand:'MASCAVO', name:'Iluminador', desc:'Tono Rosé o Champagne', price:22000, size:'', cat:'makeup', emoji:'✨', star:false },
-  { id:62, brand:'MASCAVO', name:'Contorno', desc:'Tono Almond', price:22000, size:'', cat:'makeup', emoji:'🤎', star:true },
-  { id:63, brand:'MASCAVO', name:'Blush', desc:'Tono Maple', price:22000, size:'', cat:'makeup', emoji:'🌸', star:false },
-  { id:64, brand:'MASCAVO', name:'Base Mascavo', desc:'', price:30000, size:'', cat:'makeup', emoji:'💄', star:true },
-  { id:65, brand:'MASCAVO', name:'Brocha Rostro Angular', desc:'', price:22000, size:'', cat:'makeup', emoji:'🖌️', star:true, stock:1 },
-  { id:66, brand:'MASCAVO', name:'Brocha Rostro Base y Corrector', desc:'', price:22000, size:'', cat:'makeup', emoji:'🖌️', star:false },
+  { id:54, brand:'OCEANE', name:'Trio Sombras', desc:'', price:20000, size:'', cat:'makeup', emoji:'👁️', star:false, video:'https://www.tiktok.com/@gabiieugenio/video/7583504127351721236?is_from_webapp=1&sender_device=pc&web_id=7611920635804108309' },
+  { id:55, brand:'BRUNA TAVARES', name:'Lip Oil Color', desc:'Destellos rojos', price:15000, size:'', cat:'makeup', emoji:'❤️', star:false, video:'https://www.tiktok.com/@anagabivls/video/7061653105821125894?is_from_webapp=1&sender_device=pc&web_id=7611920635804108309' },
+  { id:56, brand:'FRAN', name:'Paleta Iluminadores', desc:'4 tonos', price:28000, size:'', cat:'makeup', emoji:'🌟', star:true, video:'https://www.tiktok.com/@amandinhascastro/video/7473226094787759366?is_from_webapp=1&sender_device=pc&web_id=7611920635804108309' },
+  { id:57, brand:'MELU', name:'Cejas', desc:'Kit cejas completo', price:8000, size:'', cat:'makeup', emoji:'🤎', star:true, video:'https://www.tiktok.com/@evybeautyclinic/video/7305059927507242246?is_from_webapp=1&sender_device=pc&web_id=7611920635804108309' },
+  { id:58, brand:'BOCA ROSA', name:'Base Stick', desc:'Variedad de colores', price:22000, size:'', cat:'makeup', emoji:'💄', star:false, video:'https://www.tiktok.com/@chulifaveri/video/7496520208413199621?is_from_webapp=1&sender_device=pc&web_id=7611920635804108309' },
+  { id:59, brand:'BOCA ROSA', name:'Máscara Café', desc:'', price:16000, size:'', cat:'makeup', emoji:'👁️', star:true, video:'https://www.tiktok.com/@superglossmakes/video/7557071835540638987?is_from_webapp=1&sender_device=pc&web_id=7611920635804108309' },
+  { id:60, brand:'MASCAVO', name:'Bronzer Mascavo', desc:'Textura cremosa, brillo increíble', price:25000, size:'', cat:'makeup', emoji:'☀️', star:true, video:'https://vt.tiktok.com/ZS92XukRq/' },
+  { id:61, brand:'MASCAVO', name:'Iluminador', desc:'Tono Rosé o Champagne', price:22000, size:'', cat:'makeup', emoji:'✨', star:false, video:'https://www.tiktok.com/@roselynunesbeauty/video/7498090208546688261?is_from_webapp=1&sender_device=pc&web_id=7611920635804108309' },
+  { id:62, brand:'MASCAVO', name:'Contorno', desc:'Tono Almond', price:22000, size:'', cat:'makeup', emoji:'🤎', star:true, video:'https://www.tiktok.com/@melsiqueiira/video/7602310538831334664?is_from_webapp=1&sender_device=pc&web_id=7611920635804108309' },
+  { id:63, brand:'MASCAVO', name:'Blush', desc:'Tono Maple', price:22000, size:'', cat:'makeup', emoji:'🌸', star:false, video:'https://www.tiktok.com/@rayssalucna/video/7517055257835277573?is_from_webapp=1&sender_device=pc&web_id=7611920635804108309' },
+  { id:64, brand:'MASCAVO', name:'Base Mascavo', desc:'', price:30000, size:'', cat:'makeup', emoji:'💄', star:true, video:'https://vt.tiktok.com/ZS92XWcog/' },
+  { id:65, brand:'MASCAVO', name:'Brocha Rostro Angular', desc:'', price:22000, size:'', cat:'makeup', emoji:'🖌️', star:true, stock:1, video:'https://www.tiktok.com/@erickneeto/video/7435415499426516279?is_from_webapp=1&sender_device=pc&web_id=7611920635804108309' },
+  { id:66, brand:'MASCAVO', name:'Brocha Rostro Base y Corrector', desc:'', price:22000, size:'', cat:'makeup', emoji:'🖌️', star:false, video:'https://www.tiktok.com/@manubeauty_store/video/7522517615969832248?is_from_webapp=1&sender_device=pc&web_id=7611920635804108309' },
   // CORPORAL
   { id:67, brand:'BELEZA BRASIL', name:'Crema Barriguinha', desc:'Flacidez y grasa', price:27000, size:'200gr', cat:'corporal', emoji:'💛', star:true },
   { id:68, brand:'BELEZA BRASIL', name:'Crema Bumbum', desc:'Celulitis y estrías', price:27000, size:'200gr', cat:'corporal', emoji:'💚', star:true },
   { id:69, brand:'PAIXÃO', name:'Aceite Corporal Frambuesa Negra', desc:'Hidratante corporal 24h', price:8000, size:'100ml', cat:'corporal', emoji:'🍇', star:true, stock:1 },
   { id:70, brand:'LABOTRAT', name:'Exfoliante Aromas', desc:'Varios aromas disponibles', price:9000, size:'180gr', cat:'corporal', emoji:'🍓', star:true, variants:[{name:'Pistacho',price:9000},{name:'Cereza',price:9000},{name:'Fresa',price:9000},{name:'Pitaya',price:9000},{name:'Maracuyá',price:9000},{name:'Sandía',price:9000}] },
-  { id:71, brand:'CENOURA & BRONZE', name:'Protector Solar Spray', desc:'Hidratante FPS 50', price:18000, size:'200ml', cat:'corporal', emoji:'☀️', star:false },
-  { id:72, brand:'SUN IN', name:'Aclarador Bello Corporal', desc:'', price:10000, size:'', cat:'corporal', emoji:'🌿', star:true, stock:1 },
+  { id:71, brand:'CENOURA & BRONZE', name:'Protector Solar Spray', desc:'Hidratante FPS 50', price:18000, size:'200ml', cat:'corporal', emoji:'☀️', star:false, video:'https://www.tiktok.com/@cenouraebronzeoficial/video/7568885601320078599?is_from_webapp=1&sender_device=pc&web_id=7611920635804108309' },
+  { id:72, brand:'SUN IN', name:'Aclarador Bello Corporal', desc:'', price:10000, size:'', cat:'corporal', emoji:'🌿', star:true, stock:1, video:'https://www.tiktok.com/@dezasview/video/7230985540735159557?is_from_webapp=1&sender_device=pc&web_id=7611920635804108309' },
   // SKINCARE
   { id:73, brand:'BIORÉ', name:'Marshmallow Whip Jabón Facial', desc:'Piel mixta y oleosa', price:14000, size:'150ml', cat:'skincare', emoji:'🫧', star:false },
   { id:74, brand:'BIORÉ', name:'Makeup Remover', desc:'Todo tipo de piel', price:18000, size:'150ml', cat:'skincare', emoji:'💧', star:false },
   { id:75, brand:'MELANO CC', name:'Vitamin C Serum', desc:'Ilumina y unifica', price:22000, size:'20ml', cat:'skincare', emoji:'🍊', star:true },
-  { id:76, brand:'GARNIER', name:'Hidratante Toque Seco', desc:'Salicílico antiacne', price:11000, size:'', cat:'skincare', emoji:'💙', star:true },
+  { id:76, brand:'GARNIER', name:'Hidratante Toque Seco', desc:'Salicílico antiacne', price:11000, size:'', cat:'skincare', emoji:'💙', star:true, video:'https://www.tiktok.com/@soyaleidaflores/video/7578988811598728466?is_from_webapp=1&sender_device=pc&web_id=7611920635804108309' },
   // CAPILAR OTROS - nuevos
-  { id:77, brand:"JOHNSON'S", name:'Crema Rulos Bebé', desc:'Crema para rulos bebé', price:12000, size:'200ml', cat:'otros-cap', emoji:'🍼', star:false, stock:1 },
+  { id:77, brand:"JOHNSON'S", name:'Crema Rulos Bebé', desc:'Crema para rulos bebé', price:12000, size:'200ml', cat:'otros-cap', emoji:'🍼', star:false, stock:1, video:'https://www.tiktok.com/@connie_kota/video/7000546413859982598?is_from_webapp=1&sender_device=pc&web_id=7611920635804108309' },
   { id:84, brand:'INOAR', name:'Ampolla Glycolic', desc:'Brillo e hidratación profunda', price:4000, size:'45ml', cat:'otros-cap', emoji:'✨', star:false, stock:1 },
   { id:85, brand:'INOAR', name:'Ampolla Argan', desc:'Hidratación intensa', price:4000, size:'45ml', cat:'otros-cap', emoji:'🌿', star:false, stock:1 },
   { id:86, brand:'NATUHAIR', name:'Aceite Ricino', desc:'Crecimiento y anti caída', price:5000, size:'30ml', cat:'otros-cap', emoji:'🌱', star:false, stock:2 },
@@ -1052,10 +1161,10 @@ const products = [
   { id:83, brand:'GOSHBABE', name:'Cápsulas Bronceado', desc:'Mejora y durabilidad bronceado', price:20000, size:'60 un.', cat:'corporal', emoji:'🌟', star:false, stock:1 },
   { id:91, brand:'PAIXÃO', name:'Crema Bridgerton', desc:'Aroma a rosas rico', price:8000, size:'200ml', cat:'corporal', emoji:'🌹', star:false, stock:1 },
   // MAKE UP - nuevos
-  { id:80, brand:'VIZZELA', name:'Máscara Burdeo', desc:'Rimel de pestañas burdeo', price:13000, size:'5g', cat:'makeup', emoji:'👁️', star:true, stock:1 },
-  { id:88, brand:'BRUNA TAVARES', name:'Lip Charm Coca Cola', desc:'Charm lip balm', price:5000, size:'700mg', cat:'makeup', emoji:'💋', star:false, stock:1 },
-  { id:89, brand:'FRAN', name:'Primer Iluminado', desc:'Primer iluminado hermoso', price:18000, size:'20gr', cat:'makeup', emoji:'✨', star:true, stock:1 },
-  { id:90, brand:'MASCAVO', name:'Brocha Multifuncional', desc:'Brocha doble multifuncional', price:22000, size:'', cat:'makeup', emoji:'🖌️', star:true },
+  { id:80, brand:'VIZZELA', name:'Máscara Burdeo', desc:'Rimel de pestañas burdeo', price:13000, size:'5g', cat:'makeup', emoji:'👁️', star:true, stock:1, video:'https://www.tiktok.com/@claracvd/video/7418593688160406790?is_from_webapp=1&sender_device=pc&web_id=7611920635804108309' },
+  { id:88, brand:'BRUNA TAVARES', name:'Lip Charm Coca Cola', desc:'Charm lip balm', price:5000, size:'700mg', cat:'makeup', emoji:'💋', star:false, stock:1, video:'https://www.tiktok.com/@brunatavares.bt/video/7581861107694980359?is_from_webapp=1&sender_device=pc&web_id=7611920635804108309' },
+  { id:89, brand:'FRAN', name:'Primer Iluminado', desc:'Primer iluminado hermoso', price:18000, size:'20gr', cat:'makeup', emoji:'✨', star:true, stock:1, video:'https://www.tiktok.com/@gossipbeautyclips/video/7426811514654412037?is_from_webapp=1&sender_device=pc&web_id=7611920635804108309' },
+  { id:90, brand:'MASCAVO', name:'Brocha Multifuncional', desc:'Brocha doble multifuncional', price:22000, size:'', cat:'makeup', emoji:'🖌️', star:true, video:'https://www.tiktok.com/@ursulaandresspwf/video/7623053184763972882?is_from_webapp=1&sender_device=pc&web_id=7611920635804108309' },
   // OTROS - nuevos
   { id:79, brand:'DR. GOOD / FINI', name:'Melatonina', desc:'Gomitas para dormir', price:15000, size:'60 un.', cat:'otros', emoji:'😴', star:true, stock:1 },
   { id:81, brand:'O BOTICÁRIO', name:'Aceite Térmico Corporal', desc:'Ayuda con dolor colon', price:13000, size:'110ml', cat:'otros', emoji:'🌡️', star:true, stock:2 },
@@ -1067,6 +1176,7 @@ const products = [
 // ============================================================
 let cart = [];
 let deliveryType = 'envio';
+let activeFilter = 'all';
 
 // ============================================================
 // RENDER
@@ -1076,6 +1186,7 @@ function formatPrice(p) {
 }
 
 function renderCatalog(filter = 'all') {
+  activeFilter = filter;
   const sections = {
     truss:      { title: 'CAPILAR TRUSS', items: [] },
     'otros-cap':{ title: 'CAPILAR OTROS', items: [] },
@@ -1099,6 +1210,8 @@ function renderCatalog(filter = 'all') {
       if (p.star && sections[p.cat]) sections[p.cat].items.push(p);
     } else if (filter === 'stock') {
       if (p.stock && p.stock > 0 && sections[p.cat]) sections[p.cat].items.push(p);
+    } else if (filter === 'resenas') {
+      if (p.video && sections[p.cat]) sections[p.cat].items.push(p);
     } else if (p.cat === filter) {
       if (sections[p.cat]) sections[p.cat].items.push(p);
     }
@@ -1129,6 +1242,7 @@ function renderCard(p) {
   return `
     <div class="product-card" id="card-${p.id}">
       ${p.star ? '<div class="star-badge">♡</div>' : ''}
+      ${p.video ? '<div class="video-badge">▶ VIDEO</div>' : ''}
       ${productImages[p.id] ? `<img class="product-img" src="${productImages[p.id]}" alt="${p.name}" loading="lazy">` : `<div class="product-img-placeholder">${p.emoji}</div>`}
       <div class="product-info">
         <div class="product-brand">${p.brand}</div>
@@ -1148,6 +1262,7 @@ function renderCard(p) {
         ` : `
           <button class="add-btn" onclick="${p.variants ? `openVariantModal(${p.id})` : `addToCart(${p.id})`}">Agregar al pedido</button>
         `}
+        ${p.video && activeFilter === 'resenas' ? `<a class="video-btn" href="${p.video}" target="_blank" rel="noopener">▶ Ver video</a>` : ''}
       </div>
     </div>
   `;
@@ -1243,14 +1358,10 @@ function refreshCard(id) {
   const qty = inCart ? inCart.qty : 0;
   const infoEl = cardEl.querySelector('.product-info');
 
-  // Replace button area only
-  const addArea = infoEl.querySelector('.qty-control, .add-btn');
-  if (addArea) {
-    const parent = addArea.parentNode;
-    // Remove qty-control and add-btn
-    while (infoEl.querySelector('.qty-control')) infoEl.querySelector('.qty-control').remove();
-    while (infoEl.querySelector('.add-btn')) infoEl.querySelector('.add-btn').remove();
-  }
+  // Remove qty-control, add-btn y video-btn (se reinsertan en orden)
+  while (infoEl.querySelector('.qty-control')) infoEl.querySelector('.qty-control').remove();
+  while (infoEl.querySelector('.add-btn')) infoEl.querySelector('.add-btn').remove();
+  while (infoEl.querySelector('.video-btn')) infoEl.querySelector('.video-btn').remove();
 
   if (qty > 0) {
     infoEl.insertAdjacentHTML('beforeend', `
@@ -1263,8 +1374,12 @@ function refreshCard(id) {
     `);
   } else {
     infoEl.insertAdjacentHTML('beforeend', `
-      <button class="add-btn" onclick="addToCart(${p.id})">Agregar al pedido</button>
+      <button class="add-btn" onclick="${p.variants ? `openVariantModal(${p.id})` : `addToCart(${p.id})`}">Agregar al pedido</button>
     `);
+  }
+
+  if (p.video && activeFilter === 'resenas') {
+    infoEl.insertAdjacentHTML('beforeend', `<a class="video-btn" href="${p.video}" target="_blank" rel="noopener">▶ Ver video</a>`);
   }
 }
 
@@ -1334,23 +1449,65 @@ function selectDelivery(type, el) {
 // ============================================================
 // FILTER
 // ============================================================
+// ============================================================
+// FILTER — nuevo sistema
+// ============================================================
+
+function toggleCategoryPanel() {
+  const panel = document.getElementById('categoryPanel');
+  const btn = document.getElementById('hamburgerBtn');
+  const isOpen = panel.classList.toggle('open');
+  btn.classList.toggle('open', isOpen);
+  btn.textContent = isOpen ? 'Categorías ▴' : 'Categorías ▾';
+}
+
+function clearAllChips() {
+  document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+}
+
+function clearAllCatBtns() {
+  document.querySelectorAll('.cat-btn').forEach(c => c.classList.remove('active'));
+}
+
+function selectChip(filter, chipEl) {
+  clearAllChips();
+  clearAllCatBtns();
+  chipEl.classList.add('active');
+  // cerrar panel al elegir chip principal
+  document.getElementById('categoryPanel').classList.remove('open');
+  document.getElementById('hamburgerBtn').classList.remove('open');
+  renderCatalog(filter);
+}
+
+function selectCatBtn(cat, catEl) {
+  clearAllChips();
+  clearAllCatBtns();
+  catEl.classList.add('active');
+  renderCatalog(cat);
+}
+
 function searchProducts(query) {
   const q = query.toLowerCase().trim();
   if (!q) {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    document.querySelector('.filter-btn').classList.add('active');
-    if (document.getElementById('favLinkBtn')) document.getElementById('favLinkBtn').classList.remove('active');
+    clearAllChips();
+    clearAllCatBtns();
+    document.getElementById('chip-all').classList.add('active');
     renderCatalog('all');
     return;
   }
+  clearAllChips();
+  clearAllCatBtns();
   const filtered = products.filter(p =>
     p.name.toLowerCase().includes(q) ||
     p.brand.toLowerCase().includes(q) ||
     (p.desc && p.desc.toLowerCase().includes(q))
   );
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  if (document.getElementById('favLinkBtn')) document.getElementById('favLinkBtn').classList.remove('active');
   renderCatalogFiltered(filtered);
+}
+
+function filterCategory(cat, btn) {
+  // mantener compatibilidad si se llama desde algún lado legacy
+  renderCatalog(cat);
 }
 
 function renderCatalogFiltered(filtered) {
@@ -1385,18 +1542,6 @@ function renderCatalogFiltered(filtered) {
   });
   container.innerHTML = html;
   updateCartUI();
-}
-
-function filterCategory(cat, btn) {
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  const favLink = document.getElementById('favLinkBtn');
-  if (favLink) favLink.classList.remove('active');
-  if (btn.classList.contains('fav-link-btn')) {
-    favLink.classList.add('active');
-  } else {
-    btn.classList.add('active');
-  }
-  renderCatalog(cat);
 }
 
 // ============================================================
