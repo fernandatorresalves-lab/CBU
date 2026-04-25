@@ -512,8 +512,9 @@
   <a href="https://ig.me/m/closebyus">@closebyus</a> 🌿</p>
 </div>
 
-<script>
-let deliveryType = 'envio';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyJtVqWpJWKDrE8E96HfzYBMJ-UIJcnvNlm0jLUCnYQdAaN5OTSQq3ZTQpqEJTb2qJt/exec';
+
+
 let envioType = 'sucursal';
 
 function selectDelivery(type, el) {
@@ -617,7 +618,7 @@ async function submitForm() {
       body: JSON.stringify(formData),
     });
 
-    fetch('https://script.google.com/macros/s/AKfycbxC5fqVcOM0qb4FAl__H0ACtHcVYzKqX1JfCX8onoISaJcvFi1O1cmebb3CjdWd0b-5/exec', {
+    fetch(SCRIPT_URL, {
       method: 'POST',
       mode: 'no-cors',
       headers: { 'Content-Type': 'application/json' },
