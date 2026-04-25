@@ -1250,7 +1250,7 @@ function renderCard(p) {
   return `
     <div class="product-card" id="card-${p.id}">
       ${p.star ? '<div class="star-badge">♡</div>' : ''}
-      ${p.video ? `<a class="video-badge" href="${p.video}" target="_blank" rel="noopener">▶ VIDEO</a>` : ''}
+      ${p.video ? `<a class="video-badge" onclick="openVideo('${p.video}')" href="javascript:void(0)">▶ VIDEO</a>` : ''}
       ${productImages[p.id] ? `<img class="product-img" src="${productImages[p.id]}" alt="${p.name}" loading="lazy">` : `<div class="product-img-placeholder">${p.emoji}</div>`}
       <div class="product-info">
         <div class="product-brand">${p.brand}</div>
@@ -1270,7 +1270,7 @@ function renderCard(p) {
         ` : `
           <button class="add-btn" onclick="${p.variants ? `openVariantModal(${p.id})` : `addToCart(${p.id})`}">Agregar al pedido</button>
         `}
-        ${p.video && activeFilter === 'resenas' ? `<a class="video-btn" href="${p.video}" target="_blank" rel="noopener">▶ Ver video</a>` : ''}
+        ${p.video && activeFilter === 'resenas' ? `<a class="video-btn" onclick="openVideo('${p.video}')" href="javascript:void(0)">▶ Ver video</a>` : ''}
       </div>
     </div>
   `;
@@ -1648,6 +1648,28 @@ document.getElementById('cartModal').addEventListener('click', function(e) {
   if (e.target === this) closeCart();
 });
 
+// ============================================================
+// VIDEO — detectar Instagram y mostrar aviso
+// ============================================================
+function isInstagramBrowser() {
+  return /Instagram/.test(navigator.userAgent);
+}
+
+function openVideo(url) {
+  if (isInstagramBrowser()) {
+    const modal = document.getElementById('videoWarningModal');
+    modal.style.display = 'flex';
+    modal.dataset.url = url;
+    document.getElementById('openInBrowserLink').href = window.location.href;
+  } else {
+    window.open(url, '_blank');
+  }
+}
+
+function closeVideoWarning() {
+  document.getElementById('videoWarningModal').style.display = 'none';
+}
+
 // INIT
 renderCatalog();
 </script>
@@ -1666,6 +1688,18 @@ renderCatalog();
       <button onclick="closeVariantModal()" style="flex:1;padding:10px;border:0.5px solid #D5C9BE;border-radius:10px;background:transparent;color:#9E8E7E;font-size:13px;cursor:pointer;">Cancelar</button>
       <button onclick="confirmVariant()" style="flex:2;padding:10px;border:none;border-radius:10px;background:#C49A9C;color:white;font-size:13px;font-weight:500;cursor:pointer;">Agregar al pedido</button>
     </div>
+  </div>
+</div>
+
+<!-- VIDEO WARNING MODAL -->
+<div id="videoWarningModal" onclick="if(event.target===this)closeVideoWarning()" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.45);z-index:1000;align-items:center;justify-content:center;padding:20px;box-sizing:border-box;">
+  <div style="background:#FBF8F3;border-radius:16px;width:100%;max-width:320px;padding:24px 20px;box-shadow:0 8px 32px rgba(0,0,0,0.15);text-align:center;">
+    <div style="font-size:28px;margin-bottom:12px;">🎬</div>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;color:#6B5744;margin:0 0 10px;">Para ver los videos</p>
+    <p style="font-family:'DM Sans',sans-serif;font-size:13px;color:#8C7260;line-height:1.6;margin:0 0 20px;">
+      Debes abrir el catálogo desde tu navegador.<br>Toca <a id="openInBrowserLink" href="" target="_blank" style="color:#C49A9C;font-weight:600;text-decoration:underline;text-underline-offset:3px;" onclick="closeVideoWarning()">aquí</a> para abrirlo.
+    </p>
+    <button onclick="closeVideoWarning()" style="padding:10px 24px;border:1px solid #E8DDD0;border-radius:50px;background:transparent;color:#8C7260;font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer;">Cerrar</button>
   </div>
 </div>
 </body>
