@@ -1251,7 +1251,7 @@ function renderCard(p) {
     <div class="product-card" id="card-${p.id}">
       ${p.star ? '<div class="star-badge">♡</div>' : ''}
       ${p.video ? `<a class="video-badge" onclick="openVideo('${p.video}')" href="javascript:void(0)">▶ VIDEO</a>` : ''}
-      ${ `<img class="product-img" src="imgs/p${p.id}.jpg" alt="${p.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">` + `<div class="product-img-placeholder" style="display:none">${p.emoji}</div>` }
+      ${ (() => { const pngIds = [65,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91]; const ext = pngIds.includes(p.id) ? 'png' : 'jpg'; return `<img class="product-img" src="imgs/p${p.id}.${ext}" alt="${p.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">` + `<div class="product-img-placeholder" style="display:none">${p.emoji}</div>`; })() }
       <div class="product-info">
         <div class="product-brand">${p.brand}</div>
         <div class="product-name">${p.name}</div>
