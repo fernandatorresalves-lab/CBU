@@ -1251,7 +1251,7 @@ function renderCard(p) {
     <div class="product-card" id="card-${p.id}">
       ${p.star ? '<div class="star-badge">♡</div>' : ''}
       ${p.video ? `<a class="video-badge" onclick="openVideo('${p.video}')" href="javascript:void(0)">▶ VIDEO</a>` : ''}
-      ${(p._img || productImages[p.id]) ? `<img class="product-img" src="${p._img || productImages[p.id]}" alt="${p.name}" loading="lazy">` : `<div class="product-img-placeholder">${p.emoji}</div>`}
+      ${ `<img class="product-img" src="imgs/p${p.id}.jpg" alt="${p.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">` + `<div class="product-img-placeholder" style="display:none">${p.emoji}</div>` }
       <div class="product-info">
         <div class="product-brand">${p.brand}</div>
         <div class="product-name">${p.name}</div>
@@ -1679,7 +1679,7 @@ const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyAcFq8fcDDp81yJpoC6
 function catalogCallback(remote) {
   if (Array.isArray(remote) && remote.length > 0) {
     remote.forEach(p => {
-      if (productImages[p.id]) p._img = productImages[p.id];
+      
     });
     products.length = 0;
     remote.forEach(p => products.push(p));
