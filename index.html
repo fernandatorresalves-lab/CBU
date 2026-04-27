@@ -470,7 +470,7 @@
     color: var(--medium);
     border: none;
     font-family: 'DM Sans', sans-serif;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 400;
     cursor: pointer;
     text-align: center;
@@ -1476,6 +1476,8 @@ function refreshCard(id) {
   // Remove qty-control, add-btn y video-btn (se reinsertan en orden)
   while (infoEl.querySelector('.qty-control')) infoEl.querySelector('.qty-control').remove();
   while (infoEl.querySelector('.add-btn')) infoEl.querySelector('.add-btn').remove();
+  while (infoEl.querySelector('.ver-mas-btn')) infoEl.querySelector('.ver-mas-btn').remove();
+  while (infoEl.querySelector('.btn-row')) infoEl.querySelector('.btn-row').remove();
   while (infoEl.querySelector('.video-btn')) infoEl.querySelector('.video-btn').remove();
 
   if (qty > 0) {
