@@ -450,13 +450,13 @@
   /* ADD BUTTON */
   .add-btn {
     flex: 1;
-    padding: 7px;
+    padding: 4px;
     background: #C49A9C;
     color: #ffffff;
     border: none;
     border-radius: 8px;
     font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s;
@@ -469,14 +469,15 @@
     background: transparent;
     color: var(--medium);
     border: none;
-    border-bottom: 0.5px solid #C4B5A8;
     font-family: 'DM Sans', sans-serif;
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 400;
     cursor: pointer;
     text-align: center;
-    margin-top: 3px;
-    padding-bottom: 1px;
+    margin-top: 5px;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-color: #C4B5A8;
   }
 
   .btn-row {
@@ -1368,12 +1369,12 @@ function renderCard(p) {
           </div>
           <div class="btn-row">
             <button class="add-btn added" onclick="changeQty(${p.id}, -1)">✓ Agregado</button>
-            ${(p.como_se_usa || p.desc_detallada || p.link_variantes) ? `<button class="ver-mas-btn" onclick="openVerMas(${p.id})">Ver más</button>` : ''}
+            <button class="ver-mas-btn" onclick="openVerMas(${p.id})">ver descripción y uso</button>
           </div>
         ` : `
           <div class="btn-row">
             <button class="add-btn" onclick="${p.variants ? `openVariantModal(${p.id})` : `addToCart(${p.id})`}">Agregar</button>
-            ${(p.como_se_usa || p.desc_detallada || p.link_variantes) ? `<button class="ver-mas-btn" onclick="openVerMas(${p.id})">Ver más</button>` : ''}
+            <button class="ver-mas-btn" onclick="openVerMas(${p.id})">ver descripción y uso</button>
           </div>
         `}
         ${p.video && activeFilter === 'resenas' ? `<a class="video-btn" onclick="openVideo('${p.video}')" href="javascript:void(0)">▶ Ver video</a>` : ''}
@@ -1486,14 +1487,14 @@ function refreshCard(id) {
       </div>
       <div class="btn-row">
         <button class="add-btn added" onclick="changeQty(${p.id}, -1)">✓ Agregado</button>
-        ${(p.como_se_usa || p.desc_detallada || p.link_variantes) ? `<button class="ver-mas-btn" onclick="openVerMas(${p.id})">Ver más</button>` : ''}
+        <button class="ver-mas-btn" onclick="openVerMas(${p.id})">ver descripción y uso</button>
       </div>
     `);
   } else {
     infoEl.insertAdjacentHTML('beforeend', `
       <div class="btn-row">
         <button class="add-btn" onclick="${p.variants ? `openVariantModal(${p.id})` : `addToCart(${p.id})`}">Agregar</button>
-        ${(p.como_se_usa || p.desc_detallada || p.link_variantes) ? `<button class="ver-mas-btn" onclick="openVerMas(${p.id})">Ver más</button>` : ''}
+        <button class="ver-mas-btn" onclick="openVerMas(${p.id})">ver descripción y uso</button>
       </div>
     `);
   }
