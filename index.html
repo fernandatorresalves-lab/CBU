@@ -449,7 +449,7 @@
 
   /* ADD BUTTON */
   .add-btn {
-    width: 100%;
+    flex: 1;
     padding: 7px;
     background: #C49A9C;
     color: #ffffff;
@@ -461,6 +461,29 @@
     cursor: pointer;
     transition: all 0.2s;
     letter-spacing: 0.03em;
+  }
+
+  .ver-mas-btn {
+    flex: 0 0 auto;
+    padding: 7px 10px;
+    background: transparent;
+    color: var(--medium);
+    border: 1px solid var(--light-border);
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .ver-mas-btn:hover { border-color: var(--medium); color: var(--dark); }
+
+  .btn-row {
+    display: flex;
+    gap: 6px;
+    align-items: stretch;
+    margin-top: auto;
   }
 
   .add-btn:hover { background: #C49A9C; }
@@ -495,6 +518,84 @@
 
   .qty-btn:hover { background: var(--light-border); }
   .qty-num { font-size: 14px; font-weight: 500; min-width: 20px; text-align: center; }
+
+  /* VER MÁS MODAL */
+  .ver-mas-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(28,24,20,0.5);
+    z-index: 1000;
+    align-items: flex-end;
+    justify-content: center;
+  }
+  .ver-mas-modal.open { display: flex; }
+  .ver-mas-content {
+    background: var(--warm-white);
+    width: 100%;
+    max-width: 480px;
+    border-radius: 20px 20px 0 0;
+    padding: 24px 20px 36px;
+    max-height: 80vh;
+    overflow-y: auto;
+    animation: slideUp 0.3s ease;
+  }
+  .ver-mas-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+  }
+  .ver-mas-brand {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+  .ver-mas-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: var(--dark);
+    font-weight: 400;
+  }
+  .ver-mas-close {
+    background: none;
+    border: none;
+    font-size: 22px;
+    color: var(--medium);
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+  }
+  .ver-mas-section {
+    margin-bottom: 16px;
+  }
+  .ver-mas-section-title {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .ver-mas-section p {
+    font-size: 13px;
+    color: var(--medium);
+    line-height: 1.7;
+    margin: 0;
+  }
+  .ver-mas-link {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 8px 16px;
+    border: 1px solid var(--light-border);
+    border-radius: 50px;
+    font-size: 12px;
+    color: var(--dark);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .ver-mas-link:hover { border-color: var(--gold); color: var(--gold); }
 
   /* STAR BADGE */
   .star-badge {
@@ -1266,9 +1367,15 @@ function renderCard(p) {
             <span class="qty-num">${qty}</span>
             <button class="qty-btn" onclick="changeQty(${p.id}, 1)">+</button>
           </div>
-          <button class="add-btn added" onclick="changeQty(${p.id}, -1)">✓ Agregado</button>
+          <div class="btn-row">
+            <button class="add-btn added" onclick="changeQty(${p.id}, -1)">✓ Agregado</button>
+            ${(p.como_se_usa || p.desc_detallada || p.link_variantes) ? `<button class="ver-mas-btn" onclick="openVerMas(${p.id})">Ver más</button>` : ''}
+          </div>
         ` : `
-          <button class="add-btn" onclick="${p.variants ? `openVariantModal(${p.id})` : `addToCart(${p.id})`}">Agregar al pedido</button>
+          <div class="btn-row">
+            <button class="add-btn" onclick="${p.variants ? `openVariantModal(${p.id})` : `addToCart(${p.id})`}">Agregar</button>
+            ${(p.como_se_usa || p.desc_detallada || p.link_variantes) ? `<button class="ver-mas-btn" onclick="openVerMas(${p.id})">Ver más</button>` : ''}
+          </div>
         `}
         ${p.video && activeFilter === 'resenas' ? `<a class="video-btn" onclick="openVideo('${p.video}')" href="javascript:void(0)">▶ Ver video</a>` : ''}
       </div>
@@ -1378,11 +1485,17 @@ function refreshCard(id) {
         <span class="qty-num">${qty}</span>
         <button class="qty-btn" onclick="changeQty(${p.id}, 1)">+</button>
       </div>
-      <button class="add-btn added" onclick="changeQty(${p.id}, -1)">✓ Agregado</button>
+      <div class="btn-row">
+        <button class="add-btn added" onclick="changeQty(${p.id}, -1)">✓ Agregado</button>
+        ${(p.como_se_usa || p.desc_detallada || p.link_variantes) ? `<button class="ver-mas-btn" onclick="openVerMas(${p.id})">Ver más</button>` : ''}
+      </div>
     `);
   } else {
     infoEl.insertAdjacentHTML('beforeend', `
-      <button class="add-btn" onclick="${p.variants ? `openVariantModal(${p.id})` : `addToCart(${p.id})`}">Agregar al pedido</button>
+      <div class="btn-row">
+        <button class="add-btn" onclick="${p.variants ? `openVariantModal(${p.id})` : `addToCart(${p.id})`}">Agregar</button>
+        ${(p.como_se_usa || p.desc_detallada || p.link_variantes) ? `<button class="ver-mas-btn" onclick="openVerMas(${p.id})">Ver más</button>` : ''}
+      </div>
     `);
   }
 
@@ -1742,5 +1855,64 @@ initCatalog();
     <button onclick="closeVideoWarning()" style="padding:10px 24px;border:1px solid #E8DDD0;border-radius:50px;background:transparent;color:#8C7260;font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer;">Entendido</button>
   </div>
 </div>
+<!-- VER MÁS MODAL -->
+<div id="verMasModal" class="ver-mas-modal" onclick="if(event.target===this)closeVerMas()">
+  <div class="ver-mas-content">
+    <div class="ver-mas-header">
+      <div>
+        <div class="ver-mas-brand" id="verMasBrand"></div>
+        <div class="ver-mas-name" id="verMasName"></div>
+      </div>
+      <button class="ver-mas-close" onclick="closeVerMas()">×</button>
+    </div>
+    <div id="verMasDesc" class="ver-mas-section" style="display:none">
+      <div class="ver-mas-section-title">Descripción</div>
+      <p id="verMasDescText"></p>
+    </div>
+    <div id="verMasUso" class="ver-mas-section" style="display:none">
+      <div class="ver-mas-section-title">Cómo se usa</div>
+      <p id="verMasUsoText"></p>
+    </div>
+    <div id="verMasLink" class="ver-mas-section" style="display:none">
+      <div class="ver-mas-section-title">Variantes disponibles</div>
+      <a id="verMasLinkUrl" class="ver-mas-link" target="_blank" rel="noopener">Ver colores y tonos →</a>
+    </div>
+  </div>
+</div>
+
+<script>
+function openVerMas(id) {
+  const p = products.find(p => p.id === id);
+  if (!p) return;
+  document.getElementById('verMasBrand').textContent = p.brand;
+  document.getElementById('verMasName').textContent = p.name;
+
+  const descEl = document.getElementById('verMasDesc');
+  const usoEl  = document.getElementById('verMasUso');
+  const linkEl = document.getElementById('verMasLink');
+
+  if (p.desc_detallada) {
+    document.getElementById('verMasDescText').textContent = p.desc_detallada;
+    descEl.style.display = 'block';
+  } else { descEl.style.display = 'none'; }
+
+  if (p.como_se_usa) {
+    document.getElementById('verMasUsoText').textContent = p.como_se_usa;
+    usoEl.style.display = 'block';
+  } else { usoEl.style.display = 'none'; }
+
+  if (p.link_variantes) {
+    document.getElementById('verMasLinkUrl').href = p.link_variantes;
+    linkEl.style.display = 'block';
+  } else { linkEl.style.display = 'none'; }
+
+  document.getElementById('verMasModal').classList.add('open');
+}
+
+function closeVerMas() {
+  document.getElementById('verMasModal').classList.remove('open');
+}
+</script>
+
 </body>
 </html>
