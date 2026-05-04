@@ -60,7 +60,6 @@
     padding: 24px 20px 60px;
   }
 
-  /* ORDER CODE BOX */
   .code-box {
     background: var(--warm-white);
     border: 1px solid var(--light-border);
@@ -110,7 +109,6 @@
     color: #BBA898;
   }
 
-  /* DELIVERY TOGGLE */
   .section-label {
     font-size: 11px;
     font-weight: 500;
@@ -151,7 +149,6 @@
   .delivery-option.selected .label,
   .delivery-option.selected .sublabel { color: white; }
 
-  /* FORM FIELDS */
   .form-section {
     background: var(--warm-white);
     border: 1px solid var(--light-border);
@@ -206,7 +203,6 @@
     gap: 10px;
   }
 
-  /* RETIRO BOX */
   .retiro-info {
     background: var(--tag-bg);
     border-radius: 12px;
@@ -240,11 +236,9 @@
     line-height: 1.5;
   }
 
-  /* ENVIO FIELDS */
   .envio-fields { display: block; }
   .envio-fields.hide { display: none; }
 
-  /* SUBMIT */
   .submit-btn {
     width: 100%;
     padding: 16px;
@@ -264,7 +258,6 @@
   .submit-btn:hover { background: var(--gold-light); }
   .submit-btn:disabled { background: #CCC; cursor: not-allowed; }
 
-  /* SUCCESS */
   .success-msg {
     display: none;
     text-align: center;
@@ -289,7 +282,6 @@
 
   .success-msg a { color: var(--gold); text-decoration: none; }
 
-  /* ENVIO SUB-TOGGLE */
   .envio-subtoggle {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -318,7 +310,6 @@
     color: white;
   }
 
-  /* PHONE PREFIX */
   .phone-wrap {
     display: flex;
     gap: 0;
@@ -357,6 +348,19 @@
     margin-top: 12px;
     line-height: 1.6;
   }
+
+  .error-msg {
+    background: #FFF0F0;
+    border: 1px solid #F5C6C6;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 13px;
+    color: #B94A4A;
+    margin-top: 16px;
+    display: none;
+    line-height: 1.5;
+  }
+  .error-msg.show { display: block; }
 </style>
 </head>
 <body>
@@ -368,7 +372,6 @@
 
 <div class="container" id="mainContent">
 
-  <!-- ORDER CODE -->
   <div class="code-box">
     <p>Ingresa tu código de pedido</p>
     <div class="code-input-wrap">
@@ -376,7 +379,6 @@
     </div>
   </div>
 
-  <!-- DELIVERY TYPE -->
   <span class="section-label">¿Cómo quieres recibir tu pedido?</span>
   <div class="delivery-toggle">
     <div class="delivery-option selected" onclick="selectDelivery('envio', this)">
@@ -391,18 +393,15 @@
     </div>
   </div>
 
-  <!-- RETIRO INFO -->
   <div class="retiro-info" id="retiroInfo">
     <div class="retiro-title">📍 Punto de retiro</div>
     <div class="retiro-address">Marchant Pereira 660</div>
-    <p>Providencia, Santiago<br>
-    Feñi te coordinará el día y horario por Instagram.</p>
+    <p>Providencia, Santiago<br>Feñi te coordinará el día y horario por Instagram.</p>
     <p style="margin-top:8px;font-size:11px;background:rgba(184,150,90,0.15);border-radius:8px;padding:8px 10px;color:var(--dark);">
       ⚠️ Tienes <strong>1 mes</strong> para retirar desde que se confirme tu pedido. Pasado ese plazo, los productos vuelven a stock.
     </p>
   </div>
 
-  <!-- DATOS PERSONALES -->
   <div class="form-section" id="datosPersonales">
     <div class="form-section-title">Tus datos</div>
 
@@ -424,18 +423,12 @@
       </div>
     </div>
 
-    <div class="form-group">
-      <label>Instagram</label>
-      <input type="text" id="fInstagram" placeholder="@tuusuario" />
-    </div>
-
     <div class="form-group" id="emailField">
       <label>Email</label>
       <input type="email" id="fEmail" placeholder="tu@email.com" />
     </div>
   </div>
 
-  <!-- ENVÍO FIELDS -->
   <div class="form-section envio-fields" id="envioFields">
     <div class="form-section-title">Datos de envío</div>
 
@@ -450,7 +443,6 @@
       </div>
     </div>
 
-    <!-- Sucursal -->
     <div id="sucursalFields">
       <div class="form-group">
         <label>Sucursal Starken</label>
@@ -459,7 +451,6 @@
       </div>
     </div>
 
-    <!-- Domicilio -->
     <div id="domicilioFields" class="hidden">
       <div class="form-group">
         <label>Dirección</label>
@@ -478,7 +469,6 @@
     </div>
   </div>
 
-  <!-- RETIRO FIELDS -->
   <div class="form-section retiro-fields hidden" id="retiroFields">
     <div class="form-section-title">Datos de retiro</div>
 
@@ -488,16 +478,14 @@
     </div>
 
     <div class="form-group">
-      <label>Instagram <span style="color:var(--gold)">*obligatorio</span></label>
-      <input type="text" id="fInstagramRetiro" placeholder="@tuusuario" />
-    </div>
-
-    <div class="form-group">
       <label>Fecha tentativa</label>
       <input type="text" id="fFechaRetiro" placeholder="Ej: semana del 5 de mayo, tarde" />
       <p style="font-size:11px;color:var(--medium);margin-top:5px;line-height:1.5;">Feñi te confirmará día y hora exacta por Instagram DM.</p>
     </div>
   </div>
+
+  <!-- Error inline en vez de alert -->
+  <div class="error-msg" id="errorMsg"></div>
 
   <button class="submit-btn" id="submitBtn" onclick="submitForm()">Confirmar datos ✨</button>
 
@@ -505,7 +493,6 @@
 
 </div>
 
-<!-- SUCCESS -->
 <div class="success-msg" id="successMsg">
   <div class="check">✅</div>
   <h2>¡Datos enviados!</h2>
@@ -517,8 +504,20 @@
 <script>
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyAcFq8fcDDp81yJpoC6yDdgAaXZXZcsR6xeAgPtKmsC-_WM7p969v0CBDRjdJcvvnv/exec';
 
-
+// FIX 1: ambas variables declaradas correctamente
+let deliveryType = 'envio';
 let envioType = 'sucursal';
+
+function showError(msg) {
+  const el = document.getElementById('errorMsg');
+  el.textContent = msg;
+  el.classList.add('show');
+  el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function clearError() {
+  document.getElementById('errorMsg').classList.remove('show');
+}
 
 function selectDelivery(type, el) {
   deliveryType = type;
@@ -541,6 +540,7 @@ function selectDelivery(type, el) {
     retiroFields.classList.add('hidden');
     datosPersonales.classList.remove('hidden');
   }
+  clearError();
 }
 
 function selectEnvioType(type, el) {
@@ -558,55 +558,58 @@ function formatRut(input) {
 }
 
 async function submitForm() {
+  clearError();
   const codigo = document.getElementById('fCodigo').value.trim().toUpperCase();
-  if (!codigo) { alert('Por favor ingresa tu código de pedido 🙏'); return; }
+  if (!codigo) { showError('Por favor ingresa tu código de pedido 🙏'); return; }
 
   let formData = { codigo };
 
   if (deliveryType === 'retiro') {
     const nombre = document.getElementById('fNombreRetiro').value.trim();
-    const instagram = document.getElementById('fInstagramRetiro').value.trim();
     const fechaRetiro = document.getElementById('fFechaRetiro').value.trim();
-    if (!nombre) { alert('Por favor ingresa tu nombre 🙏'); return; }
-    if (!instagram) { alert('El Instagram es obligatorio 🙏'); return; }
+    if (!nombre) { showError('Por favor ingresa tu nombre 🙏'); return; }
     formData = {
       ...formData,
-      nombre, instagram,
+      nombre,
       tipo: 'Retiro',
       entrega: 'Retiro: Marchant Pereira 660, Providencia',
       fecha_retiro: fechaRetiro || 'A coordinar',
-      _subject: `📦 Retiro #${codigo} — ${instagram}`,
+      _subject: `📦 Retiro #${codigo} — ${nombre}`,
     };
 
   } else {
     const nombre = document.getElementById('fNombre').value.trim();
-    const instagram = document.getElementById('fInstagram').value.trim();
     const rut = document.getElementById('fRut').value.trim();
-    const celular = '+56 9 ' + document.getElementById('fCelular').value.trim();
+    // FIX 2: validar el raw del celular, no el string con prefijo
+    const celularRaw = document.getElementById('fCelular').value.trim();
     const email = document.getElementById('fEmail').value.trim();
 
-    if (!nombre) { alert('Por favor ingresa tu nombre 🙏'); return; }
-    if (!rut || !celular || !email) { alert('Por favor completa RUT, celular y email 🙏'); return; }
+    if (!nombre) { showError('Por favor ingresa tu nombre 🙏'); return; }
+    if (!rut) { showError('Por favor ingresa tu RUT 🙏'); return; }
+    if (!celularRaw) { showError('Por favor ingresa tu celular 🙏'); return; }
+    if (!email) { showError('Por favor ingresa tu email 🙏'); return; }
+
+    const celular = '+56 9 ' + celularRaw;
 
     let entrega = '';
     if (envioType === 'sucursal') {
       const sucursal = document.getElementById('fSucursal').value.trim();
-      if (!sucursal) { alert('Por favor indica tu sucursal Starken 📦'); return; }
+      if (!sucursal) { showError('Por favor indica tu sucursal Starken 📦'); return; }
       entrega = `Envío Starken sucursal: ${sucursal}`;
     } else {
       const direccion = document.getElementById('fDireccion').value.trim();
       const ciudad = document.getElementById('fCiudad').value.trim();
       const comuna = document.getElementById('fComuna').value.trim();
-      if (!direccion) { alert('Por favor ingresa tu dirección 🙏'); return; }
+      if (!direccion) { showError('Por favor ingresa tu dirección 🙏'); return; }
       entrega = `Envío domicilio: ${direccion}, ${comuna}, ${ciudad}`;
     }
 
     formData = {
       ...formData,
-      nombre, instagram, rut, celular, email,
+      nombre, rut, celular, email,
       tipo: 'Envío',
       entrega,
-      _subject: `📦 Envío #${codigo} — ${instagram}`,
+      _subject: `📦 Envío #${codigo} — ${nombre}`,
     };
   }
 
@@ -615,26 +618,33 @@ async function submitForm() {
   btn.textContent = 'Enviando...';
 
   try {
-    await fetch('https://formspree.io/f/mojyydjw', {
+    // FIX 3: verificar status HTTP, no solo errores de red
+    const res = await fetch('https://formspree.io/f/mojyydjw', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify(formData),
     });
 
+    if (!res.ok) {
+      throw new Error(`Error ${res.status}`);
+    }
+
+    // Apps Script en paralelo, sin bloquear
     fetch(SCRIPT_URL, {
       method: 'POST',
       mode: 'no-cors',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ sheet: 'Entregas', fecha: new Date().toLocaleString('es-CL'), ...formData }),
-    });
+    }).catch(() => {});
 
     document.getElementById('mainContent').style.display = 'none';
     document.getElementById('successMsg').style.display = 'block';
 
   } catch(e) {
+    // FIX 3: siempre re-habilitar el botón al fallar
     btn.disabled = false;
     btn.textContent = 'Confirmar datos ✨';
-    alert('Hubo un problema. Por favor intenta de nuevo o escríbeme por Instagram 💙');
+    showError('Hubo un problema al enviar. Por favor intenta de nuevo o escríbeme por Instagram 💙');
   }
 }
 </script>
