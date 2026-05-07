@@ -25,7 +25,7 @@
     --accent4: #f1c96a;
     --accent5: #ffa85a;
     --soft: #ecdedb;
-    --pink-light: #ffaec1;
+    --pink-light: #edb9bb;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -53,7 +53,7 @@
 
   /* ===================== HEADER ===================== */
   header {
-    background: #e89d9f;
+    background: #edb9bb;
     color: white;
     padding: 28px 24px 24px;
     text-align: center;
@@ -152,8 +152,8 @@
     align-items: center;
     justify-content: center;
     padding: 18px 24px;
-    background: white;
-    border: 1.5px solid #e89d9f;
+    background: #f7c899;
+    border: none;
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -166,9 +166,9 @@
   }
 
   .landing-tab:hover:not(.soon-tab) {
-    background: #fff5f5;
+    background: #f0b880;
     transform: scale(1.02);
-    box-shadow: 0 4px 16px rgba(232,157,159,0.25);
+    box-shadow: 0 4px 16px rgba(247,200,153,0.4);
   }
 
   .landing-tab.sale-tab {
@@ -179,8 +179,8 @@
   .landing-tab.sale-tab:hover { background: #ffc870; border-color: #ffc870; }
 
   .landing-tab.bestseller-tab {
-    background: #ffaec1;
-    border-color: #ffaec1;
+    background: #edb9bb;
+    border-color: #edb9bb;
     font-weight: 700;
   }
   .landing-tab.bestseller-tab:hover { background: #ff94b0; border-color: #ff94b0; }
@@ -510,7 +510,7 @@
     position: fixed;
     bottom: 24px;
     right: 20px;
-    background: #e89d9f;
+    background: #edb9bb;
     color: white;
     border: none;
     border-radius: 50px;
@@ -574,7 +574,7 @@
     color: var(--dark);
   }
   .close-btn {
-    background: #e89d9f;
+    background: #edb9bb;
     border: none;
     width: 32px; height: 32px;
     border-radius: 50%;
@@ -660,7 +660,7 @@
 
   .submit-btn {
     width: 100%; padding: 16px;
-    background: #e89d9f;
+    background: #edb9bb;
     color: white;
     border: none;
     border-radius: 50px;
@@ -695,12 +695,12 @@
   .ver-mas-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
   .ver-mas-brand { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--medium); margin-bottom: 4px; font-family: 'DM Sans', sans-serif; }
   .ver-mas-name { font-family: 'DM Sans', sans-serif; font-size: 22px; color: var(--dark); font-weight: 400; }
-  .ver-mas-close { background: #e89d9f; border: none; font-size: 18px; color: white; cursor: pointer; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+  .ver-mas-close { background: #edb9bb; border: none; font-size: 18px; color: white; cursor: pointer; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
   .ver-mas-section { margin-bottom: 16px; }
   .ver-mas-section-title { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--medium); margin-bottom: 6px; }
   .ver-mas-section p { font-size: 13px; color: var(--medium); line-height: 1.7; }
   .ver-mas-link { display: inline-block; margin-top: 8px; padding: 8px 16px; border: 1.5px solid #e89d9f; border-radius: 50px; font-size: 12px; color: var(--dark); text-decoration: none; transition: all 0.2s; font-family: 'DM Sans', sans-serif; }
-  .ver-mas-link:hover { background: #e89d9f; color: white; }
+  .ver-mas-link:hover { background: #edb9bb; color: white; }
 
   .hidden { display: none !important; }
 
@@ -722,6 +722,18 @@
 <header>
   <div class="brand">🇧🇷 productos desde brasil</div>
   <div class="header-sub">catálogo</div>
+  <div id="flight-countdown" style="margin-top:14px;background:rgba(255,255,255,0.15);border-radius:14px;padding:10px 16px;display:inline-flex;align-items:center;gap:10px;">
+    <span style="font-size:16px;">✈️</span>
+    <div style="text-align:left;">
+      <div style="font-family:'DM Sans',sans-serif;font-size:9px;color:rgba(255,255,255,0.7);letter-spacing:0.1em;text-transform:uppercase;">próximo vuelo</div>
+      <div style="font-family:'DM Sans',sans-serif;font-size:13px;color:white;font-weight:500;">Brasil en <strong id="dias-cnt" style="font-size:18px;"></strong> días</div>
+    </div>
+    <div style="border-left:1px solid rgba(255,255,255,0.2);height:30px;"></div>
+    <div style="text-align:left;">
+      <div style="font-family:'DM Sans',sans-serif;font-size:9px;color:rgba(255,255,255,0.7);letter-spacing:0.1em;text-transform:uppercase;">fecha</div>
+      <div style="font-family:'DM Sans',sans-serif;font-size:12px;color:white;font-weight:500;">20 mayo</div>
+    </div>
+  </div>
 </header>
 
 <div class="note-banner">
@@ -911,7 +923,7 @@
     <div id="variantOptions" style="padding:14px 20px;display:flex;flex-direction:column;gap:8px;"></div>
     <div style="padding:12px 20px 20px;display:flex;gap:8px;">
       <button onclick="closeVariantModal()" style="flex:1;padding:12px;border:1.5px solid #FFE4D0;border-radius:50px;background:transparent;color:#9C6B50;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;">Cancelar</button>
-      <button onclick="confirmVariant()" style="flex:2;padding:12px;border:none;border-radius:50px;background:#e89d9f;color:white;font-size:13px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;">Agregar al pedido</button>
+      <button onclick="confirmVariant()" style="flex:2;padding:12px;border:none;border-radius:50px;background:#edb9bb;color:white;font-size:13px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;">Agregar al pedido</button>
     </div>
   </div>
 </div>
@@ -1127,6 +1139,12 @@ function renderCatalog(cat) {
   }
 
   let html = '';
+
+  if (cat === 'entrega') {
+    html += `<div style="margin:12px 16px;padding:12px 16px;background:#ffd59233;border-left:3px solid #ffd592;border-radius:0 10px 10px 0;font-size:12px;color:var(--medium);line-height:1.6;">
+      Estos productos están en stock y disponibles para entrega inmediata. Al confirmar tu pedido coordinaremos el envío 🌿
+    </div>`;
+  }
   if (cat === 'capilar') {
     const truss = list.filter(p => p.cat === 'truss');
     const otros = list.filter(p => p.cat === 'otros-cap');
@@ -1176,12 +1194,12 @@ function renderCard(p) {
 
   return `
     <div class="product-card" id="card-${p.id}">
-      ${p.star ? '<div class="star-badge">♡</div>' : ''}
-      ${p.video ? `<div class="video-badge" onclick="openVideo('${p.video}')">▶ Ver cómo se usa</div>` : ''}
       <div style="position:relative;">
         <img class="product-img" src="imgs/p${p.id}.${ext}" alt="${p.name}" loading="lazy"
           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
         <div class="product-img-placeholder" style="display:none">${p.emoji}</div>
+        ${p.star ? '<div class="star-badge">♡</div>' : ''}
+        ${p.video ? `<div class="video-badge" onclick="openVideo('${p.video}')">▶ Ver cómo se usa</div>` : ''}
         ${p.sale ? `<div class="sale-card-ribbon">SALE${discount ? ' · ' + discount + '% OFF' : ''}</div>` : ''}
       </div>
       <div class="product-info">
@@ -1470,6 +1488,23 @@ function catalogCallback(remote) {
   script.src = SCRIPT_URL + '?callback=_catalogCallback';
   script.onerror = () => { clearTimeout(fallback); };
   document.head.appendChild(script);
+})();
+
+// COUNTDOWN VUELO
+(function() {
+  const vuelo = new Date('2026-05-20T00:00:00');
+  const hoy = new Date();
+  const diff = Math.ceil((vuelo - hoy) / (1000 * 60 * 60 * 24));
+  const cnt = document.getElementById('dias-cnt');
+  const box = document.getElementById('flight-countdown');
+  if (!cnt || !box) return;
+  if (diff > 0) {
+    cnt.textContent = diff;
+  } else if (diff === 0) {
+    box.innerHTML = '<span style="font-size:15px;">✈️</span><div style="font-family:\'DM Sans\',sans-serif;font-size:13px;color:white;font-weight:500;">hoy vuelas a Brasil! 🎉</div>';
+  } else {
+    box.innerHTML = '<span style="font-size:15px;">🇧🇷</span><div style="font-family:\'DM Sans\',sans-serif;font-size:12px;color:rgba(255,255,255,0.85);">recién llegada · nuevos productos pronto</div>';
+  }
 })();
 </script>
 </div>
