@@ -4,59 +4,68 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Datos de entrega · closebyus</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --cream: #F7F2EC;
-    --warm-white: #FBF8F3;
-    --gold: #B8965A;
-    --gold-light: #D4AF7A;
-    --dark: #6B5744;
+    --cream: #FAF6F1;
+    --warm-white: #F5EDE3;
+    --gold: #C9A96E;
+    --gold-light: #D4A87E;
+    --dark: #1C1612;
     --medium: #8C7260;
-    --light-border: #E8DDD0;
-    --tag-bg: #F0E8DC;
-    --header-bg: #EDE3D8;
-    --header-text: #5A4535;
+    --light-border: #E0D0C0;
+    --tag-bg: #F2E8DC;
+    --header-bg: #D9B2B3;
+    --header-text: #fff;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
     font-family: 'DM Sans', sans-serif;
-    background: var(--cream);
+    background: #E8D8C4;
     color: var(--dark);
     min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 16px 10px 40px;
+  }
+
+  #app {
+    width: 100%;
+    max-width: 460px;
+    background: var(--cream);
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 12px 48px rgba(28,22,18,0.14);
   }
 
   header {
     background: var(--header-bg);
-    padding: 24px 20px 20px;
+    padding: 28px 20px 22px;
     text-align: center;
-    border-bottom: 1px solid var(--light-border);
   }
 
   header .brand {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 10px;
     font-weight: 400;
     letter-spacing: 0.35em;
     text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 4px;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 6px;
   }
 
   header h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 24px;
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
     font-weight: 300;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--header-text);
+    color: white;
   }
 
   .container {
-    max-width: 480px;
-    margin: 0 auto;
     padding: 24px 20px 60px;
   }
 
@@ -87,9 +96,9 @@
     padding: 12px 14px;
     border: 1.5px solid var(--light-border);
     border-radius: 10px;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 400;
     color: var(--dark);
     background: var(--cream);
     letter-spacing: 0.08em;
@@ -106,7 +115,7 @@
     font-size: 13px;
     font-weight: 300;
     letter-spacing: 0;
-    color: #BBA898;
+    color: #8C7260;
   }
 
   .section-label {
@@ -142,8 +151,8 @@
   .delivery-option .sublabel { font-size: 11px; color: var(--medium); margin-top: 2px; }
 
   .delivery-option.selected {
-    background: #C49A9C;
-    border-color: #C49A9C;
+    background: #D9B2B3;
+    border-color: #D9B2B3;
   }
 
   .delivery-option.selected .label,
@@ -158,7 +167,7 @@
   }
 
   .form-section-title {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 17px;
     font-weight: 400;
     color: var(--dark);
@@ -223,9 +232,9 @@
   }
 
   .retiro-info .retiro-address {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 400;
     color: var(--dark);
     margin-bottom: 4px;
   }
@@ -242,10 +251,10 @@
   .submit-btn {
     width: 100%;
     padding: 16px;
-    background: var(--gold);
-    color: white;
+    background: #8C7260;
+    color: #FAF6F1;
     border: none;
-    border-radius: 12px;
+    border-radius: 50px;
     font-family: 'DM Sans', sans-serif;
     font-size: 14px;
     font-weight: 500;
@@ -255,7 +264,7 @@
     margin-top: 24px;
   }
 
-  .submit-btn:hover { background: var(--gold-light); }
+  .submit-btn:hover { background: #6B5040; }
   .submit-btn:disabled { background: #CCC; cursor: not-allowed; }
 
   .success-msg {
@@ -267,7 +276,7 @@
   .success-msg .check { font-size: 48px; margin-bottom: 16px; }
 
   .success-msg h2 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 26px;
     font-weight: 400;
     color: var(--dark);
@@ -305,8 +314,8 @@
   .envio-subopt .subopt-icon { font-size: 16px; margin-bottom: 2px; }
 
   .envio-subopt.selected {
-    background: #C49A9C;
-    border-color: #C49A9C;
+    background: #D9B2B3;
+    border-color: #D9B2B3;
     color: white;
   }
 
@@ -350,12 +359,12 @@
   }
 
   .error-msg {
-    background: #FFF0F0;
-    border: 1px solid #F5C6C6;
+    background: #F2E8DC;
+    border: 1px solid #E0D0C0;
     border-radius: 10px;
     padding: 12px 14px;
     font-size: 13px;
-    color: #B94A4A;
+    color: #8C7260;
     margin-top: 16px;
     display: none;
     line-height: 1.5;
@@ -364,9 +373,10 @@
 </style>
 </head>
 <body>
+<div id="app">
 
 <header>
-  <div class="brand">productos desde brasil</div>
+  <div class="brand">🇧🇷 productos desde brasil</div>
   <h1>Datos de entrega</h1>
 </header>
 
@@ -397,7 +407,7 @@
     <div class="retiro-title">📍 Punto de retiro</div>
     <div class="retiro-address">Marchant Pereira 660</div>
     <p>Providencia, Santiago<br>Feñi te coordinará el día y horario por Instagram.</p>
-    <p style="margin-top:8px;font-size:11px;background:rgba(184,150,90,0.15);border-radius:8px;padding:8px 10px;color:var(--dark);">
+    <p style="margin-top:8px;font-size:11px;background:rgba(201,169,110,0.15);border-radius:8px;padding:8px 10px;color:var(--dark);">
       ⚠️ Tienes <strong>1 mes</strong> para retirar desde que se confirme tu pedido. Pasado ese plazo, los productos vuelven a stock.
     </p>
   </div>
@@ -484,7 +494,6 @@
     </div>
   </div>
 
-  <!-- Error inline en vez de alert -->
   <div class="error-msg" id="errorMsg"></div>
 
   <button class="submit-btn" id="submitBtn" onclick="submitForm()">Confirmar datos ✨</button>
@@ -501,10 +510,11 @@
   <a href="https://ig.me/m/closebyus">@closebyus</a> 🌿</p>
 </div>
 
+</div>
+
 <script>
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyAcFq8fcDDp81yJpoC6yDdgAaXZXZcsR6xeAgPtKmsC-_WM7p969v0CBDRjdJcvvnv/exec';
 
-// FIX 1: ambas variables declaradas correctamente
 let deliveryType = 'envio';
 let envioType = 'sucursal';
 
@@ -576,11 +586,9 @@ async function submitForm() {
       fecha_retiro: fechaRetiro || 'A coordinar',
       _subject: `📦 Retiro #${codigo} — ${nombre}`,
     };
-
   } else {
     const nombre = document.getElementById('fNombre').value.trim();
     const rut = document.getElementById('fRut').value.trim();
-    // FIX 2: validar el raw del celular, no el string con prefijo
     const celularRaw = document.getElementById('fCelular').value.trim();
     const email = document.getElementById('fEmail').value.trim();
 
@@ -618,18 +626,14 @@ async function submitForm() {
   btn.textContent = 'Enviando...';
 
   try {
-    // FIX 3: verificar status HTTP, no solo errores de red
     const res = await fetch('https://formspree.io/f/mojyydjw', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify(formData),
     });
 
-    if (!res.ok) {
-      throw new Error(`Error ${res.status}`);
-    }
+    if (!res.ok) throw new Error(`Error ${res.status}`);
 
-    // Apps Script en paralelo, sin bloquear
     fetch(SCRIPT_URL, {
       method: 'POST',
       mode: 'no-cors',
@@ -641,7 +645,6 @@ async function submitForm() {
     document.getElementById('successMsg').style.display = 'block';
 
   } catch(e) {
-    // FIX 3: siempre re-habilitar el botón al fallar
     btn.disabled = false;
     btn.textContent = 'Confirmar datos ✨';
     showError('Hubo un problema al enviar. Por favor intenta de nuevo o escríbeme por Instagram 💙');
