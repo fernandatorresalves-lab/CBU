@@ -7,32 +7,32 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --cream: #FFF8F4;
-    --warm-white: #FFFCFA;
-    --gold: #ffa85a;
-    --gold-light: #ffbc7a;
-    --dark: #5C3D2E;
-    --medium: #9C6B50;
-    --light-border: #FFE4D0;
-    --tag-bg: #FFF0E6;
-    --header-bg: #ff9166;
+    --cream: #FAF6F1;
+    --warm-white: #F5EDE3;
+    --gold: #C9A96E;
+    --gold-light: #D4A87E;
+    --dark: #1C1612;
+    --medium: #8C7260;
+    --light-border: #E0D0C0;
+    --tag-bg: #F2E8DC;
+    --header-bg: #C4886A;
     --header-text: #fff;
-    --rose: #e89d9f;
-    --rose-dark: #d08082;
-    --accent1: #ff9166;
-    --accent2: #ffd592;
-    --accent3: #e89d9f;
-    --accent4: #f1c96a;
-    --accent5: #ffa85a;
-    --soft: #ecdedb;
-    --pink-light: #edb9bb;
+    --rose: #D9B2B3;
+    --rose-dark: #be9092;
+    --accent1: #C4886A;
+    --accent2: #E8D4A8;
+    --accent3: #D9B2B3;
+    --accent4: #E8D4A8;
+    --accent5: #C9A96E;
+    --soft: #E8D8C4;
+    --pink-light: #D9B2B3;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
     font-family: 'DM Sans', sans-serif;
-    background: #ecdedb;
+    background: #E8D8C4;
     color: var(--dark);
     min-height: 100vh;
     display: flex;
@@ -53,7 +53,7 @@
 
   /* ===================== HEADER ===================== */
   header {
-    background: #edb9bb;
+    background: #D9B2B3;
     color: white;
     padding: 28px 24px 24px;
     text-align: center;
@@ -152,38 +152,38 @@
     align-items: center;
     justify-content: center;
     padding: 18px 24px;
-    background: #f7c899;
+    background: #F2E8DC;
     border: none;
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.2s ease;
     font-family: 'DM Sans', sans-serif;
     font-size: 15px;
-    font-weight: 500;
-    color: var(--dark);
+    font-weight: 400;
+    color: #8C7260;
     text-align: center;
     letter-spacing: 0.02em;
   }
 
   .landing-tab:hover:not(.soon-tab) {
-    background: #f0b880;
+    background: #E8D8C4;
     transform: scale(1.02);
-    box-shadow: 0 4px 16px rgba(247,200,153,0.4);
+    box-shadow: 0 4px 16px rgba(196,168,136,0.3);
   }
 
   .landing-tab.sale-tab {
-    background: #ffd592;
-    border-color: #ffd592;
+    background: #E8D4A8;
+    border-color: #E8D4A8;
     font-weight: 700;
   }
-  .landing-tab.sale-tab:hover { background: #ffc870; border-color: #ffc870; }
+  .landing-tab.sale-tab:hover { background: #D8C498; border-color: #D8C498; }
 
   .landing-tab.bestseller-tab {
-    background: #edb9bb;
-    border-color: #edb9bb;
+    background: #D9B2B3;
+    border-color: #D9B2B3;
     font-weight: 700;
   }
-  .landing-tab.bestseller-tab:hover { background: #ff94b0; border-color: #ff94b0; }
+  .landing-tab.bestseller-tab:hover { background: #be9092; border-color: #be9092; }
 
   .landing-tab.soon-tab {
     background: var(--soft);
@@ -194,7 +194,7 @@
     pointer-events: none;
   }
 
-  .tab-label { font-size: 15px; font-weight: 500; }
+  .tab-label { font-size: 15px; font-weight: 400; }
 
   .sale-badge {
     display: inline-flex;
@@ -250,14 +250,18 @@
     transition: all 0.2s;
     white-space: nowrap;
   }
-  .back-btn:hover { border-color: #e89d9f; color: #e89d9f; }
+  .back-btn:hover { border-color: #D9B2B3; color: #D9B2B3; }
 
   .topbar-title {
     font-family: 'DM Sans', sans-serif;
-    font-size: 18px;
-    font-weight: 400;
-    color: var(--dark);
-    flex: 1;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: var(--medium);
+    background: none;
+    border: 1px solid var(--light-border);
+    border-radius: 50px;
+    padding: 6px 16px;
     text-align: center;
   }
 
@@ -285,22 +289,26 @@
     font-family: 'DM Sans', sans-serif;
     padding: 8px 0;
   }
-  .search-box input::placeholder { color: #C4B5A8; }
+  .search-box input::placeholder { color: #8C7260; }
 
   /* SECTION TITLE */
   .section-header {
-    padding: 28px 20px 14px;
+    padding: 20px 16px 12px;
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 12px;
   }
   .section-header h2 {
     font-family: 'DM Sans', sans-serif;
-    font-size: 20px;
-    font-weight: 400;
-    color: var(--dark);
-    letter-spacing: 0.06em;
+    font-size: 11px;
+    font-weight: 500;
+    color: white;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     white-space: nowrap;
+    background: #8C7260;
+    padding: 6px 16px;
+    border-radius: 50px;
   }
   .section-line { flex: 1; height: 1px; background: var(--light-border); }
 
@@ -334,7 +342,7 @@
   .product-img-placeholder {
     width: 100%;
     aspect-ratio: 1;
-    background: linear-gradient(135deg, #F0EAE0 0%, #E8DFD0 100%);
+    background: linear-gradient(135deg, #F2E8DC 0%, #E8D8C4 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -400,7 +408,7 @@
     position: absolute;
     top: 8px;
     left: 8px;
-    background: rgba(232,157,159,0.88);
+    background: rgba(140,114,96,0.88);
     color: white;
     font-size: 9px;
     font-weight: 600;
@@ -410,7 +418,7 @@
     backdrop-filter: blur(4px);
     cursor: pointer;
   }
-  .video-badge:hover { background: rgba(232,157,159,1); }
+  .video-badge:hover { background: rgba(140,114,96,1); }
 
   /* SALE ribbon bottom of image */
   .sale-card-ribbon {
@@ -418,8 +426,8 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background: #ffd592;
-    color: #5C3D2E;
+    background: #E8D4A8;
+    color: #1C1612;
     font-size: 9px;
     font-weight: 700;
     padding: 4px 6px;
@@ -460,7 +468,7 @@
     margin-top: 5px;
     text-decoration: underline;
     text-underline-offset: 2px;
-    text-decoration-color: #C4B5A8;
+    text-decoration-color: #8C7260;
   }
 
   /* QTY */
@@ -488,7 +496,7 @@
 
   /* VARIANT */
   .variant-option {
-    border: 0.5px solid #E0D5CC;
+    border: 0.5px solid #E0D0C0;
     border-radius: 10px;
     padding: 12px 14px;
     cursor: pointer;
@@ -498,7 +506,7 @@
   .variant-selected { border: 2px solid var(--rose) !important; }
   .promo-badge {
     font-size: 10px;
-    background: #F4C0D1;
+    background: #EDD8D8;
     color: #72243E;
     border-radius: 4px;
     padding: 2px 6px;
@@ -510,7 +518,7 @@
     position: fixed;
     bottom: 24px;
     right: 20px;
-    background: #edb9bb;
+    background: #D9B2B3;
     color: white;
     border: none;
     border-radius: 50px;
@@ -522,13 +530,13 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    box-shadow: 0 4px 20px rgba(232,157,159,0.35);
+    box-shadow: 0 4px 20px rgba(28,22,18,0.15);
     transition: all 0.25s ease;
     z-index: 200;
   }
-  .cart-btn:hover { background: #d08082; transform: translateY(-2px); }
+  .cart-btn:hover { background: #be9092; transform: translateY(-2px); }
   .cart-count {
-    background: #ffd592;
+    background: #E8D4A8;
     color: var(--dark);
     border-radius: 50%;
     width: 20px; height: 20px;
@@ -574,7 +582,7 @@
     color: var(--dark);
   }
   .close-btn {
-    background: #edb9bb;
+    background: #D9B2B3;
     border: none;
     width: 32px; height: 32px;
     border-radius: 50%;
@@ -615,7 +623,7 @@
 
   .total-note {
     background: white;
-    border: 1.5px solid #FFE4D0;
+    border: 1.5px solid #E0D0C0;
     border-radius: 20px;
     padding: 16px 18px;
     margin-bottom: 20px;
@@ -656,11 +664,11 @@
     transition: border-color 0.2s;
   }
   .form-group textarea { border-radius: 16px; }
-  .form-group input:focus, .form-group textarea:focus { border-color: #e89d9f; }
+  .form-group input:focus, .form-group textarea:focus { border-color: #D9B2B3; }
 
   .submit-btn {
     width: 100%; padding: 16px;
-    background: #edb9bb;
+    background: #D9B2B3;
     color: white;
     border: none;
     border-radius: 50px;
@@ -672,7 +680,7 @@
     transition: background 0.2s;
     margin-top: 8px;
   }
-  .submit-btn:hover { background: #d08082; }
+  .submit-btn:hover { background: #be9092; }
   .submit-btn:disabled { background: #CCC; cursor: not-allowed; }
 
   .success-msg { display: none; text-align: center; padding: 16px; }
@@ -684,7 +692,7 @@
   .ver-mas-modal { display: none; position: fixed; inset: 0; background: rgba(28,24,20,0.5); z-index: 1000; align-items: flex-end; justify-content: center; }
   .ver-mas-modal.open { display: flex; }
   .ver-mas-content {
-    background: #FFF8F4;
+    background: #FAF6F1;
     width: 100%; max-width: 480px;
     border-radius: 24px 24px 0 0;
     padding: 24px 20px 36px;
@@ -695,12 +703,12 @@
   .ver-mas-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
   .ver-mas-brand { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--medium); margin-bottom: 4px; font-family: 'DM Sans', sans-serif; }
   .ver-mas-name { font-family: 'DM Sans', sans-serif; font-size: 22px; color: var(--dark); font-weight: 400; }
-  .ver-mas-close { background: #edb9bb; border: none; font-size: 18px; color: white; cursor: pointer; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+  .ver-mas-close { background: #D9B2B3; border: none; font-size: 18px; color: white; cursor: pointer; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
   .ver-mas-section { margin-bottom: 16px; }
   .ver-mas-section-title { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--medium); margin-bottom: 6px; }
   .ver-mas-section p { font-size: 13px; color: var(--medium); line-height: 1.7; }
-  .ver-mas-link { display: inline-block; margin-top: 8px; padding: 8px 16px; border: 1.5px solid #e89d9f; border-radius: 50px; font-size: 12px; color: var(--dark); text-decoration: none; transition: all 0.2s; font-family: 'DM Sans', sans-serif; }
-  .ver-mas-link:hover { background: #edb9bb; color: white; }
+  .ver-mas-link { display: inline-block; margin-top: 8px; padding: 8px 16px; border: 1.5px solid #D9B2B3; border-radius: 50px; font-size: 12px; color: var(--dark); text-decoration: none; transition: all 0.2s; font-family: 'DM Sans', sans-serif; }
+  .ver-mas-link:hover { background: #D9B2B3; color: white; }
 
   .hidden { display: none !important; }
 
@@ -809,8 +817,8 @@
   <div class="search-row">
     <div class="search-box">
       <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
-        <circle cx="6.5" cy="6.5" r="5" stroke="#e89d9f" stroke-width="1.5"/>
-        <line x1="10.5" y1="10.5" x2="14" y2="14" stroke="#e89d9f" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="6.5" cy="6.5" r="5" stroke="#D9B2B3" stroke-width="1.5"/>
+        <line x1="10.5" y1="10.5" x2="14" y2="14" stroke="#D9B2B3" stroke-width="1.5" stroke-linecap="round"/>
       </svg>
       <input type="text" id="searchInput" placeholder="buscar producto..." oninput="searchProducts(this.value)" />
     </div>
@@ -845,7 +853,7 @@
       <div class="total-note">
         <p>💡 Este es el total estimado de tu encargo.</p>
         <p><strong>No se realiza ningún cobro ahora.</strong> Feñi te contactará por Instagram para confirmar disponibilidad y enviarte los datos de pago.</p>
-        <p style="margin-top:6px;">Métodos de pago:<br>💸 Transferencia bancaria<br>💳 Tarjeta de crédito <span style="color:#e89d9f;font-weight:600;">(+4%)</span></p>
+        <p style="margin-top:6px;">Métodos de pago:<br>💸 Transferencia bancaria<br>💳 Tarjeta de crédito <span style="color:#D9B2B3;font-weight:600;">(+4%)</span></p>
       </div>
 
       <div class="order-form">
@@ -871,7 +879,7 @@
 
     <div id="cartEmpty" class="cart-empty">
       Todavía no agregaste nada 🙈<br>
-      <small style="color:#9A8E7E;">Explora el catálogo y agrega lo que te guste</small>
+      <small style="color:#8C7260;">Explora el catálogo y agrega lo que te guste</small>
     </div>
 
     <div class="success-msg" id="successMsg">
@@ -914,31 +922,31 @@
 
 <!-- VARIANT MODAL -->
 <div id="variantModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(92,61,46,0.4);z-index:1000;align-items:center;justify-content:center;padding:20px;box-sizing:border-box;">
-  <div style="background:#FFF8F4;border-radius:24px;width:100%;max-width:320px;overflow:hidden;box-shadow:0 8px 32px rgba(232,157,159,0.2);">
-    <div style="padding:18px 20px 14px;border-bottom:1px solid #FFE4D0;">
-      <p id="variantModalBrand" style="font-size:11px;color:#9C6B50;letter-spacing:0.08em;text-transform:uppercase;margin:0 0 4px;"></p>
-      <p id="variantModalName" style="font-size:17px;font-weight:500;margin:0 0 4px;color:#5C3D2E;"></p>
-      <p style="font-size:13px;color:#9C6B50;margin:0;">Elige una opción</p>
+  <div style="background:#FAF6F1;border-radius:24px;width:100%;max-width:320px;overflow:hidden;box-shadow:0 8px 32px rgba(217,178,179,0.2);">
+    <div style="padding:18px 20px 14px;border-bottom:1px solid #E0D0C0;">
+      <p id="variantModalBrand" style="font-size:11px;color:#8C7260;letter-spacing:0.08em;text-transform:uppercase;margin:0 0 4px;"></p>
+      <p id="variantModalName" style="font-size:17px;font-weight:500;margin:0 0 4px;color:#1C1612;"></p>
+      <p style="font-size:13px;color:#8C7260;margin:0;">Elige una opción</p>
     </div>
     <div id="variantOptions" style="padding:14px 20px;display:flex;flex-direction:column;gap:8px;"></div>
     <div style="padding:12px 20px 20px;display:flex;gap:8px;">
-      <button onclick="closeVariantModal()" style="flex:1;padding:12px;border:1.5px solid #FFE4D0;border-radius:50px;background:transparent;color:#9C6B50;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;">Cancelar</button>
-      <button onclick="confirmVariant()" style="flex:2;padding:12px;border:none;border-radius:50px;background:#edb9bb;color:white;font-size:13px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;">Agregar al pedido</button>
+      <button onclick="closeVariantModal()" style="flex:1;padding:12px;border:1.5px solid #E0D0C0;border-radius:50px;background:transparent;color:#8C7260;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;">Cancelar</button>
+      <button onclick="confirmVariant()" style="flex:2;padding:12px;border:none;border-radius:50px;background:#D9B2B3;color:white;font-size:13px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;">Agregar al pedido</button>
     </div>
   </div>
 </div>
 
 <!-- VIDEO WARNING MODAL -->
 <div id="videoWarningModal" onclick="if(event.target===this)closeVideoWarning()" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(92,61,46,0.4);z-index:1000;align-items:center;justify-content:center;padding:20px;box-sizing:border-box;">
-  <div style="background:#FFF8F4;border-radius:24px;width:100%;max-width:320px;padding:28px 22px;text-align:center;box-shadow:0 8px 32px rgba(232,157,159,0.2);">
+  <div style="background:#FAF6F1;border-radius:24px;width:100%;max-width:320px;padding:28px 22px;text-align:center;box-shadow:0 8px 32px rgba(217,178,179,0.2);">
     <div style="font-size:28px;margin-bottom:14px;">🎬</div>
-    <p style="font-family:'DM Sans',sans-serif;font-size:18px;color:#5C3D2E;margin:0 0 12px;font-weight:400;">Para ver los videos</p>
-    <p style="font-family:'DM Sans',sans-serif;font-size:13px;color:#9C6B50;line-height:1.9;margin:0 0 22px;text-align:left;">
+    <p style="font-family:'DM Sans',sans-serif;font-size:18px;color:#1C1612;margin:0 0 12px;font-weight:400;">Para ver los videos</p>
+    <p style="font-family:'DM Sans',sans-serif;font-size:13px;color:#8C7260;line-height:1.9;margin:0 0 22px;text-align:left;">
       Abre el catálogo en tu navegador:<br>
-      <span style="color:#5C3D2E;font-weight:500;">1.</span> Toca los <strong style="color:#5C3D2E;font-weight:500;">tres puntos ···</strong> arriba<br>
-      <span style="color:#5C3D2E;font-weight:500;">2.</span> Selecciona <strong style="color:#5C3D2E;font-weight:500;">"Abrir en Safari"</strong> o <strong style="color:#5C3D2E;font-weight:500;">"Chrome"</strong>
+      <span style="color:#1C1612;font-weight:500;">1.</span> Toca los <strong style="color:#1C1612;font-weight:500;">tres puntos ···</strong> arriba<br>
+      <span style="color:#1C1612;font-weight:500;">2.</span> Selecciona <strong style="color:#1C1612;font-weight:500;">"Abrir en Safari"</strong> o <strong style="color:#1C1612;font-weight:500;">"Chrome"</strong>
     </p>
-    <button onclick="closeVideoWarning()" style="padding:12px 28px;border:1.5px solid #e89d9f;border-radius:50px;background:transparent;color:#e89d9f;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all 0.2s;">Entendido</button>
+    <button onclick="closeVideoWarning()" style="padding:12px 28px;border:1.5px solid #D9B2B3;border-radius:50px;background:transparent;color:#D9B2B3;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all 0.2s;">Entendido</button>
   </div>
 </div>
 
@@ -1141,7 +1149,7 @@ function renderCatalog(cat) {
   let html = '';
 
   if (cat === 'entrega') {
-    html += `<div style="margin:12px 16px;padding:12px 16px;background:#ffd59233;border-left:3px solid #ffd592;border-radius:0 10px 10px 0;font-size:12px;color:var(--medium);line-height:1.6;">
+    html += `<div style="margin:12px 16px;padding:12px 16px;background:#E8D4A833;border-left:3px solid #E8D4A8;border-radius:0 10px 10px 0;font-size:12px;color:var(--medium);line-height:1.6;">
       Estos productos están en stock y disponibles para entrega inmediata. Al confirmar tu pedido coordinaremos el envío 🌿
     </div>`;
   }
@@ -1271,10 +1279,10 @@ function renderVariantOptions(product) {
   document.getElementById('variantOptions').innerHTML = product.variants.map((v, i) => `
     <div class="variant-option ${i === selectedVariantIndex ? 'variant-selected' : ''}" onclick="selectVariant(${i})">
       <div style="display:flex;justify-content:space-between;align-items:center;">
-        <span style="font-size:14px;font-weight:${i === selectedVariantIndex ? '500' : '400'};color:#5C3D2E">${v.name}</span>
+        <span style="font-size:14px;font-weight:${i === selectedVariantIndex ? '500' : '400'};color:#1C1612">${v.name}</span>
         <div style="display:flex;align-items:center;gap:6px;">
           ${v.name.includes('Kit') ? '<span class="promo-badge">PROMO</span>' : ''}
-          <span style="font-size:14px;color:${i === selectedVariantIndex ? '#e89d9f' : '#9C6B50'}">${formatPrice(v.price)}</span>
+          <span style="font-size:14px;color:${i === selectedVariantIndex ? '#D9B2B3' : '#8C7260'}">${formatPrice(v.price)}</span>
         </div>
       </div>
     </div>
@@ -1378,7 +1386,7 @@ function renderCartItems() {
       </div>
       <div class="cart-item-right">
         <div class="cart-item-price">${formatPrice(c.price * c.qty)}</div>
-        <div style="font-size:11px;color:#9A8E7E;">x${c.qty} · ${formatPrice(c.price)} c/u</div>
+        <div style="font-size:11px;color:#8C7260;">x${c.qty} · ${formatPrice(c.price)} c/u</div>
         <button class="remove-item" onclick="changeQty(${c.id}, -${c.qty})">Eliminar</button>
       </div>
     </div>
