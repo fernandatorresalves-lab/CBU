@@ -222,7 +222,18 @@
     letter-spacing: 0.08em;
     margin-left: 8px;
   }
-
+.new-badge {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(217,178,179,0.25);
+  color: #D9B2B3;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 9px;
+  border-radius: 50px;
+  letter-spacing: 0.08em;
+  margin-left: 8px;
+}
   /* ===================== CATALOG VIEW ===================== */
   #catalog-view { display: none; }
 
@@ -779,8 +790,12 @@
     <span class="tab-label">Corporal y Facial</span>
   </button>
 
-  <button class="landing-tab" onclick="openCat('makeup')">
+<button class="landing-tab" onclick="openCat('makeup')">
     <span class="tab-label">Make Up</span>
+  </button>
+
+  <button class="landing-tab" onclick="window.location.href='accesorios.html'">
+    <span class="tab-label">Accesorios <span class="new-badge">NEW</span></span>
   </button>
 
   <button class="landing-tab" onclick="openCat('otros')">
@@ -798,10 +813,6 @@
   <button class="landing-tab soon-tab">
     <span class="tab-label">Sport Wear <span class="soon-badge">SOON</span></span>
   </button>
-
-<button class="landing-tab" onclick="window.location.href='accesorios.html'">
-  <span class="tab-label">Accesorios</span>
-</button>
 
 </div>
 
