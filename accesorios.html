@@ -43,7 +43,6 @@
   header .brand {
     font-family: 'Playfair Display', serif;
     font-size: 13px;
-    font-weight: 400;
     letter-spacing: 0.35em;
     text-transform: uppercase;
     color: rgba(255,255,255,0.9);
@@ -77,12 +76,10 @@
     font-size: 12px;
     color: var(--medium);
     font-family: 'DM Sans', sans-serif;
-    transition: all 0.2s;
     white-space: nowrap;
     text-decoration: none;
     display: inline-block;
   }
-  .back-btn:hover { border-color: var(--rose); color: var(--rose); }
   .search-row {
     padding: 8px 16px;
     background: var(--cream);
@@ -115,7 +112,6 @@
     gap: 12px;
   }
   .section-header h2 {
-    font-family: 'DM Sans', sans-serif;
     font-size: 11px;
     font-weight: 500;
     color: white;
@@ -143,25 +139,28 @@
     flex-direction: column;
   }
 
-  /* SLIDER — vertical, sin overflow */
+  /* ── SLIDER ─────────────────────────────────── */
   .card-slider {
     position: relative;
     width: 100%;
     aspect-ratio: 4/5;
-    background: white;
+    background: #F5EDE3;
     overflow: hidden;
-    touch-action: pan-y;
+    /* sin touch-action — dejamos que JS maneje todo */
   }
   .card-track {
     display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
     height: 100%;
+    /* ancho = 100% * número de slides, se fija en JS */
     transition: transform 0.3s ease;
-    will-change: transform;
   }
+  /* cada slide tiene ancho fijo = 100% del contenedor (seteado en JS) */
   .card-slide {
-    min-width: 100%;
-    height: 100%;
     flex-shrink: 0;
+    height: 100%;
+    overflow: hidden;
     background: white;
   }
   .card-slide img {
@@ -169,9 +168,9 @@
     height: 100%;
     object-fit: cover;
     display: block;
-    pointer-events: none;
-    user-select: none;
     -webkit-user-drag: none;
+    user-select: none;
+    pointer-events: none;
   }
   .card-slide-placeholder {
     width: 100%;
@@ -179,7 +178,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 32px;
+    font-size: 28px;
     background: #F5EDE3;
   }
 
@@ -204,11 +203,9 @@
     opacity: 0.3;
     transition: opacity 0.2s;
     cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
   }
   .dot.active { opacity: 1; }
 
-  /* BADGES */
   .star-badge {
     position: absolute;
     top: 8px; right: 10px;
@@ -242,7 +239,6 @@
     cursor: pointer;
   }
 
-  /* CARD INFO */
   .card-info {
     padding: 8px 10px 10px;
     display: flex;
@@ -281,7 +277,7 @@
   .price-new { color: #C0404A; font-weight: 700; }
 
   .add-btn {
-    padding: 5px;
+    padding: 6px;
     background: var(--rose);
     color: white;
     border: none;
@@ -315,7 +311,6 @@
   }
   .qty-num { font-size: 14px; font-weight: 500; min-width: 20px; text-align: center; }
 
-  /* CART BTN */
   .cart-btn {
     position: fixed;
     bottom: 24px; right: 20px;
@@ -332,10 +327,8 @@
     align-items: center;
     gap: 8px;
     box-shadow: 0 4px 20px rgba(28,22,18,0.15);
-    transition: all 0.25s ease;
     z-index: 200;
   }
-  .cart-btn:hover { background: var(--rose-dark); transform: translateY(-2px); }
   .cart-count {
     background: #E8D4A8;
     color: var(--dark);
@@ -347,8 +340,6 @@
     font-size: 11px;
     font-weight: 700;
   }
-
-  /* MODALS */
   .modal-overlay {
     display: none;
     position: fixed;
@@ -442,10 +433,8 @@
     color: var(--dark);
     background: white;
     outline: none;
-    transition: border-color 0.2s;
   }
   .form-group textarea { border-radius: 16px; }
-  .form-group input:focus, .form-group textarea:focus { border-color: var(--rose); }
   .submit-btn {
     width: 100%; padding: 16px;
     background: var(--rose);
@@ -456,10 +445,8 @@
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
-    transition: background 0.2s;
     margin-top: 8px;
   }
-  .submit-btn:hover { background: var(--rose-dark); }
   .submit-btn:disabled { background: #CCC; cursor: not-allowed; }
   .success-msg { display: none; text-align: center; padding: 16px; }
   .success-msg .check { font-size: 32px; margin-bottom: 8px; }
@@ -475,13 +462,11 @@
     <div class="brand">🇧🇷 productos desde brasil</div>
     <div class="header-sub">accesorios</div>
   </header>
-
   <div class="catalog-topbar">
     <a class="back-btn" href="index.html">← Volver</a>
-    <div style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:0.05em;color:var(--medium);border:1px solid var(--light-border);border-radius:50px;padding:6px 16px;">Accesorios</div>
+    <div style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;color:var(--medium);border:1px solid var(--light-border);border-radius:50px;padding:6px 16px;">Accesorios</div>
     <div style="width:70px"></div>
   </div>
-
   <div class="search-row">
     <div class="search-box">
       <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
@@ -491,7 +476,6 @@
       <input type="text" id="searchInput" placeholder="buscar accesorio..." oninput="searchProducts(this.value)" />
     </div>
   </div>
-
   <div id="catalog"></div>
 </div>
 
@@ -508,14 +492,11 @@
     </div>
     <div id="cartItems"></div>
     <div id="cartFooter" class="hidden">
-      <div class="cart-total">
-        <span>Total estimado</span>
-        <span id="cartTotal">$0</span>
-      </div>
+      <div class="cart-total"><span>Total estimado</span><span id="cartTotal">$0</span></div>
       <div class="total-note">
         <p>💡 Este es el total estimado de tu encargo.</p>
-        <p><strong>No se realiza ningún cobro ahora.</strong> Feñi te contactará por Instagram para confirmar disponibilidad y enviarte los datos de pago.</p>
-        <p style="margin-top:6px;">Métodos de pago:<br>💸 Transferencia bancaria<br>💳 Tarjeta de crédito <span style="color:#D9B2B3;font-weight:600;">(+4%)</span></p>
+        <p><strong>No se realiza ningún cobro ahora.</strong> Feñi te contactará por Instagram para confirmar.</p>
+        <p style="margin-top:6px;">💸 Transferencia bancaria<br>💳 Tarjeta de crédito <span style="color:#D9B2B3;font-weight:600;">(+4%)</span></p>
       </div>
       <div class="order-form">
         <div class="form-title">Déjame tus datos y te contacto para confirmar 🌿</div>
@@ -531,9 +512,7 @@
           <label>¿Algo que quieras aclarar?</label>
           <textarea id="fNotas" rows="2" placeholder="Tono, variante, consulta..."></textarea>
         </div>
-        <p style="font-size:11px;color:var(--medium);line-height:1.6;margin-bottom:14px;text-align:center;">
-          Una vez que confirme tu pedido te envío el formulario de envío o retiro 📦
-        </p>
+        <p style="font-size:11px;color:var(--medium);line-height:1.6;margin-bottom:14px;text-align:center;">Una vez que confirme tu pedido te envío el formulario de envío o retiro 📦</p>
         <button class="submit-btn" id="submitBtn" onclick="submitOrder()">Enviar pedido ✨</button>
       </div>
     </div>
@@ -545,8 +524,7 @@
       <div class="check">🎉</div>
       <h4>¡Encargo recibido!</h4>
       <p style="font-size:12px;color:var(--gold);margin-bottom:4px;">Código: <span id="orderCodeDisplay"></span></p>
-      <p style="font-size:12px;color:var(--medium);">Feñi te va a escribir por Instagram para confirmar.<br><br>
-      💸 Transferencia · 💳 Tarjeta (+4%)<br><br>
+      <p style="font-size:12px;color:var(--medium);">Feñi te va a escribir por Instagram.<br><br>
       <a href="https://ig.me/m/closebyus" target="_blank" style="color:var(--gold)">@closebyus</a> 🌿</p>
     </div>
   </div>
@@ -592,27 +570,25 @@ function renderCatalog(filtered) {
     <div class="fashion-grid">${items.map(p => renderCard(p)).join('')}</div>`;
   });
   el.innerHTML = html;
-  // Inicializar sliders después de render
+  // Inicializar sliders DESPUÉS de que el DOM existe
   list.forEach(p => initSlider(String(p.id)));
   updateCartUI();
 }
 
 function renderCard(p) {
-  const inCart = cart.find(c => String(c.id) === String(p.id));
-  const qty = inCart ? inCart.qty : 0;
   const pid = String(p.id);
-
-  // Fotos — solo las que existen (se validan en initSlider via onerror)
+  const inCart = cart.find(c => String(c.id) === pid);
+  const qty = inCart ? inCart.qty : 0;
   const photos = [p.img1, p.img2, p.img3].filter(Boolean);
   if (!photos.length) photos.push(`imgs/${pid}_1.png`);
-
   const discount = p.sale && p.priceOld ? Math.round((1 - p.price / p.priceOld) * 100) : 0;
 
-  const slidesHtml = photos.map((src, i) => `
-    <div class="card-slide" id="slide-${pid}-${i}">
-      <img src="${src}" alt="${p.name}" loading="${i===0?'eager':'lazy'}"
-        onerror="this.closest('.card-slide').style.display='none'; checkEmptySlides('${pid}')">
-    </div>`).join('');
+  // Slides — ancho se setea por JS en initSlider
+  const slidesHtml = photos.map((src, i) =>
+    `<div class="card-slide" id="slide-${pid}-${i}">
+      <img src="${src}" alt="${p.name}" loading="${i===0?'eager':'lazy'}">
+    </div>`
+  ).join('');
 
   const dotsHtml = photos.length > 1
     ? `<div class="dots-pill" id="dots-${pid}">
@@ -650,64 +626,68 @@ function renderCard(p) {
 }
 
 // ============================================================
-// SLIDER — touch + click en dots
+// SLIDER — lógica completamente separada por producto
 // ============================================================
-const sliderState = {}; // { id: { current, total, startX, startY, dragging } }
+const sliders = {}; // { id: { current, total, slideW, startX, startY } }
 
 function initSlider(id) {
-  const slider = document.getElementById('slider-' + id);
-  if (!slider) return;
-  const track = document.getElementById('track-' + id);
-  if (!track) return;
-  const total = track.querySelectorAll('.card-slide').length;
-  sliderState[id] = { current: 0, total };
+  const sliderEl = document.getElementById('slider-' + id);
+  const trackEl  = document.getElementById('track-' + id);
+  if (!sliderEl || !trackEl) return;
 
-  // Touch events en el slider
-  slider.addEventListener('touchstart', e => {
-    const t = e.touches[0];
-    sliderState[id].startX = t.clientX;
-    sliderState[id].startY = t.clientY;
-    sliderState[id].dragging = true;
+  const slides = trackEl.querySelectorAll('.card-slide');
+  const total  = slides.length;
+  if (total === 0) return;
+
+  // Ancho del contenedor
+  const w = sliderEl.offsetWidth;
+
+  // Setear ancho explícito a track y slides
+  trackEl.style.width = (w * total) + 'px';
+  slides.forEach(s => { s.style.width = w + 'px'; });
+
+  sliders[id] = { current: 0, total, startX: 0, startY: 0, dragging: false };
+
+  // Touch events
+  sliderEl.addEventListener('touchstart', e => {
+    sliders[id].startX = e.touches[0].clientX;
+    sliders[id].startY = e.touches[0].clientY;
+    sliders[id].dragging = true;
   }, { passive: true });
 
-  slider.addEventListener('touchend', e => {
-    if (!sliderState[id].dragging) return;
-    sliderState[id].dragging = false;
-    const t = e.changedTouches[0];
-    const dx = t.clientX - sliderState[id].startX;
-    const dy = t.clientY - sliderState[id].startY;
-    // Solo swipe horizontal y al menos 40px
-    if (Math.abs(dx) < 40 || Math.abs(dy) > Math.abs(dx)) return;
-    if (dx < 0) goToSlide(id, sliderState[id].current + 1);
-    else goToSlide(id, sliderState[id].current - 1);
+  sliderEl.addEventListener('touchmove', e => {
+    if (!sliders[id].dragging) return;
+    const dx = Math.abs(e.touches[0].clientX - sliders[id].startX);
+    const dy = Math.abs(e.touches[0].clientY - sliders[id].startY);
+    // Si es más horizontal que vertical, prevenir scroll
+    if (dx > dy) e.preventDefault();
+  }, { passive: false });
+
+  sliderEl.addEventListener('touchend', e => {
+    if (!sliders[id].dragging) return;
+    sliders[id].dragging = false;
+    const dx = e.changedTouches[0].clientX - sliders[id].startX;
+    const dy = e.changedTouches[0].clientY - sliders[id].startY;
+    if (Math.abs(dx) < 30 || Math.abs(dy) > Math.abs(dx)) return;
+    if (dx < 0) goToSlide(id, sliders[id].current + 1);
+    else        goToSlide(id, sliders[id].current - 1);
   }, { passive: true });
 }
 
 function goToSlide(id, idx) {
-  const state = sliderState[id];
-  if (!state) return;
-  // Wrap around
-  if (idx < 0) idx = state.total - 1;
-  if (idx >= state.total) idx = 0;
-  state.current = idx;
+  const s = sliders[id];
+  if (!s) return;
+  if (idx < 0) idx = s.total - 1;
+  if (idx >= s.total) idx = 0;
+  s.current = idx;
   const track = document.getElementById('track-' + id);
-  if (track) track.style.transform = `translateX(-${idx * 100}%)`;
-  // Actualizar dots
-  for (let i = 0; i < state.total; i++) {
+  const sliderEl = document.getElementById('slider-' + id);
+  if (!track || !sliderEl) return;
+  const w = sliderEl.offsetWidth;
+  track.style.transform = `translateX(-${idx * w}px)`;
+  for (let i = 0; i < s.total; i++) {
     const dot = document.getElementById(`dot-${id}-${i}`);
     if (dot) dot.classList.toggle('active', i === idx);
-  }
-}
-
-function checkEmptySlides(id) {
-  // Si todas las fotos fallaron, mostrar placeholder
-  const track = document.getElementById('track-' + id);
-  if (!track) return;
-  const visible = Array.from(track.querySelectorAll('.card-slide')).filter(s => s.style.display !== 'none');
-  if (!visible.length) {
-    track.innerHTML = '<div class="card-slide"><div class="card-slide-placeholder">🛍</div></div>';
-    const dots = document.getElementById('dots-' + id);
-    if (dots) dots.style.display = 'none';
   }
 }
 
@@ -730,11 +710,10 @@ function addToCart(id) {
   const p = products.find(p => String(p.id) === String(id));
   if (!p) return;
   const existing = cart.find(c => String(c.id) === String(id));
-  if (existing) existing.qty += 1;
+  if (existing) existing.qty++;
   else cart.push({ ...p, qty: 1 });
   saveCart(cart); updateCartUI(); refreshCard(id);
 }
-
 function changeQty(id, delta) {
   const idx = cart.findIndex(c => String(c.id) === String(id));
   if (idx === -1) return;
@@ -743,7 +722,6 @@ function changeQty(id, delta) {
   saveCart(cart); updateCartUI(); refreshCard(id);
   if (document.getElementById('cartModal').classList.contains('open')) renderCartItems();
 }
-
 function refreshCard(id) {
   const p = products.find(p => String(p.id) === String(id));
   const cardEl = document.getElementById('card-' + id);
@@ -764,7 +742,6 @@ function refreshCard(id) {
     info.insertAdjacentHTML('beforeend', `<button class="add-btn" onclick="addToCart('${id}')">Agregar</button>`);
   }
 }
-
 function updateCartUI() {
   const count = cart.reduce((s,c) => s+c.qty, 0);
   const total = cart.reduce((s,c) => s+c.price*c.qty, 0);
@@ -772,7 +749,6 @@ function updateCartUI() {
   const t = document.getElementById('cartTotal');
   if (t) t.textContent = formatPrice(total);
 }
-
 function renderCartItems() {
   const el = document.getElementById('cartItems');
   const footer = document.getElementById('cartFooter');
@@ -785,7 +761,7 @@ function renderCartItems() {
     <div class="cart-item">
       <div style="flex:1">
         <div class="cart-item-name">${c.name}</div>
-        <div class="cart-item-detail">${c.brand || 'Accesorio'}</div>
+        <div class="cart-item-detail">${c.brand||'Accesorio'}</div>
       </div>
       <div style="text-align:right">
         <div class="cart-item-price">${formatPrice(c.price*c.qty)}</div>
@@ -795,10 +771,9 @@ function renderCartItems() {
     </div>`).join('');
   updateCartUI();
 }
-
 function openCart() { document.getElementById('cartModal').classList.add('open'); renderCartItems(); }
 function closeCart() { document.getElementById('cartModal').classList.remove('open'); }
-document.getElementById('cartModal').addEventListener('click', function(e) { if (e.target===this) closeCart(); });
+document.getElementById('cartModal').addEventListener('click', function(e) { if(e.target===this) closeCart(); });
 
 async function submitOrder() {
   const nombre = document.getElementById('fNombre').value.trim();
