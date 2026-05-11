@@ -641,21 +641,35 @@ function initSlider(id) {
   const total  = slides.length;
   if (total === 0) return;
 
-  // Ancho del contenedor
-  const w = sliderEl.offsetWidth;
-
-  // Setear ancho explícito a track y slides
-  trackEl.style.width = (w * total) + 'px';
-  slides.forEach(s => { s.style.width = w + 'px'; });
+  // Usar % en vez de px — funciona sin conocer el ancho
+  trackEl.style.width = (total * 100) + '%';
+  slides.forEach(s => { s.style.width = (100 / total) + '%'; });
 
   sliders[id] = { current: 0, total, startX: 0, startY: 0, dragging: false };
 
-  // Touch events
   sliderEl.addEventListener('touchstart', e => {
     sliders[id].startX = e.touches[0].clientX;
     sliders[id].startY = e.touches[0].clientY;
     sliders[id].dragging = true;
   }, { passive: true });
+
+  sliderEl.addEventListener('touchmove', e => {
+    if (!sliders[id].dragging) return;
+    const dx = Math.abs(e.touches[0].clientX - sliders[id].startX);
+    const dy = Math.abs(e.touches[0].clientY - sliders[id].startY);
+    if (dx > dy) e.preventDefault();
+  }, { passive: false });
+
+  sliderEl.addEventListener('touchend', e => {
+    if (!sliders[id].dragging) return;
+    sliders[id].dragging = false;
+    const dx = e.changedTouches[0].clientX - sliders[id].startX;
+    const dy = e.changedTouches[0].clientY - sliders[id].startY;
+    if (Math.abs(dx) < 30 || Math.abs(dy) > Math.abs(dx)) return;
+    if (dx < 0) goToSlide(id, sliders[id].current + 1);
+    else        goToSlide(id, sliders[id].current - 1);
+  }, { passive: true });
+}
 
   sliderEl.addEventListener('touchmove', e => {
     if (!sliders[id].dragging) return;
