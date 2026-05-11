@@ -15,11 +15,8 @@
     --light-border: #E0D0C0;
     --rose: #D9B2B3;
     --rose-dark: #be9092;
-    --soft: #E8D8C4;
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   body {
     font-family: 'DM Sans', sans-serif;
     background: #E8D8C4;
@@ -29,7 +26,6 @@
     justify-content: center;
     padding: 20px 12px;
   }
-
   #app-wrapper {
     width: 100%;
     max-width: 460px;
@@ -38,12 +34,9 @@
     box-shadow: 0 8px 40px rgba(0,0,0,0.10);
     border-radius: 32px;
     overflow: hidden;
-    position: relative;
   }
-
   header {
     background: #D9B2B3;
-    color: white;
     padding: 28px 24px 24px;
     text-align: center;
   }
@@ -65,7 +58,6 @@
     text-transform: uppercase;
     margin-top: 6px;
   }
-
   .catalog-topbar {
     display: flex;
     align-items: center;
@@ -84,7 +76,6 @@
     padding: 6px 14px;
     font-size: 12px;
     color: var(--medium);
-    cursor: pointer;
     font-family: 'DM Sans', sans-serif;
     transition: all 0.2s;
     white-space: nowrap;
@@ -92,7 +83,6 @@
     display: inline-block;
   }
   .back-btn:hover { border-color: var(--rose); color: var(--rose); }
-
   .search-row {
     padding: 8px 16px;
     background: var(--cream);
@@ -118,7 +108,6 @@
     padding: 8px 0;
   }
   .search-box input::placeholder { color: #8C7260; }
-
   .section-header {
     padding: 20px 16px 12px;
     display: flex;
@@ -145,7 +134,6 @@
     grid-template-columns: 1fr 1fr;
     gap: 8px;
   }
-
   .fashion-card {
     background: var(--warm-white);
     border-radius: 12px;
@@ -153,53 +141,55 @@
     border: 1px solid var(--light-border);
     display: flex;
     flex-direction: column;
-    position: relative;
-    transition: transform 0.2s, box-shadow 0.2s;
   }
-  .fashion-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(28,24,20,0.08); }
 
-  /* altura fija — sin aspect-ratio para evitar zoom en móvil */
-  .card-img-wrap {
+  /* SLIDER — vertical, sin overflow */
+  .card-slider {
     position: relative;
     width: 100%;
-    height: 190px;
+    aspect-ratio: 4/5;
     background: white;
     overflow: hidden;
+    touch-action: pan-y;
   }
-  .card-slides {
+  .card-track {
     display: flex;
-    width: 100%;
     height: 100%;
     transition: transform 0.3s ease;
+    will-change: transform;
   }
   .card-slide {
     min-width: 100%;
     height: 100%;
     flex-shrink: 0;
+    background: white;
   }
   .card-slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
   }
   .card-slide-placeholder {
     width: 100%;
     height: 100%;
-    background: white;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 32px;
+    background: #F5EDE3;
   }
 
-  /* dots clickeables y más grandes */
+  /* DOTS */
   .dots-pill {
     position: absolute;
     bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(255,255,255,0.88);
+    background: rgba(255,255,255,0.9);
     padding: 5px 10px;
     border-radius: 20px;
     display: flex;
@@ -208,32 +198,28 @@
     z-index: 6;
   }
   .dot {
-    width: 8px;
-    height: 8px;
+    width: 8px; height: 8px;
     border-radius: 50%;
     background: var(--gold);
     opacity: 0.3;
     transition: opacity 0.2s;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
   }
   .dot.active { opacity: 1; }
-  .dot:hover { opacity: 0.65; }
 
+  /* BADGES */
   .star-badge {
     position: absolute;
-    top: 8px;
-    right: 10px;
+    top: 8px; right: 10px;
     color: var(--rose);
     font-size: 16px;
-    line-height: 1;
     z-index: 6;
     text-shadow: 0 1px 3px rgba(255,255,255,0.8);
   }
   .sale-ribbon {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    bottom: 0; left: 0; right: 0;
     background: #E8D4A8;
     color: #1C1612;
     font-size: 9px;
@@ -245,19 +231,18 @@
   }
   .video-badge {
     position: absolute;
-    top: 8px;
-    left: 8px;
+    top: 8px; left: 8px;
     background: rgba(140,114,96,0.88);
     color: white;
     font-size: 9px;
     font-weight: 600;
-    letter-spacing: 0.04em;
     padding: 3px 7px;
     border-radius: 20px;
     z-index: 6;
     cursor: pointer;
   }
 
+  /* CARD INFO */
   .card-info {
     padding: 8px 10px 10px;
     display: flex;
@@ -273,7 +258,6 @@
     margin-bottom: 4px;
   }
   .product-name {
-    font-family: 'DM Sans', sans-serif;
     font-size: 12px;
     font-weight: 600;
     color: var(--dark);
@@ -288,7 +272,6 @@
     line-height: 1.4;
   }
   .product-price {
-    font-family: 'DM Sans', sans-serif;
     font-size: 13px;
     font-weight: 600;
     color: var(--dark);
@@ -307,13 +290,11 @@
     font-size: 10px;
     font-weight: 500;
     cursor: pointer;
-    transition: all 0.2s;
-    letter-spacing: 0.03em;
+    transition: background 0.2s;
     margin-top: auto;
   }
   .add-btn:hover { background: var(--rose-dark); }
   .add-btn.added { background: #5A8C6B; }
-
   .qty-control {
     display: flex;
     align-items: center;
@@ -331,15 +312,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.15s;
   }
-  .qty-btn:hover { background: var(--light-border); }
   .qty-num { font-size: 14px; font-weight: 500; min-width: 20px; text-align: center; }
 
+  /* CART BTN */
   .cart-btn {
     position: fixed;
-    bottom: 24px;
-    right: 20px;
+    bottom: 24px; right: 20px;
     background: var(--rose);
     color: white;
     border: none;
@@ -369,6 +348,7 @@
     font-weight: 700;
   }
 
+  /* MODALS */
   .modal-overlay {
     display: none;
     position: fixed;
@@ -396,7 +376,7 @@
     padding-bottom: 14px;
     border-bottom: 1.5px solid var(--light-border);
   }
-  .modal-header h3 { font-family: 'DM Sans', sans-serif; font-size: 22px; font-weight: 400; color: var(--dark); }
+  .modal-header h3 { font-size: 22px; font-weight: 400; color: var(--dark); }
   .close-btn {
     background: var(--rose);
     border: none;
@@ -412,12 +392,11 @@
   .cart-item {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
     padding: 12px 0;
     border-bottom: 1px solid var(--light-border);
     gap: 10px;
   }
-  .cart-item-name { font-size: 14px; font-weight: 500; margin-bottom: 2px; color: var(--dark); }
+  .cart-item-name { font-size: 14px; font-weight: 500; color: var(--dark); }
   .cart-item-detail { font-size: 12px; color: var(--medium); }
   .cart-item-price { font-size: 15px; font-weight: 600; color: var(--dark); }
   .remove-item { background: none; border: none; color: #CC6B6B; font-size: 11px; cursor: pointer; margin-top: 4px; display: block; }
@@ -442,9 +421,7 @@
     color: var(--medium);
     line-height: 1.7;
   }
-  .total-note p { margin-bottom: 4px; }
   .total-note strong { color: var(--dark); }
-
   .form-title { font-size: 18px; font-weight: 400; margin-bottom: 16px; color: var(--dark); }
   .form-group { margin-bottom: 14px; }
   .form-group label {
@@ -479,7 +456,6 @@
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
-    letter-spacing: 0.05em;
     transition: background 0.2s;
     margin-top: 8px;
   }
@@ -488,7 +464,6 @@
   .success-msg { display: none; text-align: center; padding: 16px; }
   .success-msg .check { font-size: 32px; margin-bottom: 8px; }
   .success-msg h4 { font-size: 20px; font-weight: 400; margin-bottom: 6px; color: var(--dark); }
-
   .hidden { display: none !important; }
   .empty-cat { text-align: center; padding: 48px 20px; color: var(--medium); font-size: 13px; line-height: 1.8; }
   .empty-cat span { font-size: 32px; display: block; margin-bottom: 12px; }
@@ -496,7 +471,6 @@
 </head>
 <body>
 <div id="app-wrapper">
-
   <header>
     <div class="brand">🇧🇷 productos desde brasil</div>
     <div class="header-sub">accesorios</div>
@@ -504,7 +478,7 @@
 
   <div class="catalog-topbar">
     <a class="back-btn" href="index.html">← Volver</a>
-    <div style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:0.05em;color:var(--medium);background:none;border:1px solid var(--light-border);border-radius:50px;padding:6px 16px;">Accesorios</div>
+    <div style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:0.05em;color:var(--medium);border:1px solid var(--light-border);border-radius:50px;padding:6px 16px;">Accesorios</div>
     <div style="width:70px"></div>
   </div>
 
@@ -519,7 +493,6 @@
   </div>
 
   <div id="catalog"></div>
-
 </div>
 
 <button class="cart-btn" onclick="openCart()">
@@ -571,10 +544,10 @@
     <div class="success-msg" id="successMsg">
       <div class="check">🎉</div>
       <h4>¡Encargo recibido!</h4>
-      <p style="font-size:12px;color:var(--gold);letter-spacing:0.05em;margin-bottom:4px;">Código: <span id="orderCodeDisplay"></span></p>
+      <p style="font-size:12px;color:var(--gold);margin-bottom:4px;">Código: <span id="orderCodeDisplay"></span></p>
       <p style="font-size:12px;color:var(--medium);">Feñi te va a escribir por Instagram para confirmar.<br><br>
-      💸 Transferencia bancaria<br>💳 Tarjeta de crédito/débito (+4%)<br><br>
-      Mientras, puedes seguir <a href="https://ig.me/m/closebyus" target="_blank" style="color:var(--gold)">@closebyus</a> 🌿</p>
+      💸 Transferencia · 💳 Tarjeta (+4%)<br><br>
+      <a href="https://ig.me/m/closebyus" target="_blank" style="color:var(--gold)">@closebyus</a> 🌿</p>
     </div>
   </div>
 </div>
@@ -585,19 +558,17 @@ function loadCart() { try { return JSON.parse(localStorage.getItem(CART_KEY)) ||
 function saveCart(c) { localStorage.setItem(CART_KEY, JSON.stringify(c)); }
 let cart = loadCart();
 let products = [];
-
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyAcFq8fcDDp81yJpoC6yDdgAaXZXZcsR6xeAgPtKmsC-_WM7p969v0CBDRjdJcvvnv/exec';
 
 function _catalogCallback(data) {
   if (Array.isArray(data) && data.length > 0) products = data;
   renderCatalog();
 }
-
-(function initCatalog() {
-  const script = document.createElement('script');
-  script.src = SCRIPT_URL + '?callback=_catalogCallback&sheet=accesorios';
-  script.onerror = () => renderCatalog();
-  document.head.appendChild(script);
+(function() {
+  const s = document.createElement('script');
+  s.src = SCRIPT_URL + '?callback=_catalogCallback&sheet=accesorios';
+  s.onerror = () => renderCatalog();
+  document.head.appendChild(s);
 })();
 
 function formatPrice(p) { return '$' + p.toLocaleString('es-CL'); }
@@ -617,49 +588,45 @@ function renderCatalog(filtered) {
   });
   let html = '';
   Object.entries(groups).forEach(([title, items]) => {
-    html += `
-      <div class="section-header"><h2>${title}</h2><div class="section-line"></div></div>
-      <div class="fashion-grid">${items.map(p => renderCard(p)).join('')}</div>
-    `;
+    html += `<div class="section-header"><h2>${title}</h2><div class="section-line"></div></div>
+    <div class="fashion-grid">${items.map(p => renderCard(p)).join('')}</div>`;
   });
   el.innerHTML = html;
+  // Inicializar sliders después de render
+  list.forEach(p => initSlider(String(p.id)));
   updateCartUI();
 }
 
 function renderCard(p) {
-  const inCart = cart.find(c => c.id == p.id);
+  const inCart = cart.find(c => String(c.id) === String(p.id));
   const qty = inCart ? inCart.qty : 0;
-  const photos = [];
-  if (p.img1) photos.push(p.img1);
-  if (p.img2) photos.push(p.img2);
-  if (p.img3) photos.push(p.img3);
-  if (!photos.length) photos.push(`imgs/p${p.id}.png`);
+  const pid = String(p.id);
+
+  // Fotos — solo las que existen (se validan en initSlider via onerror)
+  const photos = [p.img1, p.img2, p.img3].filter(Boolean);
+  if (!photos.length) photos.push(`imgs/${pid}_1.png`);
 
   const discount = p.sale && p.priceOld ? Math.round((1 - p.price / p.priceOld) * 100) : 0;
-  const pid = p.id;
-  const total = photos.length;
 
-  const slidesHtml = photos.map(src => `
-    <div class="card-slide">
-      <img src="${src}" alt="${p.name}" loading="lazy"
-        onerror="this.parentElement.innerHTML='<div class=\\'card-slide-placeholder\\'>🛍</div>'">
-    </div>
-  `).join('');
+  const slidesHtml = photos.map((src, i) => `
+    <div class="card-slide" id="slide-${pid}-${i}">
+      <img src="${src}" alt="${p.name}" loading="${i===0?'eager':'lazy'}"
+        onerror="this.closest('.card-slide').style.display='none'; checkEmptySlides('${pid}')">
+    </div>`).join('');
 
-  const dotsHtml = total > 1
+  const dotsHtml = photos.length > 1
     ? `<div class="dots-pill" id="dots-${pid}">
-        ${photos.map((_, i) => `<div class="dot ${i===0?'active':''}" id="dot-${pid}-${i}" onclick="goToSlide('${pid}',${i},${total})"></div>`).join('')}
-       </div>`
-    : '';
+        ${photos.map((_,i) => `<div class="dot ${i===0?'active':''}" id="dot-${pid}-${i}" onclick="goToSlide('${pid}',${i})"></div>`).join('')}
+       </div>` : '';
 
   return `
     <div class="fashion-card" id="card-${pid}">
-      <div class="card-img-wrap" id="imgwrap-${pid}" data-total="${total}">
-        <div class="card-slides" id="slides-${pid}">${slidesHtml}</div>
+      <div class="card-slider" id="slider-${pid}">
+        <div class="card-track" id="track-${pid}">${slidesHtml}</div>
         ${p.star ? '<div class="star-badge">♡</div>' : ''}
         ${p.video ? `<div class="video-badge" onclick="window.open('${p.video}','_blank')">▶ Ver cómo se usa</div>` : ''}
         ${dotsHtml}
-        ${p.sale ? `<div class="sale-ribbon">SALE${discount ? ' · ' + discount + '% OFF' : ''}</div>` : ''}
+        ${p.sale ? `<div class="sale-ribbon">SALE${discount?' · '+discount+'% OFF':''}</div>` : ''}
       </div>
       <div class="card-info">
         ${p.brand ? `<div class="product-brand">${p.brand}</div>` : ''}
@@ -676,123 +643,134 @@ function renderCard(p) {
             <span class="qty-num">${qty}</span>
             <button class="qty-btn" onclick="changeQty('${pid}',1)">+</button>
           </div>
-          <button class="add-btn added" onclick="changeQty('${pid}',-1)">✓ Agregado</button>
-        ` : `
-          <button class="add-btn" onclick="addToCart('${pid}')">Agregar</button>
-        `}
+          <button class="add-btn added" onclick="changeQty('${pid}',-1)">✓ Agregado</button>`
+        : `<button class="add-btn" onclick="addToCart('${pid}')">Agregar</button>`}
       </div>
-    </div>
-  `;
+    </div>`;
 }
 
-// SLIDER
-const slideIndex = {};
+// ============================================================
+// SLIDER — touch + click en dots
+// ============================================================
+const sliderState = {}; // { id: { current, total, startX, startY, dragging } }
 
-function goToSlide(id, idx, total) {
-  slideIndex[id] = idx;
-  applySlide(id, total);
+function initSlider(id) {
+  const slider = document.getElementById('slider-' + id);
+  if (!slider) return;
+  const track = document.getElementById('track-' + id);
+  if (!track) return;
+  const total = track.querySelectorAll('.card-slide').length;
+  sliderState[id] = { current: 0, total };
+
+  // Touch events en el slider
+  slider.addEventListener('touchstart', e => {
+    const t = e.touches[0];
+    sliderState[id].startX = t.clientX;
+    sliderState[id].startY = t.clientY;
+    sliderState[id].dragging = true;
+  }, { passive: true });
+
+  slider.addEventListener('touchend', e => {
+    if (!sliderState[id].dragging) return;
+    sliderState[id].dragging = false;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - sliderState[id].startX;
+    const dy = t.clientY - sliderState[id].startY;
+    // Solo swipe horizontal y al menos 40px
+    if (Math.abs(dx) < 40 || Math.abs(dy) > Math.abs(dx)) return;
+    if (dx < 0) goToSlide(id, sliderState[id].current + 1);
+    else goToSlide(id, sliderState[id].current - 1);
+  }, { passive: true });
 }
-function nextSlide(id, total) {
-  slideIndex[id] = ((slideIndex[id] || 0) + 1) % total;
-  applySlide(id, total);
-}
-function prevSlide(id, total) {
-  slideIndex[id] = ((slideIndex[id] || 0) - 1 + total) % total;
-  applySlide(id, total);
-}
-function applySlide(id, total) {
-  const idx = slideIndex[id] || 0;
-  const slides = document.getElementById('slides-' + id);
-  if (slides) slides.style.transform = `translateX(-${idx * 100}%)`;
-  for (let i = 0; i < total; i++) {
+
+function goToSlide(id, idx) {
+  const state = sliderState[id];
+  if (!state) return;
+  // Wrap around
+  if (idx < 0) idx = state.total - 1;
+  if (idx >= state.total) idx = 0;
+  state.current = idx;
+  const track = document.getElementById('track-' + id);
+  if (track) track.style.transform = `translateX(-${idx * 100}%)`;
+  // Actualizar dots
+  for (let i = 0; i < state.total; i++) {
     const dot = document.getElementById(`dot-${id}-${i}`);
     if (dot) dot.classList.toggle('active', i === idx);
   }
 }
 
-// Touch swipe
-let touchStartX = 0, touchStartY = 0;
-document.addEventListener('touchstart', e => {
-  touchStartX = e.touches[0].clientX;
-  touchStartY = e.touches[0].clientY;
-}, { passive: true });
-document.addEventListener('touchend', e => {
-  const dx = e.changedTouches[0].clientX - touchStartX;
-  const dy = e.changedTouches[0].clientY - touchStartY;
-  if (Math.abs(dx) < 40 || Math.abs(dy) > Math.abs(dx)) return;
-  const wrap = e.target.closest('.card-img-wrap');
-  if (!wrap) return;
-  const id = wrap.id.replace('imgwrap-', '');
-  const total = parseInt(wrap.dataset.total || 1);
-  if (total < 2) return;
-  if (dx < 0) nextSlide(id, total);
-  else prevSlide(id, total);
-}, { passive: true });
+function checkEmptySlides(id) {
+  // Si todas las fotos fallaron, mostrar placeholder
+  const track = document.getElementById('track-' + id);
+  if (!track) return;
+  const visible = Array.from(track.querySelectorAll('.card-slide')).filter(s => s.style.display !== 'none');
+  if (!visible.length) {
+    track.innerHTML = '<div class="card-slide"><div class="card-slide-placeholder">🛍</div></div>';
+    const dots = document.getElementById('dots-' + id);
+    if (dots) dots.style.display = 'none';
+  }
+}
 
+// ============================================================
 // SEARCH
+// ============================================================
 function searchProducts(query) {
   const q = query.toLowerCase().trim();
   if (!q) { renderCatalog(); return; }
-  const filtered = products.filter(p =>
+  renderCatalog(products.filter(p =>
     p.name.toLowerCase().includes(q) ||
     (p.desc && p.desc.toLowerCase().includes(q))
-  );
-  renderCatalog(filtered);
+  ));
 }
 
+// ============================================================
 // CART
+// ============================================================
 function addToCart(id) {
-  const p = products.find(p => p.id == id);
+  const p = products.find(p => String(p.id) === String(id));
   if (!p) return;
-  const existing = cart.find(c => c.id == id);
+  const existing = cart.find(c => String(c.id) === String(id));
   if (existing) existing.qty += 1;
   else cart.push({ ...p, qty: 1 });
-  saveCart(cart);
-  updateCartUI();
-  refreshCard(id);
+  saveCart(cart); updateCartUI(); refreshCard(id);
 }
 
 function changeQty(id, delta) {
-  const idx = cart.findIndex(c => c.id == id);
+  const idx = cart.findIndex(c => String(c.id) === String(id));
   if (idx === -1) return;
   cart[idx].qty += delta;
   if (cart[idx].qty <= 0) cart.splice(idx, 1);
-  saveCart(cart);
-  updateCartUI();
-  refreshCard(id);
+  saveCart(cart); updateCartUI(); refreshCard(id);
   if (document.getElementById('cartModal').classList.contains('open')) renderCartItems();
 }
 
 function refreshCard(id) {
-  const p = products.find(p => p.id == id);
+  const p = products.find(p => String(p.id) === String(id));
   const cardEl = document.getElementById('card-' + id);
   if (!cardEl || !p) return;
-  const inCart = cart.find(c => c.id == id);
+  const inCart = cart.find(c => String(c.id) === String(id));
   const qty = inCart ? inCart.qty : 0;
   const info = cardEl.querySelector('.card-info');
   info.querySelectorAll('.qty-control, .add-btn').forEach(el => el.remove());
   if (qty > 0) {
     info.insertAdjacentHTML('beforeend', `
       <div class="qty-control">
-        <button class="qty-btn" onclick="changeQty('${p.id}',-1)">−</button>
+        <button class="qty-btn" onclick="changeQty('${id}',-1)">−</button>
         <span class="qty-num">${qty}</span>
-        <button class="qty-btn" onclick="changeQty('${p.id}',1)">+</button>
+        <button class="qty-btn" onclick="changeQty('${id}',1)">+</button>
       </div>
-      <button class="add-btn added" onclick="changeQty('${p.id}',-1)">✓ Agregado</button>
-    `);
+      <button class="add-btn added" onclick="changeQty('${id}',-1)">✓ Agregado</button>`);
   } else {
-    info.insertAdjacentHTML('beforeend', `
-      <button class="add-btn" onclick="addToCart('${p.id}')">Agregar</button>
-    `);
+    info.insertAdjacentHTML('beforeend', `<button class="add-btn" onclick="addToCart('${id}')">Agregar</button>`);
   }
 }
 
 function updateCartUI() {
-  const count = cart.reduce((s, c) => s + c.qty, 0);
-  const total = cart.reduce((s, c) => s + c.price * c.qty, 0);
+  const count = cart.reduce((s,c) => s+c.qty, 0);
+  const total = cart.reduce((s,c) => s+c.price*c.qty, 0);
   document.getElementById('cartCount').textContent = count;
-  const totalEl = document.getElementById('cartTotal');
-  if (totalEl) totalEl.textContent = formatPrice(total);
+  const t = document.getElementById('cartTotal');
+  if (t) t.textContent = formatPrice(total);
 }
 
 function renderCartItems() {
@@ -810,12 +788,11 @@ function renderCartItems() {
         <div class="cart-item-detail">${c.brand || 'Accesorio'}</div>
       </div>
       <div style="text-align:right">
-        <div class="cart-item-price">${formatPrice(c.price * c.qty)}</div>
+        <div class="cart-item-price">${formatPrice(c.price*c.qty)}</div>
         <div style="font-size:11px;color:#8C7260;">x${c.qty} · ${formatPrice(c.price)} c/u</div>
         <button class="remove-item" onclick="changeQty('${c.id}',-${c.qty})">Eliminar</button>
       </div>
-    </div>
-  `).join('');
+    </div>`).join('');
   updateCartUI();
 }
 
@@ -828,22 +805,22 @@ async function submitOrder() {
   const instagram = document.getElementById('fInstagram').value.trim();
   const notas = document.getElementById('fNotas').value.trim();
   if (!nombre || !instagram) { alert('Por favor completa tu nombre e Instagram 🙏'); return; }
-  const total = cart.reduce((s, c) => s + c.price * c.qty, 0);
-  const itemsText = cart.map(c => `${c.name} (x${c.qty}) = ${formatPrice(c.price * c.qty)}`).join('\n');
+  const total = cart.reduce((s,c) => s+c.price*c.qty, 0);
+  const itemsText = cart.map(c => `${c.name} (x${c.qty}) = ${formatPrice(c.price*c.qty)}`).join('\n');
   const btn = document.getElementById('submitBtn');
   btn.disabled = true; btn.textContent = 'Enviando...';
   const now = new Date();
-  const orderCode = 'CBU-' + now.getFullYear().toString().slice(2) + String(now.getMonth()+1).padStart(2,'0') + String(now.getDate()).padStart(2,'0') + '-' + Math.floor(100 + Math.random()*900);
+  const orderCode = 'CBU-'+now.getFullYear().toString().slice(2)+String(now.getMonth()+1).padStart(2,'0')+String(now.getDate()).padStart(2,'0')+'-'+Math.floor(100+Math.random()*900);
   try {
     const res = await fetch('https://formspree.io/f/mojyydjw', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ codigo: '#'+orderCode, nombre, instagram, productos: itemsText, total: formatPrice(total), notas: notas||'—', _subject: `🛍 Fer, nuevo pedido de ${nombre} · Accesorios` }),
+      body: JSON.stringify({ codigo:'#'+orderCode, nombre, instagram, productos:itemsText, total:formatPrice(total), notas:notas||'—', _subject:`🛍 Fer, nuevo pedido de ${nombre} · Accesorios` }),
     });
     if (!res.ok) throw new Error('Error al enviar');
     const fecha = new Date().toLocaleString('es-CL');
-    const rows = cart.map((c, i) => ({ fecha, codigo: orderCode, nombre, instagram, producto_id: c.id, producto: c.name, marca: c.brand||'—', cantidad: c.qty, precio_unitario: formatPrice(c.price), subtotal: formatPrice(c.price*c.qty), total_pedido: i===0?formatPrice(total):'—', notas: i===0?(notas||'—'):'—' }));
-    fetch(SCRIPT_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body: JSON.stringify({rows}) });
+    const rows = cart.map((c,i) => ({ fecha, codigo:orderCode, nombre, instagram, producto_id:c.id, producto:c.name, marca:c.brand||'—', cantidad:c.qty, precio_unitario:formatPrice(c.price), subtotal:formatPrice(c.price*c.qty), total_pedido:i===0?formatPrice(total):'—', notas:i===0?(notas||'—'):'—' }));
+    fetch(SCRIPT_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body:JSON.stringify({rows}) });
     document.getElementById('cartItems').classList.add('hidden');
     document.getElementById('cartFooter').classList.add('hidden');
     document.getElementById('cartEmpty').classList.add('hidden');
@@ -852,7 +829,7 @@ async function submitOrder() {
     cart = []; saveCart(cart); updateCartUI();
   } catch(e) {
     btn.disabled = false; btn.textContent = 'Enviar pedido ✨';
-    alert('Error: ' + e.message);
+    alert('Error: '+e.message);
   }
 }
 
