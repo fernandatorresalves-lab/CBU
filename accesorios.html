@@ -571,7 +571,9 @@ function renderCatalog(filtered) {
   });
   el.innerHTML = html;
   // Inicializar sliders DESPUÉS de que el DOM existe
+setTimeout(() => {
   list.forEach(p => initSlider(String(p.id)));
+}, 50);
   updateCartUI();
 }
 
