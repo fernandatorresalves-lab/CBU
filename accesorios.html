@@ -57,10 +57,11 @@
   .card-slide img { width: 100%; height: 100%; object-fit: cover; display: block; -webkit-user-drag: none; user-select: none; pointer-events: none; }
   .card-slide-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 28px; background: #F5EDE3; }
 
-  /* DOTS */
-  .dots-pill { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); background: rgba(255,255,255,0.9); padding: 5px 10px; border-radius: 20px; display: flex; gap: 6px; align-items: center; z-index: 6; }
-  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); opacity: 0.3; transition: opacity 0.2s; cursor: pointer; }
+  /* DOTS — sin fondo */
+  .dots-pill { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); background: none; padding: 0; display: flex; gap: 6px; align-items: center; z-index: 6; }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: white; opacity: 0.5; transition: opacity 0.2s; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.35); }
   .dot.active { opacity: 1; }
+  .swipe-hint { font-size: 9px; color: var(--medium); text-align: center; padding: 4px 0 0; letter-spacing: 0.03em; }
 
   .star-badge { position: absolute; top: 8px; right: 10px; color: var(--rose); font-size: 16px; z-index: 6; text-shadow: 0 1px 3px rgba(255,255,255,0.8); }
   .sale-ribbon { position: absolute; bottom: 0; left: 0; right: 0; background: #E8D4A8; color: #1C1612; font-size: 9px; font-weight: 700; padding: 4px 6px; text-align: center; letter-spacing: 0.06em; z-index: 6; }
@@ -261,6 +262,7 @@ function renderCard(p) {
         ${dotsHtml}
         ${p.sale ? `<div class="sale-ribbon">SALE${discount?' · '+discount+'% OFF':''}</div>` : ''}
       </div>
+      ${photos.length > 1 ? '<div class="swipe-hint">desliza para ver más →</div>' : ''}
       <div class="card-info">
         ${p.brand ? `<div class="product-brand">${p.brand}</div>` : ''}
         <div class="product-name">${p.name}</div>
