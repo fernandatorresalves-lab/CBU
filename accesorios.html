@@ -145,12 +145,16 @@
   .section-line { flex: 1; height: 1px; background: var(--light-border); }
 
   /* FASHION GRID — 2 columnas */
-  .fashion-grid {
-    padding: 0 12px 100px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-  }
+.fashion-grid {
+  padding: 0 12px 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.card-img-wrap {
+  max-height: 280px;
+}
 
   /* FASHION CARD */
   .fashion-card {
@@ -765,7 +769,7 @@ function renderCard(p) {
         ${p.sale ? `<div class="sale-ribbon">SALE${discount ? ' · ' + discount + '% OFF' : ''}</div>` : ''}
       </div>
       <div class="card-info">
-        <div class="product-brand">${p.brand}</div>
+        ${p.brand ? `<div class="product-brand">${p.brand}</div>` : ''}
         <div class="product-name">${p.name}</div>
         ${p.desc ? `<div class="product-desc">${p.desc}</div>` : ''}
         <div class="product-price">
@@ -812,13 +816,18 @@ function applySlide(id, total) {
 
 // Touch swipe
 let touchStartX = 0;
-document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+let touchStartY = 0;
+document.addEventListener('touchstart', e => {
+  touchStartX = e.touches[0].clientX;
+  touchStartY = e.touches[0].clientY;
+}, { passive: true });
 document.addEventListener('touchend', e => {
   const dx = e.changedTouches[0].clientX - touchStartX;
-  if (Math.abs(dx) < 30) return;
+  const dy = e.changedTouches[0].clientY - touchStartY;
+  if (Math.abs(dx) < 40 || Math.abs(dy) > Math.abs(dx)) return;
   const wrap = e.target.closest('.card-img-wrap');
   if (!wrap) return;
-  const id = parseInt(wrap.id.replace('imgwrap-', ''));
+  const id = wrap.id.replace('imgwrap-', '');
   const total = wrap.querySelectorAll('.card-slide').length;
   if (total < 2) return;
   if (dx < 0) nextSlide(id, total);
