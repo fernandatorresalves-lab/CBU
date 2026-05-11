@@ -13,7 +13,6 @@
     --dark: #1C1612;
     --medium: #8C7260;
     --light-border: #E0D0C0;
-    --tag-bg: #F2E8DC;
     --rose: #D9B2B3;
     --rose-dark: #be9092;
     --soft: #E8D8C4;
@@ -42,7 +41,6 @@
     position: relative;
   }
 
-  /* HEADER */
   header {
     background: #D9B2B3;
     color: white;
@@ -68,7 +66,6 @@
     margin-top: 6px;
   }
 
-  /* TOPBAR */
   .catalog-topbar {
     display: flex;
     align-items: center;
@@ -96,7 +93,6 @@
   }
   .back-btn:hover { border-color: var(--rose); color: var(--rose); }
 
-  /* SEARCH */
   .search-row {
     padding: 8px 16px;
     background: var(--cream);
@@ -123,7 +119,6 @@
   }
   .search-box input::placeholder { color: #8C7260; }
 
-  /* SECTION HEADER */
   .section-header {
     padding: 20px 16px 12px;
     display: flex;
@@ -144,19 +139,13 @@
   }
   .section-line { flex: 1; height: 1px; background: var(--light-border); }
 
-  /* FASHION GRID — 2 columnas */
-.fashion-grid {
-  padding: 0 12px 100px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-}
+  .fashion-grid {
+    padding: 0 12px 100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
 
-.card-img-wrap {
-  max-height: 280px;
-}
-
-  /* FASHION CARD */
   .fashion-card {
     background: var(--warm-white);
     border-radius: 12px;
@@ -169,11 +158,11 @@
   }
   .fashion-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(28,24,20,0.08); }
 
-  /* IMAGE SLIDER */
+  /* altura fija — sin aspect-ratio para evitar zoom en móvil */
   .card-img-wrap {
     position: relative;
     width: 100%;
-    aspect-ratio: 3/4;
+    height: 190px;
     background: white;
     overflow: hidden;
   }
@@ -204,44 +193,32 @@
     font-size: 32px;
   }
 
-  /* touch swipe areas */
-  .swipe-left, .swipe-right {
-    position: absolute;
-    top: 0;
-    width: 40%;
-    height: 100%;
-    z-index: 5;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .swipe-left { left: 0; }
-  .swipe-right { right: 0; }
-
-  /* DOTS PILL */
+  /* dots clickeables y más grandes */
   .dots-pill {
     position: absolute;
     bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
     background: rgba(255,255,255,0.88);
-    padding: 4px 9px;
+    padding: 5px 10px;
     border-radius: 20px;
     display: flex;
-    gap: 5px;
+    gap: 6px;
     align-items: center;
     z-index: 6;
   }
   .dot {
-    width: 5px;
-    height: 5px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
     background: var(--gold);
     opacity: 0.3;
-    transition: opacity 0.2s, width 0.2s;
+    transition: opacity 0.2s;
+    cursor: pointer;
   }
-  .dot.active { opacity: 1; width: 6px; height: 6px; }
+  .dot.active { opacity: 1; }
+  .dot:hover { opacity: 0.65; }
 
-  /* BADGES */
   .star-badge {
     position: absolute;
     top: 8px;
@@ -281,7 +258,6 @@
     cursor: pointer;
   }
 
-  /* CARD INFO */
   .card-info {
     padding: 8px 10px 10px;
     display: flex;
@@ -318,12 +294,9 @@
     color: var(--dark);
     margin-bottom: 8px;
   }
-  .product-price span { font-size: 11px; font-weight: 300; color: var(--medium); }
-  .price-sale { text-decoration: line-through; color: var(--medium); font-size: 11px; }
+  .price-sale { text-decoration: line-through; color: var(--medium); font-size: 11px; font-weight: 300; }
   .price-new { color: #C0404A; font-weight: 700; }
 
-  /* BUTTONS */
-  .btn-row { display: flex; flex-direction: column; margin-top: auto; }
   .add-btn {
     padding: 5px;
     background: var(--rose);
@@ -336,11 +309,11 @@
     cursor: pointer;
     transition: all 0.2s;
     letter-spacing: 0.03em;
+    margin-top: auto;
   }
   .add-btn:hover { background: var(--rose-dark); }
   .add-btn.added { background: #5A8C6B; }
 
-  /* QTY */
   .qty-control {
     display: flex;
     align-items: center;
@@ -363,7 +336,6 @@
   .qty-btn:hover { background: var(--light-border); }
   .qty-num { font-size: 14px; font-weight: 500; min-width: 20px; text-align: center; }
 
-  /* CART BTN */
   .cart-btn {
     position: fixed;
     bottom: 24px;
@@ -397,7 +369,6 @@
     font-weight: 700;
   }
 
-  /* CART MODAL */
   .modal-overlay {
     display: none;
     position: fixed;
@@ -474,7 +445,6 @@
   .total-note p { margin-bottom: 4px; }
   .total-note strong { color: var(--dark); }
 
-  /* FORM */
   .form-title { font-size: 18px; font-weight: 400; margin-bottom: 16px; color: var(--dark); }
   .form-group { margin-bottom: 14px; }
   .form-group label {
@@ -522,18 +492,6 @@
   .hidden { display: none !important; }
   .empty-cat { text-align: center; padding: 48px 20px; color: var(--medium); font-size: 13px; line-height: 1.8; }
   .empty-cat span { font-size: 32px; display: block; margin-bottom: 12px; }
-
-  /* VER MAS MODAL */
-  .ver-mas-modal { display: none; position: fixed; inset: 0; background: rgba(28,24,20,0.5); z-index: 1000; align-items: flex-end; justify-content: center; }
-  .ver-mas-modal.open { display: flex; }
-  .ver-mas-content { background: var(--cream); width: 100%; max-width: 480px; border-radius: 24px 24px 0 0; padding: 24px 20px 36px; max-height: 80vh; overflow-y: auto; animation: slideUp 0.3s ease; }
-  .ver-mas-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
-  .ver-mas-brand { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--medium); margin-bottom: 4px; }
-  .ver-mas-name { font-size: 22px; color: var(--dark); font-weight: 400; }
-  .ver-mas-close { background: var(--rose); border: none; font-size: 18px; color: white; cursor: pointer; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-  .ver-mas-section { margin-bottom: 16px; }
-  .ver-mas-section-title { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--medium); margin-bottom: 6px; }
-  .ver-mas-section p { font-size: 13px; color: var(--medium); line-height: 1.7; }
 </style>
 </head>
 <body>
@@ -564,13 +522,11 @@
 
 </div>
 
-<!-- CART BTN -->
 <button class="cart-btn" onclick="openCart()">
   🛍 Mi pedido
   <div class="cart-count" id="cartCount">0</div>
 </button>
 
-<!-- CART MODAL -->
 <div class="modal-overlay" id="cartModal">
   <div class="cart-modal">
     <div class="modal-header">
@@ -623,146 +579,83 @@
   </div>
 </div>
 
-<!-- VER MAS MODAL -->
-<div id="verMasModal" class="ver-mas-modal" onclick="if(event.target===this)closeVerMas()">
-  <div class="ver-mas-content">
-    <div class="ver-mas-header">
-      <div>
-        <div class="ver-mas-brand" id="verMasBrand"></div>
-        <div class="ver-mas-name" id="verMasName"></div>
-      </div>
-      <button class="ver-mas-close" onclick="closeVerMas()">×</button>
-    </div>
-    <div id="verMasDesc" class="ver-mas-section" style="display:none">
-      <div class="ver-mas-section-title">Descripción</div>
-      <p id="verMasDescText"></p>
-    </div>
-    <div id="verMasUso" class="ver-mas-section" style="display:none">
-      <div class="ver-mas-section-title">Cómo se usa</div>
-      <p id="verMasUsoText"></p>
-    </div>
-  </div>
-</div>
-
 <script>
-// ============================================================
-// CART — localStorage compartido con index.html
-// ============================================================
 const CART_KEY = 'cbu_cart';
-
-function loadCart() {
-  try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; }
-  catch(e) { return []; }
-}
-function saveCart(c) {
-  localStorage.setItem(CART_KEY, JSON.stringify(c));
-}
-
+function loadCart() { try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch(e) { return []; } }
+function saveCart(c) { localStorage.setItem(CART_KEY, JSON.stringify(c)); }
 let cart = loadCart();
-
-// ============================================================
-// PRODUCTS — se cargan desde Apps Script igual que index.html
-// Array local de ejemplo; se sobreescribe con datos del Sheet
-// ============================================================
 let products = [];
 
-// Apps Script URL (mismo que index.html)
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyAcFq8fcDDp81yJpoC6yDdgAaXZXZcsR6xeAgPtKmsC-_WM7p969v0CBDRjdJcvvnv/exec';
 
-// Callback JSONP — filtra solo cat 'accesorios'
 function _catalogCallback(data) {
-  if (Array.isArray(data) && data.length > 0) {
-    products = data.filter(p => p.cat === 'accesorios');
-  }
+  if (Array.isArray(data) && data.length > 0) products = data;
   renderCatalog();
 }
 
 (function initCatalog() {
   const script = document.createElement('script');
   script.src = SCRIPT_URL + '?callback=_catalogCallback&sheet=accesorios';
-  script.onerror = () => renderCatalog(); // fallback: muestra vacío
+  script.onerror = () => renderCatalog();
   document.head.appendChild(script);
 })();
 
-// ============================================================
-// RENDER
-// ============================================================
-function formatPrice(p) {
-  return '$' + p.toLocaleString('es-CL');
-}
+function formatPrice(p) { return '$' + p.toLocaleString('es-CL'); }
 
-// Agrupa productos por subcategoría (campo 'subcat' o muestra todos juntos)
 function renderCatalog(filtered) {
   const list = filtered !== undefined ? filtered : products;
   const el = document.getElementById('catalog');
-
   if (!list.length) {
     el.innerHTML = `<div class="empty-cat"><span>🌿</span>No hay accesorios disponibles por ahora.<br>Vuelve pronto!</div>`;
     return;
   }
-
-  // Agrupar por subcat si existe, sino todo junto
   const groups = {};
   list.forEach(p => {
-    const key = p.subcat || 'ACCESORIOS';
+    const key = (p.subcat || 'ACCESORIOS').toUpperCase();
     if (!groups[key]) groups[key] = [];
     groups[key].push(p);
   });
-
   let html = '';
   Object.entries(groups).forEach(([title, items]) => {
     html += `
-      <div class="section-header">
-        <h2>${title}</h2>
-        <div class="section-line"></div>
-      </div>
-      <div class="fashion-grid">
-        ${items.map(p => renderCard(p)).join('')}
-      </div>
+      <div class="section-header"><h2>${title}</h2><div class="section-line"></div></div>
+      <div class="fashion-grid">${items.map(p => renderCard(p)).join('')}</div>
     `;
   });
-
   el.innerHTML = html;
   updateCartUI();
 }
 
 function renderCard(p) {
-  const inCart = cart.find(c => c.id === p.id);
+  const inCart = cart.find(c => c.id == p.id);
   const qty = inCart ? inCart.qty : 0;
-
-  // Fotos: p.img1, p.img2, p.img3 — o fallback a imgs/p{id}.jpg
   const photos = [];
   if (p.img1) photos.push(p.img1);
   if (p.img2) photos.push(p.img2);
   if (p.img3) photos.push(p.img3);
-  if (!photos.length) {
-    const ext = [65,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91].includes(p.id) ? 'png' : 'jpg';
-    photos.push(`imgs/p${p.id}.${ext}`);
-  }
+  if (!photos.length) photos.push(`imgs/p${p.id}.png`);
 
   const discount = p.sale && p.priceOld ? Math.round((1 - p.price / p.priceOld) * 100) : 0;
+  const pid = p.id;
+  const total = photos.length;
 
-  const slidesHtml = photos.map((src, i) => `
+  const slidesHtml = photos.map(src => `
     <div class="card-slide">
       <img src="${src}" alt="${p.name}" loading="lazy"
-        onerror="this.parentElement.innerHTML='<div class=\\'card-slide-placeholder\\'>${p.emoji || '🛍'}</div>'">
+        onerror="this.parentElement.innerHTML='<div class=\\'card-slide-placeholder\\'>🛍</div>'">
     </div>
   `).join('');
 
-  const dotsHtml = photos.length > 1
-    ? `<div class="dots-pill" id="dots-${p.id}">
-        ${photos.map((_, i) => `<div class="dot ${i===0?'active':''}" id="dot-${p.id}-${i}"></div>`).join('')}
+  const dotsHtml = total > 1
+    ? `<div class="dots-pill" id="dots-${pid}">
+        ${photos.map((_, i) => `<div class="dot ${i===0?'active':''}" id="dot-${pid}-${i}" onclick="goToSlide('${pid}',${i},${total})"></div>`).join('')}
        </div>`
     : '';
 
   return `
-    <div class="fashion-card" id="card-${p.id}">
-      <div class="card-img-wrap" id="imgwrap-${p.id}">
-        <div class="card-slides" id="slides-${p.id}">${slidesHtml}</div>
-        ${photos.length > 1 ? `
-          <div class="swipe-left" onclick="prevSlide(${p.id}, ${photos.length})"></div>
-          <div class="swipe-right" onclick="nextSlide(${p.id}, ${photos.length})"></div>
-        ` : ''}
+    <div class="fashion-card" id="card-${pid}">
+      <div class="card-img-wrap" id="imgwrap-${pid}" data-total="${total}">
+        <div class="card-slides" id="slides-${pid}">${slidesHtml}</div>
         ${p.star ? '<div class="star-badge">♡</div>' : ''}
         ${p.video ? `<div class="video-badge" onclick="window.open('${p.video}','_blank')">▶ Ver cómo se usa</div>` : ''}
         ${dotsHtml}
@@ -773,29 +666,32 @@ function renderCard(p) {
         <div class="product-name">${p.name}</div>
         ${p.desc ? `<div class="product-desc">${p.desc}</div>` : ''}
         <div class="product-price">
-          ${p.sale && p.priceOld ? `<span class="price-sale">${formatPrice(p.priceOld)}</span> <span class="price-new">${formatPrice(p.price)}</span>` : formatPrice(p.price)}
-          ${p.size ? `<span> · ${p.size}</span>` : ''}
+          ${p.sale && p.priceOld
+            ? `<span class="price-sale">${formatPrice(p.priceOld)}</span> <span class="price-new">${formatPrice(p.price)}</span>`
+            : formatPrice(p.price)}
         </div>
         ${qty > 0 ? `
           <div class="qty-control">
-            <button class="qty-btn" onclick="changeQty(${p.id},-1)">−</button>
+            <button class="qty-btn" onclick="changeQty('${pid}',-1)">−</button>
             <span class="qty-num">${qty}</span>
-            <button class="qty-btn" onclick="changeQty(${p.id},1)">+</button>
+            <button class="qty-btn" onclick="changeQty('${pid}',1)">+</button>
           </div>
-          <button class="add-btn added" onclick="changeQty(${p.id},-1)">✓ Agregado</button>
+          <button class="add-btn added" onclick="changeQty('${pid}',-1)">✓ Agregado</button>
         ` : `
-          <button class="add-btn" onclick="addToCart(${p.id})">Agregar</button>
+          <button class="add-btn" onclick="addToCart('${pid}')">Agregar</button>
         `}
       </div>
     </div>
   `;
 }
 
-// ============================================================
 // SLIDER
-// ============================================================
 const slideIndex = {};
 
+function goToSlide(id, idx, total) {
+  slideIndex[id] = idx;
+  applySlide(id, total);
+}
 function nextSlide(id, total) {
   slideIndex[id] = ((slideIndex[id] || 0) + 1) % total;
   applySlide(id, total);
@@ -815,8 +711,7 @@ function applySlide(id, total) {
 }
 
 // Touch swipe
-let touchStartX = 0;
-let touchStartY = 0;
+let touchStartX = 0, touchStartY = 0;
 document.addEventListener('touchstart', e => {
   touchStartX = e.touches[0].clientX;
   touchStartY = e.touches[0].clientY;
@@ -828,33 +723,28 @@ document.addEventListener('touchend', e => {
   const wrap = e.target.closest('.card-img-wrap');
   if (!wrap) return;
   const id = wrap.id.replace('imgwrap-', '');
-  const total = wrap.querySelectorAll('.card-slide').length;
+  const total = parseInt(wrap.dataset.total || 1);
   if (total < 2) return;
   if (dx < 0) nextSlide(id, total);
   else prevSlide(id, total);
 }, { passive: true });
 
-// ============================================================
 // SEARCH
-// ============================================================
 function searchProducts(query) {
   const q = query.toLowerCase().trim();
   if (!q) { renderCatalog(); return; }
   const filtered = products.filter(p =>
     p.name.toLowerCase().includes(q) ||
-    p.brand.toLowerCase().includes(q) ||
     (p.desc && p.desc.toLowerCase().includes(q))
   );
   renderCatalog(filtered);
 }
 
-// ============================================================
-// CART LOGIC
-// ============================================================
+// CART
 function addToCart(id) {
   const p = products.find(p => p.id == id);
   if (!p) return;
-  const existing = cart.find(c => c.id === id);
+  const existing = cart.find(c => c.id == id);
   if (existing) existing.qty += 1;
   else cart.push({ ...p, qty: 1 });
   saveCart(cart);
@@ -874,25 +764,25 @@ function changeQty(id, delta) {
 }
 
 function refreshCard(id) {
-  const p = products.find(p => p.id === id);
+  const p = products.find(p => p.id == id);
   const cardEl = document.getElementById('card-' + id);
   if (!cardEl || !p) return;
-  const inCart = cart.find(c => c.id === id);
+  const inCart = cart.find(c => c.id == id);
   const qty = inCart ? inCart.qty : 0;
   const info = cardEl.querySelector('.card-info');
   info.querySelectorAll('.qty-control, .add-btn').forEach(el => el.remove());
   if (qty > 0) {
     info.insertAdjacentHTML('beforeend', `
       <div class="qty-control">
-        <button class="qty-btn" onclick="changeQty(${p.id},-1)">−</button>
+        <button class="qty-btn" onclick="changeQty('${p.id}',-1)">−</button>
         <span class="qty-num">${qty}</span>
-        <button class="qty-btn" onclick="changeQty(${p.id},1)">+</button>
+        <button class="qty-btn" onclick="changeQty('${p.id}',1)">+</button>
       </div>
-      <button class="add-btn added" onclick="changeQty(${p.id},-1)">✓ Agregado</button>
+      <button class="add-btn added" onclick="changeQty('${p.id}',-1)">✓ Agregado</button>
     `);
   } else {
     info.insertAdjacentHTML('beforeend', `
-      <button class="add-btn" onclick="addToCart(${p.id})">Agregar</button>
+      <button class="add-btn" onclick="addToCart('${p.id}')">Agregar</button>
     `);
   }
 }
@@ -910,23 +800,19 @@ function renderCartItems() {
   const footer = document.getElementById('cartFooter');
   const empty = document.getElementById('cartEmpty');
   if (!cart.length) {
-    el.innerHTML = '';
-    footer.classList.add('hidden');
-    empty.classList.remove('hidden');
-    return;
+    el.innerHTML = ''; footer.classList.add('hidden'); empty.classList.remove('hidden'); return;
   }
-  empty.classList.add('hidden');
-  footer.classList.remove('hidden');
+  empty.classList.add('hidden'); footer.classList.remove('hidden');
   el.innerHTML = cart.map(c => `
     <div class="cart-item">
       <div style="flex:1">
         <div class="cart-item-name">${c.name}</div>
-        <div class="cart-item-detail">${c.brand}${c.size ? ' · ' + c.size : ''}</div>
+        <div class="cart-item-detail">${c.brand || 'Accesorio'}</div>
       </div>
       <div style="text-align:right">
         <div class="cart-item-price">${formatPrice(c.price * c.qty)}</div>
         <div style="font-size:11px;color:#8C7260;">x${c.qty} · ${formatPrice(c.price)} c/u</div>
-        <button class="remove-item" onclick="changeQty(${c.id},-${c.qty})">Eliminar</button>
+        <button class="remove-item" onclick="changeQty('${c.id}',-${c.qty})">Eliminar</button>
       </div>
     </div>
   `).join('');
@@ -937,9 +823,6 @@ function openCart() { document.getElementById('cartModal').classList.add('open')
 function closeCart() { document.getElementById('cartModal').classList.remove('open'); }
 document.getElementById('cartModal').addEventListener('click', function(e) { if (e.target===this) closeCart(); });
 
-// ============================================================
-// SUBMIT
-// ============================================================
 async function submitOrder() {
   const nombre = document.getElementById('fNombre').value.trim();
   const instagram = document.getElementById('fInstagram').value.trim();
@@ -972,22 +855,6 @@ async function submitOrder() {
     alert('Error: ' + e.message);
   }
 }
-
-// ============================================================
-// VER MAS
-// ============================================================
-function openVerMas(id) {
-  const p = products.find(p => p.id === id);
-  if (!p) return;
-  document.getElementById('verMasBrand').textContent = p.brand;
-  document.getElementById('verMasName').textContent = p.name;
-  const descEl = document.getElementById('verMasDesc');
-  const usoEl = document.getElementById('verMasUso');
-  if (p.desc_detallada) { document.getElementById('verMasDescText').textContent = p.desc_detallada; descEl.style.display='block'; } else descEl.style.display='none';
-  if (p.como_se_usa) { document.getElementById('verMasUsoText').textContent = p.como_se_usa; usoEl.style.display='block'; } else usoEl.style.display='none';
-  document.getElementById('verMasModal').classList.add('open');
-}
-function closeVerMas() { document.getElementById('verMasModal').classList.remove('open'); }
 
 updateCartUI();
 </script>
