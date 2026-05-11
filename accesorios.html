@@ -697,10 +697,9 @@ function goToSlide(id, idx) {
   if (idx >= s.total) idx = 0;
   s.current = idx;
   const track = document.getElementById('track-' + id);
-  const sliderEl = document.getElementById('slider-' + id);
-  if (!track || !sliderEl) return;
-  const w = sliderEl.offsetWidth;
-  track.style.transform = `translateX(-${idx * w}px)`;
+  if (!track) return;
+  // translateX en % relativo al ancho del track
+  track.style.transform = `translateX(-${idx * (100 / s.total)}%)`;
   for (let i = 0; i < s.total; i++) {
     const dot = document.getElementById(`dot-${id}-${i}`);
     if (dot) dot.classList.toggle('active', i === idx);
