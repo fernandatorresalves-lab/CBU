@@ -80,6 +80,11 @@
     background: var(--latte);
     color: var(--ivory);
   }
+  .filter-btn.sale-filter {
+    background: var(--rose);
+    color: var(--ivory);
+    font-weight: 600;
+  }
   .filter-btn.sale-filter.active {
     background: var(--rose);
     color: var(--ivory);
@@ -98,7 +103,7 @@
   .fashion-card { background: var(--nude); border-radius: 12px; overflow: hidden; border: 1px solid rgba(163,143,133,0.15); display: flex; flex-direction: column; }
 
   /* SLIDER */
-  .card-slider { position: relative; width: 100%; aspect-ratio: 4/5; background: var(--nude); overflow: hidden; }
+  .card-slider { position: relative; width: 100%; aspect-ratio: 2/3; background: var(--nude); overflow: hidden; }
   .card-track { display: flex; height: 100%; transition: transform 0.3s ease; }
   .card-slide { flex-shrink: 0; height: 100%; overflow: hidden; background: var(--ivory); }
   .card-slide img { width: 100%; height: 100%; object-fit: cover; display: block; -webkit-user-drag: none; user-select: none; pointer-events: none; }
@@ -120,7 +125,7 @@
   .product-desc { font-size: 10px; color: var(--latte); font-weight: 300; margin-bottom: 8px; line-height: 1.4; }
   .product-price { font-size: 13px; font-weight: 600; color: var(--dark); margin-bottom: 8px; }
   .price-sale { text-decoration: line-through; color: var(--latte); font-size: 11px; font-weight: 300; }
-  .price-new { color: var(--rose); font-weight: 700; }
+  .price-new { color: #B5433A; font-weight: 700; }
 
   .add-btn { padding: 6px; background: var(--rose); color: var(--ivory); border: none; border-radius: 50px; font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 500; cursor: pointer; transition: background 0.2s; margin-top: auto; }
   .add-btn:hover { background: var(--latte); }
@@ -176,12 +181,12 @@
 
   <div class="catalog-topbar">
     <a class="back-btn" href="index.html">← Volver</a>
+    <button class="filter-btn sale-filter" id="filter-sale" onclick="setFilter('sale')">SALE</button>
     <button class="filter-btn active" id="filter-todos" onclick="setFilter('todos')">Ver Todo</button>
     <button class="filter-btn" id="filter-Calzas" onclick="setFilter('Calzas')">Calzas</button>
     <button class="filter-btn" id="filter-Enterito" onclick="setFilter('Enterito')">Enteritos</button>
     <button class="filter-btn" id="filter-Conjunto" onclick="setFilter('Conjunto')">Conjuntos</button>
     <button class="filter-btn" id="filter-Capas" onclick="setFilter('Capas')">Capas</button>
-    <button class="filter-btn sale-filter" id="filter-sale" onclick="setFilter('sale')">SALE</button>
   </div>
 
   <div class="search-row">
