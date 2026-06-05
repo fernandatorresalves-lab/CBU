@@ -255,13 +255,13 @@ let currentFilter = 'todos';
 
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyAcFq8fcDDp81yJpoC6yDdgAaXZXZcsR6xeAgPtKmsC-_WM7p969v0CBDRjdJcvvnv/exec';
 
-function _catalogCallback(data) {
+function _sportwearCallback(data) {
   if (Array.isArray(data) && data.length > 0) products = data;
   renderCatalog();
 }
 (function() {
   const s = document.createElement('script');
-  s.src = SCRIPT_URL + '?callback=_catalogCallback&sheet=sportwear&t=' + Date.now();
+  s.src = SCRIPT_URL + '?callback=_sportwearCallback&sheet=sportwear&t=' + Date.now();
   s.onerror = () => renderCatalog();
   document.head.appendChild(s);
 })();
