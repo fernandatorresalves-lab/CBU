@@ -7,32 +7,30 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --cream: #FAF6F1;
-    --warm-white: #F5EDE3;
-    --gold: #C9A96E;
-    --gold-light: #D4A87E;
-    --dark: #1C1612;
-    --medium: #8C7260;
-    --light-border: #E0D0C0;
-    --tag-bg: #F2E8DC;
-    --header-bg: #C4886A;
-    --header-text: #fff;
-    --rose: #D9B2B3;
-    --rose-dark: #be9092;
-    --accent1: #C4886A;
-    --accent2: #E8D4A8;
-    --accent3: #D9B2B3;
-    --accent4: #E8D4A8;
-    --accent5: #C9A96E;
-    --soft: #E8D8C4;
-    --pink-light: #D9B2B3;
+    --ivory:       #EDE9E3;
+    --nude:        #E7D7C9;
+    --rose:        #D4B2A7;
+    --stone:       #CDC6C3;
+    --latte:       #A38F85;
+    --latte-dark:  #7A6A62;
+    --cream:       #EDE9E3;
+    --warm-white:  #E7D7C9;
+    --gold:        #A38F85;
+    --dark:        #5A4A42;
+    --medium:      #A38F85;
+    --light-border:#D4B2A7;
+    --tag-bg:      #E7D7C9;
+    --header-bg:   #D4B2A7;
+    --header-text: #EDE9E3;
+    --rose-dark:   #B89A90;
+    --soft:        #E7D7C9;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
     font-family: 'DM Sans', sans-serif;
-    background: #E8D8C4;
+    background: #EDE9E3;
     color: var(--dark);
     min-height: 100vh;
     display: flex;
@@ -43,9 +41,9 @@
   #app-wrapper {
     width: 100%;
     max-width: 460px;
-    background: var(--cream);
+    background: var(--ivory);
     min-height: 100vh;
-    box-shadow: 0 8px 40px rgba(0,0,0,0.10);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.08);
     position: relative;
     border-radius: 32px;
     overflow: hidden;
@@ -53,11 +51,10 @@
 
   /* ===================== HEADER ===================== */
   header {
-    background: #D9B2B3;
-    color: white;
+    background: var(--rose);
+    color: var(--ivory);
     padding: 28px 24px 24px;
     text-align: center;
-    border-bottom: none;
   }
 
   header .brand {
@@ -66,7 +63,7 @@
     font-weight: 400;
     letter-spacing: 0.35em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.9);
+    color: rgba(237,233,227,0.9);
     margin-bottom: 8px;
   }
 
@@ -75,7 +72,7 @@
     font-size: 26px;
     font-weight: 300;
     letter-spacing: 0.08em;
-    color: white;
+    color: var(--ivory);
   }
 
   .header-sub {
@@ -83,27 +80,27 @@
     font-size: 34px;
     font-weight: 300;
     letter-spacing: 0.22em;
-    color: white;
+    color: var(--ivory);
     text-transform: uppercase;
     margin-top: 6px;
   }
 
   .note-banner {
-    background: var(--accent2);
-    color: var(--dark);
+    background: var(--nude);
+    color: var(--latte);
     text-align: center;
     padding: 12px 20px;
     font-size: 11px;
     letter-spacing: 0.05em;
     line-height: 1.6;
   }
-  .note-banner a { color: var(--dark); text-decoration: underline; font-weight: 600; }
+  .note-banner a { color: var(--latte); text-decoration: underline; font-weight: 600; }
 
   .hiw-note {
     text-align: center;
     padding: 10px 20px;
     font-size: 12px;
-    color: var(--medium);
+    color: var(--latte);
     font-weight: 500;
     letter-spacing: 0.03em;
     text-decoration: underline;
@@ -111,8 +108,8 @@
   }
 
   .how-it-works {
-    background: var(--warm-white);
-    border-bottom: 1px solid var(--light-border);
+    background: var(--ivory);
+    border-bottom: 1px solid rgba(163,143,133,0.15);
     padding: 18px 20px;
   }
 
@@ -132,7 +129,7 @@
     align-items: flex-start;
     gap: 10px;
     font-size: 12px;
-    color: var(--medium);
+    color: var(--latte);
     line-height: 1.5;
   }
   .hiw-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
@@ -143,7 +140,7 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    background: var(--cream);
+    background: var(--ivory);
   }
 
   .landing-tab {
@@ -152,7 +149,7 @@
     align-items: center;
     justify-content: center;
     padding: 18px 24px;
-    background: #F2E8DC;
+    background: var(--nude);
     border: none;
     border-radius: 50px;
     cursor: pointer;
@@ -160,47 +157,109 @@
     font-family: 'DM Sans', sans-serif;
     font-size: 15px;
     font-weight: 400;
-    color: #8C7260;
+    color: var(--latte);
     text-align: center;
     letter-spacing: 0.02em;
   }
 
-  .landing-tab:hover:not(.soon-tab) {
-    background: #E8D8C4;
+  .landing-tab:hover:not(.soon-tab):not(.encargar-tab) {
+    filter: brightness(0.96);
     transform: scale(1.02);
-    box-shadow: 0 4px 16px rgba(196,168,136,0.3);
+    box-shadow: 0 4px 16px rgba(163,143,133,0.2);
   }
 
   .landing-tab.sale-tab {
-    background: #E8D4A8;
-    border-color: #E8D4A8;
+    background: var(--rose);
+    color: var(--ivory);
     font-weight: 700;
   }
-  .landing-tab.sale-tab:hover { background: #D8C498; border-color: #D8C498; }
+  .landing-tab.sale-tab:hover { background: var(--rose-dark); }
 
-  .landing-tab.bestseller-tab {
-    background: #D9B2B3;
-    border-color: #D9B2B3;
-    font-weight: 700;
+  .landing-tab.inmediata-tab {
+    background: var(--stone);
+    color: var(--latte-dark);
+    font-weight: 500;
   }
-  .landing-tab.bestseller-tab:hover { background: #be9092; border-color: #be9092; }
+
+  .landing-tab.encargar-tab {
+    background: var(--latte);
+    color: var(--ivory);
+    font-weight: 500;
+    border-radius: 50px;
+    transition: border-radius 0.2s ease, all 0.2s ease;
+  }
+  .landing-tab.encargar-tab.open {
+    border-radius: 16px 16px 0 0;
+  }
+  .landing-tab.encargar-tab:hover {
+    background: var(--latte-dark);
+  }
+
+  .encargar-arrow {
+    margin-left: 8px;
+    font-size: 12px;
+    transition: transform 0.25s ease;
+    display: inline-block;
+  }
+  .encargar-arrow.rotated { transform: rotate(180deg); }
+
+  .accordion-body {
+    background: var(--latte);
+    border-radius: 0 0 16px 16px;
+    padding: 6px 12px 12px;
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: -4px;
+  }
+  .accordion-body.open {
+    display: flex;
+  }
+
+  .sub-tab {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 18px;
+    background: rgba(237,233,227,0.18);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--ivory);
+    transition: background 0.2s;
+  }
+  .sub-tab:hover { background: rgba(237,233,227,0.28); }
+  .sub-tab.bs-tab {
+    background: var(--rose);
+    color: var(--ivory);
+    font-weight: 600;
+  }
+  .sub-tab.bs-tab:hover { background: var(--rose-dark); }
+
+  .landing-tab.accesorios-tab {
+    background: var(--stone);
+    color: var(--latte-dark);
+  }
 
   .landing-tab.soon-tab {
-    background: var(--soft);
-    border-color: var(--soft);
-    color: var(--medium);
-    opacity: 0.65;
+    background: var(--nude);
+    color: var(--latte);
+    opacity: 0.5;
     cursor: default;
     pointer-events: none;
   }
 
-  .tab-label { font-size: 15px; font-weight: 400; }
+  .tab-label { font-size: 15px; font-weight: inherit; }
 
   .sale-badge {
     display: inline-flex;
     align-items: center;
-    background: rgba(92,61,46,0.15);
-    color: var(--dark);
+    background: var(--latte);
+    color: var(--ivory);
     font-size: 11px;
     font-weight: 700;
     padding: 2px 9px;
@@ -213,8 +272,8 @@
   .soon-badge {
     display: inline-flex;
     align-items: center;
-    background: rgba(0,0,0,0.08);
-    color: var(--medium);
+    background: rgba(163,143,133,0.15);
+    color: var(--latte);
     font-size: 10px;
     font-weight: 600;
     padding: 2px 9px;
@@ -222,18 +281,20 @@
     letter-spacing: 0.08em;
     margin-left: 8px;
   }
-.new-badge {
-  display: inline-flex;
-  align-items: center;
-  background: rgba(217,178,179,0.25);
-  color: #D9B2B3;
-  font-size: 10px;
-  font-weight: 600;
-  padding: 2px 9px;
-  border-radius: 50px;
-  letter-spacing: 0.08em;
-  margin-left: 8px;
-}
+
+  .new-badge {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(237,233,227,0.3);
+    color: var(--ivory);
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 9px;
+    border-radius: 50px;
+    letter-spacing: 0.08em;
+    margin-left: 8px;
+  }
+
   /* ===================== CATALOG VIEW ===================== */
   #catalog-view { display: none; }
 
@@ -242,8 +303,8 @@
     align-items: center;
     gap: 10px;
     padding: 12px 16px;
-    background: var(--warm-white);
-    border-bottom: 1px solid var(--light-border);
+    background: var(--ivory);
+    border-bottom: 1px solid rgba(163,143,133,0.15);
     position: sticky;
     top: 0;
     z-index: 50;
@@ -251,26 +312,26 @@
 
   .back-btn {
     background: none;
-    border: 1px solid var(--light-border);
+    border: 1px solid rgba(163,143,133,0.3);
     border-radius: 50px;
     padding: 6px 14px;
     font-size: 12px;
-    color: var(--medium);
+    color: var(--latte);
     cursor: pointer;
     font-family: 'DM Sans', sans-serif;
     transition: all 0.2s;
     white-space: nowrap;
   }
-  .back-btn:hover { border-color: #D9B2B3; color: #D9B2B3; }
+  .back-btn:hover { border-color: var(--rose); color: var(--rose); }
 
   .topbar-title {
     font-family: 'DM Sans', sans-serif;
     font-size: 12px;
     font-weight: 500;
     letter-spacing: 0.05em;
-    color: var(--medium);
+    color: var(--latte);
     background: none;
-    border: 1px solid var(--light-border);
+    border: 1px solid rgba(163,143,133,0.3);
     border-radius: 50px;
     padding: 6px 16px;
     text-align: center;
@@ -278,15 +339,15 @@
 
   .search-row {
     padding: 8px 16px;
-    background: var(--cream);
-    border-bottom: 1px solid var(--light-border);
+    background: var(--ivory);
+    border-bottom: 1px solid rgba(163,143,133,0.12);
   }
   .search-box {
     display: flex;
     align-items: center;
     gap: 6px;
-    background: white;
-    border: 1px solid var(--light-border);
+    background: var(--nude);
+    border: 1px solid rgba(163,143,133,0.2);
     border-radius: 20px;
     padding: 0 12px;
   }
@@ -300,7 +361,7 @@
     font-family: 'DM Sans', sans-serif;
     padding: 8px 0;
   }
-  .search-box input::placeholder { color: #8C7260; }
+  .search-box input::placeholder { color: var(--latte); }
 
   /* SECTION TITLE */
   .section-header {
@@ -313,15 +374,15 @@
     font-family: 'DM Sans', sans-serif;
     font-size: 11px;
     font-weight: 500;
-    color: white;
+    color: var(--ivory);
     letter-spacing: 0.1em;
     text-transform: uppercase;
     white-space: nowrap;
-    background: #8C7260;
+    background: var(--latte);
     padding: 6px 16px;
     border-radius: 50px;
   }
-  .section-line { flex: 1; height: 1px; background: var(--light-border); }
+  .section-line { flex: 1; height: 1px; background: rgba(163,143,133,0.2); }
 
   /* PRODUCT GRID */
   .products-grid {
@@ -332,28 +393,28 @@
   }
 
   .product-card {
-    background: var(--warm-white);
+    background: var(--nude);
     border-radius: 12px;
     overflow: hidden;
-    border: 1px solid var(--light-border);
+    border: 1px solid rgba(163,143,133,0.15);
     transition: transform 0.2s, box-shadow 0.2s;
     position: relative;
     display: flex;
     flex-direction: column;
   }
-  .product-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(28,24,20,0.08); }
+  .product-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(163,143,133,0.15); }
 
   .product-img {
     width: 100%;
     aspect-ratio: 1;
     object-fit: contain;
-    background: white;
+    background: var(--ivory);
     padding: 4px;
   }
   .product-img-placeholder {
     width: 100%;
     aspect-ratio: 1;
-    background: linear-gradient(135deg, #F2E8DC 0%, #E8D8C4 100%);
+    background: linear-gradient(135deg, var(--ivory) 0%, var(--nude) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -372,7 +433,7 @@
     font-weight: 500;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--medium);
+    color: var(--latte);
     margin-bottom: 4px;
   }
   .product-name {
@@ -385,7 +446,7 @@
   }
   .product-desc {
     font-size: 10px;
-    color: var(--medium);
+    color: var(--latte);
     font-weight: 300;
     margin-bottom: 8px;
     line-height: 1.4;
@@ -397,13 +458,11 @@
     color: var(--dark);
     margin-bottom: 8px;
   }
-  .product-price span { font-size: 11px; font-weight: 300; color: var(--medium); font-family: 'DM Sans', sans-serif; }
+  .product-price span { font-size: 11px; font-weight: 300; color: var(--latte); font-family: 'DM Sans', sans-serif; }
 
-  /* SALE price */
-  .product-price-sale { text-decoration: line-through; color: var(--medium); font-size: 11px; }
-  .product-price-new { color: #C0404A; font-weight: 700; }
+  .product-price-sale { text-decoration: line-through; color: var(--latte); font-size: 11px; }
+  .product-price-new { color: var(--rose); font-weight: 700; }
 
-  /* STAR (fav) */
   .star-badge {
     position: absolute;
     top: 8px;
@@ -414,13 +473,12 @@
     text-shadow: 0 1px 3px rgba(255,255,255,0.8);
   }
 
-  /* VIDEO / COMO SE USA badge */
   .video-badge {
     position: absolute;
     top: 8px;
     left: 8px;
-    background: rgba(140,114,96,0.88);
-    color: white;
+    background: rgba(163,143,133,0.88);
+    color: var(--ivory);
     font-size: 9px;
     font-weight: 600;
     letter-spacing: 0.04em;
@@ -429,16 +487,15 @@
     backdrop-filter: blur(4px);
     cursor: pointer;
   }
-  .video-badge:hover { background: rgba(140,114,96,1); }
+  .video-badge:hover { background: rgba(163,143,133,1); }
 
-  /* SALE ribbon bottom of image */
   .sale-card-ribbon {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    background: #E8D4A8;
-    color: #1C1612;
+    background: var(--rose);
+    color: var(--ivory);
     font-size: 9px;
     font-weight: 700;
     padding: 4px 6px;
@@ -452,7 +509,7 @@
   .add-btn {
     padding: 5px;
     background: var(--rose);
-    color: white;
+    color: var(--ivory);
     border: none;
     border-radius: 8px;
     font-family: 'DM Sans', sans-serif;
@@ -463,13 +520,13 @@
     letter-spacing: 0.03em;
   }
   .add-btn:hover { background: var(--rose-dark); }
-  .add-btn.added { background: #5A8C6B; color: white; }
+  .add-btn.added { background: var(--latte); color: var(--ivory); }
 
   .ver-mas-btn {
     width: 100%;
     padding: 0;
     background: transparent;
-    color: var(--medium);
+    color: var(--latte);
     border: none;
     font-family: 'DM Sans', sans-serif;
     font-size: 10px;
@@ -479,7 +536,7 @@
     margin-top: 5px;
     text-decoration: underline;
     text-underline-offset: 2px;
-    text-decoration-color: #8C7260;
+    text-decoration-color: var(--latte);
   }
 
   /* QTY */
@@ -492,8 +549,8 @@
   }
   .qty-btn {
     width: 28px; height: 28px;
-    border: 1px solid var(--light-border);
-    background: var(--cream);
+    border: 1px solid rgba(163,143,133,0.3);
+    background: var(--ivory);
     border-radius: 6px;
     font-size: 16px;
     cursor: pointer;
@@ -502,12 +559,12 @@
     justify-content: center;
     transition: background 0.15s;
   }
-  .qty-btn:hover { background: var(--light-border); }
-  .qty-num { font-size: 14px; font-weight: 500; min-width: 20px; text-align: center; }
+  .qty-btn:hover { background: var(--stone); }
+  .qty-num { font-size: 14px; font-weight: 500; min-width: 20px; text-align: center; color: var(--dark); }
 
   /* VARIANT */
   .variant-option {
-    border: 0.5px solid #E0D0C0;
+    border: 0.5px solid rgba(163,143,133,0.3);
     border-radius: 10px;
     padding: 12px 14px;
     cursor: pointer;
@@ -517,8 +574,8 @@
   .variant-selected { border: 2px solid var(--rose) !important; }
   .promo-badge {
     font-size: 10px;
-    background: #EDD8D8;
-    color: #72243E;
+    background: var(--nude);
+    color: var(--rose);
     border-radius: 4px;
     padding: 2px 6px;
     font-weight: 500;
@@ -529,8 +586,8 @@
     position: fixed;
     bottom: 24px;
     right: 20px;
-    background: #D9B2B3;
-    color: white;
+    background: var(--latte);
+    color: var(--ivory);
     border: none;
     border-radius: 50px;
     padding: 14px 22px;
@@ -541,14 +598,14 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    box-shadow: 0 4px 20px rgba(28,22,18,0.15);
+    box-shadow: 0 4px 20px rgba(163,143,133,0.35);
     transition: all 0.25s ease;
     z-index: 200;
   }
-  .cart-btn:hover { background: #be9092; transform: translateY(-2px); }
+  .cart-btn:hover { background: var(--latte-dark); transform: translateY(-2px); }
   .cart-count {
-    background: #E8D4A8;
-    color: var(--dark);
+    background: var(--rose);
+    color: var(--ivory);
     border-radius: 50%;
     width: 20px; height: 20px;
     display: flex;
@@ -563,13 +620,13 @@
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(92,61,46,0.4);
+    background: rgba(90,74,66,0.35);
     z-index: 300;
     align-items: flex-end;
   }
   .modal-overlay.open { display: flex; }
   .cart-modal {
-    background: var(--cream);
+    background: var(--ivory);
     width: 100%;
     max-height: 85vh;
     border-radius: 24px 24px 0 0;
@@ -584,7 +641,7 @@
     align-items: center;
     margin-bottom: 20px;
     padding-bottom: 14px;
-    border-bottom: 1.5px solid var(--light-border);
+    border-bottom: 1.5px solid rgba(163,143,133,0.2);
   }
   .modal-header h3 {
     font-family: 'DM Sans', sans-serif;
@@ -593,12 +650,12 @@
     color: var(--dark);
   }
   .close-btn {
-    background: #D9B2B3;
+    background: var(--rose);
     border: none;
     width: 32px; height: 32px;
     border-radius: 50%;
     font-size: 16px;
-    color: white;
+    color: var(--ivory);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -610,16 +667,16 @@
     justify-content: space-between;
     align-items: flex-start;
     padding: 12px 0;
-    border-bottom: 1px solid var(--light-border);
+    border-bottom: 1px solid rgba(163,143,133,0.15);
     gap: 10px;
   }
   .cart-item-info { flex: 1; }
   .cart-item-name { font-size: 14px; font-weight: 500; margin-bottom: 2px; color: var(--dark); }
-  .cart-item-detail { font-size: 12px; color: var(--medium); }
+  .cart-item-detail { font-size: 12px; color: var(--latte); }
   .cart-item-right { text-align: right; }
   .cart-item-price { font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 600; color: var(--dark); }
-  .remove-item { background: none; border: none; color: #CC6B6B; font-size: 11px; cursor: pointer; margin-top: 4px; display: block; }
-  .cart-empty { text-align: center; padding: 32px 0; color: var(--medium); font-size: 14px; }
+  .remove-item { background: none; border: none; color: var(--rose); font-size: 11px; cursor: pointer; margin-top: 4px; display: block; }
+  .cart-empty { text-align: center; padding: 32px 0; color: var(--latte); font-size: 14px; }
   .cart-total {
     display: flex;
     justify-content: space-between;
@@ -628,18 +685,18 @@
     font-size: 17px;
     font-weight: 600;
     color: var(--dark);
-    border-top: 1.5px solid var(--light-border);
+    border-top: 1.5px solid rgba(163,143,133,0.2);
     margin-top: 8px;
   }
 
   .total-note {
-    background: white;
-    border: 1.5px solid #E0D0C0;
+    background: var(--nude);
+    border: 1px solid rgba(163,143,133,0.2);
     border-radius: 20px;
     padding: 16px 18px;
     margin-bottom: 20px;
     font-size: 12px;
-    color: var(--medium);
+    color: var(--latte);
     line-height: 1.7;
   }
   .total-note p { margin-bottom: 4px; }
@@ -660,27 +717,27 @@
     font-weight: 500;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--medium);
+    color: var(--latte);
     margin-bottom: 6px;
   }
   .form-group input, .form-group textarea {
     width: 100%; padding: 12px 14px;
-    border: 1.5px solid var(--light-border);
+    border: 1.5px solid rgba(163,143,133,0.25);
     border-radius: 50px;
     font-family: 'DM Sans', sans-serif;
     font-size: 14px;
     color: var(--dark);
-    background: white;
+    background: var(--nude);
     outline: none;
     transition: border-color 0.2s;
   }
   .form-group textarea { border-radius: 16px; }
-  .form-group input:focus, .form-group textarea:focus { border-color: #D9B2B3; }
+  .form-group input:focus, .form-group textarea:focus { border-color: var(--rose); }
 
   .submit-btn {
     width: 100%; padding: 16px;
-    background: #D9B2B3;
-    color: white;
+    background: var(--latte);
+    color: var(--ivory);
     border: none;
     border-radius: 50px;
     font-family: 'DM Sans', sans-serif;
@@ -691,19 +748,19 @@
     transition: background 0.2s;
     margin-top: 8px;
   }
-  .submit-btn:hover { background: #be9092; }
-  .submit-btn:disabled { background: #CCC; cursor: not-allowed; }
+  .submit-btn:hover { background: var(--latte-dark); }
+  .submit-btn:disabled { background: var(--stone); cursor: not-allowed; }
 
   .success-msg { display: none; text-align: center; padding: 16px; }
   .success-msg .check { font-size: 32px; margin-bottom: 8px; }
   .success-msg h4 { font-family: 'DM Sans', sans-serif; font-size: 20px; font-weight: 400; margin-bottom: 6px; color: var(--dark); }
-  .success-msg p { font-size: 12px; color: var(--medium); line-height: 1.5; }
+  .success-msg p { font-size: 12px; color: var(--latte); line-height: 1.5; }
 
   /* VER MAS MODAL */
-  .ver-mas-modal { display: none; position: fixed; inset: 0; background: rgba(28,24,20,0.5); z-index: 1000; align-items: flex-end; justify-content: center; }
+  .ver-mas-modal { display: none; position: fixed; inset: 0; background: rgba(90,74,66,0.4); z-index: 1000; align-items: flex-end; justify-content: center; }
   .ver-mas-modal.open { display: flex; }
   .ver-mas-content {
-    background: #FAF6F1;
+    background: var(--ivory);
     width: 100%; max-width: 480px;
     border-radius: 24px 24px 0 0;
     padding: 24px 20px 36px;
@@ -712,22 +769,21 @@
     animation: slideUp 0.3s ease;
   }
   .ver-mas-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
-  .ver-mas-brand { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--medium); margin-bottom: 4px; font-family: 'DM Sans', sans-serif; }
+  .ver-mas-brand { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--latte); margin-bottom: 4px; font-family: 'DM Sans', sans-serif; }
   .ver-mas-name { font-family: 'DM Sans', sans-serif; font-size: 22px; color: var(--dark); font-weight: 400; }
-  .ver-mas-close { background: #D9B2B3; border: none; font-size: 18px; color: white; cursor: pointer; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+  .ver-mas-close { background: var(--rose); border: none; font-size: 18px; color: var(--ivory); cursor: pointer; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
   .ver-mas-section { margin-bottom: 16px; }
-  .ver-mas-section-title { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--medium); margin-bottom: 6px; }
-  .ver-mas-section p { font-size: 13px; color: var(--medium); line-height: 1.7; }
-  .ver-mas-link { display: inline-block; margin-top: 8px; padding: 8px 16px; border: 1.5px solid #D9B2B3; border-radius: 50px; font-size: 12px; color: var(--dark); text-decoration: none; transition: all 0.2s; font-family: 'DM Sans', sans-serif; }
-  .ver-mas-link:hover { background: #D9B2B3; color: white; }
+  .ver-mas-section-title { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--latte); margin-bottom: 6px; }
+  .ver-mas-section p { font-size: 13px; color: var(--latte); line-height: 1.7; }
+  .ver-mas-link { display: inline-block; margin-top: 8px; padding: 8px 16px; border: 1.5px solid var(--rose); border-radius: 50px; font-size: 12px; color: var(--dark); text-decoration: none; transition: all 0.2s; font-family: 'DM Sans', sans-serif; }
+  .ver-mas-link:hover { background: var(--rose); color: var(--ivory); }
 
   .hidden { display: none !important; }
 
-  /* No results */
   .empty-cat {
     text-align: center;
     padding: 48px 20px;
-    color: var(--medium);
+    color: var(--latte);
     font-size: 13px;
     line-height: 1.8;
   }
@@ -737,20 +793,20 @@
 <body>
 <div id="app-wrapper">
 
-<!-- ===================== HEADER (siempre visible) ===================== -->
+<!-- ===================== HEADER ===================== -->
 <header>
   <div class="brand">🇧🇷 productos desde brasil</div>
   <div class="header-sub">catálogo</div>
-  <div id="flight-countdown" style="margin-top:14px;background:rgba(255,255,255,0.15);border-radius:14px;padding:10px 16px;display:inline-flex;align-items:center;gap:10px;">
+  <div id="flight-countdown" style="margin-top:14px;background:rgba(237,233,227,0.15);border-radius:14px;padding:10px 16px;display:inline-flex;align-items:center;gap:10px;">
     <span style="font-size:16px;">✈️</span>
     <div style="text-align:left;">
-      <div style="font-family:'DM Sans',sans-serif;font-size:9px;color:rgba(255,255,255,0.7);letter-spacing:0.1em;text-transform:uppercase;">próximo vuelo</div>
-      <div style="font-family:'DM Sans',sans-serif;font-size:13px;color:white;font-weight:500;">Brasil en <strong id="dias-cnt" style="font-size:18px;"></strong> días</div>
+      <div style="font-family:'DM Sans',sans-serif;font-size:9px;color:rgba(237,233,227,0.7);letter-spacing:0.1em;text-transform:uppercase;">próximo vuelo</div>
+      <div style="font-family:'DM Sans',sans-serif;font-size:13px;color:#EDE9E3;font-weight:500;">Brasil en <strong id="dias-cnt" style="font-size:18px;"></strong> días</div>
     </div>
-    <div style="border-left:1px solid rgba(255,255,255,0.2);height:30px;"></div>
+    <div style="border-left:1px solid rgba(237,233,227,0.2);height:30px;"></div>
     <div style="text-align:left;">
-      <div style="font-family:'DM Sans',sans-serif;font-size:9px;color:rgba(255,255,255,0.7);letter-spacing:0.1em;text-transform:uppercase;">fecha</div>
-      <div style="font-family:'DM Sans',sans-serif;font-size:12px;color:white;font-weight:500;">20 mayo</div>
+      <div style="font-family:'DM Sans',sans-serif;font-size:9px;color:rgba(237,233,227,0.7);letter-spacing:0.1em;text-transform:uppercase;">fecha</div>
+      <div style="font-family:'DM Sans',sans-serif;font-size:12px;color:#EDE9E3;font-weight:500;">26 junio</div>
     </div>
   </div>
 </header>
@@ -778,36 +834,27 @@
     <span class="tab-label">SALE <span class="sale-badge">% OFF</span></span>
   </button>
 
-  <button class="landing-tab" onclick="openCat('entrega')">
+  <button class="landing-tab inmediata-tab" onclick="openCat('entrega')">
     <span class="tab-label">Entrega Inmediata</span>
   </button>
 
-  <button class="landing-tab" onclick="openCat('capilar')">
-    <span class="tab-label">Capilar</span>
+  <button class="landing-tab encargar-tab" id="encargarBtn" onclick="toggleAccordion()">
+    <span class="tab-label">Encargar <span class="encargar-arrow" id="encargarArrow">▾</span></span>
   </button>
-
-  <button class="landing-tab" onclick="openCat('corporal')">
-    <span class="tab-label">Corporal y Facial</span>
-  </button>
-
-<button class="landing-tab" onclick="openCat('makeup')">
-    <span class="tab-label">Make Up</span>
-  </button>
-
-  <button class="landing-tab" onclick="window.location.href='accesorios.html'">
-    <span class="tab-label">Accesorios <span class="new-badge">NEW</span></span>
-  </button>
-
-  <button class="landing-tab" onclick="openCat('otros')">
-    <span class="tab-label">Otros</span>
-  </button>
-
-  <button class="landing-tab bestseller-tab" onclick="openCat('bestsellers')">
-    <span class="tab-label">Best Sellers ✦</span>
-  </button>
+  <div class="accordion-body" id="accordionBody">
+    <button class="sub-tab" onclick="openCat('capilar')">Capilar</button>
+    <button class="sub-tab" onclick="openCat('corporal')">Corporal y Facial</button>
+    <button class="sub-tab" onclick="openCat('makeup')">Make Up</button>
+    <button class="sub-tab" onclick="openCat('otros')">Otros</button>
+    <button class="sub-tab bs-tab" onclick="openCat('bestsellers')">Best Sellers ✦</button>
+  </div>
 
   <button class="landing-tab" onclick="openCat('todos')">
     <span class="tab-label">Ver Todo</span>
+  </button>
+
+  <button class="landing-tab accesorios-tab" onclick="window.location.href='accesorios.html'">
+    <span class="tab-label">Accesorios <span class="new-badge">NEW</span></span>
   </button>
 
   <button class="landing-tab soon-tab">
@@ -822,14 +869,14 @@
   <div class="catalog-topbar">
     <button class="back-btn" onclick="goBack()">← Volver</button>
     <div class="topbar-title" id="catTitle">Catálogo</div>
-    <div style="width:70px"></div><!-- spacer -->
+    <div style="width:70px"></div>
   </div>
 
   <div class="search-row">
     <div class="search-box">
       <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
-        <circle cx="6.5" cy="6.5" r="5" stroke="#D9B2B3" stroke-width="1.5"/>
-        <line x1="10.5" y1="10.5" x2="14" y2="14" stroke="#D9B2B3" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="6.5" cy="6.5" r="5" stroke="#D4B2A7" stroke-width="1.5"/>
+        <line x1="10.5" y1="10.5" x2="14" y2="14" stroke="#D4B2A7" stroke-width="1.5" stroke-linecap="round"/>
       </svg>
       <input type="text" id="searchInput" placeholder="buscar producto..." oninput="searchProducts(this.value)" />
     </div>
@@ -864,7 +911,7 @@
       <div class="total-note">
         <p>💡 Este es el total estimado de tu encargo.</p>
         <p><strong>No se realiza ningún cobro ahora.</strong> Feñi te contactará por Instagram para confirmar disponibilidad y enviarte los datos de pago.</p>
-        <p style="margin-top:6px;">Métodos de pago:<br>💸 Transferencia bancaria<br>💳 Tarjeta de crédito <span style="color:#D9B2B3;font-weight:600;">(+4%)</span></p>
+        <p style="margin-top:6px;">Métodos de pago:<br>💸 Transferencia bancaria<br>💳 Tarjeta de crédito <span style="color:var(--rose);font-weight:600;">(+4%)</span></p>
       </div>
 
       <div class="order-form">
@@ -881,7 +928,7 @@
           <label>¿Algo que quieras aclarar?</label>
           <textarea id="fNotas" rows="2" placeholder="Tono, variante, consulta..."></textarea>
         </div>
-        <p style="font-size:11px;color:var(--medium);line-height:1.6;margin-bottom:14px;text-align:center;">
+        <p style="font-size:11px;color:var(--latte);line-height:1.6;margin-bottom:14px;text-align:center;">
           Una vez que confirme tu pedido te envío el formulario de envío o retiro 📦
         </p>
         <button class="submit-btn" id="submitBtn" onclick="submitOrder()">Enviar pedido ✨</button>
@@ -890,18 +937,18 @@
 
     <div id="cartEmpty" class="cart-empty">
       Todavía no agregaste nada 🙈<br>
-      <small style="color:#8C7260;">Explora el catálogo y agrega lo que te guste</small>
+      <small style="color:var(--latte);">Explora el catálogo y agrega lo que te guste</small>
     </div>
 
     <div class="success-msg" id="successMsg">
       <div class="check">🎉</div>
       <h4>¡Encargo recibido!</h4>
-      <p style="font-size:12px;color:var(--gold);letter-spacing:0.05em;margin-bottom:4px;">Código: <span id="orderCodeDisplay"></span></p>
+      <p style="font-size:12px;color:var(--rose);letter-spacing:0.05em;margin-bottom:4px;">Código: <span id="orderCodeDisplay"></span></p>
       <p>Feñi te va a escribir por Instagram para confirmar la disponibilidad.<br><br>
       Métodos de pago:<br>
       <strong>💸 Transferencia bancaria</strong><br>
       <strong>💳 Tarjeta de crédito/débito</strong> (+4%)<br><br>
-      Mientras, puedes seguir <a href="https://ig.me/m/closebyus" target="_blank" style="color:var(--gold)">@closebyus</a> 🌿</p>
+      Mientras, puedes seguir <a href="https://ig.me/m/closebyus" target="_blank" style="color:var(--rose)">@closebyus</a> 🌿</p>
     </div>
   </div>
 </div>
@@ -932,39 +979,36 @@
 </div>
 
 <!-- VARIANT MODAL -->
-<div id="variantModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(92,61,46,0.4);z-index:1000;align-items:center;justify-content:center;padding:20px;box-sizing:border-box;">
-  <div style="background:#FAF6F1;border-radius:24px;width:100%;max-width:320px;overflow:hidden;box-shadow:0 8px 32px rgba(217,178,179,0.2);">
-    <div style="padding:18px 20px 14px;border-bottom:1px solid #E0D0C0;">
-      <p id="variantModalBrand" style="font-size:11px;color:#8C7260;letter-spacing:0.08em;text-transform:uppercase;margin:0 0 4px;"></p>
-      <p id="variantModalName" style="font-size:17px;font-weight:500;margin:0 0 4px;color:#1C1612;"></p>
-      <p style="font-size:13px;color:#8C7260;margin:0;">Elige una opción</p>
+<div id="variantModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(90,74,66,0.4);z-index:1000;align-items:center;justify-content:center;padding:20px;box-sizing:border-box;">
+  <div style="background:#EDE9E3;border-radius:24px;width:100%;max-width:320px;overflow:hidden;box-shadow:0 8px 32px rgba(163,143,133,0.2);">
+    <div style="padding:18px 20px 14px;border-bottom:1px solid rgba(163,143,133,0.2);">
+      <p id="variantModalBrand" style="font-size:11px;color:#A38F85;letter-spacing:0.08em;text-transform:uppercase;margin:0 0 4px;"></p>
+      <p id="variantModalName" style="font-size:17px;font-weight:500;margin:0 0 4px;color:#5A4A42;"></p>
+      <p style="font-size:13px;color:#A38F85;margin:0;">Elige una opción</p>
     </div>
     <div id="variantOptions" style="padding:14px 20px;display:flex;flex-direction:column;gap:8px;"></div>
     <div style="padding:12px 20px 20px;display:flex;gap:8px;">
-      <button onclick="closeVariantModal()" style="flex:1;padding:12px;border:1.5px solid #E0D0C0;border-radius:50px;background:transparent;color:#8C7260;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;">Cancelar</button>
-      <button onclick="confirmVariant()" style="flex:2;padding:12px;border:none;border-radius:50px;background:#D9B2B3;color:white;font-size:13px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;">Agregar al pedido</button>
+      <button onclick="closeVariantModal()" style="flex:1;padding:12px;border:1.5px solid rgba(163,143,133,0.3);border-radius:50px;background:transparent;color:#A38F85;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;">Cancelar</button>
+      <button onclick="confirmVariant()" style="flex:2;padding:12px;border:none;border-radius:50px;background:#A38F85;color:#EDE9E3;font-size:13px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;">Agregar al pedido</button>
     </div>
   </div>
 </div>
 
 <!-- VIDEO WARNING MODAL -->
-<div id="videoWarningModal" onclick="if(event.target===this)closeVideoWarning()" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(92,61,46,0.4);z-index:1000;align-items:center;justify-content:center;padding:20px;box-sizing:border-box;">
-  <div style="background:#FAF6F1;border-radius:24px;width:100%;max-width:320px;padding:28px 22px;text-align:center;box-shadow:0 8px 32px rgba(217,178,179,0.2);">
+<div id="videoWarningModal" onclick="if(event.target===this)closeVideoWarning()" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(90,74,66,0.4);z-index:1000;align-items:center;justify-content:center;padding:20px;box-sizing:border-box;">
+  <div style="background:#EDE9E3;border-radius:24px;width:100%;max-width:320px;padding:28px 22px;text-align:center;box-shadow:0 8px 32px rgba(163,143,133,0.2);">
     <div style="font-size:28px;margin-bottom:14px;">🎬</div>
-    <p style="font-family:'DM Sans',sans-serif;font-size:18px;color:#1C1612;margin:0 0 12px;font-weight:400;">Para ver los videos</p>
-    <p style="font-family:'DM Sans',sans-serif;font-size:13px;color:#8C7260;line-height:1.9;margin:0 0 22px;text-align:left;">
+    <p style="font-family:'DM Sans',sans-serif;font-size:18px;color:#5A4A42;margin:0 0 12px;font-weight:400;">Para ver los videos</p>
+    <p style="font-family:'DM Sans',sans-serif;font-size:13px;color:#A38F85;line-height:1.9;margin:0 0 22px;text-align:left;">
       Abre el catálogo en tu navegador:<br>
-      <span style="color:#1C1612;font-weight:500;">1.</span> Toca los <strong style="color:#1C1612;font-weight:500;">tres puntos ···</strong> arriba<br>
-      <span style="color:#1C1612;font-weight:500;">2.</span> Selecciona <strong style="color:#1C1612;font-weight:500;">"Abrir en Safari"</strong> o <strong style="color:#1C1612;font-weight:500;">"Chrome"</strong>
+      <span style="color:#5A4A42;font-weight:500;">1.</span> Toca los <strong style="color:#5A4A42;font-weight:500;">tres puntos ···</strong> arriba<br>
+      <span style="color:#5A4A42;font-weight:500;">2.</span> Selecciona <strong style="color:#5A4A42;font-weight:500;">"Abrir en Safari"</strong> o <strong style="color:#5A4A42;font-weight:500;">"Chrome"</strong>
     </p>
-    <button onclick="closeVideoWarning()" style="padding:12px 28px;border:1.5px solid #D9B2B3;border-radius:50px;background:transparent;color:#D9B2B3;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all 0.2s;">Entendido</button>
+    <button onclick="closeVideoWarning()" style="padding:12px 28px;border:1.5px solid #D4B2A7;border-radius:50px;background:transparent;color:#D4B2A7;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all 0.2s;">Entendido</button>
   </div>
 </div>
 
 <script>
-// ============================================================
-// IMAGES MAP
-// ============================================================
 const productImages = {
   1:"imgs/p1.jpg",2:"imgs/p2.jpg",3:"imgs/p3.jpg",4:"imgs/p4.jpg",
   7:"imgs/p7.jpg",8:"imgs/p8.jpg",9:"imgs/p9.jpg",10:"imgs/p10.jpg",
@@ -990,11 +1034,7 @@ const productImages = {
   88:"imgs/p88.png",89:"imgs/p89.png",90:"imgs/p90.png",91:"imgs/p91.png"
 };
 
-// ============================================================
-// PRODUCTS DATA
-// ============================================================
 const products = [
-  // CAPILAR TRUSS
   { id:1,  brand:'TRUSS', name:'Ultra Hidratación', desc:'Hidratación intensa', price:23000, size:'300ml', cat:'truss', emoji:'💧', star:true, variants:[{name:'Shampoo',price:23000},{name:'Acondicionador',price:23000},{name:'Kit Shampoo + Acondicionador 🌟',price:44000}] },
   { id:2,  brand:'TRUSS', name:'Blond', desc:'Matiza y nutre', price:23000, size:'300ml', cat:'truss', emoji:'✨', star:false, variants:[{name:'Shampoo',price:23000},{name:'Acondicionador',price:23000},{name:'Kit Shampoo + Acondicionador 🌟',price:44000}] },
   { id:3,  brand:'TRUSS', name:'Curly', desc:'Tratamiento rulos', price:23000, size:'300ml', cat:'truss', emoji:'🌀', star:false, variants:[{name:'Shampoo',price:23000},{name:'Acondicionador',price:23000},{name:'Kit Shampoo + Acondicionador 🌟',price:44000}] },
@@ -1018,7 +1058,6 @@ const products = [
   { id:23, brand:'TRUSS', name:'Uso Obrigatorio Oil 30ml', desc:'Reconstructor', price:15000, size:'30ml', cat:'truss', emoji:'💚', star:true, video:'https://www.tiktok.com/@rodriguesmirella/video/7448382199130361093?is_from_webapp=1&sender_device=pc' },
   { id:24, brand:'TRUSS', name:'Uso Obrigatorio Oil 60ml', desc:'Reconstructor', price:25000, size:'60ml', cat:'truss', emoji:'💚', star:false, video:'https://www.tiktok.com/@rodriguesmirella/video/7448382199130361093?is_from_webapp=1&sender_device=pc' },
   { id:25, brand:'TRUSS', name:'Blond Revolution Spray', desc:'Protege el color', price:27000, size:'100ml', cat:'truss', emoji:'💜', star:false },
-  // CAPILAR OTROS
   { id:26, brand:'JACQUES JANINE', name:'Just One Minute Spray', desc:'Protege contra humedad y frizz', price:15000, size:'120ml', cat:'otros-cap', emoji:'⚡', star:false },
   { id:27, brand:'JACQUES JANINE', name:'Máscara Cachos Perfeitos', desc:'Fija rulos', price:10000, size:'80gr', cat:'otros-cap', emoji:'🌀', star:true, stock:3 },
   { id:28, brand:'JACQUES JANINE', name:'Humedecedor Cachos Spray', desc:'Mantiene y controla frizz', price:10000, size:'60ml', cat:'otros-cap', emoji:'💧', star:true, stock:1 },
@@ -1042,7 +1081,6 @@ const products = [
   { id:84, brand:'INOAR', name:'Ampolla Glycolic', desc:'Brillo e hidratación profunda', price:4000, size:'45ml', cat:'otros-cap', emoji:'✨', star:false, stock:1 },
   { id:85, brand:'INOAR', name:'Ampolla Argan', desc:'Hidratación intensa', price:4000, size:'45ml', cat:'otros-cap', emoji:'🌿', star:false, stock:1 },
   { id:86, brand:'NATUHAIR', name:'Aceite Ricino', desc:'Crecimiento y anti caída', price:5000, size:'30ml', cat:'otros-cap', emoji:'🌱', star:false, stock:2 },
-  // MAKE UP
   { id:46, brand:'VIZZELA', name:'Fijador Cejas Incoloro', desc:'', price:12000, size:'', cat:'makeup', emoji:'🤎', star:true, video:'https://www.tiktok.com/@fabinhofiufiu/video/7579287458551008519?is_from_webapp=1&sender_device=pc' },
   { id:47, brand:'VIZZELA', name:'Corrector Alta Cobertura', desc:'Soft matte, larga duración', price:16000, size:'', cat:'makeup', emoji:'🌟', star:true, video:'https://www.tiktok.com/@amandaoligon/video/7345247563991289094?is_from_webapp=1&sender_device=pc' },
   { id:48, brand:'VIZZELA', name:'Polvo Translúcido', desc:'Disimula poros', price:13000, size:'', cat:'makeup', emoji:'✨', star:false },
@@ -1068,7 +1106,6 @@ const products = [
   { id:88, brand:'BRUNA TAVARES', name:'Lip Charm Coca Cola', desc:'Charm lip balm', price:5000, size:'700mg', cat:'makeup', emoji:'💋', star:false, stock:1, video:'https://www.tiktok.com/@brunatavares.bt/video/7581861107694980359?is_from_webapp=1&sender_device=pc' },
   { id:89, brand:'FRAN', name:'Primer Iluminado', desc:'Primer iluminado hermoso', price:18000, size:'20gr', cat:'makeup', emoji:'✨', star:true, stock:1, video:'https://www.tiktok.com/@gossipbeautyclips/video/7426811514654412037?is_from_webapp=1&sender_device=pc' },
   { id:90, brand:'MASCAVO', name:'Brocha Multifuncional', desc:'Brocha doble multifuncional', price:22000, size:'', cat:'makeup', emoji:'🖌️', star:true, video:'https://www.tiktok.com/@ursulaandresspwf/video/7623053184763972882?is_from_webapp=1&sender_device=pc' },
-  // CORPORAL
   { id:67, brand:'BELEZA BRASIL', name:'Crema Barriguinha', desc:'Flacidez y grasa', price:27000, size:'200gr', cat:'corporal', emoji:'💛', star:true },
   { id:68, brand:'BELEZA BRASIL', name:'Crema Bumbum', desc:'Celulitis y estrías', price:27000, size:'200gr', cat:'corporal', emoji:'💚', star:true },
   { id:69, brand:'PAIXÃO', name:'Aceite Corporal Frambuesa Negra', desc:'Hidratante corporal 24h', price:8000, size:'100ml', cat:'corporal', emoji:'🍇', star:true, stock:1 },
@@ -1079,7 +1116,6 @@ const products = [
   { id:82, brand:'LABOTRAT', name:'Exfoliante Pitaya', desc:'Exfoliante corporal', price:9000, size:'150g', cat:'corporal', emoji:'🫐', star:false, stock:1 },
   { id:83, brand:'GOSHBABE', name:'Cápsulas Bronceado', desc:'Mejora y durabilidad bronceado', price:20000, size:'60 un.', cat:'corporal', emoji:'🌟', star:false, stock:1 },
   { id:91, brand:'PAIXÃO', name:'Crema Bridgerton', desc:'Aroma a rosas rico', price:8000, size:'200ml', cat:'corporal', emoji:'🌹', star:false, stock:1 },
-  // SKINCARE + OTROS
   { id:73, brand:'BIORÉ', name:'Marshmallow Whip Jabón Facial', desc:'Piel mixta y oleosa', price:14000, size:'150ml', cat:'skincare', emoji:'🫧', star:false },
   { id:74, brand:'BIORÉ', name:'Makeup Remover', desc:'Todo tipo de piel', price:18000, size:'150ml', cat:'skincare', emoji:'💧', star:false },
   { id:75, brand:'MELANO CC', name:'Vitamin C Serum', desc:'Ilumina y unifica', price:22000, size:'20ml', cat:'skincare', emoji:'🍊', star:true, video:'https://www.tiktok.com/@berryme_nic/video/7387226857952824582?is_from_webapp=1&sender_device=pc' },
@@ -1089,15 +1125,9 @@ const products = [
   { id:87, brand:'ENGOV', name:'Pastillas Resaca', desc:'Quita resaca milagroso', price:3000, size:'3 pares', cat:'otros', emoji:'💊', star:true, stock:2 },
 ];
 
-// ============================================================
-// STATE
-// ============================================================
 let cart = [];
 let currentCat = null;
 
-// ============================================================
-// NAVIGATION
-// ============================================================
 const CAT_LABELS = {
   entrega:     'Entrega Inmediata',
   capilar:     'Capilar',
@@ -1108,6 +1138,17 @@ const CAT_LABELS = {
   todos:       'Ver Todo',
   bestsellers: 'Best Sellers ✦',
 };
+
+// ACCORDION
+function toggleAccordion() {
+  const body = document.getElementById('accordionBody');
+  const btn = document.getElementById('encargarBtn');
+  const arrow = document.getElementById('encargarArrow');
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open');
+  btn.classList.toggle('open');
+  arrow.classList.toggle('rotated');
+}
 
 function openCat(cat) {
   currentCat = cat;
@@ -1127,9 +1168,6 @@ function goBack() {
   window.scrollTo(0, 0);
 }
 
-// ============================================================
-// RENDER
-// ============================================================
 function formatPrice(p) {
   return '$' + p.toLocaleString('es-CL');
 }
@@ -1160,7 +1198,7 @@ function renderCatalog(cat) {
   let html = '';
 
   if (cat === 'entrega') {
-    html += `<div style="margin:12px 16px;padding:12px 16px;background:#E8D4A833;border-left:3px solid #E8D4A8;border-radius:0 10px 10px 0;font-size:12px;color:var(--medium);line-height:1.6;">
+    html += `<div style="margin:12px 16px;padding:12px 16px;background:rgba(231,215,201,0.5);border-left:3px solid #D4B2A7;border-radius:0 10px 10px 0;font-size:12px;color:var(--latte);line-height:1.6;">
       Estos productos están en stock y disponibles para entrega inmediata. Al confirmar tu pedido coordinaremos el envío 🌿
     </div>`;
   }
@@ -1251,9 +1289,6 @@ function renderCard(p) {
   `;
 }
 
-// ============================================================
-// SEARCH
-// ============================================================
 function searchProducts(query) {
   const q = query.toLowerCase().trim();
   if (!q) { renderCatalog(currentCat); return; }
@@ -1271,9 +1306,6 @@ function searchProducts(query) {
   updateCartUI();
 }
 
-// ============================================================
-// CART LOGIC
-// ============================================================
 let currentVariantProductId = null;
 let selectedVariantIndex = 0;
 
@@ -1290,10 +1322,10 @@ function renderVariantOptions(product) {
   document.getElementById('variantOptions').innerHTML = product.variants.map((v, i) => `
     <div class="variant-option ${i === selectedVariantIndex ? 'variant-selected' : ''}" onclick="selectVariant(${i})">
       <div style="display:flex;justify-content:space-between;align-items:center;">
-        <span style="font-size:14px;font-weight:${i === selectedVariantIndex ? '500' : '400'};color:#1C1612">${v.name}</span>
+        <span style="font-size:14px;font-weight:${i === selectedVariantIndex ? '500' : '400'};color:#5A4A42">${v.name}</span>
         <div style="display:flex;align-items:center;gap:6px;">
           ${v.name.includes('Kit') ? '<span class="promo-badge">PROMO</span>' : ''}
-          <span style="font-size:14px;color:${i === selectedVariantIndex ? '#D9B2B3' : '#8C7260'}">${formatPrice(v.price)}</span>
+          <span style="font-size:14px;color:${i === selectedVariantIndex ? '#D4B2A7' : '#A38F85'}">${formatPrice(v.price)}</span>
         </div>
       </div>
     </div>
@@ -1397,7 +1429,7 @@ function renderCartItems() {
       </div>
       <div class="cart-item-right">
         <div class="cart-item-price">${formatPrice(c.price * c.qty)}</div>
-        <div style="font-size:11px;color:#8C7260;">x${c.qty} · ${formatPrice(c.price)} c/u</div>
+        <div style="font-size:11px;color:var(--latte);">x${c.qty} · ${formatPrice(c.price)} c/u</div>
         <button class="remove-item" onclick="changeQty(${c.id}, -${c.qty})">Eliminar</button>
       </div>
     </div>
@@ -1412,9 +1444,6 @@ document.getElementById('cartModal').addEventListener('click', function(e) {
   if (e.target === this) closeCart();
 });
 
-// ============================================================
-// SUBMIT
-// ============================================================
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyAcFq8fcDDp81yJpoC6yDdgAaXZXZcsR6xeAgPtKmsC-_WM7p969v0CBDRjdJcvvnv/exec';
 
 async function submitOrder() {
@@ -1456,9 +1485,6 @@ async function submitOrder() {
   }
 }
 
-// ============================================================
-// VIDEO
-// ============================================================
 function isInstagramBrowser() { return /Instagram/.test(navigator.userAgent); }
 function openVideo(url) {
   if (isInstagramBrowser()) {
@@ -1471,9 +1497,6 @@ function openVideo(url) {
 }
 function closeVideoWarning() { document.getElementById('videoWarningModal').style.display = 'none'; }
 
-// ============================================================
-// VER MAS
-// ============================================================
 function openVerMas(id) {
   const p = products.find(p => p.id === id);
   if (!p) return;
@@ -1489,29 +1512,24 @@ function openVerMas(id) {
 }
 function closeVerMas() { document.getElementById('verMasModal').classList.remove('open'); }
 
-// ============================================================
-// INIT — carga desde Sheets via JSONP
-// ============================================================
 function catalogCallback(remote) {
   if (Array.isArray(remote) && remote.length > 0) {
     products.length = 0;
     remote.forEach(p => products.push(p));
   }
-  // No renderizamos nada: la landing ya está visible
 }
 
 (function initCatalog() {
   const fallback = setTimeout(() => {}, 5000);
   window._catalogCallback = function(data) { clearTimeout(fallback); catalogCallback(data); };
   const script = document.createElement('script');
-  script.src = SCRIPT_URL + '?callback=_catalogCallback';
+  script.src = SCRIPT_URL + '?callback=_catalogCallback&t=' + Date.now();
   script.onerror = () => { clearTimeout(fallback); };
   document.head.appendChild(script);
 })();
 
-// COUNTDOWN VUELO
 (function() {
-  const vuelo = new Date('2026-05-20T00:00:00');
+  const vuelo = new Date('2026-06-26T00:00:00');
   const hoy = new Date();
   const diff = Math.ceil((vuelo - hoy) / (1000 * 60 * 60 * 24));
   const cnt = document.getElementById('dias-cnt');
@@ -1520,9 +1538,9 @@ function catalogCallback(remote) {
   if (diff > 0) {
     cnt.textContent = diff;
   } else if (diff === 0) {
-    box.innerHTML = '<span style="font-size:15px;">✈️</span><div style="font-family:\'DM Sans\',sans-serif;font-size:13px;color:white;font-weight:500;">hoy vuelas a Brasil! 🎉</div>';
+    box.innerHTML = '<span style="font-size:15px;">✈️</span><div style="font-family:\'DM Sans\',sans-serif;font-size:13px;color:#EDE9E3;font-weight:500;">hoy vuelas a Brasil! 🎉</div>';
   } else {
-    box.innerHTML = '<span style="font-size:15px;">🇧🇷</span><div style="font-family:\'DM Sans\',sans-serif;font-size:12px;color:rgba(255,255,255,0.85);">recién llegada · nuevos productos pronto</div>';
+    box.innerHTML = '<span style="font-size:15px;">🇧🇷</span><div style="font-family:\'DM Sans\',sans-serif;font-size:12px;color:rgba(237,233,227,0.85);">recién llegada · nuevos productos pronto</div>';
   }
 })();
 </script>
