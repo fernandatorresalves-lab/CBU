@@ -204,7 +204,7 @@
   .encargar-arrow.rotated { transform: rotate(180deg); }
 
   .accordion-body {
-    background: var(--latte);
+    background: var(--nude);
     border-radius: 0 0 16px 16px;
     padding: 6px 12px 12px;
     display: none;
@@ -222,17 +222,17 @@
     align-items: center;
     justify-content: center;
     padding: 12px 18px;
-    background: rgba(237,233,227,0.18);
+    background: var(--ivory);
     border: none;
     border-radius: 50px;
     cursor: pointer;
     font-family: 'DM Sans', sans-serif;
     font-size: 14px;
     font-weight: 400;
-    color: var(--ivory);
+    color: var(--latte);
     transition: background 0.2s;
   }
-  .sub-tab:hover { background: rgba(237,233,227,0.28); }
+  .sub-tab:hover { background: rgba(237,233,227,0.7); }
   .sub-tab.bs-tab {
     background: var(--rose);
     color: var(--ivory);
@@ -241,8 +241,25 @@
   .sub-tab.bs-tab:hover { background: var(--rose-dark); }
 
   .landing-tab.accesorios-tab {
-    background: var(--stone);
-    color: var(--latte-dark);
+    background: #E7D7C9;
+    color: #A38F85;
+  }
+
+  .landing-tab.vertodo-tab {
+    background: #E7D7C9;
+    color: #A38F85;
+  }
+
+  .landing-tab.sportwear-tab {
+    background: #E7D7C9;
+    color: #A38F85;
+  }
+  .landing-tab.soon-tab {
+    background: #E7D7C9;
+    color: #A38F85;
+    opacity: 0.5;
+    cursor: default;
+    pointer-events: none;
   }
 
   .landing-tab.soon-tab {
@@ -285,7 +302,7 @@
   .new-badge {
     display: inline-flex;
     align-items: center;
-    background: rgba(237,233,227,0.3);
+    background: var(--latte);
     color: var(--ivory);
     font-size: 10px;
     font-weight: 600;
@@ -847,18 +864,15 @@
     <button class="sub-tab" onclick="openCat('makeup')">Make Up</button>
     <button class="sub-tab" onclick="openCat('otros')">Otros</button>
     <button class="sub-tab bs-tab" onclick="openCat('bestsellers')">Best Sellers ✦</button>
+    <button class="sub-tab" style="background:#E7D7C9;color:#A38F85;" onclick="openCat('todos')">Ver Todo</button>
   </div>
-
-  <button class="landing-tab" onclick="openCat('todos')">
-    <span class="tab-label">Ver Todo</span>
-  </button>
 
   <button class="landing-tab accesorios-tab" onclick="window.location.href='accesorios.html'">
     <span class="tab-label">Accesorios <span class="new-badge">NEW</span></span>
   </button>
 
-  <button class="landing-tab soon-tab">
-    <span class="tab-label">Sport Wear <span class="soon-badge">SOON</span></span>
+  <button class="landing-tab" onclick="window.location.href='sportwear.html'">
+    <span class="tab-label">Sport Wear <span class="new-badge">NEW</span></span>
   </button>
 
 </div>
