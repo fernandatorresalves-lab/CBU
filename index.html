@@ -867,12 +867,12 @@
     <button class="sub-tab" style="background:#E7D7C9;color:#A38F85;" onclick="openCat('todos')">Ver Todo</button>
   </div>
 
-  <button class="landing-tab accesorios-tab soon-tab">
-    <span class="tab-label">Accesorios <span class="soon-badge">SOON</span></span>
-  </button>
-
   <button class="landing-tab" onclick="window.location.href='sportwear.html'">
     <span class="tab-label">Sport Wear <span class="new-badge">NEW</span></span>
+  </button>
+
+  <button class="landing-tab accesorios-tab soon-tab">
+    <span class="tab-label">Accesorios <span class="soon-badge">SOON</span></span>
   </button>
 
 </div>
@@ -1143,7 +1143,10 @@ const products = [
   { id:87, brand:'ENGOV', name:'Pastillas Resaca', desc:'Quita resaca milagroso', price:3000, size:'3 pares', cat:'otros', emoji:'💊', star:true, stock:2 },
 ];
 
-let cart = [];
+const CART_KEY = 'cbu_cart';
+function loadCart() { try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch(e) { return []; } }
+function saveCart(c) { try { localStorage.setItem(CART_KEY, JSON.stringify(c)); } catch(e) {} }
+let cart = loadCart();
 let currentCat = null;
 
 const CAT_LABELS = {
@@ -1364,6 +1367,7 @@ function confirmVariant() {
   const existing = cart.find(c => c.name === name);
   if (existing) { existing.qty += 1; }
   else { cart.push({ ...product, name, price: variant.price, qty: 1 }); }
+  saveCart(cart);
   updateCartUI();
   refreshCard(currentVariantProductId);
   closeVariantModal();
@@ -1374,6 +1378,7 @@ function addToCart(id) {
   const existing = cart.find(c => c.id === id && !c.name.includes('—'));
   if (existing) { existing.qty += 1; }
   else { cart.push({ ...product, qty: 1 }); }
+  saveCart(cart);
   updateCartUI();
   refreshCard(id);
 }
@@ -1383,6 +1388,7 @@ function changeQty(id, delta) {
   if (idx === -1) return;
   cart[idx].qty += delta;
   if (cart[idx].qty <= 0) cart.splice(idx, 1);
+  saveCart(cart);
   updateCartUI();
   refreshCard(id);
   renderCartItems();
@@ -1497,7 +1503,7 @@ async function submitOrder() {
     document.querySelector('.order-form') && (document.querySelector('.order-form').style.display = 'none');
     document.getElementById('orderCodeDisplay').textContent = '#' + orderCode;
     document.getElementById('successMsg').style.display = 'block';
-    cart = []; updateCartUI();
+    cart = []; saveCart(cart); updateCartUI();
   } catch(e) {
     btn.disabled = false; btn.textContent = 'Enviar pedido ✨';
     alert('Error: ' + e.message);
@@ -1537,6 +1543,9 @@ function catalogCallback(remote) {
     remote.forEach(p => products.push(p));
   }
 }
+
+// Actualizar UI con carrito guardado al cargar
+updateCartUI();
 
 (function initCatalog() {
   const fallback = setTimeout(() => {}, 5000);
