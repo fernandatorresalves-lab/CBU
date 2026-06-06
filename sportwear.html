@@ -258,7 +258,10 @@
 </div>
 
 <script>
-let cart = [];
+const CART_KEY = 'cbu_cart';
+function loadCart() { try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch(e) { return []; } }
+function saveCart(c) { try { localStorage.setItem(CART_KEY, JSON.stringify(c)); } catch(e) {} }
+let cart = loadCart();
 let products = [];
 let currentFilter = 'todos';
 
@@ -473,7 +476,7 @@ function addToCart(id) {
   const existing = cart.find(c => String(c.id) === String(id));
   if (existing) existing.qty++;
   else cart.push({ ...p, qty: 1 });
-  updateCartUI(); refreshCard(id);
+  saveCart(cart); updateCartUI(); refreshCard(id);
 }
 
 function changeQty(id, delta) {
@@ -481,7 +484,7 @@ function changeQty(id, delta) {
   if (idx === -1) return;
   cart[idx].qty += delta;
   if (cart[idx].qty <= 0) cart.splice(idx, 1);
-  updateCartUI(); refreshCard(id);
+  saveCart(cart); updateCartUI(); refreshCard(id);
   if (document.getElementById('cartModal').classList.contains('open')) renderCartItems();
 }
 
@@ -568,7 +571,7 @@ async function submitOrder() {
     document.getElementById('cartEmpty').classList.add('hidden');
     document.getElementById('orderCodeDisplay').textContent = '#'+orderCode;
     document.getElementById('successMsg').style.display = 'block';
-    cart = []; updateCartUI();
+    cart = []; saveCart(cart); updateCartUI();
   } catch(e) {
     btn.disabled = false; btn.textContent = 'Enviar pedido ✨';
     alert('Error: '+e.message);
@@ -576,6 +579,7 @@ async function submitOrder() {
 }
 
 updateCartUI();
+// Carrito ya cargado desde localStorage
 </script>
 </body>
 </html>
