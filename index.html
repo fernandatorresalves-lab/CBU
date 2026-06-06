@@ -867,13 +867,13 @@
     <button class="sub-tab" style="background:#E7D7C9;color:#A38F85;" onclick="openCat('todos')">Ver Todo</button>
   </div>
 
-<button class="landing-tab sportwear-tab" onclick="window.location.href='sportwear.html'">
-  <span class="tab-label">Sport Wear <span class="new-badge">NEW</span></span>
-</button>
+  <button class="landing-tab accesorios-tab" onclick="window.location.href='accesorios.html'">
+    <span class="tab-label">Accesorios <span class="new-badge">NEW</span></span>
+  </button>
 
-<button class="landing-tab accesorios-tab soon-tab">
-  <span class="tab-label">Accesorios <span class="soon-badge">SOON</span></span>
-</button>
+  <button class="landing-tab" onclick="window.location.href='sportwear.html'">
+    <span class="tab-label">Sport Wear <span class="new-badge">NEW</span></span>
+  </button>
 
 </div>
 
@@ -937,6 +937,14 @@
         <div class="form-group">
           <label>Instagram</label>
           <input type="text" id="fInstagram" placeholder="@tuusuario" />
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="fEmail" placeholder="tu@email.com" />
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="fEmail" placeholder="tu@email.com" />
         </div>
         <div class="form-group">
           <label>¿Algo que quieras aclarar?</label>
@@ -1463,6 +1471,7 @@ const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyAcFq8fcDDp81yJpoC6
 async function submitOrder() {
   const nombre = document.getElementById('fNombre').value.trim();
   const instagram = document.getElementById('fInstagram').value.trim();
+  const email = document.getElementById('fEmail').value.trim();
   const notas = document.getElementById('fNotas').value.trim();
   if (!nombre || !instagram) { alert('Por favor completa tu nombre e Instagram para continuar 🙏'); return; }
 
@@ -1478,7 +1487,7 @@ async function submitOrder() {
     const response = await fetch('https://formspree.io/f/mojyydjw', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ codigo: '#' + orderCode, nombre, instagram, productos: itemsText, total: formatPrice(total), notas: notas || '—', _subject: `🛍 Fer, tienes un nuevo pedido de ${nombre} en Closebyus` }),
+      body: JSON.stringify({ codigo: '#' + orderCode, nombre, instagram, email: email || '—', productos: itemsText, total: formatPrice(total), notas: notas || '—', _subject: `🛍 Fer, tienes un nuevo pedido de ${nombre} en Closebyus`, _replyto: email || '', _cc: email || '' }),
     });
     if (!response.ok) throw new Error('Error al enviar');
 
