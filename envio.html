@@ -7,23 +7,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --cream: #FAF6F1;
-    --warm-white: #F5EDE3;
-    --gold: #C9A96E;
-    --gold-light: #D4A87E;
-    --dark: #1C1612;
-    --medium: #8C7260;
-    --light-border: #E0D0C0;
-    --tag-bg: #F2E8DC;
-    --header-bg: #D9B2B3;
-    --header-text: #fff;
+    --ivory:      #EDE9E3;
+    --nude:       #E7D7C9;
+    --rose:       #D4B2A7;
+    --stone:      #CDC6C3;
+    --latte:      #A38F85;
+    --latte-dark: #7A6A62;
+    --dark:       #5A4A42;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
     font-family: 'DM Sans', sans-serif;
-    background: #E8D8C4;
+    background: var(--ivory);
     color: var(--dark);
     min-height: 100vh;
     display: flex;
@@ -34,25 +31,25 @@
   #app {
     width: 100%;
     max-width: 460px;
-    background: var(--cream);
+    background: var(--ivory);
     border-radius: 28px;
     overflow: hidden;
-    box-shadow: 0 12px 48px rgba(28,22,18,0.14);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.08);
   }
 
   header {
-    background: var(--header-bg);
+    background: var(--rose);
     padding: 28px 20px 22px;
     text-align: center;
   }
 
   header .brand {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Playfair Display', serif;
     font-size: 10px;
     font-weight: 400;
     letter-spacing: 0.35em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.8);
+    color: rgba(237,233,227,0.85);
     margin-bottom: 6px;
   }
 
@@ -62,16 +59,14 @@
     font-weight: 300;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: white;
+    color: var(--ivory);
   }
 
-  .container {
-    padding: 24px 20px 60px;
-  }
+  .container { padding: 24px 20px 60px; }
 
   .code-box {
-    background: var(--warm-white);
-    border: 1px solid var(--light-border);
+    background: var(--nude);
+    border: 1px solid rgba(163,143,133,0.2);
     border-radius: 14px;
     padding: 18px 20px;
     margin-bottom: 24px;
@@ -80,50 +75,38 @@
 
   .code-box p {
     font-size: 12px;
-    color: var(--medium);
+    color: var(--latte);
     letter-spacing: 0.06em;
     margin-bottom: 8px;
   }
 
-  .code-input-wrap {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-  }
+  .code-input-wrap { display: flex; gap: 8px; align-items: center; }
 
   .code-input-wrap input {
     flex: 1;
     padding: 12px 14px;
-    border: 1.5px solid var(--light-border);
+    border: 1.5px solid rgba(163,143,133,0.25);
     border-radius: 10px;
     font-family: 'DM Sans', sans-serif;
     font-size: 18px;
     font-weight: 400;
     color: var(--dark);
-    background: var(--cream);
+    background: var(--ivory);
     letter-spacing: 0.08em;
     text-transform: uppercase;
     outline: none;
     transition: border-color 0.2s;
     text-align: center;
   }
-
-  .code-input-wrap input:focus { border-color: var(--gold); }
-
-  .code-input-wrap input::placeholder {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    font-weight: 300;
-    letter-spacing: 0;
-    color: #8C7260;
-  }
+  .code-input-wrap input:focus { border-color: var(--rose); }
+  .code-input-wrap input::placeholder { font-size: 13px; font-weight: 300; letter-spacing: 0; color: var(--latte); }
 
   .section-label {
     font-size: 11px;
     font-weight: 500;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--medium);
+    color: var(--latte);
     margin-bottom: 10px;
     margin-top: 20px;
     display: block;
@@ -138,29 +121,28 @@
 
   .delivery-option {
     padding: 14px 12px;
-    border: 1.5px solid var(--light-border);
+    border: 1.5px solid rgba(163,143,133,0.25);
     border-radius: 12px;
     text-align: center;
     cursor: pointer;
     transition: all 0.2s;
-    background: var(--warm-white);
+    background: var(--nude);
   }
 
   .delivery-option .icon { font-size: 20px; margin-bottom: 4px; }
   .delivery-option .label { font-size: 13px; font-weight: 500; color: var(--dark); }
-  .delivery-option .sublabel { font-size: 11px; color: var(--medium); margin-top: 2px; }
+  .delivery-option .sublabel { font-size: 11px; color: var(--latte); margin-top: 2px; }
 
   .delivery-option.selected {
-    background: #D9B2B3;
-    border-color: #D9B2B3;
+    background: var(--rose);
+    border-color: var(--rose);
   }
-
   .delivery-option.selected .label,
-  .delivery-option.selected .sublabel { color: white; }
+  .delivery-option.selected .sublabel { color: var(--ivory); }
 
   .form-section {
-    background: var(--warm-white);
-    border: 1px solid var(--light-border);
+    background: var(--nude);
+    border: 1px solid rgba(163,143,133,0.2);
     border-radius: 14px;
     padding: 20px;
     margin-top: 16px;
@@ -173,7 +155,7 @@
     color: var(--dark);
     margin-bottom: 16px;
     padding-bottom: 10px;
-    border-bottom: 1px solid var(--light-border);
+    border-bottom: 1px solid rgba(163,143,133,0.2);
   }
 
   .form-group { margin-bottom: 14px; }
@@ -185,7 +167,7 @@
     font-weight: 500;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--medium);
+    color: var(--latte);
     margin-bottom: 6px;
   }
 
@@ -193,44 +175,37 @@
   .form-group select {
     width: 100%;
     padding: 12px 14px;
-    border: 1px solid var(--light-border);
+    border: 1px solid rgba(163,143,133,0.25);
     border-radius: 10px;
     font-family: 'DM Sans', sans-serif;
     font-size: 14px;
     color: var(--dark);
-    background: var(--cream);
+    background: var(--ivory);
     outline: none;
     transition: border-color 0.2s;
   }
-
   .form-group input:focus,
-  .form-group select:focus { border-color: var(--gold); }
+  .form-group select:focus { border-color: var(--rose); }
 
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 
   .retiro-info {
-    background: var(--tag-bg);
+    background: var(--nude);
+    border: 1px solid rgba(163,143,133,0.2);
     border-radius: 12px;
     padding: 16px;
     margin-top: 16px;
     display: none;
   }
-
   .retiro-info.show { display: block; }
-
   .retiro-info .retiro-title {
     font-size: 12px;
     font-weight: 500;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--gold);
+    color: var(--latte);
     margin-bottom: 6px;
   }
-
   .retiro-info .retiro-address {
     font-family: 'DM Sans', sans-serif;
     font-size: 18px;
@@ -238,58 +213,10 @@
     color: var(--dark);
     margin-bottom: 4px;
   }
-
-  .retiro-info p {
-    font-size: 12px;
-    color: var(--medium);
-    line-height: 1.5;
-  }
+  .retiro-info p { font-size: 12px; color: var(--latte); line-height: 1.5; }
 
   .envio-fields { display: block; }
   .envio-fields.hide { display: none; }
-
-  .submit-btn {
-    width: 100%;
-    padding: 16px;
-    background: #8C7260;
-    color: #FAF6F1;
-    border: none;
-    border-radius: 50px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    letter-spacing: 0.05em;
-    transition: background 0.2s;
-    margin-top: 24px;
-  }
-
-  .submit-btn:hover { background: #6B5040; }
-  .submit-btn:disabled { background: #CCC; cursor: not-allowed; }
-
-  .success-msg {
-    display: none;
-    text-align: center;
-    padding: 48px 20px;
-  }
-
-  .success-msg .check { font-size: 48px; margin-bottom: 16px; }
-
-  .success-msg h2 {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 26px;
-    font-weight: 400;
-    color: var(--dark);
-    margin-bottom: 12px;
-  }
-
-  .success-msg p {
-    font-size: 13px;
-    color: var(--medium);
-    line-height: 1.7;
-  }
-
-  .success-msg a { color: var(--gold); text-decoration: none; }
 
   .envio-subtoggle {
     display: grid;
@@ -300,71 +227,91 @@
 
   .envio-subopt {
     padding: 10px 12px;
-    border: 1.5px solid var(--light-border);
+    border: 1.5px solid rgba(163,143,133,0.25);
     border-radius: 10px;
     text-align: center;
     cursor: pointer;
     font-size: 13px;
     font-weight: 500;
     color: var(--dark);
-    background: var(--cream);
+    background: var(--ivory);
     transition: all 0.2s;
   }
-
   .envio-subopt .subopt-icon { font-size: 16px; margin-bottom: 2px; }
-
   .envio-subopt.selected {
-    background: #D9B2B3;
-    border-color: #D9B2B3;
-    color: white;
+    background: var(--rose);
+    border-color: var(--rose);
+    color: var(--ivory);
   }
 
   .phone-wrap {
     display: flex;
     gap: 0;
-    border: 1px solid var(--light-border);
+    border: 1px solid rgba(163,143,133,0.25);
     border-radius: 10px;
     overflow: hidden;
-    background: var(--cream);
+    background: var(--ivory);
   }
-
   .phone-prefix {
     padding: 12px 12px;
     font-size: 14px;
-    color: var(--medium);
-    background: var(--tag-bg);
-    border-right: 1px solid var(--light-border);
+    color: var(--latte);
+    background: var(--nude);
+    border-right: 1px solid rgba(163,143,133,0.2);
     white-space: nowrap;
     display: flex;
     align-items: center;
   }
+  .phone-wrap input { border: none !important; border-radius: 0 !important; flex: 1; background: var(--ivory); }
+  .phone-wrap:focus-within { border-color: var(--rose); }
 
-  .phone-wrap input {
-    border: none !important;
-    border-radius: 0 !important;
-    flex: 1;
-    background: var(--cream);
+  .submit-btn {
+    width: 100%;
+    padding: 16px;
+    background: var(--latte);
+    color: var(--ivory);
+    border: none;
+    border-radius: 50px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    letter-spacing: 0.05em;
+    transition: background 0.2s;
+    margin-top: 24px;
   }
+  .submit-btn:hover { background: var(--latte-dark); }
+  .submit-btn:disabled { background: var(--stone); cursor: not-allowed; }
 
-  .phone-wrap:focus-within { border-color: var(--gold); }
+  .success-msg { display: none; text-align: center; padding: 48px 20px; }
+  .success-msg .check { font-size: 48px; margin-bottom: 16px; }
+  .success-msg h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--dark);
+    margin-bottom: 12px;
+  }
+  .success-msg p { font-size: 13px; color: var(--latte); line-height: 1.7; }
+  .success-msg a { color: var(--rose); text-decoration: none; }
 
   .hidden { display: none; }
 
   .note {
     font-size: 11px;
-    color: var(--medium);
+    color: var(--latte);
     text-align: center;
     margin-top: 12px;
     line-height: 1.6;
   }
 
   .error-msg {
-    background: #F2E8DC;
-    border: 1px solid #E0D0C0;
+    background: var(--nude);
+    border: 1px solid rgba(163,143,133,0.25);
     border-radius: 10px;
     padding: 12px 14px;
     font-size: 13px;
-    color: #8C7260;
+    color: var(--latte);
     margin-top: 16px;
     display: none;
     line-height: 1.5;
@@ -407,24 +354,21 @@
     <div class="retiro-title">📍 Punto de retiro</div>
     <div class="retiro-address">Marchant Pereira 660</div>
     <p>Providencia, Santiago<br>Feñi te coordinará el día y horario por Instagram.</p>
-    <p style="margin-top:8px;font-size:11px;background:rgba(201,169,110,0.15);border-radius:8px;padding:8px 10px;color:var(--dark);">
+    <p style="margin-top:8px;font-size:11px;background:rgba(163,143,133,0.1);border-radius:8px;padding:8px 10px;color:var(--dark);">
       ⚠️ Tienes <strong>1 mes</strong> para retirar desde que se confirme tu pedido. Pasado ese plazo, los productos vuelven a stock.
     </p>
   </div>
 
   <div class="form-section" id="datosPersonales">
     <div class="form-section-title">Tus datos</div>
-
     <div class="form-group">
       <label>Nombre y apellido</label>
       <input type="text" id="fNombre" placeholder="Ej: María Torres" />
     </div>
-
     <div class="form-group" id="rutField">
       <label>RUT</label>
       <input type="text" id="fRut" placeholder="12345678-9" maxlength="10" oninput="formatRut(this)" />
     </div>
-
     <div class="form-group" id="celularField">
       <label>Celular</label>
       <div class="phone-wrap">
@@ -432,7 +376,6 @@
         <input type="tel" id="fCelular" placeholder="XXXX XXXX" maxlength="9" />
       </div>
     </div>
-
     <div class="form-group" id="emailField">
       <label>Email</label>
       <input type="email" id="fEmail" placeholder="tu@email.com" />
@@ -441,7 +384,6 @@
 
   <div class="form-section envio-fields" id="envioFields">
     <div class="form-section-title">Datos de envío</div>
-
     <div class="envio-subtoggle">
       <div class="envio-subopt selected" onclick="selectEnvioType('sucursal', this)">
         <div class="subopt-icon">🏪</div>
@@ -452,15 +394,13 @@
         A domicilio
       </div>
     </div>
-
     <div id="sucursalFields">
       <div class="form-group">
         <label>Sucursal Starken</label>
         <input type="text" id="fSucursal" placeholder="Ej: Starken Av. Irarrázaval 1234, Ñuñoa" />
-        <p style="font-size:11px;color:var(--medium);margin-top:5px;line-height:1.5;">El envío a sucursal sale un poco más barato. Si prefieres domicilio, recuerda que puedes pagar vía web previamente.</p>
+        <p style="font-size:11px;color:var(--latte);margin-top:5px;line-height:1.5;">El envío a sucursal sale un poco más barato. Si prefieres domicilio, recuerda que puedes pagar vía web previamente.</p>
       </div>
     </div>
-
     <div id="domicilioFields" class="hidden">
       <div class="form-group">
         <label>Dirección</label>
@@ -481,16 +421,14 @@
 
   <div class="form-section retiro-fields hidden" id="retiroFields">
     <div class="form-section-title">Datos de retiro</div>
-
     <div class="form-group">
       <label>Nombre y apellido</label>
       <input type="text" id="fNombreRetiro" placeholder="Ej: María Torres" />
     </div>
-
     <div class="form-group">
       <label>Fecha tentativa</label>
       <input type="text" id="fFechaRetiro" placeholder="Ej: semana del 5 de mayo, tarde" />
-      <p style="font-size:11px;color:var(--medium);margin-top:5px;line-height:1.5;">Feñi te confirmará día y hora exacta por Instagram DM.</p>
+      <p style="font-size:11px;color:var(--latte);margin-top:5px;line-height:1.5;">Feñi te confirmará día y hora exacta por Instagram DM.</p>
     </div>
   </div>
 
@@ -533,12 +471,10 @@ function selectDelivery(type, el) {
   deliveryType = type;
   document.querySelectorAll('.delivery-option').forEach(o => o.classList.remove('selected'));
   el.classList.add('selected');
-
-  const retiroInfo = document.getElementById('retiroInfo');
-  const envioFields = document.getElementById('envioFields');
+  const retiroInfo   = document.getElementById('retiroInfo');
+  const envioFields  = document.getElementById('envioFields');
   const retiroFields = document.getElementById('retiroFields');
   const datosPersonales = document.getElementById('datosPersonales');
-
   if (type === 'retiro') {
     retiroInfo.classList.add('show');
     envioFields.classList.add('hide');
@@ -587,18 +523,15 @@ async function submitForm() {
       _subject: `📦 Retiro #${codigo} — ${nombre}`,
     };
   } else {
-    const nombre = document.getElementById('fNombre').value.trim();
-    const rut = document.getElementById('fRut').value.trim();
+    const nombre    = document.getElementById('fNombre').value.trim();
+    const rut       = document.getElementById('fRut').value.trim();
     const celularRaw = document.getElementById('fCelular').value.trim();
-    const email = document.getElementById('fEmail').value.trim();
-
-    if (!nombre) { showError('Por favor ingresa tu nombre 🙏'); return; }
-    if (!rut) { showError('Por favor ingresa tu RUT 🙏'); return; }
+    const email     = document.getElementById('fEmail').value.trim();
+    if (!nombre)     { showError('Por favor ingresa tu nombre 🙏'); return; }
+    if (!rut)        { showError('Por favor ingresa tu RUT 🙏'); return; }
     if (!celularRaw) { showError('Por favor ingresa tu celular 🙏'); return; }
-    if (!email) { showError('Por favor ingresa tu email 🙏'); return; }
-
+    if (!email)      { showError('Por favor ingresa tu email 🙏'); return; }
     const celular = '+56 9 ' + celularRaw;
-
     let entrega = '';
     if (envioType === 'sucursal') {
       const sucursal = document.getElementById('fSucursal').value.trim();
@@ -606,24 +539,16 @@ async function submitForm() {
       entrega = `Envío Starken sucursal: ${sucursal}`;
     } else {
       const direccion = document.getElementById('fDireccion').value.trim();
-      const ciudad = document.getElementById('fCiudad').value.trim();
-      const comuna = document.getElementById('fComuna').value.trim();
+      const ciudad    = document.getElementById('fCiudad').value.trim();
+      const comuna    = document.getElementById('fComuna').value.trim();
       if (!direccion) { showError('Por favor ingresa tu dirección 🙏'); return; }
       entrega = `Envío domicilio: ${direccion}, ${comuna}, ${ciudad}`;
     }
-
-    formData = {
-      ...formData,
-      nombre, rut, celular, email,
-      tipo: 'Envío',
-      entrega,
-      _subject: `📦 Envío #${codigo} — ${nombre}`,
-    };
+    formData = { ...formData, nombre, rut, celular, email, tipo: 'Envío', entrega, _subject: `📦 Envío #${codigo} — ${nombre}` };
   }
 
   const btn = document.getElementById('submitBtn');
-  btn.disabled = true;
-  btn.textContent = 'Enviando...';
+  btn.disabled = true; btn.textContent = 'Enviando...';
 
   try {
     const res = await fetch('https://formspree.io/f/mojyydjw', {
@@ -631,22 +556,16 @@ async function submitForm() {
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify(formData),
     });
-
     if (!res.ok) throw new Error(`Error ${res.status}`);
-
     fetch(SCRIPT_URL, {
-      method: 'POST',
-      mode: 'no-cors',
+      method: 'POST', mode: 'no-cors',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ sheet: 'Entregas', fecha: new Date().toLocaleString('es-CL'), ...formData }),
     }).catch(() => {});
-
     document.getElementById('mainContent').style.display = 'none';
     document.getElementById('successMsg').style.display = 'block';
-
   } catch(e) {
-    btn.disabled = false;
-    btn.textContent = 'Confirmar datos ✨';
+    btn.disabled = false; btn.textContent = 'Confirmar datos ✨';
     showError('Hubo un problema al enviar. Por favor intenta de nuevo o escríbeme por Instagram 💙');
   }
 }
