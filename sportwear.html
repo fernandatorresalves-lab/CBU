@@ -232,6 +232,10 @@
           <input type="text" id="fInstagram" placeholder="@tuusuario" />
         </div>
         <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="fEmail" placeholder="tu@email.com" />
+        </div>
+        <div class="form-group">
           <label>¿Algo que quieras aclarar?</label>
           <textarea id="fNotas" rows="2" placeholder="Talla, color, consulta..."></textarea>
         </div>
@@ -540,6 +544,7 @@ document.getElementById('cartModal').addEventListener('click', function(e) { if(
 async function submitOrder() {
   const nombre = document.getElementById('fNombre').value.trim();
   const instagram = document.getElementById('fInstagram').value.trim();
+  const email = document.getElementById('fEmail').value.trim();
   const notas = document.getElementById('fNotas').value.trim();
   if (!nombre || !instagram) { alert('Por favor completa tu nombre e Instagram 🙏'); return; }
   const total = cart.reduce((s,c) => s+c.price*c.qty, 0);
@@ -552,7 +557,7 @@ async function submitOrder() {
     const res = await fetch('https://formspree.io/f/mojyydjw', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ codigo:'#'+orderCode, nombre, instagram, productos:itemsText, total:formatPrice(total), notas:notas||'—', _subject:`🛍 Fer, nuevo pedido de ${nombre} · Sport Wear` }),
+      body: JSON.stringify({ codigo:'#'+orderCode, nombre, instagram, email: email || '—', productos:itemsText, total:formatPrice(total), notas:notas||'—', _subject:`🛍 Fer, nuevo pedido de ${nombre} · Sport Wear`, _replyto: email || '', _cc: email || '' }),
     });
     if (!res.ok) throw new Error('Error al enviar');
     const fecha = new Date().toLocaleString('es-CL');
