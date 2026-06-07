@@ -335,7 +335,7 @@ function renderCatalog(filtered) {
   }
 
   el.innerHTML = html;
-  setTimeout(() => list.forEach(p => initSlider(String(p.id))), 50);
+  // initSlider se llama desde onSlideLoad cuando las imágenes cargan
   updateCartUI();
 }
 
@@ -344,27 +344,20 @@ function renderCard(p) {
   const inCart = cart.find(c => String(c.id) === pid);
   const qty = inCart ? inCart.qty : 0;
 
-  // Fotos: busca img1/img2/img3 del sheet, si no arma por convención
-  const photos = [p.img1, p.img2, p.img3].filter(Boolean);
-  if (!photos.length) {
-    // Convención: s1_1.jpg, s1_2.jpg — intenta al menos la primera
-    photos.push(`imgs/${pid.toLowerCase()}_1.jpg`);
-  }
-
   const discount = p.sale && p.priceOld ? Math.round((1 - p.price / p.priceOld) * 100) : 0;
   const talla = p.talla || p.size || '';
 
-  const slidesHtml = photos.map((src, i) =>
-    `<div class="card-slide" id="slide-${pid}-${i}">
-      <img src="${src}" alt="${p.name}" loading="${i===0?'eager':'lazy'}"
-        onerror="this.style.display='none';this.parentElement.style.background='var(--nude)'">
+  // Siempre intentar _1, _2, _3 — el slider se ajusta al cargar
+  const baseUrl = `imgs/${pid.toLowerCase()}`;
+  const slidesHtml = [1,2,3].map(i =>
+    `<div class="card-slide" id="slide-${pid}-${i-1}">
+      <img src="${baseUrl}_${i}.jpg" alt="${p.name}" loading="${i===1?'eager':'lazy'}"
+        onload="onSlideLoad('${pid}')"
+        onerror="this.closest('.card-slide').remove(); onSlideLoad('${pid}')">
     </div>`
   ).join('');
 
-  const dotsHtml = photos.length > 1
-    ? `<div class="dots-pill" id="dots-${pid}">
-        ${photos.map((_,i) => `<div class="dot ${i===0?'active':''}" id="dot-${pid}-${i}" onclick="goToSlide('${pid}',${i})"></div>`).join('')}
-       </div>` : '';
+  const dotsHtml = `<div class="dots-pill" id="dots-${pid}"></div>`;
 
   return `
     <div class="fashion-card" id="card-${pid}">
@@ -375,7 +368,7 @@ function renderCard(p) {
         ${dotsHtml}
         ${p.sale ? `<div class="sale-ribbon">SALE${discount?' · '+discount+'% OFF':''}</div>` : ''}
       </div>
-      ${photos.length > 1 ? '<div class="swipe-hint">desliza para ver más →</div>' : ''}
+      <div class="swipe-hint" id="hint-${pid}" style="display:none">desliza para ver más →</div>
       <div class="card-info">
         <div class="product-name">${p.name}</div>
         ${talla ? `<div class="product-talla">Talla: ${talla}</div>` : ''}
@@ -402,6 +395,34 @@ function renderCard(p) {
 // ============================================================
 const sliders = {};
 
+function onSlideLoad(id) {
+  const trackEl = document.getElementById('track-' + id);
+  if (!trackEl) return;
+  const slides = Array.from(trackEl.querySelectorAll('.card-slide'));
+  const total = slides.length;
+  if (total === 0) return;
+
+  // Ajustar anchos
+  trackEl.style.width = (total * 100) + '%';
+  slides.forEach(s => { s.style.width = (100 / total) + '%'; });
+
+  // Actualizar dots
+  const dotsEl = document.getElementById('dots-' + id);
+  if (dotsEl) {
+    dotsEl.innerHTML = total > 1
+      ? slides.map((_,i) => `<div class="dot ${i===0?'active':''}" id="dot-${id}-${i}" onclick="goToSlide('${id}',${i})"></div>`).join('')
+      : '';
+  }
+
+  // Mostrar swipe hint si hay más de 1
+  const hintEl = document.getElementById('hint-' + id);
+  if (hintEl) hintEl.style.display = total > 1 ? 'block' : 'none';
+
+  // Reiniciar slider state
+  if (!sliders[id]) initSlider(id);
+  else sliders[id].total = total;
+}
+
 function initSlider(id) {
   const sliderEl = document.getElementById('slider-' + id);
   const trackEl  = document.getElementById('track-' + id);
@@ -409,9 +430,6 @@ function initSlider(id) {
   const slides = trackEl.querySelectorAll('.card-slide');
   const total  = slides.length;
   if (total === 0) return;
-
-  trackEl.style.width = (total * 100) + '%';
-  slides.forEach(s => { s.style.width = (100 / total) + '%'; });
 
   sliders[id] = { current: 0, total, startX: 0, startY: 0, dragging: false };
 
