@@ -1489,7 +1489,7 @@ async function submitOrder() {
     const response = await fetch('https://formspree.io/f/mojyydjw', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ codigo: '#' + orderCode, nombre, instagram, email: email || '—', productos: itemsText, total: formatPrice(total), notas: notas || '—', _subject: `🛍 Fer, tienes un nuevo pedido de ${nombre} en Closebyus`, _replyto: email || '', _cc: email || '' }),
+      body: JSON.stringify({ codigo: '#' + orderCode, nombre, instagram, email: email || '—', productos: itemsText, total: formatPrice(total), notas: notas || '—', _subject: `Hola ${nombre}! tu pedido fue enviado y Feña en breve te contactará 🌿`, _replyto: email || '', _cc: email || '' }),
     });
     if (!response.ok) throw new Error('Error al enviar');
 
