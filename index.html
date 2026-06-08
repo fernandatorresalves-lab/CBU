@@ -911,7 +911,10 @@
   <div class="cart-modal">
     <div class="modal-header">
       <h3>Tu pedido</h3>
-      <button class="close-btn" onclick="closeCart()">✕</button>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <button onclick="vaciarCarrito()" style="background:none;border:none;font-size:11px;color:var(--latte);cursor:pointer;text-decoration:underline;font-family:'DM Sans',sans-serif;">Vaciar</button>
+        <button class="close-btn" onclick="closeCart()">✕</button>
+      </div>
     </div>
 
     <div id="cartItems"></div>
@@ -1345,14 +1348,12 @@ function renderVariantOptions(product) {
     return `
     <div class="variant-option ${i === selectedVariantIndex ? 'variant-selected' : ''}" onclick="selectVariant(${i})"
       style="${noDisp ? 'opacity:0.7;' : ''}">
-      <div style="display:flex;justify-content:space-between;align-items:center;">
-        <div>
-          <span style="font-size:14px;font-weight:${i === selectedVariantIndex ? '500' : '400'};color:#5A4A42">${v.name}</span>
-          ${noDisp ? '<div style="font-size:10px;color:#A38F85;margin-top:2px;">Sólo para encargo 📋</div>' : ''}
-        </div>
-        <div style="display:flex;align-items:center;gap:6px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;">
+        <span style="font-size:14px;font-weight:${i === selectedVariantIndex ? '500' : '400'};color:#5A4A42;flex:1;min-width:0;">${v.name}</span>
+        <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
           ${v.name.includes('Kit') && !noDisp ? '<span class="promo-badge">PROMO</span>' : ''}
-          <span style="font-size:14px;color:${i === selectedVariantIndex ? '#D4B2A7' : '#A38F85'}">${formatPrice(v.price)}</span>
+          ${noDisp ? '<span class="promo-badge" style="background:#E8D8C4;color:#A38F85;white-space:nowrap;">Sólo encargo</span>' : ''}
+          <span style="font-size:14px;color:${i === selectedVariantIndex ? '#D4B2A7' : '#A38F85'};white-space:nowrap;">${formatPrice(v.price)}</span>
         </div>
       </div>
     </div>`;
@@ -1387,6 +1388,27 @@ function addToCart(id) {
   saveCart(cart);
   updateCartUI();
   refreshCard(id);
+}
+
+function removeFromCart(id, qty) {
+  const idx = cart.findIndex(c => String(c.id) === String(id));
+  if (idx === -1) return;
+  cart.splice(idx, 1);
+  saveCart(cart);
+  updateCartUI();
+  renderCartItems();
+  // Refrescar card si está visible
+  const cardEl = document.getElementById('card-' + id);
+  if (cardEl) {
+    const info = cardEl.querySelector('.product-info') || cardEl.querySelector('.card-info');
+    if (info) {
+      info.querySelectorAll('.qty-control, .add-btn').forEach(el => el.remove());
+      const p = products ? products.find(p => String(p.id) === String(id)) : null;
+      if (p) {
+        info.insertAdjacentHTML('beforeend', `<button class="add-btn" onclick="addToCart('${id}')">Agregar</button>`);
+      }
+    }
+  }
 }
 
 function changeQty(id, delta) {
@@ -1451,20 +1473,31 @@ function renderCartItems() {
   }
   empty.classList.add('hidden');
   footer.classList.remove('hidden');
-  el.innerHTML = cart.map(c => `
+  el.innerHTML = cart.map(c => {
+    const detail = c.brand && c.brand !== 'undefined' ? c.brand : (c.talla ? 'Talla: ' + c.talla : (c.tipo || ''));
+    const idStr = String(c.id);
+    return `
     <div class="cart-item">
       <div class="cart-item-info">
         <div class="cart-item-name">${c.name}</div>
-        <div class="cart-item-detail">${c.brand}${c.size ? ' · ' + c.size : ''}</div>
+        <div class="cart-item-detail">${detail}${c.size ? ' · ' + c.size : ''}</div>
       </div>
       <div class="cart-item-right">
         <div class="cart-item-price">${formatPrice(c.price * c.qty)}</div>
         <div style="font-size:11px;color:var(--latte);">x${c.qty} · ${formatPrice(c.price)} c/u</div>
-        <button class="remove-item" onclick="changeQty(${c.id}, -${c.qty})">Eliminar</button>
+        <button class="remove-item" onclick="removeFromCart('${idStr}', ${c.qty})">Eliminar</button>
       </div>
-    </div>
-  `).join('');
+    </div>`;
+  }).join('');
   updateCartUI();
+}
+
+function vaciarCarrito() {
+  if (!cart.length) return;
+  cart = [];
+  saveCart(cart);
+  updateCartUI();
+  renderCartItems();
 }
 
 function openCart() { document.getElementById('cartModal').classList.add('open'); renderCartItems(); }
