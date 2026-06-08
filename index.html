@@ -1346,6 +1346,7 @@ function renderVariantOptions(product) {
         <span style="font-size:14px;font-weight:${i === selectedVariantIndex ? '500' : '400'};color:#5A4A42">${v.name}</span>
         <div style="display:flex;align-items:center;gap:6px;">
           ${v.name.includes('Kit') ? '<span class="promo-badge">PROMO</span>' : ''}
+          ${v.available === false ? '<span class="promo-badge" style="background:#E8D8C4;color:#A38F85;">Solo encargo</span>' : ''}
           <span style="font-size:14px;color:${i === selectedVariantIndex ? '#D4B2A7' : '#A38F85'}">${formatPrice(v.price)}</span>
         </div>
       </div>
