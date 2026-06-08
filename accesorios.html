@@ -116,6 +116,8 @@
   .hidden { display: none !important; }
   .empty-cat { text-align: center; padding: 48px 20px; color: var(--latte); font-size: 13px; line-height: 1.8; }
   .empty-cat span { font-size: 32px; display: block; margin-bottom: 12px; }
+  .filter-btn { background: var(--nude); border: none; border-radius: 50px; padding: 6px 14px; font-size: 12px; color: var(--latte); font-family: 'DM Sans', sans-serif; white-space: nowrap; cursor: pointer; flex-shrink: 0; transition: all 0.2s; }
+  .filter-btn.active { background: var(--latte); color: var(--ivory); }
 </style>
 </head>
 <body>
@@ -124,10 +126,9 @@
     <div class="brand">🇧🇷 productos desde brasil</div>
     <div class="header-sub">accesorios</div>
   </header>
-  <div class="catalog-topbar">
+  <div class="catalog-topbar" id="topbarFilters" style="overflow-x:auto;">
     <a class="back-btn" href="index.html">← Volver</a>
-    <div style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;color:var(--latte);border:1px solid rgba(163,143,133,0.3);border-radius:50px;padding:6px 16px;">Accesorios</div>
-    <div style="width:70px"></div>
+    <button class="filter-btn active" id="filter-todos" onclick="setFilter('todos')">Ver Todo</button>
   </div>
   <div class="search-row">
     <div class="search-box">
@@ -218,57 +219,95 @@ function _catalogCallback(data) {
 function formatPrice(p) { return '$' + p.toLocaleString('es-CL'); }
 
 function renderCatalog(filtered) {
-  const list = filtered !== undefined ? filtered : products;
+  // Aplicar filtro de categoría
+  let list;
+  if (filtered !== undefined) {
+    list = filtered;
+  } else if (currentFilter === 'todos') {
+    list = products;
+  } else {
+    list = products.filter(p => (p.subcat || 'ACCESORIOS') === currentFilter);
+  }
+
   const el = document.getElementById('catalog');
   if (!list.length) {
     el.innerHTML = `<div class="empty-cat"><span>🌿</span>No hay accesorios disponibles por ahora.<br>Vuelve pronto!</div>`;
     return;
   }
-  const groups = {};
-  list.forEach(p => {
-    const key = (p.subcat || 'ACCESORIOS').toUpperCase();
-    if (!groups[key]) groups[key] = [];
-    groups[key].push(p);
-  });
+
+  // Construir filtros dinámicos la primera vez
+  if (filtered === undefined) buildFilters(products);
+
+  // Agrupar por categoría solo en Ver Todo
   let html = '';
-  Object.entries(groups).forEach(([title, items]) => {
-    html += `<div class="section-header"><h2>${title}</h2><div class="section-line"></div></div>
-    <div class="fashion-grid">${items.map(p => renderCard(p)).join('')}</div>`;
-  });
+  if (currentFilter === 'todos') {
+    const groups = {};
+    list.forEach(p => {
+      const key = (p.subcat || 'ACCESORIOS').toUpperCase();
+      if (!groups[key]) groups[key] = [];
+      groups[key].push(p);
+    });
+    Object.entries(groups).forEach(([title, items]) => {
+      html += `<div class="section-header"><h2>${title}</h2><div class="section-line"></div></div>
+      <div class="fashion-grid">${items.map(p => renderCard(p)).join('')}</div>`;
+    });
+  } else {
+    html = `<div class="fashion-grid" style="padding-top:12px;">${list.map(p => renderCard(p)).join('')}</div>`;
+  }
+
   el.innerHTML = html;
-  setTimeout(() => list.forEach(p => initSlider(String(p.id))), 50);
   updateCartUI();
+}
+
+let currentFilter = 'todos';
+
+function setFilter(f) {
+  currentFilter = f;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  const btn = document.getElementById('filter-' + f);
+  if (btn) btn.classList.add('active');
+  renderCatalog();
+}
+
+function buildFilters(products) {
+  const cats = [...new Set(products.map(p => (p.subcat || 'ACCESORIOS')))];
+  const topbar = document.getElementById('topbarFilters');
+  // Limpiar filtros dinámicos previos
+  topbar.querySelectorAll('.filter-btn').forEach(b => b.remove());
+  // Agregar Ver Todo
+  const todoBtn = document.createElement('button');
+  todoBtn.className = 'filter-btn' + (currentFilter === 'todos' ? ' active' : '');
+  todoBtn.id = 'filter-todos';
+  todoBtn.textContent = 'Ver Todo';
+  todoBtn.onclick = () => setFilter('todos');
+  topbar.appendChild(todoBtn);
+  // Agregar una por categoría
+  cats.forEach(cat => {
+    const btn = document.createElement('button');
+    btn.className = 'filter-btn' + (currentFilter === cat ? ' active' : '');
+    btn.id = 'filter-' + cat;
+    btn.textContent = cat;
+    btn.onclick = () => setFilter(cat);
+    topbar.appendChild(btn);
+  });
 }
 
 function renderCard(p) {
   const pid = String(p.id);
   const inCart = cart.find(c => String(c.id) === pid);
   const qty = inCart ? inCart.qty : 0;
-  const photos = [p.img1, p.img2, p.img3].filter(Boolean);
-  if (!photos.length) photos.push(`imgs/${pid}_1.png`);
+  const imgSrc = `imgs/${pid}_1.png`;
   const discount = p.sale && p.priceOld ? Math.round((1 - p.price / p.priceOld) * 100) : 0;
-
-  const slidesHtml = photos.map((src, i) =>
-    `<div class="card-slide" id="slide-${pid}-${i}">
-      <img src="${src}" alt="${p.name}" loading="${i===0?'eager':'lazy'}">
-    </div>`
-  ).join('');
-
-  const dotsHtml = photos.length > 1
-    ? `<div class="dots-pill" id="dots-${pid}">
-        ${photos.map((_,i) => `<div class="dot ${i===0?'active':''}" id="dot-${pid}-${i}" onclick="goToSlide('${pid}',${i})"></div>`).join('')}
-       </div>` : '';
 
   return `
     <div class="fashion-card" id="card-${pid}">
-      <div class="card-slider" id="slider-${pid}">
-        <div class="card-track" id="track-${pid}">${slidesHtml}</div>
+      <div class="card-slider" style="position:relative;">
+        <img src="${imgSrc}" alt="${p.name}" loading="eager"
+          style="width:100%;height:100%;object-fit:cover;display:block;"
+          onerror="this.style.background='var(--nude)'">
         ${p.star ? '<div class="star-badge">♡</div>' : ''}
-        ${p.video ? `<div class="video-badge" onclick="window.open('${p.video}','_blank')">▶ Ver cómo se usa</div>` : ''}
-        ${dotsHtml}
         ${p.sale ? `<div class="sale-ribbon">SALE${discount?' · '+discount+'% OFF':''}</div>` : ''}
       </div>
-      ${photos.length > 1 ? '<div class="swipe-hint">desliza para ver más →</div>' : ''}
       <div class="card-info">
         ${p.brand ? `<div class="product-brand">${p.brand}</div>` : ''}
         <div class="product-name">${p.name}</div>
@@ -290,54 +329,7 @@ function renderCard(p) {
     </div>`;
 }
 
-const sliders = {};
-
-function initSlider(id) {
-  const sliderEl = document.getElementById('slider-' + id);
-  const trackEl  = document.getElementById('track-' + id);
-  if (!sliderEl || !trackEl) return;
-  const slides = trackEl.querySelectorAll('.card-slide');
-  const total  = slides.length;
-  if (total === 0) return;
-  trackEl.style.width = (total * 100) + '%';
-  slides.forEach(s => { s.style.width = (100 / total) + '%'; });
-  sliders[id] = { current: 0, total, startX: 0, startY: 0, dragging: false };
-  sliderEl.addEventListener('touchstart', e => {
-    sliders[id].startX = e.touches[0].clientX;
-    sliders[id].startY = e.touches[0].clientY;
-    sliders[id].dragging = true;
-  }, { passive: true });
-  sliderEl.addEventListener('touchmove', e => {
-    if (!sliders[id].dragging) return;
-    const dx = Math.abs(e.touches[0].clientX - sliders[id].startX);
-    const dy = Math.abs(e.touches[0].clientY - sliders[id].startY);
-    if (dx > dy) e.preventDefault();
-  }, { passive: false });
-  sliderEl.addEventListener('touchend', e => {
-    if (!sliders[id].dragging) return;
-    sliders[id].dragging = false;
-    const dx = e.changedTouches[0].clientX - sliders[id].startX;
-    const dy = e.changedTouches[0].clientY - sliders[id].startY;
-    if (Math.abs(dx) < 30 || Math.abs(dy) > Math.abs(dx)) return;
-    if (dx < 0) goToSlide(id, sliders[id].current + 1);
-    else        goToSlide(id, sliders[id].current - 1);
-  }, { passive: true });
-}
-
-function goToSlide(id, idx) {
-  const s = sliders[id];
-  if (!s) return;
-  if (idx < 0) idx = s.total - 1;
-  if (idx >= s.total) idx = 0;
-  s.current = idx;
-  const track = document.getElementById('track-' + id);
-  if (!track) return;
-  track.style.transform = `translateX(-${idx * (100 / s.total)}%)`;
-  for (let i = 0; i < s.total; i++) {
-    const dot = document.getElementById(`dot-${id}-${i}`);
-    if (dot) dot.classList.toggle('active', i === idx);
-  }
-}
+// Sin slider — una sola imagen por accesorio
 
 function searchProducts(query) {
   const q = query.toLowerCase().trim();
