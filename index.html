@@ -1191,8 +1191,19 @@ function openCat(cat) {
   document.getElementById('catalog-view').style.display = 'block';
   document.getElementById('catTitle').textContent = CAT_LABELS[cat] || cat;
   document.getElementById('searchInput').value = '';
-  renderCatalog(cat);
   window.scrollTo(0, 0);
+
+  if (!catalogReady) {
+    // Mostrar spinner mientras carga
+    document.getElementById('catalog').innerHTML = `
+      <div style="text-align:center;padding:60px 20px;color:var(--latte);font-size:13px;">
+        <div style="font-size:24px;margin-bottom:12px;">🌿</div>
+        Cargando productos...
+      </div>`;
+    pendingCat = cat;
+    return;
+  }
+  renderCatalog(cat);
 }
 
 function goBack() {
@@ -1587,10 +1598,19 @@ function openVerMas(id) {
 }
 function closeVerMas() { document.getElementById('verMasModal').classList.remove('open'); }
 
+let catalogReady = false;
+let pendingCat = null;
+
 function catalogCallback(remote) {
   if (Array.isArray(remote) && remote.length > 0) {
     products.length = 0;
     remote.forEach(p => products.push(p));
+  }
+  catalogReady = true;
+  // Si había una categoría esperando, renderizarla ahora
+  if (pendingCat) {
+    renderCatalog(pendingCat);
+    pendingCat = null;
   }
 }
 
@@ -1598,11 +1618,11 @@ function catalogCallback(remote) {
 updateCartUI();
 
 (function initCatalog() {
-  const fallback = setTimeout(() => {}, 5000);
+  const fallback = setTimeout(() => { catalogReady = true; if (pendingCat) { renderCatalog(pendingCat); pendingCat = null; } }, 5000);
   window._catalogCallback = function(data) { clearTimeout(fallback); catalogCallback(data); };
   const script = document.createElement('script');
   script.src = SCRIPT_URL + '?callback=_catalogCallback&t=' + Date.now();
-  script.onerror = () => { clearTimeout(fallback); };
+  script.onerror = () => { clearTimeout(fallback); catalogReady = true; };
   document.head.appendChild(script);
 })();
 
