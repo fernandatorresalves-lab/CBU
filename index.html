@@ -191,6 +191,9 @@
   .landing-tab.encargar-tab.open {
     border-radius: 16px 16px 0 0;
   }
+  .landing-tab.inmediata-tab.open {
+    border-radius: 16px 16px 0 0;
+  }
   .landing-tab.encargar-tab:hover {
     background: var(--latte-dark);
   }
@@ -851,9 +854,14 @@
     <span class="tab-label">SALE <span class="sale-badge">% OFF</span></span>
   </button>
 
-  <button class="landing-tab inmediata-tab" onclick="openCat('entrega')">
-    <span class="tab-label">Entrega Inmediata</span>
+  <button class="landing-tab inmediata-tab" id="entregaBtn" onclick="toggleEntrega()">
+    <span class="tab-label">Entrega Inmediata <span class="encargar-arrow" id="entregaArrow">▾</span></span>
   </button>
+  <div class="accordion-body" id="entregaBody">
+    <button class="sub-tab" onclick="openCat('entrega')">Productos</button>
+    <button class="sub-tab" onclick="window.location.href='sportwear.html'">Sport Wear</button>
+    <button class="sub-tab" onclick="window.location.href='accesorios.html'">Accesorios</button>
+  </div>
 
   <button class="landing-tab encargar-tab" id="encargarBtn" onclick="toggleAccordion()">
     <span class="tab-label">Encargar <span class="encargar-arrow" id="encargarArrow">▾</span></span>
@@ -867,13 +875,7 @@
     <button class="sub-tab" style="background:#E7D7C9;color:#A38F85;" onclick="openCat('todos')">Ver Todo</button>
   </div>
 
-  <button class="landing-tab" onclick="window.location.href='sportwear.html'">
-    <span class="tab-label">Sport Wear <span class="new-badge">NEW</span></span>
-  </button>
 
-  <button class="landing-tab accesorios-tab" onclick="window.location.href='accesorios.html'">
-    <span class="tab-label">Accesorios <span class="new-badge">NEW</span></span>
-  </button>
 
 </div>
 
@@ -1164,6 +1166,15 @@ const CAT_LABELS = {
 };
 
 // ACCORDION
+function toggleEntrega() {
+  const body = document.getElementById('entregaBody');
+  const btn = document.getElementById('entregaBtn');
+  const arrow = document.getElementById('entregaArrow');
+  body.classList.toggle('open');
+  btn.classList.toggle('open');
+  arrow.classList.toggle('rotated');
+}
+
 function toggleAccordion() {
   const body = document.getElementById('accordionBody');
   const btn = document.getElementById('encargarBtn');
