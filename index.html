@@ -1340,18 +1340,23 @@ function openVariantModal(id) {
   document.getElementById('variantModal').style.display = 'flex';
 }
 function renderVariantOptions(product) {
-  document.getElementById('variantOptions').innerHTML = product.variants.map((v, i) => `
-    <div class="variant-option ${i === selectedVariantIndex ? 'variant-selected' : ''}" onclick="selectVariant(${i})">
+  document.getElementById('variantOptions').innerHTML = product.variants.map((v, i) => {
+    const noDisp = v.available === false || v.available === 'false';
+    return `
+    <div class="variant-option ${i === selectedVariantIndex ? 'variant-selected' : ''}" onclick="selectVariant(${i})"
+      style="${noDisp ? 'opacity:0.7;' : ''}">
       <div style="display:flex;justify-content:space-between;align-items:center;">
-        <span style="font-size:14px;font-weight:${i === selectedVariantIndex ? '500' : '400'};color:#5A4A42">${v.name}</span>
+        <div>
+          <span style="font-size:14px;font-weight:${i === selectedVariantIndex ? '500' : '400'};color:#5A4A42">${v.name}</span>
+          ${noDisp ? '<div style="font-size:10px;color:#A38F85;margin-top:2px;">Sólo para encargo 📋</div>' : ''}
+        </div>
         <div style="display:flex;align-items:center;gap:6px;">
-          ${v.name.includes('Kit') ? '<span class="promo-badge">PROMO</span>' : ''}
-          ${v.available === false ? '<span class="promo-badge" style="background:#E8D8C4;color:#A38F85;">Solo encargo</span>' : ''}
+          ${v.name.includes('Kit') && !noDisp ? '<span class="promo-badge">PROMO</span>' : ''}
           <span style="font-size:14px;color:${i === selectedVariantIndex ? '#D4B2A7' : '#A38F85'}">${formatPrice(v.price)}</span>
         </div>
       </div>
-    </div>
-  `).join('');
+    </div>`;
+  }).join('');
 }
 function selectVariant(index) {
   selectedVariantIndex = index;
