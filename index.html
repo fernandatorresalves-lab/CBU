@@ -1184,7 +1184,7 @@
         <div class="quiz-options">
           <button class="quiz-opt" onclick="selectSingle(1,'liso',this)">Liso</button>
           <button class="quiz-opt" onclick="selectSingle(1,'ondulado',this)">Ondulado</button>
-          <button class="quiz-opt" onclick="selectSingle(1,'rizado',this)">Rizado</button>
+          <button class="quiz-opt" onclick="selectSingle(1,'rizado',this)">Rizado / con muchos rizos</button>
         </div>
         <div class="quiz-nav">
           <button class="quiz-btn-next" id="qnext1" onclick="goStep(2)" disabled>Siguiente →</button>
@@ -1239,7 +1239,7 @@
     </div>
 
     <div class="quiz-results" id="quizResults">
-      <div class="quiz-results-title">Feña recomienda para vos</div>
+      <div class="quiz-results-title">Feña recomienda para ti</div>
       <div class="quiz-results-subtitle" id="quizResultsSubtitle"></div>
       <div id="quizResultsList"></div>
       <div class="quiz-restart" onclick="restartQuiz()">↩ Volver a empezar</div>
@@ -2067,8 +2067,7 @@ function calcResults() {
 
   const sorted = Object.keys(scores)
     .map(id => ({ id: parseInt(id), score: scores[id], margin: QUIZ_MARGIN[id] || 0 }))
-    .sort((a, b) => b.score - a.score || b.margin - a.margin)
-    .slice(0, 3);
+    .sort((a, b) => b.score - a.score || b.margin - a.margin);
 
   document.getElementById('quizSteps').style.display = 'none';
   document.getElementById('quizResults').style.display = 'block';
