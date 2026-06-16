@@ -1980,7 +1980,7 @@ const QUIZ_MAP = {
   frizz:       [9, 11, 21, 40, 37, 92],
   alisar:      [75, 12, 9, 43],
   hidratar:    [1, 100, 13, 40, 24],
-  reparar:     [8, 7, 19, 29, 30, 36, 43, 92, 24],
+  reparar:     [11, 8, 7, 19, 29, 30, 36, 43, 92, 24],
   crecimiento: [34, 39, 86],
   calor:       [11, 14, 13, 100, 24],
   brillo:      [22, 4, 84, 85, 36],
@@ -2005,7 +2005,7 @@ const QUIZ_WHY = {
 
 const QUIZ_MARGIN = {
   1:9800, 2:7275, 3:7275, 4:5425, 7:7275, 8:6350, 9:5610,
-  11:9250, 12:13725, 13:9650, 14:9800, 15:9800, 19:9800,
+  11:999999, 12:13725, 13:9650, 14:9800, 15:9800, 19:9800,
   21:14610, 22:9425, 24:4650, 26:4750, 27:4450, 28:4450,
   29:16300, 30:9450, 32:5005, 34:4120, 36:5595, 37:5895,
   38:4750, 39:3750, 40:5200, 43:5265, 44:4895, 75:6100,
@@ -2057,17 +2057,25 @@ function calcResults() {
 
   const scores = {};
   const reasons = {};
+
+  // Máximo 2 por tag, respetando orden del QUIZ_MAP (Amino primero en calor/reparar)
   activeTags.forEach(tag => {
-    (QUIZ_MAP[tag] || []).forEach(id => {
+    const ids = (QUIZ_MAP[tag] || []).slice(0, 2);
+    ids.forEach(id => {
       scores[id] = (scores[id] || 0) + 1;
       if (!reasons[id]) reasons[id] = [];
       if (!reasons[id].includes(QUIZ_WHY[tag])) reasons[id].push(QUIZ_WHY[tag]);
     });
   });
 
+  // Amino Spray (11) siempre primero si está en resultados
   const sorted = Object.keys(scores)
     .map(id => ({ id: parseInt(id), score: scores[id], margin: QUIZ_MARGIN[id] || 0 }))
-    .sort((a, b) => b.score - a.score || b.margin - a.margin);
+    .sort((a, b) => {
+      if (a.id === 11) return -1;
+      if (b.id === 11) return 1;
+      return b.score - a.score || b.margin - a.margin;
+    });
 
   document.getElementById('quizSteps').style.display = 'none';
   document.getElementById('quizResults').style.display = 'block';
