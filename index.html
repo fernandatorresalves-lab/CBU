@@ -1611,15 +1611,13 @@ function renderSection(title, items) {
 function renderCard(p) {
   const inCart = cart.find(c => c.id === p.id);
   const qty = inCart ? inCart.qty : 0;
-  const pngIds = [65,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91];
-  const ext = pngIds.includes(p.id) ? 'png' : 'jpg';
   const discount = p.sale && p.priceOld ? Math.round((1 - p.price / p.priceOld) * 100) : 0;
 
   return `
     <div class="product-card" id="card-${p.id}">
       <div style="position:relative;">
-        <img class="product-img" src="imgs/p${p.id}.${ext}" alt="${p.name}" loading="lazy"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <img class="product-img" src="imgs/p${p.id}.png" alt="${p.name}" loading="lazy"
+          onerror="if(!this.dataset.fallback){this.dataset.fallback='1';this.src='imgs/p${p.id}.jpg';}else{this.style.display='none';this.nextElementSibling.style.display='flex'}">
         <div class="product-img-placeholder" style="display:none">${p.emoji}</div>
         ${p.star ? '<div class="star-badge">♡</div>' : ''}
         ${p.video ? `<div class="video-badge" onclick="openVideo('${p.video}')">▶ Ver cómo se usa</div>` : ''}
@@ -1628,6 +1626,7 @@ function renderCard(p) {
       <div class="product-info">
         <div class="product-brand">${p.brand}</div>
         <div class="product-name">${p.name}</div>
+
         ${p.desc ? `<div class="product-desc">${p.desc}</div>` : ''}
         <div class="product-price" id="price-${p.id}">
           ${p.sale && p.priceOld ? `<span class="product-price-sale">${formatPrice(p.priceOld)}</span> ` : ''}
@@ -2110,13 +2109,12 @@ function calcResults() {
   sorted.forEach(({ id }) => {
     const p = products.find(pr => pr.id == id);
     if (!p) return;
-    const pngIds = [65,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91];
-    const ext = pngIds.includes(id) ? 'png' : 'jpg';
     const why = (reasons[id] || []).slice(0, 2).join(' · ');
     const inCart = cart.find(c => c.id === id);
     list.innerHTML += `
       <div class="quiz-result-card">
-        <img class="quiz-result-img" src="imgs/p${id}.${ext}" alt="${p.name}" onerror="this.style.display='none'">
+        <img class="quiz-result-img" src="imgs/p${id}.png" alt="${p.name}"
+          onerror="if(!this.dataset.fallback){this.dataset.fallback='1';this.src='imgs/p${id}.jpg';}else{this.style.display='none';}">
         <div class="quiz-result-info">
           <div class="quiz-result-brand">${p.brand}</div>
           <div class="quiz-result-name">${p.name}</div>
