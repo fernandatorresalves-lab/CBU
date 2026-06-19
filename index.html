@@ -322,6 +322,30 @@
     margin-left: 8px;
   }
 
+  /* ===================== COTIZAR ESPECIAL ===================== */
+  .cotizar-divider {
+    border-top: 0.5px solid rgba(163,143,133,0.2);
+    margin: 18px 4px 4px;
+  }
+
+  .cotizar-block {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(231,215,201,0.4);
+    border-radius: 16px;
+    padding: 14px 16px;
+    margin-top: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .cotizar-block:hover { background: rgba(231,215,201,0.65); }
+  .cotizar-icon { font-size: 18px; color: var(--latte); flex-shrink: 0; line-height: 1; }
+  .cotizar-text { flex: 1; }
+  .cotizar-title { font-size: 13px; color: var(--dark); font-weight: 500; margin-bottom: 2px; }
+  .cotizar-sub { font-size: 11px; color: var(--latte); line-height: 1.5; }
+  .cotizar-arrow { font-size: 16px; color: var(--latte); flex-shrink: 0; }
+
   /* ===================== CATALOG VIEW ===================== */
   #catalog-view { display: none; }
 
@@ -815,6 +839,150 @@
     line-height: 1.8;
   }
   .empty-cat span { font-size: 32px; display: block; margin-bottom: 12px; }
+
+  /* ===================== QUIZ PELO ===================== */
+  .quiz-block {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--ivory);
+    border: 2px solid var(--rose);
+    border-radius: 16px;
+    padding: 14px 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .quiz-block:hover { background: rgba(212,178,167,0.08); }
+  .quiz-icon { font-size: 18px; flex-shrink: 0; }
+  .quiz-text { flex: 1; }
+  .quiz-title { font-size: 13px; color: var(--dark); font-weight: 500; margin-bottom: 2px; }
+  .quiz-sub { font-size: 11px; color: var(--latte); line-height: 1.5; }
+  .quiz-arrow { font-size: 16px; color: var(--rose); flex-shrink: 0; }
+
+  .quiz-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(90,74,66,0.35);
+    z-index: 300;
+    align-items: flex-end;
+  }
+  .quiz-modal.open { display: flex; }
+  .quiz-sheet {
+    background: var(--ivory);
+    width: 100%;
+    max-height: 90vh;
+    border-radius: 24px 24px 0 0;
+    overflow-y: auto;
+    padding: 24px 20px 40px;
+    animation: slideUp 0.3s ease;
+  }
+  .quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(163,143,133,0.2);
+  }
+  .quiz-header h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--dark);
+  }
+  .quiz-progress-bar { display: flex; gap: 5px; margin-bottom: 20px; }
+  .quiz-progress-seg {
+    flex: 1; height: 3px;
+    background: var(--stone);
+    border-radius: 4px;
+    transition: background 0.3s;
+  }
+  .quiz-progress-seg.active { background: var(--rose); }
+  .quiz-step-label {
+    font-size: 10px; color: var(--latte);
+    letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px;
+  }
+  .quiz-question {
+    font-size: 17px; font-weight: 500; color: var(--dark);
+    margin-bottom: 16px; line-height: 1.4;
+  }
+  .quiz-options { display: flex; flex-direction: column; gap: 8px; }
+  .quiz-opt {
+    padding: 13px 16px; border-radius: 50px;
+    background: var(--nude); border: 1.5px solid transparent;
+    font-family: 'DM Sans', sans-serif; font-size: 14px;
+    color: var(--latte); cursor: pointer; transition: all 0.15s; text-align: center; width: 100%;
+  }
+  .quiz-opt:hover { border-color: var(--rose); color: var(--dark); }
+  .quiz-opt.selected { background: var(--rose); color: var(--ivory); border-color: var(--rose); }
+  .quiz-opt-multi {
+    padding: 11px 16px; border-radius: 12px;
+    background: var(--nude); border: 1.5px solid transparent;
+    font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--latte);
+    cursor: pointer; transition: all 0.15s;
+    display: flex; align-items: center; gap: 10px; width: 100%; text-align: left;
+  }
+  .quiz-opt-multi:hover { border-color: var(--rose); color: var(--dark); }
+  .quiz-opt-multi.selected { background: rgba(212,178,167,0.2); border-color: var(--rose); color: var(--dark); }
+  .quiz-check {
+    width: 18px; height: 18px; border-radius: 5px;
+    border: 1.5px solid rgba(163,143,133,0.4); flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; transition: all 0.15s;
+  }
+  .quiz-opt-multi.selected .quiz-check { background: var(--rose); border-color: var(--rose); color: var(--ivory); }
+  .quiz-nav { display: flex; gap: 10px; margin-top: 22px; }
+  .quiz-btn-back {
+    padding: 13px 20px; border: 1.5px solid rgba(163,143,133,0.3);
+    border-radius: 50px; background: transparent; color: var(--latte);
+    font-family: 'DM Sans', sans-serif; font-size: 14px; cursor: pointer; transition: all 0.2s;
+  }
+  .quiz-btn-back:hover { border-color: var(--rose); color: var(--rose); }
+  .quiz-btn-next {
+    flex: 1; padding: 13px; border: none; border-radius: 50px;
+    background: var(--latte); color: var(--ivory);
+    font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500;
+    cursor: pointer; transition: background 0.2s;
+  }
+  .quiz-btn-next:hover { background: var(--latte-dark); }
+  .quiz-btn-next:disabled { background: var(--stone); cursor: not-allowed; }
+
+  .quiz-results { display: none; }
+  .quiz-results-title {
+    font-size: 11px; font-weight: 500; color: var(--latte);
+    letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px;
+  }
+  .quiz-results-subtitle {
+    font-size: 17px; color: var(--dark); font-weight: 400;
+    margin-bottom: 18px; line-height: 1.4;
+  }
+  .quiz-result-card {
+    background: var(--nude); border-radius: 14px; padding: 14px;
+    display: flex; gap: 12px; align-items: flex-start;
+    margin-bottom: 10px; border: 1px solid rgba(163,143,133,0.15);
+  }
+  .quiz-result-img {
+    width: 60px; height: 60px; object-fit: contain;
+    border-radius: 8px; background: var(--ivory); flex-shrink: 0;
+  }
+  .quiz-result-info { flex: 1; }
+  .quiz-result-brand { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--latte); margin-bottom: 3px; }
+  .quiz-result-name { font-size: 14px; font-weight: 600; color: var(--dark); margin-bottom: 3px; line-height: 1.2; }
+  .quiz-result-why { font-size: 11px; color: var(--latte); line-height: 1.4; margin-bottom: 8px; }
+  .quiz-result-price { font-size: 13px; font-weight: 600; color: var(--dark); margin-bottom: 8px; }
+  .quiz-add-btn {
+    padding: 7px 14px; background: var(--rose); color: var(--ivory);
+    border: none; border-radius: 8px;
+    font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500;
+    cursor: pointer; transition: background 0.2s;
+  }
+  .quiz-add-btn:hover { background: var(--rose-dark); }
+  .quiz-add-btn.added { background: var(--latte); }
+  .quiz-restart {
+    text-align: center; margin-top: 16px; font-size: 12px;
+    color: var(--latte); text-decoration: underline; cursor: pointer;
+  }
 </style>
 </head>
 <body>
@@ -886,7 +1054,25 @@
     <button class="sub-tab" style="background:#E7D7C9;color:#A38F85;" onclick="openCat('todos')">Ver Todo</button>
   </div>
 
+  <div style="height:8px;"></div>
+  <div class="quiz-block" onclick="openQuiz()">
+    <div class="quiz-icon">✨</div>
+    <div class="quiz-text">
+      <p class="quiz-title">Busca lo que necesita tu pelo</p>
+      <p class="quiz-sub">Respondé 4 preguntas y Feña te recomienda</p>
+    </div>
+    <div class="quiz-arrow">›</div>
+  </div>
 
+  <div class="cotizar-divider"></div>
+  <div class="cotizar-block" onclick="openCotizar()">
+    <div class="cotizar-icon">💬</div>
+    <div class="cotizar-text">
+      <p class="cotizar-title">¿No encontraste lo que buscabas?</p>
+      <p class="cotizar-sub">Cuéntame qué necesitas y te cotizo</p>
+    </div>
+    <div class="cotizar-arrow">›</div>
+  </div>
 
 </div>
 
@@ -983,6 +1169,127 @@
       <strong>💸 Transferencia bancaria</strong><br>
       <strong>💳 Tarjeta de crédito/débito</strong> (+4%)<br><br>
       Mientras, puedes seguir <a href="https://ig.me/m/closebyus" target="_blank" style="color:var(--rose)">@closebyus</a> 🌿</p>
+    </div>
+  </div>
+</div>
+
+<!-- QUIZ PELO MODAL -->
+<div class="quiz-modal" id="quizModal" onclick="if(event.target===this)closeQuiz()">
+  <div class="quiz-sheet">
+    <div class="quiz-header">
+      <h3 id="quizModalTitle">¿Qué necesita tu pelo?</h3>
+      <button class="close-btn" onclick="closeQuiz()">✕</button>
+    </div>
+
+    <div id="quizSteps">
+      <div class="quiz-progress-bar">
+        <div class="quiz-progress-seg active" id="qseg1"></div>
+        <div class="quiz-progress-seg" id="qseg2"></div>
+        <div class="quiz-progress-seg" id="qseg3"></div>
+        <div class="quiz-progress-seg" id="qseg4"></div>
+      </div>
+
+      <div id="qstep1">
+        <div class="quiz-step-label">Pregunta 1 de 4</div>
+        <div class="quiz-question">¿Cómo es tu cabello?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="selectSingle(1,'liso',this)">Liso</button>
+          <button class="quiz-opt" onclick="selectSingle(1,'ondulado',this)">Ondulado</button>
+          <button class="quiz-opt" onclick="selectSingle(1,'rizado',this)">Rizado / con muchos rizos</button>
+        </div>
+        <div class="quiz-nav">
+          <button class="quiz-btn-next" id="qnext1" onclick="goStep(2)" disabled>Siguiente →</button>
+        </div>
+      </div>
+
+      <div id="qstep2" style="display:none">
+        <div class="quiz-step-label">Pregunta 2 de 4</div>
+        <div class="quiz-question">¿Tu cabello está teñido, decolorado o con mechas?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="selectSingle(2,'tenido',this)">Sí</button>
+          <button class="quiz-opt" onclick="selectSingle(2,'no_tenido',this)">No</button>
+        </div>
+        <div class="quiz-nav">
+          <button class="quiz-btn-back" onclick="goStep(1)">← Volver</button>
+          <button class="quiz-btn-next" id="qnext2" onclick="goStep(3)" disabled>Siguiente →</button>
+        </div>
+      </div>
+
+      <div id="qstep3" style="display:none">
+        <div class="quiz-step-label">Pregunta 3 de 4</div>
+        <div class="quiz-question">¿Tu raíz tiende a ponerse grasa rápido?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="selectSingle(3,'raiz_grasa',this)">Sí</button>
+          <button class="quiz-opt" onclick="selectSingle(3,'no_grasa',this)">No</button>
+        </div>
+        <div class="quiz-nav">
+          <button class="quiz-btn-back" onclick="goStep(2)">← Volver</button>
+          <button class="quiz-btn-next" id="qnext3" onclick="goStep(4)" disabled>Siguiente →</button>
+        </div>
+      </div>
+
+      <div id="qstep4" style="display:none">
+        <div class="quiz-step-label">Pregunta 4 de 4 · Elige todas las que apliquen</div>
+        <div class="quiz-question">¿Qué quieres lograr con tu pelo?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt-multi" onclick="toggleMulti('rizado',this)"><span class="quiz-check"></span>Definir y potenciar mis rizos</button>
+          <button class="quiz-opt-multi" onclick="toggleMulti('frizz',this)"><span class="quiz-check"></span>Disminuir el frizz</button>
+          <button class="quiz-opt-multi" onclick="toggleMulti('alisar',this)"><span class="quiz-check"></span>Alisar y suavizar</button>
+          <button class="quiz-opt-multi" onclick="toggleMulti('hidratar',this)"><span class="quiz-check"></span>Solo hidratar y mantenerlo sano</button>
+          <button class="quiz-opt-multi" onclick="toggleMulti('reparar',this)"><span class="quiz-check"></span>Reparar daño (rotura, puntas, quiebre)</button>
+          <button class="quiz-opt-multi" onclick="toggleMulti('crecimiento',this)"><span class="quiz-check"></span>Estimular crecimiento / reducir caída</button>
+          <button class="quiz-opt-multi" onclick="toggleMulti('calor',this)"><span class="quiz-check"></span>Proteger del calor (plancha o secador)</button>
+          <button class="quiz-opt-multi" onclick="toggleMulti('brillo',this)"><span class="quiz-check"></span>Brillo y suavidad</button>
+          <button class="quiz-opt-multi" onclick="toggleMulti('volumen',this)"><span class="quiz-check"></span>Dar volumen</button>
+        </div>
+        <div class="quiz-nav">
+          <button class="quiz-btn-back" onclick="goStep(3)">← Volver</button>
+          <button class="quiz-btn-next" id="qnext4" onclick="calcResults()" disabled>Ver recomendaciones ✨</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="quiz-results" id="quizResults">
+      <div class="quiz-results-title">Feña recomienda para ti</div>
+      <div class="quiz-results-subtitle" id="quizResultsSubtitle"></div>
+      <div id="quizResultsList"></div>
+      <div class="quiz-restart" onclick="restartQuiz()">↩ Volver a empezar</div>
+    </div>
+  </div>
+</div>
+
+<!-- COTIZAR ESPECIAL MODAL -->
+<div class="modal-overlay" id="cotizarModal" onclick="if(event.target===this)closeCotizar()">
+  <div class="cart-modal">
+    <div class="modal-header">
+      <h3>Cotiza con Feña</h3>
+      <button class="close-btn" onclick="closeCotizar()">✕</button>
+    </div>
+
+    <div id="cotizarForm">
+      <p style="font-size:12px;color:var(--latte);line-height:1.6;margin-bottom:16px;">
+        Cuéntame qué producto o marca estás buscando y te aviso si puedo conseguirlo 🌿
+      </p>
+      <div class="form-group">
+        <label>Tu nombre</label>
+        <input type="text" id="cNombre" placeholder="¿Cómo te llamas?" />
+      </div>
+      <div class="form-group">
+        <label>Instagram</label>
+        <input type="text" id="cInstagram" placeholder="@tuusuario" />
+      </div>
+      <div class="form-group">
+        <label>¿Qué estás buscando?</label>
+        <textarea id="cDescripcion" rows="3" placeholder="Marca, producto, tono, link de referencia..."></textarea>
+      </div>
+      <button class="submit-btn" id="cotizarBtn" onclick="submitCotizacion()">Enviar consulta ✨</button>
+    </div>
+
+    <div class="success-msg" id="cotizarSuccess">
+      <div class="check">🎉</div>
+      <h4>¡Listo!</h4>
+      <p>Feñi recibió tu consulta y te va a escribir por Instagram para contarte si puede conseguirlo 🌿<br><br>
+      Mientras, puedes seguir <a href="https://ig.me/m/closebyus" target="_blank" style="color:var(--rose)">@closebyus</a></p>
     </div>
   </div>
 </div>
@@ -1237,7 +1544,7 @@ function getProductsForCat(cat) {
   if (cat === 'makeup')      return products.filter(p => p.cat === 'makeup');
   if (cat === 'otros')       return products.filter(p => p.cat === 'otros');
   if (cat === 'sale')        return products.filter(p => p.sale);
-  if (cat === 'nuevos')      return products.filter(p => p.nuevo === true || p.nuevo === 'si' || p.nuevoIngreso === true);
+  if (cat === 'nuevos')      return products.filter(p => p.nuevo === true);
   if (cat === 'todos')       return [...products];
   if (cat === 'bestsellers') return products.filter(p => p.star);
   return [];
@@ -1249,7 +1556,7 @@ function renderCatalog(cat) {
     document.getElementById('catalog').innerHTML = `
       <div class="empty-cat">
         <span>🌿</span>
-        ${cat === 'sale' ? 'No hay productos en SALE por ahora.<br>Vuelve pronto!' : 'No hay productos disponibles en esta categoría.'}
+        ${cat === 'sale' ? 'No hay productos en SALE por ahora.<br>Vuelve pronto!' : cat === 'nuevos' ? 'No hay nuevos ingresos por ahora.<br>Vuelve pronto!' : 'No hay productos disponibles en esta categoría.'}
       </div>`;
     return;
   }
@@ -1542,7 +1849,56 @@ document.getElementById('cartModal').addEventListener('click', function(e) {
   if (e.target === this) closeCart();
 });
 
+// COTIZAR ESPECIAL
+function openCotizar() { document.getElementById('cotizarModal').classList.add('open'); }
+function closeCotizar() { document.getElementById('cotizarModal').classList.remove('open'); }
+
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyAcFq8fcDDp81yJpoC6yDdgAaXZXZcsR6xeAgPtKmsC-_WM7p969v0CBDRjdJcvvnv/exec';
+
+async function submitCotizacion() {
+  const nombre = document.getElementById('cNombre').value.trim();
+  const instagram = document.getElementById('cInstagram').value.trim();
+  const descripcion = document.getElementById('cDescripcion').value.trim();
+  if (!nombre || !instagram || !descripcion) {
+    alert('Por favor completa tu nombre, Instagram y cuéntame qué buscas 🙏');
+    return;
+  }
+
+  const btn = document.getElementById('cotizarBtn');
+  btn.disabled = true; btn.textContent = 'Enviando...';
+
+  const now = new Date();
+  const code = 'CBU-SOL-' + now.getFullYear().toString().slice(2) + String(now.getMonth()+1).padStart(2,'0') + String(now.getDate()).padStart(2,'0') + '-' + Math.floor(100 + Math.random() * 900);
+
+  try {
+    const response = await fetch('https://formspree.io/f/mojyydjw', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        codigo: '#' + code,
+        nombre,
+        instagram,
+        descripcion,
+        tipo: 'Solicitud especial',
+        _subject: `✨ Solicitud especial — ${nombre}`,
+      }),
+    });
+    if (!response.ok) throw new Error('Error al enviar');
+
+    const fecha = new Date().toLocaleString('es-CL');
+    fetch(SCRIPT_URL, {
+      method: 'POST', mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ sheet: 'Solicitudes', fecha, codigo: code, nombre, instagram, descripcion }),
+    }).catch(() => {});
+
+    document.getElementById('cotizarForm').style.display = 'none';
+    document.getElementById('cotizarSuccess').style.display = 'block';
+  } catch(e) {
+    btn.disabled = false; btn.textContent = 'Enviar consulta ✨';
+    alert('Hubo un problema al enviar. Intenta de nuevo o escríbeme por Instagram 💙');
+  }
+}
 
 async function submitOrder() {
   const nombre = document.getElementById('fNombre').value.trim();
@@ -1627,7 +1983,178 @@ function catalogCallback(remote) {
   }
 }
 
-// Actualizar UI con carrito guardado al cargar
+// ============================================================
+// QUIZ PELO
+// ============================================================
+const quizAnswers = { p1: null, p2: null, p3: null, p4: [] };
+
+const QUIZ_MAP = {
+  rizado:      [3, 44, 15, 27, 28],
+  frizz:       [9, 11, 21, 40, 37, 92],
+  alisar:      [75, 12, 9, 43],
+  hidratar:    [1, 100, 13, 40, 24],
+  reparar:     [11, 8, 7, 19, 29, 30, 36, 43, 92, 24],
+  crecimiento: [34, 39, 86],
+  calor:       [11, 14, 13, 100, 24],
+  brillo:      [22, 4, 84, 85, 36],
+  volumen:     [88, 26, 38, 32],
+  tenido:      [2, 18, 20, 25, 40, 36],
+  raiz_grasa:  [93, 32],
+};
+
+const QUIZ_WHY = {
+  rizado:      'Para definir y potenciar tus rizos',
+  frizz:       'Para controlar el frizz',
+  alisar:      'Para alisar y suavizar',
+  hidratar:    'Para hidratar y nutrir',
+  reparar:     'Para reparar el daño capilar',
+  crecimiento: 'Para estimular el crecimiento',
+  calor:       'Para proteger del calor',
+  brillo:      'Para aportar brillo y suavidad',
+  volumen:     'Para dar volumen',
+  tenido:      'Para cuidar el color',
+  raiz_grasa:  'Para balancear la raíz grasa',
+};
+
+const QUIZ_MARGIN = {
+  1:9800, 2:7275, 3:7275, 4:5425, 7:7275, 8:6350, 9:5610,
+  11:999999, 12:13725, 13:9650, 14:9800, 15:9800, 19:9800,
+  21:14610, 22:9425, 24:4650, 26:4750, 27:4450, 28:4450,
+  29:16300, 30:9450, 32:5005, 34:4120, 36:5595, 37:5895,
+  38:4750, 39:3750, 40:5200, 43:5265, 44:4895, 75:6100,
+  84:2150, 85:2150, 86:3150, 88:5525, 92:2300, 93:8940, 100:12275,
+};
+
+function openQuiz() {
+  restartQuiz();
+  document.getElementById('quizModal').classList.add('open');
+}
+function closeQuiz() {
+  document.getElementById('quizModal').classList.remove('open');
+}
+
+function selectSingle(step, val, el) {
+  quizAnswers['p' + step] = val;
+  el.closest('.quiz-options').querySelectorAll('.quiz-opt').forEach(b => b.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('qnext' + step).disabled = false;
+}
+
+function toggleMulti(tag, el) {
+  const idx = quizAnswers.p4.indexOf(tag);
+  if (idx === -1) {
+    quizAnswers.p4.push(tag);
+    el.classList.add('selected');
+    el.querySelector('.quiz-check').textContent = '✓';
+  } else {
+    quizAnswers.p4.splice(idx, 1);
+    el.classList.remove('selected');
+    el.querySelector('.quiz-check').textContent = '';
+  }
+  document.getElementById('qnext4').disabled = quizAnswers.p4.length === 0;
+}
+
+function goStep(n) {
+  [1,2,3,4].forEach(i => {
+    document.getElementById('qstep' + i).style.display = i === n ? 'block' : 'none';
+    const seg = document.getElementById('qseg' + i);
+    if (seg) seg.classList.toggle('active', i <= n);
+  });
+}
+
+function calcResults() {
+  const activeTags = [...quizAnswers.p4];
+  if (quizAnswers.p1 === 'rizado') activeTags.push('rizado');
+  if (quizAnswers.p2 === 'tenido') activeTags.push('tenido');
+  if (quizAnswers.p3 === 'raiz_grasa') activeTags.push('raiz_grasa');
+
+  const scores = {};
+  const reasons = {};
+
+  // Máximo 2 por tag, respetando orden del QUIZ_MAP (Amino primero en calor/reparar)
+  activeTags.forEach(tag => {
+    const ids = (QUIZ_MAP[tag] || []).slice(0, 2);
+    ids.forEach(id => {
+      scores[id] = (scores[id] || 0) + 1;
+      if (!reasons[id]) reasons[id] = [];
+      if (!reasons[id].includes(QUIZ_WHY[tag])) reasons[id].push(QUIZ_WHY[tag]);
+    });
+  });
+
+  // Amino Spray (11) siempre primero si está en resultados
+  const sorted = Object.keys(scores)
+    .map(id => ({ id: parseInt(id), score: scores[id], margin: QUIZ_MARGIN[id] || 0 }))
+    .sort((a, b) => {
+      if (a.id === 11) return -1;
+      if (b.id === 11) return 1;
+      return b.score - a.score || b.margin - a.margin;
+    });
+
+  document.getElementById('quizSteps').style.display = 'none';
+  document.getElementById('quizResults').style.display = 'block';
+  document.getElementById('quizModalTitle').textContent = 'Para tu pelo 🌿';
+
+  const subtitle = quizAnswers.p1 === 'rizado' ? 'Esto es lo que necesita tu pelo rizado ✨' :
+                   quizAnswers.p1 === 'ondulado' ? 'Esto es lo que necesita tu pelo ondulado ✨' :
+                   'Esto es lo que necesita tu pelo liso ✨';
+  document.getElementById('quizResultsSubtitle').textContent = subtitle;
+
+  const list = document.getElementById('quizResultsList');
+  list.innerHTML = '';
+
+  if (!sorted.length) {
+    list.innerHTML = '<p style="color:var(--latte);font-size:13px;text-align:center;padding:20px 0;">No encontré una combinación exacta — escribime por Instagram y te ayudo 🌿</p>';
+    return;
+  }
+
+  sorted.forEach(({ id }) => {
+    const p = products.find(pr => pr.id == id);
+    if (!p) return;
+    const pngIds = [65,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91];
+    const ext = pngIds.includes(id) ? 'png' : 'jpg';
+    const why = (reasons[id] || []).slice(0, 2).join(' · ');
+    const inCart = cart.find(c => c.id === id);
+    list.innerHTML += `
+      <div class="quiz-result-card">
+        <img class="quiz-result-img" src="imgs/p${id}.${ext}" alt="${p.name}" onerror="this.style.display='none'">
+        <div class="quiz-result-info">
+          <div class="quiz-result-brand">${p.brand}</div>
+          <div class="quiz-result-name">${p.name}</div>
+          <div class="quiz-result-why">${why}</div>
+          <div class="quiz-result-price">${formatPrice(p.price)}${p.size ? ' · ' + p.size : ''}</div>
+          ${p.variants
+            ? `<button class="quiz-add-btn" onclick="openVariantModal(${id});closeQuiz()">Elegir variante →</button>`
+            : `<button class="quiz-add-btn${inCart ? ' added' : ''}" id="qadd-${id}" onclick="quizAddToCart(${id})">${inCart ? '✓ Agregado' : 'Agregar al pedido'}</button>`
+          }
+        </div>
+      </div>`;
+  });
+}
+
+function quizAddToCart(id) {
+  addToCart(id);
+  const btn = document.getElementById('qadd-' + id);
+  if (btn) { btn.textContent = '✓ Agregado'; btn.classList.add('added'); }
+}
+
+function restartQuiz() {
+  quizAnswers.p1 = null; quizAnswers.p2 = null; quizAnswers.p3 = null; quizAnswers.p4 = [];
+  document.getElementById('quizSteps').style.display = 'block';
+  document.getElementById('quizResults').style.display = 'none';
+  document.getElementById('quizModalTitle').textContent = '¿Qué necesita tu pelo?';
+  goStep(1);
+  document.querySelectorAll('.quiz-opt').forEach(b => b.classList.remove('selected'));
+  document.querySelectorAll('.quiz-opt-multi').forEach(b => {
+    b.classList.remove('selected');
+    b.querySelector('.quiz-check').textContent = '';
+  });
+  ['qnext1','qnext2','qnext3','qnext4'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.disabled = true;
+  });
+}
+
+
 updateCartUI();
 
 (function initCatalog() {
