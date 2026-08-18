@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solicitação de Cotização · Belface</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ivory:       #EDE9E3;
+    --nude:        #E7D7C9;
+    --rose:        #D4B2A7;
+    --stone:       #CDC6C3;
+    --latte:       #A38F85;
+    --latte-dark:  #7A6A62;
+    --dark:        #5A4A42;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family:'DM Sans', sans-serif;
+    background:#fff;
+    color:var(--dark);
+    padding:40px;
+  }
+  .doc {
+    max-width:800px;
+    margin:0 auto;
+  }
+  header {
+    background:var(--rose);
+    color:var(--ivory);
+    padding:28px 32px;
+    border-radius:16px;
+    margin-bottom:28px;
+    text-align:center;
+  }
+  header .brand {
+    font-family:'Playfair Display', serif;
+    font-size:12px;
+    letter-spacing:0.3em;
+    text-transform:uppercase;
+    color:rgba(237,233,227,0.9);
+    margin-bottom:6px;
+  }
+  header h1 {
+    font-family:'Playfair Display', serif;
+    font-size:26px;
+    font-weight:300;
+    letter-spacing:0.04em;
+  }
+  header .sub {
+    font-size:12px;
+    margin-top:8px;
+    color:rgba(237,233,227,0.85);
+  }
+
+  .info-row {
+    display:flex;
+    justify-content:space-between;
+    gap:16px;
+    margin-bottom:24px;
+    font-size:12px;
+    color:var(--latte);
+  }
+  .info-box {
+    background:var(--nude);
+    border-radius:12px;
+    padding:12px 16px;
+    flex:1;
+  }
+  .info-box strong { color:var(--dark); display:block; font-size:11px; letter-spacing:0.05em; text-transform:uppercase; margin-bottom:4px; }
+
+  table {
+    width:100%;
+    border-collapse:collapse;
+    margin-bottom:24px;
+  }
+  thead th {
+    background:var(--latte);
+    color:var(--ivory);
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    font-weight:500;
+    padding:12px 10px;
+    text-align:left;
+  }
+  thead th.center { text-align:center; }
+  tbody tr {
+    border-bottom:1px solid rgba(163,143,133,0.2);
+  }
+  tbody tr:nth-child(even) { background:rgba(231,215,201,0.25); }
+  td {
+    padding:10px;
+    font-size:13px;
+    vertical-align:middle;
+  }
+  td.foto { width:70px; text-align:center; }
+  td.foto img {
+    width:56px;
+    height:56px;
+    object-fit:contain;
+    background:var(--ivory);
+    border-radius:8px;
+    padding:4px;
+    border:1px solid rgba(163,143,133,0.15);
+  }
+  td.marca {
+    font-size:10px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--latte);
+  }
+  td.nome {
+    font-weight:600;
+    color:var(--dark);
+  }
+  td.preco {
+    width:110px;
+    text-align:center;
+    color:var(--stone);
+    font-style:italic;
+    font-size:12px;
+  }
+
+  .pendente { background:rgba(212,178,167,0.12); }
+  .pendente td.nome { color:var(--rose); font-style:italic; }
+
+  footer {
+    font-size:11px;
+    color:var(--latte);
+    line-height:1.7;
+    background:var(--nude);
+    border-radius:12px;
+    padding:16px 20px;
+  }
+  footer strong { color:var(--dark); }
+</style>
+</head>
+<body>
+<div class="doc">
+
+  <header>
+    <div class="brand">closebyus</div>
+    <h1>Solicitação de Cotização</h1>
+    <div class="sub">Para · Belface</div>
+  </header>
+
+  <div class="info-row">
+    <div class="info-box">
+      <strong>De</strong>
+      Fernanda Torres Alves
+    </div>
+    <div class="info-box">
+      <strong>Data</strong>
+      <span id="today"></span>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th class="center">Foto</th>
+        <th>Marca</th>
+        <th>Produto</th>
+        <th class="center">Preço (Belface)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="foto"><img src="imgs/p1.png" onerror="this.onerror=null;this.src='imgs/p1.jpg';"></td><td class="marca">TRUSS</td><td class="nome">Ultra Hidratación</td><td class="preco">—</td></tr>
+      <tr><td class="foto"><img src="imgs/p7.png" onerror="this.onerror=null;this.src='imgs/p7.jpg';"></td><td class="marca">TRUSS</td><td class="nome">Nutri Infusión</td><td class="preco">—</td></tr>
+      <tr><td class="foto"><img src="imgs/p8.png" onerror="this.onerror=null;this.src='imgs/p8.jpg';"></td><td class="marca">TRUSS</td><td class="nome">Uso Obrigatorio</td><td class="preco">—</td></tr>
+      <tr><td class="foto"><img src="imgs/p11.png" onerror="this.onerror=null;this.src='imgs/p11.jpg';"></td><td class="marca">TRUSS</td><td class="nome">Amino Spray</td><td class="preco">—</td></tr>
+      <tr><td class="foto"><img src="imgs/p13.png" onerror="this.onerror=null;this.src='imgs/p13.jpg';"></td><td class="marca">TRUSS</td><td class="nome">Day By Day Spray</td><td class="preco">—</td></tr>
+      <tr><td class="foto"><img src="imgs/p26.png" onerror="this.onerror=null;this.src='imgs/p26.jpg';"></td><td class="marca">AMEND</td><td class="nome">Volumen Amend</td><td class="preco">—</td></tr>
+      <tr><td class="foto"><img src="imgs/p32.png" onerror="this.onerror=null;this.src='imgs/p32.jpg';"></td><td class="marca">RICCA</td><td class="nome">Shampoo Seco Spray</td><td class="preco">—</td></tr>
+      <tr><td class="foto"><img src="imgs/p34.png" onerror="this.onerror=null;this.src='imgs/p34.jpg';"></td><td class="marca">ACQUAFLORA</td><td class="nome">Fuerza y Crecimiento Spray</td><td class="preco">—</td></tr>
+      <tr><td class="foto"><img src="imgs/p35.png" onerror="this.onerror=null;this.src='imgs/p35.jpg';"></td><td class="marca">SALON LINE</td><td class="nome">Modeladora Gel</td><td class="preco">—</td></tr>
+      <tr><td class="foto"><img src="imgs/p37.png" onerror="this.onerror=null;this.src='imgs/p37.jpg';"></td><td class="marca">XÔ FRIZZ</td><td class="nome">Rimel Baby Hairs</td><td class="preco">—</td></tr>
+      <tr><td class="foto"><img src="imgs/p40.png" onerror="this.onerror=null;this.src='imgs/p40.jpg';"></td><td class="marca">INOAR</td><td class="nome">Agua Milagrosa Spray</td><td class="preco">—</td></tr>
+      <tr><td class="foto"><img src="imgs/p41.png" onerror="this.onerror=null;this.src='imgs/p41.jpg';"></td><td class="marca">SALON LINE</td><td class="nome">Gel Modelador Clean Look Suave</td><td class="preco">—</td></tr>
+      <tr><td class="foto"><img src="imgs/p43.png" onerror="this.onerror=null;this.src='imgs/p43.jpg';"></td><td class="marca">RICCA</td><td class="nome">Ricca Flex</td><td class="preco">—</td></tr>
+      <tr><td class="foto"><img src="imgs/p46.png" onerror="this.onerror=null;this.src='imgs/p46.jpg';"></td><td class="marca">VIZZELA</td><td class="nome">Fijador Cejas Incoloro</td><td class="preco">—</td></tr>
+      <tr><td class="foto"><img src="imgs/p47.png" onerror="this.onerror=null;this.src='imgs/p47.jpg';"></td><td class="marca">VIZZELA</td><td class="nome">Corrector Alta Cobertura</td><td class="preco">—</td></tr>
+      <tr><td class="foto"><img src="imgs/p56.png" onerror="this.onerror=null;this.src='imgs/p56.jpg';"></td><td class="marca">FRAN</td><td class="nome">Paleta Iluminadores</td><td class="preco">—</td></tr>
+      <tr><td class="foto"><img src="imgs/p59.png" onerror="this.onerror=null;this.src='imgs/p59.jpg';"></td><td class="marca">BOCA ROSA</td><td class="nome">Máscara Café</td><td class="preco">—</td></tr>
+      <tr><td class="foto"><img src="imgs/p60.png" onerror="this.onerror=null;this.src='imgs/p60.jpg';"></td><td class="marca">MASCAVO</td><td class="nome">Bronzer Mascavo</td><td class="preco">—</td></tr>
+      <tr><td class="foto"><img src="imgs/p92.png" onerror="this.onerror=null;this.src='imgs/p92.jpg';"></td><td class="marca">RICCA</td><td class="nome">Toca Satín</td><td class="preco">—</td></tr>
+      <tr><td class="foto"><img src="imgs/p93.png" onerror="this.onerror=null;this.src='imgs/p93.jpg';"></td><td class="marca">TRUSS</td><td class="nome">Equilibrium</td><td class="preco">—</td></tr>
+    </tbody>
+  </table>
+
+  <footer>
+    <strong>Observação:</strong> Gostaria de solicitar uma cotização de preços para os produtos acima.<br>
+    Fico à disposição para qualquer dúvida. Obrigada! 🌿
+  </footer>
+
+</div>
+
+<script>
+  document.getElementById('today').textContent = new Date().toLocaleDateString('pt-BR');
+</script>
+</body>
+</html>
