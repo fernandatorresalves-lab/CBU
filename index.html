@@ -2031,12 +2031,35 @@ function catalogCallback(remote) {
   if (Array.isArray(remote) && remote.length > 0) {
     products.length = 0;
     remote.forEach(p => products.push(p));
+    syncCartWithProducts();
   }
   catalogReady = true;
   // Si había una categoría esperando, renderizarla ahora
   if (pendingCat) {
     renderCatalog(pendingCat);
     pendingCat = null;
+  }
+}
+
+// Actualiza nombre/marca de lo que ya está en el carrito para que coincida
+// con los datos más recientes del catálogo (por si el producto cambió de nombre
+// en la hoja después de que ya se había agregado al carrito).
+function syncCartWithProducts() {
+  let changed = false;
+  cart.forEach(item => {
+    const p = products.find(pr => pr.id === item.id);
+    if (!p) return;
+    let newName = p.name;
+    if (item.name.includes(' — ')) {
+      const variantPart = item.name.split(' — ').slice(1).join(' — ');
+      newName = p.name + ' — ' + variantPart;
+    }
+    if (item.name !== newName) { item.name = newName; changed = true; }
+    if (item.brand !== p.brand) { item.brand = p.brand; changed = true; }
+  });
+  if (changed) {
+    saveCart(cart);
+    if (document.getElementById('cartModal').classList.contains('open')) renderCartItems();
   }
 }
 
@@ -2214,7 +2237,7 @@ function restartQuiz() {
 updateCartUI();
 
 (function initCatalog() {
-  const fallback = setTimeout(() => { catalogReady = true; if (pendingCat) { renderCatalog(pendingCat); pendingCat = null; } }, 5000);
+  const fallback = setTimeout(() => { catalogReady = true; if (pendingCat) { renderCatalog(pendingCat); pendingCat = null; } }, 12000);
   window._catalogCallback = function(data) { clearTimeout(fallback); catalogCallback(data); };
   const script = document.createElement('script');
   script.src = SCRIPT_URL + '?callback=_catalogCallback&t=' + Date.now();
