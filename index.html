@@ -1026,7 +1026,7 @@
     <div style="border-left:1px solid rgba(237,233,227,0.2);height:30px;"></div>
     <div style="text-align:left;">
       <div style="font-family:'DM Sans',sans-serif;font-size:9px;color:rgba(237,233,227,0.7);letter-spacing:0.1em;text-transform:uppercase;">fecha</div>
-      <div style="font-family:'DM Sans',sans-serif;font-size:12px;color:#EDE9E3;font-weight:500;">26 junio</div>
+      <div style="font-family:'DM Sans',sans-serif;font-size:12px;color:#EDE9E3;font-weight:500;" id="fecha-vuelo-txt">26 junio</div>
     </div>
   </div>
 </header>
@@ -1064,6 +1064,7 @@
   <div class="accordion-body" id="entregaBody">
     <button class="sub-tab" onclick="openCat('entrega')">Productos</button>
     <button class="sub-tab" onclick="window.location.href='sportwear.html'">Sport Wear</button>
+    <button class="sub-tab" id="accesoriosBtn" onclick="window.location.href='accesorios.html'">Accesorios</button>
   </div>
 
   <button class="landing-tab encargar-tab" id="encargarBtn" onclick="toggleAccordion()">
@@ -2239,13 +2240,30 @@ updateCartUI();
   document.head.appendChild(script);
 })();
 
+// Oculta el botón "Accesorios" del menú si no hay ninguno con stock disponible
+(function checkAccesoriosDisponibles() {
+  const btn = document.getElementById('accesoriosBtn');
+  if (!btn) return;
+  const fallback = setTimeout(() => {}, 0); // sin fallback visual: si falla, se deja el botón visible
+  window._accesoriosCallback = function(data) {
+    const hayStock = Array.isArray(data) && data.some(p => (parseInt(p.stock) || 0) > 0);
+    if (!hayStock) btn.style.display = 'none';
+  };
+  const script = document.createElement('script');
+  script.src = SCRIPT_URL + '?sheet=accesorios&callback=_accesoriosCallback&t=' + Date.now();
+  document.head.appendChild(script);
+})();
+
 (function() {
+  const MESES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
   const vuelo = new Date('2026-09-11T00:00:00');
   const hoy = new Date();
   const diff = Math.ceil((vuelo - hoy) / (1000 * 60 * 60 * 24));
   const cnt = document.getElementById('dias-cnt');
   const box = document.getElementById('flight-countdown');
+  const fechaTxt = document.getElementById('fecha-vuelo-txt');
   if (!cnt || !box) return;
+  if (fechaTxt) fechaTxt.textContent = vuelo.getDate() + ' ' + MESES[vuelo.getMonth()];
   if (diff > 0) {
     cnt.textContent = diff;
   } else if (diff === 0) {
