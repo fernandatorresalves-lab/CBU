@@ -250,11 +250,6 @@
   }
   .sub-tab.bs-tab:hover { background: var(--rose-dark); }
 
-  .landing-tab.accesorios-tab {
-    background: #E7D7C9;
-    color: #A38F85;
-  }
-
   .landing-tab.vertodo-tab {
     background: #E7D7C9;
     color: #A38F85;
@@ -1069,7 +1064,6 @@
   <div class="accordion-body" id="entregaBody">
     <button class="sub-tab" onclick="openCat('entrega')">Productos</button>
     <button class="sub-tab" onclick="window.location.href='sportwear.html'">Sport Wear</button>
-    <button class="sub-tab" onclick="window.location.href='accesorios.html'">Accesorios</button>
   </div>
 
   <button class="landing-tab encargar-tab" id="encargarBtn" onclick="toggleAccordion()">
@@ -2246,7 +2240,7 @@ updateCartUI();
 })();
 
 (function() {
-  const vuelo = new Date('2026-06-26T00:00:00');
+  const vuelo = new Date('2026-09-11T00:00:00');
   const hoy = new Date();
   const diff = Math.ceil((vuelo - hoy) / (1000 * 60 * 60 * 24));
   const cnt = document.getElementById('dias-cnt');
