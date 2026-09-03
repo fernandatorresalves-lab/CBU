@@ -1923,7 +1923,20 @@ async function submitOrder() {
     if (!response.ok) throw new Error('Error al enviar');
 
     const fecha = new Date().toLocaleString('es-CL');
-    const rows = cart.map((c, i) => ({ fecha, codigo: orderCode, nombre, instagram, producto_id: c.id, producto: c.name, marca: c.brand || '—', cantidad: c.qty, precio_unitario: formatPrice(c.price), subtotal: formatPrice(c.price * c.qty), total_pedido: i === 0 ? formatPrice(total) : '—', notas: i === 0 ? (notas || '—') : '—' }));
+    const fecha = new Date().toLocaleString('es-CL');
+    const rows = cart.map(c => ({
+      fecha,
+      codigo: orderCode,
+      nombre,
+      instagram,
+      producto_id: c.id,
+      producto: c.name,
+      marca: c.brand || '—',
+      cantidad: c.qty,
+      precio_unitario: c.price,
+      total: total,
+      notas: notas || '—',
+    }));
     fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ rows }) });
 
     document.getElementById('cartItems').classList.add('hidden');
