@@ -1415,13 +1415,13 @@ const productImages = {
 };
 
 const products = [
-  { id:1,  brand:'TRUSS', name:'Ultra Hidratación', desc:'Hidratación intensa', price:23000, size:'300ml', cat:'truss', emoji:'💧', star:true, variants:[{name:'Shampoo',price:23000},{name:'Acondicionador',price:23000},{name:'Kit Shampoo + Acondicionador 🌟',price:44000}] },
-  { id:2,  brand:'TRUSS', name:'Blond', desc:'Matiza y nutre', price:23000, size:'300ml', cat:'truss', emoji:'✨', star:false, variants:[{name:'Shampoo',price:23000},{name:'Acondicionador',price:23000},{name:'Kit Shampoo + Acondicionador 🌟',price:44000}] },
-  { id:3,  brand:'TRUSS', name:'Curly', desc:'Tratamiento rulos', price:23000, size:'300ml', cat:'truss', emoji:'🌀', star:false, variants:[{name:'Shampoo',price:23000},{name:'Acondicionador',price:23000},{name:'Kit Shampoo + Acondicionador 🌟',price:44000}] },
-  { id:4,  brand:'TRUSS', name:'Miracle', desc:'Brillo', price:23000, size:'300ml', cat:'truss', emoji:'⭐', star:true, variants:[{name:'Shampoo',price:23000},{name:'Acondicionador',price:23000},{name:'Kit Shampoo + Acondicionador 🌟',price:44000}] },
-  { id:7,  brand:'TRUSS', name:'Nutri Infusión', desc:'Cabellos resecos', price:23000, size:'300ml', cat:'truss', emoji:'🌾', star:true, variants:[{name:'Shampoo',price:23000},{name:'Acondicionador',price:23000},{name:'Kit Shampoo + Acondicionador 🌟',price:44000}] },
-  { id:8,  brand:'TRUSS', name:'Uso Obrigatorio', desc:'Suavidad y nutrición', price:23000, size:'300ml', cat:'truss', emoji:'💚', star:false, variants:[{name:'Shampoo',price:23000},{name:'Acondicionador',price:23000},{name:'Kit Shampoo + Acondicionador 🌟',price:44000}] },
-  { id:9,  brand:'TRUSS', name:'Frizz Zero', desc:'Efectivo contra frizz', price:23000, size:'300ml', cat:'truss', emoji:'🌬️', star:false, variants:[{name:'Shampoo',price:23000},{name:'Acondicionador',price:23000},{name:'Kit Shampoo + Acondicionador 🌟',price:44000}] },
+  { id:1,  brand:'TRUSS', name:'Ultra Hidratación', desc:'Hidratación intensa', price:23000, size:'300ml', cat:'truss', emoji:'💧', star:true, variants:[{name:'Shampoo',price:23000},{name:'Acondicionador',price:23000},{name:'Kit Shampoo + Acondicionador 🌟',price:46000}] },
+  { id:2,  brand:'TRUSS', name:'Blond', desc:'Matiza y nutre', price:23000, size:'300ml', cat:'truss', emoji:'✨', star:false, variants:[{name:'Shampoo',price:23000},{name:'Acondicionador',price:23000},{name:'Kit Shampoo + Acondicionador 🌟',price:46000}] },
+  { id:3,  brand:'TRUSS', name:'Curly', desc:'Tratamiento rulos', price:23000, size:'300ml', cat:'truss', emoji:'🌀', star:false, variants:[{name:'Shampoo',price:23000},{name:'Acondicionador',price:23000},{name:'Kit Shampoo + Acondicionador 🌟',price:46000}] },
+  { id:4,  brand:'TRUSS', name:'Miracle', desc:'Brillo', price:23000, size:'300ml', cat:'truss', emoji:'⭐', star:true, variants:[{name:'Shampoo',price:23000},{name:'Acondicionador',price:23000},{name:'Kit Shampoo + Acondicionador 🌟',price:46000}] },
+  { id:7,  brand:'TRUSS', name:'Nutri Infusión', desc:'Cabellos resecos', price:23000, size:'300ml', cat:'truss', emoji:'🌾', star:true, variants:[{name:'Shampoo',price:23000},{name:'Acondicionador',price:23000},{name:'Kit Shampoo + Acondicionador 🌟',price:46000}] },
+  { id:8,  brand:'TRUSS', name:'Uso Obrigatorio', desc:'Suavidad y nutrición', price:23000, size:'300ml', cat:'truss', emoji:'💚', star:false, variants:[{name:'Shampoo',price:23000},{name:'Acondicionador',price:23000},{name:'Kit Shampoo + Acondicionador 🌟',price:46000}] },
+  { id:9,  brand:'TRUSS', name:'Frizz Zero', desc:'Efectivo contra frizz', price:23000, size:'300ml', cat:'truss', emoji:'🌬️', star:false, variants:[{name:'Shampoo',price:23000},{name:'Acondicionador',price:23000},{name:'Kit Shampoo + Acondicionador 🌟',price:46000}] },
   { id:10, brand:'TRUSS', name:'Night Spa', desc:'Hidratación nocturna', price:35000, size:'250ml', cat:'truss', emoji:'🌙', star:false },
   { id:11, brand:'TRUSS', name:'Amino Spray', desc:'Termoprotector e hidratante', price:37000, size:'225ml', cat:'truss', emoji:'💫', star:true, video:'https://www.tiktok.com/@iamandaventura/video/7544476732309376312?is_from_webapp=1&sender_device=pc' },
   { id:12, brand:'TRUSS', name:'Brush Keratin Leave In', desc:'Proteínas y aminoácidos', price:35000, size:'250ml', cat:'truss', emoji:'🪄', star:false },
@@ -1739,7 +1739,7 @@ function renderVariantOptions(product) {
       <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;">
         <span style="font-size:14px;font-weight:${i === selectedVariantIndex ? '500' : '400'};color:#5A4A42;flex:1;min-width:0;">${v.name}</span>
         <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
-          ${v.name.includes('Kit') && !noDisp ? '<span class="promo-badge">PROMO</span>' : ''}
+          ${''}
           ${noDisp ? '<span class="promo-badge" style="background:#E8D8C4;color:#A38F85;white-space:nowrap;">Sólo encargo</span>' : ''}
           <span style="font-size:14px;color:${i === selectedVariantIndex ? '#D4B2A7' : '#A38F85'};white-space:nowrap;">${formatPrice(v.price)}</span>
         </div>
