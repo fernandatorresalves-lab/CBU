@@ -4,33 +4,36 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Catálogo · closebyferr</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,400;75..100,500;75..100,600;75..100,800;75..100,900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ivory:       #EDE9E3;
-    --nude:        #E7D7C9;
-    --rose:        #D4B2A7;
-    --stone:       #CDC6C3;
-    --latte:       #A38F85;
-    --latte-dark:  #7A6A62;
-    --cream:       #EDE9E3;
-    --warm-white:  #E7D7C9;
-    --gold:        #A38F85;
-    --dark:        #5A4A42;
-    --medium:      #A38F85;
-    --light-border:#D4B2A7;
-    --tag-bg:      #E7D7C9;
-    --header-bg:   #D4B2A7;
-    --header-text: #EDE9E3;
-    --rose-dark:   #B89A90;
-    --soft:        #E7D7C9;
+    /* Paleta: crema, arena, rosa empolvado, burdeo */
+    --ivory:       #F8F4EF;  /* fondo claro */
+    --nude:        #EEE4DA;  /* crema */
+    --sand:        #D8C4AC;  /* arena */
+    --pink:        #C8A49F;  /* rosa empolvado */
+    --rose:        #4D0E13;  /* burdeo (botones y acentos) */
+    --stone:       #D8C4AC;
+    --latte:       #7A4A4E;  /* texto secundario */
+    --latte-dark:  #4D0E13;
+    --cream:       #F8F4EF;
+    --warm-white:  #EEE4DA;
+    --gold:        #7A4A4E;
+    --dark:        #4D0E13;  /* texto principal */
+    --medium:      #7A4A4E;
+    --light-border:#D8C4AC;
+    --tag-bg:      #EEE4DA;
+    --header-bg:   #F8F4EF;
+    --header-text: #4D0E13;
+    --rose-dark:   #2E080B;
+    --soft:        #EEE4DA;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    font-family: 'DM Sans', sans-serif;
-    background: #EDE9E3;
+    font-family: 'Archivo', sans-serif;
+    background: #F8F4EF;
     color: var(--dark);
     min-height: 100vh;
     display: flex;
@@ -58,17 +61,17 @@
   }
 
   header .brand {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Instrument Serif', serif;
     font-size: 13px;
     font-weight: 400;
     letter-spacing: 0.35em;
     text-transform: uppercase;
-    color: rgba(237,233,227,0.9);
+    color: rgba(238,228,218,0.9);
     margin-bottom: 8px;
   }
 
   header h1 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Instrument Serif', serif;
     font-size: 26px;
     font-weight: 300;
     letter-spacing: 0.08em;
@@ -76,7 +79,7 @@
   }
 
   .header-sub {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Instrument Serif', serif;
     font-size: 34px;
     font-weight: 300;
     letter-spacing: 0.22em;
@@ -109,12 +112,12 @@
 
   .how-it-works {
     background: var(--ivory);
-    border-bottom: 1px solid rgba(163,143,133,0.15);
+    border-bottom: 1px solid rgba(122,74,78,0.15);
     padding: 18px 20px;
   }
 
   .hiw-title {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Archivo', sans-serif;
     font-size: 15px;
     font-weight: 600;
     color: var(--dark);
@@ -154,7 +157,7 @@
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.2s ease;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Archivo', sans-serif;
     font-size: 15px;
     font-weight: 400;
     color: var(--latte);
@@ -165,7 +168,7 @@
   .landing-tab:hover:not(.soon-tab):not(.encargar-tab) {
     filter: brightness(0.96);
     transform: scale(1.02);
-    box-shadow: 0 4px 16px rgba(163,143,133,0.2);
+    box-shadow: 0 4px 16px rgba(122,74,78,0.2);
   }
 
   .landing-tab.sale-tab {
@@ -236,13 +239,13 @@
     border: none;
     border-radius: 50px;
     cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Archivo', sans-serif;
     font-size: 14px;
     font-weight: 400;
     color: var(--latte);
     transition: background 0.2s;
   }
-  .sub-tab:hover { background: rgba(237,233,227,0.7); }
+  .sub-tab:hover { background: rgba(238,228,218,0.7); }
   .sub-tab.bs-tab {
     background: var(--rose);
     color: var(--ivory);
@@ -251,17 +254,17 @@
   .sub-tab.bs-tab:hover { background: var(--rose-dark); }
 
   .landing-tab.vertodo-tab {
-    background: #E7D7C9;
-    color: #A38F85;
+    background: #EEE4DA;
+    color: #7A4A4E;
   }
 
   .landing-tab.sportwear-tab {
-    background: #E7D7C9;
-    color: #A38F85;
+    background: #EEE4DA;
+    color: #7A4A4E;
   }
   .landing-tab.soon-tab {
-    background: #E7D7C9;
-    color: #A38F85;
+    background: #EEE4DA;
+    color: #7A4A4E;
     opacity: 0.5;
     cursor: default;
     pointer-events: none;
@@ -294,7 +297,7 @@
   .soon-badge {
     display: inline-flex;
     align-items: center;
-    background: rgba(163,143,133,0.15);
+    background: rgba(122,74,78,0.15);
     color: var(--latte);
     font-size: 10px;
     font-weight: 600;
@@ -319,7 +322,7 @@
 
   /* ===================== COTIZAR ESPECIAL ===================== */
   .cotizar-divider {
-    border-top: 0.5px solid rgba(163,143,133,0.2);
+    border-top: 0.5px solid rgba(122,74,78,0.2);
     margin: 18px 4px 4px;
   }
 
@@ -327,14 +330,14 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    background: rgba(231,215,201,0.4);
+    background: rgba(238,228,218,0.4);
     border-radius: 16px;
     padding: 14px 16px;
     margin-top: 4px;
     cursor: pointer;
     transition: background 0.2s;
   }
-  .cotizar-block:hover { background: rgba(231,215,201,0.65); }
+  .cotizar-block:hover { background: rgba(238,228,218,0.65); }
   .cotizar-icon { font-size: 18px; color: var(--latte); flex-shrink: 0; line-height: 1; }
   .cotizar-text { flex: 1; }
   .cotizar-title { font-size: 13px; color: var(--dark); font-weight: 500; margin-bottom: 2px; }
@@ -350,7 +353,7 @@
     gap: 10px;
     padding: 12px 16px;
     background: var(--ivory);
-    border-bottom: 1px solid rgba(163,143,133,0.15);
+    border-bottom: 1px solid rgba(122,74,78,0.15);
     position: sticky;
     top: 0;
     z-index: 50;
@@ -358,26 +361,26 @@
 
   .back-btn {
     background: none;
-    border: 1px solid rgba(163,143,133,0.3);
+    border: 1px solid rgba(122,74,78,0.3);
     border-radius: 50px;
     padding: 6px 14px;
     font-size: 12px;
     color: var(--latte);
     cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Archivo', sans-serif;
     transition: all 0.2s;
     white-space: nowrap;
   }
   .back-btn:hover { border-color: var(--rose); color: var(--rose); }
 
   .topbar-title {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Archivo', sans-serif;
     font-size: 12px;
     font-weight: 500;
     letter-spacing: 0.05em;
     color: var(--latte);
     background: none;
-    border: 1px solid rgba(163,143,133,0.3);
+    border: 1px solid rgba(122,74,78,0.3);
     border-radius: 50px;
     padding: 6px 16px;
     text-align: center;
@@ -386,14 +389,14 @@
   .search-row {
     padding: 8px 16px;
     background: var(--ivory);
-    border-bottom: 1px solid rgba(163,143,133,0.12);
+    border-bottom: 1px solid rgba(122,74,78,0.12);
   }
   .search-box {
     display: flex;
     align-items: center;
     gap: 6px;
     background: var(--nude);
-    border: 1px solid rgba(163,143,133,0.2);
+    border: 1px solid rgba(122,74,78,0.2);
     border-radius: 20px;
     padding: 0 12px;
   }
@@ -404,7 +407,7 @@
     color: var(--dark);
     outline: none;
     width: 100%;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Archivo', sans-serif;
     padding: 8px 0;
   }
   .search-box input::placeholder { color: var(--latte); }
@@ -417,7 +420,7 @@
     gap: 12px;
   }
   .section-header h2 {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Archivo', sans-serif;
     font-size: 11px;
     font-weight: 500;
     color: var(--ivory);
@@ -428,7 +431,7 @@
     padding: 6px 16px;
     border-radius: 50px;
   }
-  .section-line { flex: 1; height: 1px; background: rgba(163,143,133,0.2); }
+  .section-line { flex: 1; height: 1px; background: rgba(122,74,78,0.2); }
 
   /* PRODUCT GRID */
   .products-grid {
@@ -442,13 +445,13 @@
     background: var(--nude);
     border-radius: 12px;
     overflow: hidden;
-    border: 1px solid rgba(163,143,133,0.15);
+    border: 1px solid rgba(122,74,78,0.15);
     transition: transform 0.2s, box-shadow 0.2s;
     position: relative;
     display: flex;
     flex-direction: column;
   }
-  .product-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(163,143,133,0.15); }
+  .product-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(122,74,78,0.15); }
 
   .product-img {
     width: 100%;
@@ -483,7 +486,7 @@
     margin-bottom: 4px;
   }
   .product-name {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Archivo', sans-serif;
     font-size: 12px;
     font-weight: 600;
     color: var(--dark);
@@ -498,13 +501,13 @@
     line-height: 1.4;
   }
   .product-price {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Archivo', sans-serif;
     font-size: 13px;
     font-weight: 600;
     color: var(--dark);
     margin-bottom: 8px;
   }
-  .product-price span { font-size: 11px; font-weight: 300; color: var(--latte); font-family: 'DM Sans', sans-serif; }
+  .product-price span { font-size: 11px; font-weight: 300; color: var(--latte); font-family: 'Archivo', sans-serif; }
 
   .product-price-sale { text-decoration: line-through; color: var(--latte); font-size: 11px; }
   .product-price-new { color: var(--rose); font-weight: 700; }
@@ -523,7 +526,7 @@
     position: absolute;
     top: 8px;
     left: 8px;
-    background: rgba(163,143,133,0.88);
+    background: rgba(122,74,78,0.88);
     color: var(--ivory);
     font-size: 9px;
     font-weight: 600;
@@ -533,7 +536,7 @@
     backdrop-filter: blur(4px);
     cursor: pointer;
   }
-  .video-badge:hover { background: rgba(163,143,133,1); }
+  .video-badge:hover { background: rgba(122,74,78,1); }
 
   .sale-card-ribbon {
     position: absolute;
@@ -558,7 +561,7 @@
     color: var(--ivory);
     border: none;
     border-radius: 8px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Archivo', sans-serif;
     font-size: 10px;
     font-weight: 500;
     cursor: pointer;
@@ -574,7 +577,7 @@
     background: transparent;
     color: var(--latte);
     border: none;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Archivo', sans-serif;
     font-size: 10px;
     font-weight: 400;
     cursor: pointer;
@@ -595,7 +598,7 @@
   }
   .qty-btn {
     width: 28px; height: 28px;
-    border: 1px solid rgba(163,143,133,0.3);
+    border: 1px solid rgba(122,74,78,0.3);
     background: var(--ivory);
     border-radius: 6px;
     font-size: 16px;
@@ -610,7 +613,7 @@
 
   /* VARIANT */
   .variant-option {
-    border: 0.5px solid rgba(163,143,133,0.3);
+    border: 0.5px solid rgba(122,74,78,0.3);
     border-radius: 10px;
     padding: 12px 14px;
     cursor: pointer;
@@ -637,14 +640,14 @@
     border: none;
     border-radius: 50px;
     padding: 14px 22px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Archivo', sans-serif;
     font-size: 13px;
     font-weight: 500;
     cursor: pointer;
     display: flex;
     align-items: center;
     gap: 8px;
-    box-shadow: 0 4px 20px rgba(163,143,133,0.35);
+    box-shadow: 0 4px 20px rgba(122,74,78,0.35);
     transition: all 0.25s ease;
     z-index: 200;
   }
@@ -666,7 +669,7 @@
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(90,74,66,0.35);
+    background: rgba(77,14,19,0.35);
     z-index: 300;
     align-items: flex-end;
   }
@@ -687,10 +690,10 @@
     align-items: center;
     margin-bottom: 20px;
     padding-bottom: 14px;
-    border-bottom: 1.5px solid rgba(163,143,133,0.2);
+    border-bottom: 1.5px solid rgba(122,74,78,0.2);
   }
   .modal-header h3 {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Archivo', sans-serif;
     font-size: 22px;
     font-weight: 400;
     color: var(--dark);
@@ -713,31 +716,31 @@
     justify-content: space-between;
     align-items: flex-start;
     padding: 12px 0;
-    border-bottom: 1px solid rgba(163,143,133,0.15);
+    border-bottom: 1px solid rgba(122,74,78,0.15);
     gap: 10px;
   }
   .cart-item-info { flex: 1; }
   .cart-item-name { font-size: 14px; font-weight: 500; margin-bottom: 2px; color: var(--dark); }
   .cart-item-detail { font-size: 12px; color: var(--latte); }
   .cart-item-right { text-align: right; }
-  .cart-item-price { font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 600; color: var(--dark); }
+  .cart-item-price { font-family: 'Archivo', sans-serif; font-size: 15px; font-weight: 600; color: var(--dark); }
   .remove-item { background: none; border: none; color: var(--rose); font-size: 11px; cursor: pointer; margin-top: 4px; display: block; }
   .cart-empty { text-align: center; padding: 32px 0; color: var(--latte); font-size: 14px; }
   .cart-total {
     display: flex;
     justify-content: space-between;
     padding: 16px 0 20px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Archivo', sans-serif;
     font-size: 17px;
     font-weight: 600;
     color: var(--dark);
-    border-top: 1.5px solid rgba(163,143,133,0.2);
+    border-top: 1.5px solid rgba(122,74,78,0.2);
     margin-top: 8px;
   }
 
   .total-note {
     background: var(--nude);
-    border: 1px solid rgba(163,143,133,0.2);
+    border: 1px solid rgba(122,74,78,0.2);
     border-radius: 20px;
     padding: 16px 18px;
     margin-bottom: 20px;
@@ -750,7 +753,7 @@
 
   /* FORM */
   .form-title {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Archivo', sans-serif;
     font-size: 18px;
     font-weight: 400;
     margin-bottom: 16px;
@@ -768,9 +771,9 @@
   }
   .form-group input, .form-group textarea {
     width: 100%; padding: 12px 14px;
-    border: 1.5px solid rgba(163,143,133,0.25);
+    border: 1.5px solid rgba(122,74,78,0.25);
     border-radius: 50px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Archivo', sans-serif;
     font-size: 14px;
     color: var(--dark);
     background: var(--nude);
@@ -786,7 +789,7 @@
     color: var(--ivory);
     border: none;
     border-radius: 50px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Archivo', sans-serif;
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
@@ -799,11 +802,11 @@
 
   .success-msg { display: none; text-align: center; padding: 16px; }
   .success-msg .check { font-size: 32px; margin-bottom: 8px; }
-  .success-msg h4 { font-family: 'DM Sans', sans-serif; font-size: 20px; font-weight: 400; margin-bottom: 6px; color: var(--dark); }
+  .success-msg h4 { font-family: 'Archivo', sans-serif; font-size: 20px; font-weight: 400; margin-bottom: 6px; color: var(--dark); }
   .success-msg p { font-size: 12px; color: var(--latte); line-height: 1.5; }
 
   /* VER MAS MODAL */
-  .ver-mas-modal { display: none; position: fixed; inset: 0; background: rgba(90,74,66,0.4); z-index: 1000; align-items: flex-end; justify-content: center; }
+  .ver-mas-modal { display: none; position: fixed; inset: 0; background: rgba(77,14,19,0.4); z-index: 1000; align-items: flex-end; justify-content: center; }
   .ver-mas-modal.open { display: flex; }
   .ver-mas-content {
     background: var(--ivory);
@@ -815,14 +818,24 @@
     animation: slideUp 0.3s ease;
   }
   .ver-mas-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
-  .ver-mas-brand { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--latte); margin-bottom: 4px; font-family: 'DM Sans', sans-serif; }
-  .ver-mas-name { font-family: 'DM Sans', sans-serif; font-size: 22px; color: var(--dark); font-weight: 400; }
+  .ver-mas-brand { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--latte); margin-bottom: 4px; font-family: 'Archivo', sans-serif; }
+  .ver-mas-name { font-family: 'Archivo', sans-serif; font-size: 22px; color: var(--dark); font-weight: 400; }
   .ver-mas-close { background: var(--rose); border: none; font-size: 18px; color: var(--ivory); cursor: pointer; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
   .ver-mas-section { margin-bottom: 16px; }
   .ver-mas-section-title { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--latte); margin-bottom: 6px; }
   .ver-mas-section p { font-size: 13px; color: var(--latte); line-height: 1.7; }
-  .ver-mas-link { display: inline-block; margin-top: 8px; padding: 8px 16px; border: 1.5px solid var(--rose); border-radius: 50px; font-size: 12px; color: var(--dark); text-decoration: none; transition: all 0.2s; font-family: 'DM Sans', sans-serif; }
+  .ver-mas-link { display: inline-block; margin-top: 8px; padding: 8px 16px; border: 1.5px solid var(--rose); border-radius: 50px; font-size: 12px; color: var(--dark); text-decoration: none; transition: all 0.2s; font-family: 'Archivo', sans-serif; }
   .ver-mas-link:hover { background: var(--rose); color: var(--ivory); }
+  /* Ficha grande del producto */
+  .product-img, .product-img-placeholder { cursor: zoom-in; }
+  .ver-mas-img-wrap { position: relative; margin: -24px -20px 16px; background: var(--ivory); border-radius: 24px 24px 0 0; overflow: hidden; }
+  .ver-mas-img { display: block; width: 100%; max-height: 52vh; object-fit: contain; padding: 12px; box-sizing: border-box; }
+  .ver-mas-img-ph { display: none; height: 220px; align-items: center; justify-content: center; font-size: 48px; background: linear-gradient(135deg, var(--ivory) 0%, var(--nude) 100%); }
+  .ver-mas-img-wrap .ver-mas-close { position: absolute; top: 12px; right: 12px; }
+  .ver-mas-price { font-size: 16px; color: var(--dark); margin-top: 8px; font-family: 'Archivo', sans-serif; }
+  .ver-mas-price .old { text-decoration: line-through; color: var(--latte); font-size: 13px; margin-right: 6px; }
+  .ver-mas-price .size { color: var(--latte); font-size: 13px; }
+  .ver-mas-add { width: 100%; margin-top: 8px; padding: 14px; border: none; border-radius: 50px; background: var(--latte); color: var(--ivory); font-size: 14px; font-weight: 500; cursor: pointer; font-family: 'Archivo', sans-serif; }
 
   .hidden { display: none !important; }
 
@@ -848,7 +861,7 @@
     border-radius: 14px;
     background: var(--nude);
     border: 1.5px solid transparent;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Archivo', sans-serif;
     font-size: 13px;
     color: var(--latte);
     cursor: pointer;
@@ -859,7 +872,7 @@
   }
   .entrega-opt:hover { border-color: var(--rose); color: var(--dark); }
   .entrega-opt.selected {
-    background: rgba(212,178,167,0.18);
+    background: rgba(200,164,159,0.18);
     border-color: var(--rose);
     color: var(--dark);
     font-weight: 500;
@@ -877,7 +890,7 @@
     cursor: pointer;
     transition: all 0.2s;
   }
-  .quiz-block:hover { background: rgba(212,178,167,0.08); }
+  .quiz-block:hover { background: rgba(200,164,159,0.08); }
   .quiz-icon { font-size: 18px; flex-shrink: 0; }
   .quiz-text { flex: 1; }
   .quiz-title { font-size: 13px; color: var(--dark); font-weight: 500; margin-bottom: 2px; }
@@ -888,7 +901,7 @@
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(90,74,66,0.35);
+    background: rgba(77,14,19,0.35);
     z-index: 300;
     align-items: flex-end;
   }
@@ -908,10 +921,10 @@
     align-items: center;
     margin-bottom: 18px;
     padding-bottom: 14px;
-    border-bottom: 1px solid rgba(163,143,133,0.2);
+    border-bottom: 1px solid rgba(122,74,78,0.2);
   }
   .quiz-header h3 {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Archivo', sans-serif;
     font-size: 20px;
     font-weight: 400;
     color: var(--dark);
@@ -936,7 +949,7 @@
   .quiz-opt {
     padding: 13px 16px; border-radius: 50px;
     background: var(--nude); border: 1.5px solid transparent;
-    font-family: 'DM Sans', sans-serif; font-size: 14px;
+    font-family: 'Archivo', sans-serif; font-size: 14px;
     color: var(--latte); cursor: pointer; transition: all 0.15s; text-align: center; width: 100%;
   }
   .quiz-opt:hover { border-color: var(--rose); color: var(--dark); }
@@ -944,30 +957,30 @@
   .quiz-opt-multi {
     padding: 11px 16px; border-radius: 12px;
     background: var(--nude); border: 1.5px solid transparent;
-    font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--latte);
+    font-family: 'Archivo', sans-serif; font-size: 13px; color: var(--latte);
     cursor: pointer; transition: all 0.15s;
     display: flex; align-items: center; gap: 10px; width: 100%; text-align: left;
   }
   .quiz-opt-multi:hover { border-color: var(--rose); color: var(--dark); }
-  .quiz-opt-multi.selected { background: rgba(212,178,167,0.2); border-color: var(--rose); color: var(--dark); }
+  .quiz-opt-multi.selected { background: rgba(200,164,159,0.2); border-color: var(--rose); color: var(--dark); }
   .quiz-check {
     width: 18px; height: 18px; border-radius: 5px;
-    border: 1.5px solid rgba(163,143,133,0.4); flex-shrink: 0;
+    border: 1.5px solid rgba(122,74,78,0.4); flex-shrink: 0;
     display: flex; align-items: center; justify-content: center;
     font-size: 11px; transition: all 0.15s;
   }
   .quiz-opt-multi.selected .quiz-check { background: var(--rose); border-color: var(--rose); color: var(--ivory); }
   .quiz-nav { display: flex; gap: 10px; margin-top: 22px; }
   .quiz-btn-back {
-    padding: 13px 20px; border: 1.5px solid rgba(163,143,133,0.3);
+    padding: 13px 20px; border: 1.5px solid rgba(122,74,78,0.3);
     border-radius: 50px; background: transparent; color: var(--latte);
-    font-family: 'DM Sans', sans-serif; font-size: 14px; cursor: pointer; transition: all 0.2s;
+    font-family: 'Archivo', sans-serif; font-size: 14px; cursor: pointer; transition: all 0.2s;
   }
   .quiz-btn-back:hover { border-color: var(--rose); color: var(--rose); }
   .quiz-btn-next {
     flex: 1; padding: 13px; border: none; border-radius: 50px;
     background: var(--latte); color: var(--ivory);
-    font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500;
+    font-family: 'Archivo', sans-serif; font-size: 14px; font-weight: 500;
     cursor: pointer; transition: background 0.2s;
   }
   .quiz-btn-next:hover { background: var(--latte-dark); }
@@ -985,7 +998,7 @@
   .quiz-result-card {
     background: var(--nude); border-radius: 14px; padding: 14px;
     display: flex; gap: 12px; align-items: flex-start;
-    margin-bottom: 10px; border: 1px solid rgba(163,143,133,0.15);
+    margin-bottom: 10px; border: 1px solid rgba(122,74,78,0.15);
   }
   .quiz-result-img {
     width: 60px; height: 60px; object-fit: contain;
@@ -999,7 +1012,7 @@
   .quiz-add-btn {
     padding: 7px 14px; background: var(--rose); color: var(--ivory);
     border: none; border-radius: 8px;
-    font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500;
+    font-family: 'Archivo', sans-serif; font-size: 11px; font-weight: 500;
     cursor: pointer; transition: background 0.2s;
   }
   .quiz-add-btn:hover { background: var(--rose-dark); }
@@ -1008,36 +1021,217 @@
     text-align: center; margin-top: 16px; font-size: 12px;
     color: var(--latte); text-decoration: underline; cursor: pointer;
   }
+
+  /* ===================== DISEÑO NUEVO (rosa y burdeo, claro) ===================== */
+  body { background: var(--ivory); padding: 0; display: block; }
+  #app-wrapper { max-width: none; border-radius: 0; box-shadow: none; background: var(--ivory); overflow: visible; }
+  .disp { font-weight: 800; font-stretch: 80%; text-transform: uppercase; letter-spacing: 0; }
+  .it { font-family: 'Instrument Serif', serif; font-weight: 400; font-style: italic; text-transform: none; }
+
+  header.hero { background: var(--ivory); color: var(--dark); padding: 22px 22px 0; text-align: left; position: relative; overflow: hidden; }
+  .hero-leaf { position: absolute; right: -54px; top: 46px; width: 210px; height: 210px; pointer-events: none; }
+  .hero-by { position: relative; font-size: 13px; color: var(--latte); }
+  .hero-by a { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 17px; color: var(--dark); text-decoration: none; }
+  .hero-title { font-family: 'Archivo', sans-serif; letter-spacing: 0; position: relative; margin: 34px 0 0; font-weight: 900; font-stretch: 78%; font-size: 72px; line-height: 0.88; text-transform: uppercase; color: var(--dark); }
+  .hero-title .it { display: block; font-size: 64px; line-height: 1; }
+  body.in-cat .hero-title, body.in-cat .hero-line, body.in-cat .hero-leaf { display: none; }
+  body.in-cat header.hero { padding-top: 14px; }
+  body.in-cat .hero-by { margin-bottom: 14px; }
+  .hero-line { width: 56px; height: 4px; border-radius: 4px; background: var(--pink); margin: 14px 0 26px; }
+  #flight-countdown { display: flex; align-items: center; justify-content: space-between; gap: 10px; background: var(--rose); color: var(--nude); margin: 0 -22px; padding: 14px 22px; font-size: 13px; }
+  #flight-countdown .fc-pill { background: var(--pink); color: var(--rose); border-radius: 999px; padding: 9px 14px; font-weight: 600; white-space: nowrap; }
+
+  #landing-view { padding: 0; gap: 0; background: var(--ivory); }
+  .fav-block { background: var(--pink); padding: 28px 20px 26px; display: flex; flex-direction: column; gap: 16px; }
+  .fav-title { display: flex; align-items: center; gap: 12px; }
+  .fav-title .ln { flex: 1; height: 1px; background: rgba(77,14,19,0.35); }
+  .fav-title h2 { font-size: 22px; line-height: 1; white-space: nowrap; color: var(--dark); }
+  .fav-title h2 .it { font-size: 26px; }
+  .chip-row { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+  .chip { height: 40px; padding: 0 16px; border-radius: 999px; border: 1.5px solid var(--rose); background: transparent; color: var(--rose); font-family: 'Archivo', sans-serif; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+  .chip:hover { background: rgba(77,14,19,0.08); }
+  .chip.solid { background: var(--rose); color: var(--nude); }
+  .chip.solid:hover { background: var(--rose-dark); }
+  .tile-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .tile { text-align: left; border: none; border-radius: 6px; background: var(--nude); color: var(--rose); padding: 16px; height: 124px; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; font-family: 'Archivo', sans-serif; transition: transform 0.2s; }
+  .tile:hover { transform: translateY(-2px); }
+  .tile.sand { background: var(--sand); }
+  .tile .kicker { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--latte); display: flex; justify-content: space-between; align-items: center; }
+  .tile.sand .kicker { color: #5E2A2E; }
+  .tile .big { font-size: 22px; line-height: 0.95; }
+  .tile.open { outline: 2px solid var(--rose); outline-offset: -2px; }
+  .fav-block .accordion-body { background: var(--nude); border-radius: 6px; margin-top: -6px; padding: 10px; gap: 6px; }
+  .fav-block .sub-tab { background: var(--ivory); color: var(--rose); border-radius: 999px; font-weight: 500; min-height: 44px; }
+  .fav-block .sub-tab:hover { background: #FFFFFF; }
+  .fav-block .sub-tab.bs-tab { background: var(--rose); color: var(--nude); }
+  .quiz-btn { width: 100%; display: flex; align-items: center; gap: 12px; border: none; border-radius: 6px; background: var(--rose); padding: 16px 18px; cursor: pointer; text-align: left; font-family: 'Archivo', sans-serif; color: var(--nude); }
+  .quiz-btn .t { display: block; font-size: 15px; font-weight: 600; }
+  .quiz-btn .t .it { font-size: 18px; }
+  .quiz-btn .s { display: block; font-size: 13px; color: var(--sand); margin-top: 2px; }
+
+  .info-block { padding: 28px 20px 110px; display: flex; flex-direction: column; gap: 14px; }
+  .info-block .how-it-works { background: transparent; border: 1px solid var(--sand); border-radius: 6px; padding: 18px; }
+  .info-block .hiw-title { font-weight: 800; font-stretch: 80%; text-transform: uppercase; font-size: 18px; letter-spacing: 0; color: var(--dark); }
+  .info-block .hiw-step { font-size: 13px; color: var(--latte); }
+  .info-block .hiw-icon { color: var(--pink); font-weight: 700; }
+  .info-block .hiw-note { padding: 0; text-align: left; text-decoration: none; font-size: 13px; color: var(--dark); }
+  .info-block .cotizar-block { margin: 0; background: var(--nude); border-radius: 6px; }
+  .info-block .cotizar-block:hover { background: var(--sand); }
+  .info-block .note-banner { background: transparent; padding: 0; text-align: left; font-size: 13px; letter-spacing: 0; color: var(--latte); }
+  .info-block .note-banner a { color: var(--dark); }
+
+  /* Catálogo */
+  .catalog-topbar { background: var(--ivory); border-bottom: 1px solid var(--nude); }
+  .back-btn, .topbar-title { border-color: var(--sand); color: var(--dark); border-radius: 999px; }
+  .back-btn { min-height: 36px; }
+  .topbar-title { font-weight: 800; font-stretch: 80%; text-transform: uppercase; font-size: 13px; }
+  .search-box { background: #FFFFFF; border-color: var(--nude); border-radius: 999px; }
+  .search-box input { font-size: 16px; }
+  .section-header h2 { background: none; color: var(--dark); padding: 0; font-size: 20px; font-weight: 800; font-stretch: 80%; letter-spacing: 0; }
+  .section-line { background: var(--sand); }
+  .products-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: 0 16px 16px; }
+  .product-card { background: #FFFFFF; border: 1px solid var(--nude); border-radius: 6px; }
+  .product-img { background: #FAF6F2; padding: 10px; mix-blend-mode: multiply; }
+  .product-info { padding: 10px 12px 12px; }
+  .product-brand { font-size: 10px; font-weight: 600; color: var(--latte); letter-spacing: 0.12em; }
+  .product-name { font-size: 15px; font-weight: 800; font-stretch: 80%; text-transform: uppercase; line-height: 1.05; }
+  .product-desc { font-size: 12px; font-weight: 400; color: var(--latte); }
+  .product-price { font-size: 15px; }
+  .product-price span { font-size: 12px; }
+  .product-price-new { color: var(--rose); }
+  .star-badge { color: var(--pink); text-shadow: none; }
+  .video-badge { background: rgba(77,14,19,0.85); color: var(--nude); font-size: 10px; padding: 4px 8px; }
+  .sale-card-ribbon { background: var(--pink); color: var(--rose); font-size: 10px; }
+  .add-btn { padding: 10px; border-radius: 999px; font-size: 12px; font-weight: 600; background: var(--rose); color: var(--nude); }
+  .add-btn.added { background: var(--pink); color: var(--rose); }
+  .ver-mas-btn { font-size: 12px; margin-top: 8px; color: var(--latte); }
+  .qty-btn { width: 36px; height: 36px; border-radius: 999px; border-color: var(--sand); background: var(--ivory); color: var(--dark); }
+
+  /* Botón carrito y ventanas */
+  .cart-btn { background: var(--rose); color: var(--nude); box-shadow: 0 6px 24px rgba(77,14,19,0.3); }
+  .cart-btn:hover { background: var(--rose-dark); }
+  .cart-count { background: var(--pink); color: var(--rose); }
+  .close-btn, .ver-mas-close { background: var(--nude); color: var(--rose); }
+  .modal-header h3, .quiz-header h3, .form-title { font-weight: 800; font-stretch: 80%; text-transform: uppercase; }
+  .ver-mas-name { font-weight: 800; font-stretch: 80%; text-transform: uppercase; font-size: 24px; line-height: 1.05; }
+  .ver-mas-img-wrap { background: #FAF6F2; }
+  .ver-mas-add, .submit-btn, .quiz-btn-next { background: var(--rose); color: var(--nude); }
+  .submit-btn:hover, .quiz-btn-next:hover { background: var(--rose-dark); }
+  .quiz-opt.selected { background: var(--rose); color: var(--nude); }
+  .quiz-progress-seg.active { background: var(--pink); }
+  .form-group input, .form-group textarea { background: #FFFFFF; border-color: var(--nude); font-size: 16px; }
+  .total-note { background: var(--nude); border-color: var(--sand); }
+  .entrega-opt.selected { background: rgba(200,164,159,0.25); border-color: var(--rose); }
+
+  /* ===================== COMPUTADOR: PANTALLA COMPLETA ===================== */
+  @media (min-width: 900px) {
+    header.hero { padding: 40px 6vw 0; }
+    .hero-by { font-size: 15px; }
+    .hero-title { margin-top: 56px; font-size: 150px; }
+    .hero-title .it { font-size: 128px; }
+    .hero-line { width: 90px; height: 5px; margin: 22px 0 44px; }
+    .hero-leaf { width: 420px; height: 420px; right: 4vw; top: 10px; }
+    #flight-countdown { margin: 0 -6vw; padding: 18px 6vw; font-size: 16px; }
+
+    .fav-block { padding: 64px 6vw; gap: 22px; }
+    .fav-block > * { width: 100%; max-width: 1100px; margin-left: auto; margin-right: auto; }
+    .fav-title h2 { font-size: 36px; }
+    .fav-title h2 .it { font-size: 42px; }
+    .chip { height: 46px; padding: 0 22px; font-size: 14px; }
+    .tile { height: 180px; padding: 24px; }
+    .tile .big { font-size: 38px; }
+    .tile .kicker { font-size: 12px; }
+    .fav-block .accordion-body { flex-direction: row; flex-wrap: wrap; margin-top: -10px; }
+    .fav-block .sub-tab { width: auto; flex: 1 1 180px; }
+    .quiz-btn { padding: 22px 26px; }
+    .quiz-btn .t { font-size: 18px; }
+    .quiz-btn .t .it { font-size: 22px; }
+
+    .info-block { max-width: 1100px; margin: 0 auto; padding: 56px 6vw 120px; box-sizing: content-box; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 32px; align-content: start; }
+    .info-block .how-it-works { grid-row: span 3; }
+
+    .catalog-topbar { padding: 14px 6vw; }
+    .search-row { padding: 10px 6vw; }
+    .search-box { max-width: 480px; }
+    .section-header { padding: 32px 6vw 16px; }
+    .products-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 18px; padding: 0 6vw 24px; }
+    #catalog { padding-bottom: 100px; }
+
+    .modal-overlay, .quiz-modal, .ver-mas-modal { align-items: center; justify-content: center; }
+    .cart-modal, .quiz-sheet, .ver-mas-content { max-width: 520px; border-radius: 16px; max-height: 88vh; }
+    .ver-mas-img-wrap { border-radius: 16px 16px 0 0; }
+    .cart-btn { right: 4vw; bottom: 32px; }
+  }
 </style>
 </head>
 <body>
 <div id="app-wrapper">
 
 <!-- ===================== HEADER ===================== -->
-<header>
-  <div class="brand">🇧🇷 productos desde brasil</div>
-  <div class="header-sub">catálogo</div>
-  <div id="flight-countdown" style="margin-top:14px;background:rgba(237,233,227,0.15);border-radius:14px;padding:10px 16px;display:inline-flex;align-items:center;gap:10px;">
-    <span style="font-size:16px;">✈️</span>
-    <div style="text-align:left;">
-      <div style="font-family:'DM Sans',sans-serif;font-size:9px;color:rgba(237,233,227,0.7);letter-spacing:0.1em;text-transform:uppercase;">próximo vuelo</div>
-      <div style="font-family:'DM Sans',sans-serif;font-size:13px;color:#EDE9E3;font-weight:500;">Brasil en <strong id="dias-cnt" style="font-size:18px;"></strong> días</div>
-    </div>
-    <div style="border-left:1px solid rgba(237,233,227,0.2);height:30px;"></div>
-    <div style="text-align:left;">
-      <div style="font-family:'DM Sans',sans-serif;font-size:9px;color:rgba(237,233,227,0.7);letter-spacing:0.1em;text-transform:uppercase;">fecha</div>
-      <div style="font-family:'DM Sans',sans-serif;font-size:12px;color:#EDE9E3;font-weight:500;" id="fecha-vuelo-txt">26 junio</div>
-    </div>
+<header class="hero">
+  <svg class="hero-leaf" viewBox="0 0 120 120" fill="none" stroke="#C8A49F" stroke-width="1.3" stroke-linecap="round" aria-hidden="true">
+    <path d="M20 110 C 40 80, 70 50, 110 15"/>
+    <path d="M38 88 C 30 70, 30 55, 40 40"/><path d="M38 88 C 55 85, 68 80, 80 70"/>
+    <path d="M58 66 C 52 50, 54 36, 66 24"/><path d="M58 66 C 75 66, 88 60, 98 50"/>
+    <path d="M78 46 C 76 34, 80 24, 90 16"/><path d="M78 46 C 90 46, 100 42, 108 34"/>
+  </svg>
+  <div class="hero-by">por <a href="https://www.instagram.com/closebyferr" target="_blank" rel="noopener">@closebyferr</a></div>
+  <h1 class="hero-title">Beleza<span class="it">brasileira</span></h1>
+  <div class="hero-line"></div>
+  <div id="flight-countdown">
+    <span>Próximo viaje · <strong id="fecha-vuelo-txt"></strong></span>
+    <span class="fc-pill">Faltan <span id="dias-cnt"></span> días</span>
   </div>
 </header>
 
-<div class="note-banner">
-  ¿Buscas algo que no está acá?<br>Escríbeme a <a href="https://ig.me/m/closebyferr" target="_blank">@closebyferr</a> en Instagram 💌
-</div>
+<!-- ===================== LANDING VIEW ===================== -->
+<div id="landing-view">
 
-<div class="hiw-note">No se realiza ningún cobro al enviar el encargo 🌿</div>
+  <div class="fav-block">
+    <div class="fav-title">
+      <div class="ln"></div>
+      <h2 class="disp">Os favoritos <span class="it">das</span> garotas</h2>
+      <div class="ln"></div>
+    </div>
 
-<div class="how-it-works">
+    <div class="chip-row">
+      <button class="chip solid sale-tab" onclick="openCat('sale')">Sale · % off</button>
+      <button class="chip nuevos-tab" onclick="openCat('nuevos')">Nuevos ingresos</button>
+      <button class="chip" onclick="openCat('bestsellers')">Best sellers</button>
+    </div>
+
+    <div class="tile-row">
+      <button class="tile inmediata-tab" id="entregaBtn" onclick="toggleEntrega()">
+        <span class="kicker">Ya en Chile <span class="encargar-arrow" id="entregaArrow">▾</span></span>
+        <span class="big disp">Entrega inmediata</span>
+      </button>
+      <button class="tile sand encargar-tab" id="encargarBtn" onclick="toggleAccordion()">
+        <span class="kicker">Próximo viaje <span class="encargar-arrow" id="encargarArrow">▾</span></span>
+        <span class="big disp">Encargar</span>
+      </button>
+    </div>
+    <div class="accordion-body" id="entregaBody">
+      <button class="sub-tab" onclick="openCat('entrega')">Productos</button>
+      <button class="sub-tab" onclick="window.location.href='sportwear.html'">Sport Wear</button>
+      <button class="sub-tab" id="accesoriosBtn" onclick="window.location.href='accesorios.html'">Accesorios</button>
+    </div>
+    <div class="accordion-body" id="accordionBody">
+      <button class="sub-tab" onclick="openCat('capilar')">Capilar</button>
+      <button class="sub-tab" onclick="openCat('corporal')">Corporal y Facial</button>
+      <button class="sub-tab" onclick="openCat('makeup')">Make Up</button>
+      <button class="sub-tab" onclick="openCat('otros')">Otros</button>
+      <button class="sub-tab bs-tab" onclick="openCat('bestsellers')">Best Sellers ✦</button>
+      <button class="sub-tab" onclick="openCat('todos')">Ver Todo</button>
+    </div>
+
+    <button class="quiz-btn" onclick="openQuiz()">
+      <span style="flex:1"><span class="t">¿Qué necesita <span class="it">tu</span> pelo?</span><span class="s">Respondé 4 preguntas y Feña te recomienda</span></span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </button>
+  </div>
+
+  <div class="info-block">
+    <div class="how-it-works">
   <div class="hiw-title">¿Cómo funciona?</div>
   <div class="hiw-steps">
     <div class="hiw-step"><span class="hiw-icon">·</span><span>Agrega lo que te gusta al carrito</span></div>
@@ -1046,50 +1240,7 @@
     <div class="hiw-step"><span class="hiw-icon">·</span><span>Coordinas envío por Starken o retiro en Providencia</span></div>
   </div>
 </div>
-
-<!-- ===================== LANDING VIEW ===================== -->
-<div id="landing-view">
-
-  <button class="landing-tab sale-tab" onclick="openCat('sale')">
-    <span class="tab-label">SALE <span class="sale-badge">% OFF</span></span>
-  </button>
-
-  <button class="landing-tab nuevos-tab" onclick="openCat('nuevos')">
-    <span class="tab-label">Nuevos Ingresos <span class="new-badge">NEW</span></span>
-  </button>
-
-  <button class="landing-tab inmediata-tab" id="entregaBtn" onclick="toggleEntrega()">
-    <span class="tab-label">Entrega Inmediata <span class="encargar-arrow" id="entregaArrow">▾</span></span>
-  </button>
-  <div class="accordion-body" id="entregaBody">
-    <button class="sub-tab" onclick="openCat('entrega')">Productos</button>
-    <button class="sub-tab" onclick="window.location.href='sportwear.html'">Sport Wear</button>
-    <button class="sub-tab" id="accesoriosBtn" onclick="window.location.href='accesorios.html'">Accesorios</button>
-  </div>
-
-  <button class="landing-tab encargar-tab" id="encargarBtn" onclick="toggleAccordion()">
-    <span class="tab-label">Encargar <span class="encargar-arrow" id="encargarArrow">▾</span></span>
-  </button>
-  <div class="accordion-body" id="accordionBody">
-    <button class="sub-tab" onclick="openCat('capilar')">Capilar</button>
-    <button class="sub-tab" onclick="openCat('corporal')">Corporal y Facial</button>
-    <button class="sub-tab" onclick="openCat('makeup')">Make Up</button>
-    <button class="sub-tab" onclick="openCat('otros')">Otros</button>
-    <button class="sub-tab bs-tab" onclick="openCat('bestsellers')">Best Sellers ✦</button>
-    <button class="sub-tab" style="background:#E7D7C9;color:#A38F85;" onclick="openCat('todos')">Ver Todo</button>
-  </div>
-
-  <div style="height:8px;"></div>
-  <div class="quiz-block" onclick="openQuiz()">
-    <div class="quiz-icon">✨</div>
-    <div class="quiz-text">
-      <p class="quiz-title">Busca lo que necesita tu pelo</p>
-      <p class="quiz-sub">Respondé 4 preguntas y Feña te recomienda</p>
-    </div>
-    <div class="quiz-arrow">›</div>
-  </div>
-
-  <div class="cotizar-divider"></div>
+    <div class="hiw-note">No se realiza ningún cobro al enviar el encargo 🌿</div>
   <div class="cotizar-block" onclick="openCotizar()">
     <div class="cotizar-icon">💬</div>
     <div class="cotizar-text">
@@ -1097,6 +1248,8 @@
       <p class="cotizar-sub">Cuéntame qué necesitas y te cotizo</p>
     </div>
     <div class="cotizar-arrow">›</div>
+  </div>
+    <div class="note-banner">¿Buscas algo que no está acá? Escríbeme a <a href="https://ig.me/m/closebyferr" target="_blank">@closebyferr</a> en Instagram 💌</div>
   </div>
 
 </div>
@@ -1113,8 +1266,8 @@
   <div class="search-row">
     <div class="search-box">
       <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
-        <circle cx="6.5" cy="6.5" r="5" stroke="#D4B2A7" stroke-width="1.5"/>
-        <line x1="10.5" y1="10.5" x2="14" y2="14" stroke="#D4B2A7" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="6.5" cy="6.5" r="5" stroke="#C8A49F" stroke-width="1.5"/>
+        <line x1="10.5" y1="10.5" x2="14" y2="14" stroke="#C8A49F" stroke-width="1.5" stroke-linecap="round"/>
       </svg>
       <input type="text" id="searchInput" placeholder="buscar producto..." oninput="searchProducts(this.value)" />
     </div>
@@ -1136,7 +1289,7 @@
     <div class="modal-header">
       <h3>Tu pedido</h3>
       <div style="display:flex;align-items:center;gap:8px;">
-        <button onclick="vaciarCarrito()" style="background:none;border:none;font-size:11px;color:var(--latte);cursor:pointer;text-decoration:underline;font-family:'DM Sans',sans-serif;">Vaciar</button>
+        <button onclick="vaciarCarrito()" style="background:none;border:none;font-size:11px;color:var(--latte);cursor:pointer;text-decoration:underline;font-family:'Archivo',sans-serif;">Vaciar</button>
         <button class="close-btn" onclick="closeCart()">✕</button>
       </div>
     </div>
@@ -1331,12 +1484,20 @@
 <!-- VER MAS MODAL -->
 <div id="verMasModal" class="ver-mas-modal" onclick="if(event.target===this)closeVerMas()">
   <div class="ver-mas-content">
+    <div class="ver-mas-img-wrap">
+      <img id="verMasImg" class="ver-mas-img" alt="">
+      <div id="verMasImgPh" class="ver-mas-img-ph"></div>
+      <button class="ver-mas-close" onclick="closeVerMas()">×</button>
+    </div>
     <div class="ver-mas-header">
       <div>
         <div class="ver-mas-brand" id="verMasBrand"></div>
         <div class="ver-mas-name" id="verMasName"></div>
+        <div class="ver-mas-price" id="verMasPrice"></div>
       </div>
-      <button class="ver-mas-close" onclick="closeVerMas()">×</button>
+    </div>
+    <div id="verMasShort" class="ver-mas-section" style="display:none">
+      <p id="verMasShortText"></p>
     </div>
     <div id="verMasDesc" class="ver-mas-section" style="display:none">
       <div class="ver-mas-section-title">Descripción</div>
@@ -1350,36 +1511,37 @@
       <div class="ver-mas-section-title">Variantes disponibles</div>
       <a id="verMasLinkUrl" class="ver-mas-link" target="_blank" rel="noopener">Ver colores y tonos →</a>
     </div>
+    <button class="ver-mas-add" id="verMasAdd">Agregar al pedido</button>
   </div>
 </div>
 
 <!-- VARIANT MODAL -->
-<div id="variantModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(90,74,66,0.4);z-index:1000;align-items:center;justify-content:center;padding:20px;box-sizing:border-box;">
-  <div style="background:#EDE9E3;border-radius:24px;width:100%;max-width:320px;overflow:hidden;box-shadow:0 8px 32px rgba(163,143,133,0.2);">
-    <div style="padding:18px 20px 14px;border-bottom:1px solid rgba(163,143,133,0.2);">
-      <p id="variantModalBrand" style="font-size:11px;color:#A38F85;letter-spacing:0.08em;text-transform:uppercase;margin:0 0 4px;"></p>
-      <p id="variantModalName" style="font-size:17px;font-weight:500;margin:0 0 4px;color:#5A4A42;"></p>
-      <p style="font-size:13px;color:#A38F85;margin:0;">Elige una opción</p>
+<div id="variantModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(77,14,19,0.4);z-index:1000;align-items:center;justify-content:center;padding:20px;box-sizing:border-box;">
+  <div style="background:#F8F4EF;border-radius:24px;width:100%;max-width:320px;overflow:hidden;box-shadow:0 8px 32px rgba(122,74,78,0.2);">
+    <div style="padding:18px 20px 14px;border-bottom:1px solid rgba(122,74,78,0.2);">
+      <p id="variantModalBrand" style="font-size:11px;color:#7A4A4E;letter-spacing:0.08em;text-transform:uppercase;margin:0 0 4px;"></p>
+      <p id="variantModalName" style="font-size:17px;font-weight:500;margin:0 0 4px;color:#4D0E13;"></p>
+      <p style="font-size:13px;color:#7A4A4E;margin:0;">Elige una opción</p>
     </div>
     <div id="variantOptions" style="padding:14px 20px;display:flex;flex-direction:column;gap:8px;"></div>
     <div style="padding:12px 20px 20px;display:flex;gap:8px;">
-      <button onclick="closeVariantModal()" style="flex:1;padding:12px;border:1.5px solid rgba(163,143,133,0.3);border-radius:50px;background:transparent;color:#A38F85;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;">Cancelar</button>
-      <button onclick="confirmVariant()" style="flex:2;padding:12px;border:none;border-radius:50px;background:#A38F85;color:#EDE9E3;font-size:13px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;">Agregar al pedido</button>
+      <button onclick="closeVariantModal()" style="flex:1;padding:12px;border:1.5px solid rgba(122,74,78,0.3);border-radius:50px;background:transparent;color:#7A4A4E;font-size:13px;cursor:pointer;font-family:'Archivo',sans-serif;">Cancelar</button>
+      <button onclick="confirmVariant()" style="flex:2;padding:12px;border:none;border-radius:50px;background:#7A4A4E;color:#F8F4EF;font-size:13px;font-weight:500;cursor:pointer;font-family:'Archivo',sans-serif;">Agregar al pedido</button>
     </div>
   </div>
 </div>
 
 <!-- VIDEO WARNING MODAL -->
-<div id="videoWarningModal" onclick="if(event.target===this)closeVideoWarning()" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(90,74,66,0.4);z-index:1000;align-items:center;justify-content:center;padding:20px;box-sizing:border-box;">
-  <div style="background:#EDE9E3;border-radius:24px;width:100%;max-width:320px;padding:28px 22px;text-align:center;box-shadow:0 8px 32px rgba(163,143,133,0.2);">
+<div id="videoWarningModal" onclick="if(event.target===this)closeVideoWarning()" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(77,14,19,0.4);z-index:1000;align-items:center;justify-content:center;padding:20px;box-sizing:border-box;">
+  <div style="background:#F8F4EF;border-radius:24px;width:100%;max-width:320px;padding:28px 22px;text-align:center;box-shadow:0 8px 32px rgba(122,74,78,0.2);">
     <div style="font-size:28px;margin-bottom:14px;">🎬</div>
-    <p style="font-family:'DM Sans',sans-serif;font-size:18px;color:#5A4A42;margin:0 0 12px;font-weight:400;">Para ver los videos</p>
-    <p style="font-family:'DM Sans',sans-serif;font-size:13px;color:#A38F85;line-height:1.9;margin:0 0 22px;text-align:left;">
+    <p style="font-family:'Archivo',sans-serif;font-size:18px;color:#4D0E13;margin:0 0 12px;font-weight:400;">Para ver los videos</p>
+    <p style="font-family:'Archivo',sans-serif;font-size:13px;color:#7A4A4E;line-height:1.9;margin:0 0 22px;text-align:left;">
       Abre el catálogo en tu navegador:<br>
-      <span style="color:#5A4A42;font-weight:500;">1.</span> Toca los <strong style="color:#5A4A42;font-weight:500;">tres puntos ···</strong> arriba<br>
-      <span style="color:#5A4A42;font-weight:500;">2.</span> Selecciona <strong style="color:#5A4A42;font-weight:500;">"Abrir en Safari"</strong> o <strong style="color:#5A4A42;font-weight:500;">"Chrome"</strong>
+      <span style="color:#4D0E13;font-weight:500;">1.</span> Toca los <strong style="color:#4D0E13;font-weight:500;">tres puntos ···</strong> arriba<br>
+      <span style="color:#4D0E13;font-weight:500;">2.</span> Selecciona <strong style="color:#4D0E13;font-weight:500;">"Abrir en Safari"</strong> o <strong style="color:#4D0E13;font-weight:500;">"Chrome"</strong>
     </p>
-    <button onclick="closeVideoWarning()" style="padding:12px 28px;border:1.5px solid #D4B2A7;border-radius:50px;background:transparent;color:#D4B2A7;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all 0.2s;">Entendido</button>
+    <button onclick="closeVideoWarning()" style="padding:12px 28px;border:1.5px solid #C8A49F;border-radius:50px;background:transparent;color:#C8A49F;font-family:'Archivo',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all 0.2s;">Entendido</button>
   </div>
 </div>
 
@@ -1549,6 +1711,7 @@ function toggleAccordion() {
 function openCat(cat) {
   currentCat = cat;
   document.getElementById('landing-view').style.display = 'none';
+  document.body.classList.add('in-cat');
   document.getElementById('catalog-view').style.display = 'block';
   document.getElementById('catTitle').textContent = CAT_LABELS[cat] || cat;
   document.getElementById('searchInput').value = '';
@@ -1568,6 +1731,7 @@ function openCat(cat) {
 }
 
 function goBack() {
+  document.body.classList.remove('in-cat');
   currentCat = null;
   document.getElementById('catalog-view').style.display = 'none';
   document.getElementById('landing-view').style.display = 'flex';
@@ -1606,7 +1770,7 @@ function renderCatalog(cat) {
   let html = '';
 
   if (cat === 'entrega') {
-    html += `<div style="margin:12px 16px;padding:12px 16px;background:rgba(231,215,201,0.5);border-left:3px solid #D4B2A7;border-radius:0 10px 10px 0;font-size:12px;color:var(--latte);line-height:1.6;">
+    html += `<div style="margin:12px 16px;padding:12px 16px;background:rgba(238,228,218,0.5);border-left:3px solid #C8A49F;border-radius:0 10px 10px 0;font-size:12px;color:var(--latte);line-height:1.6;">
       Estos productos están en stock y disponibles para entrega inmediata. Al confirmar tu pedido coordinaremos el envío 🌿
     </div>`;
   }
@@ -1658,9 +1822,9 @@ function renderCard(p) {
   return `
     <div class="product-card" id="card-${p.id}">
       <div style="position:relative;">
-        <img class="product-img" src="imgs/p${p.id}.png" alt="${p.name}" loading="lazy"
+        <img class="product-img" src="imgs/p${p.id}.png" alt="${p.name}" loading="lazy" onclick="openVerMas(${p.id})"
           onerror="if(!this.dataset.fallback){this.dataset.fallback='1';this.src='imgs/p${p.id}.jpg';}else{this.style.display='none';this.nextElementSibling.style.display='flex'}">
-        <div class="product-img-placeholder" style="display:none">${p.emoji}</div>
+        <div class="product-img-placeholder" style="display:none" onclick="openVerMas(${p.id})">${p.emoji}</div>
         ${p.star ? '<div class="star-badge">♡</div>' : ''}
         ${p.video ? `<div class="video-badge" onclick="openVideo('${p.video}')">▶ Ver cómo se usa</div>` : ''}
         ${p.sale ? `<div class="sale-card-ribbon">SALE${discount ? ' · ' + discount + '% OFF' : ''}</div>` : ''}
@@ -1732,11 +1896,11 @@ function renderVariantOptions(product) {
     <div class="variant-option ${i === selectedVariantIndex ? 'variant-selected' : ''}" onclick="selectVariant(${i})"
       style="${noDisp ? 'opacity:0.7;' : ''}">
       <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;">
-        <span style="font-size:14px;font-weight:${i === selectedVariantIndex ? '500' : '400'};color:#5A4A42;flex:1;min-width:0;">${v.name}</span>
+        <span style="font-size:14px;font-weight:${i === selectedVariantIndex ? '500' : '400'};color:#4D0E13;flex:1;min-width:0;">${v.name}</span>
         <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
           ${''}
-          ${noDisp ? '<span class="promo-badge" style="background:#E8D8C4;color:#A38F85;white-space:nowrap;">Sólo encargo</span>' : ''}
-          <span style="font-size:14px;color:${i === selectedVariantIndex ? '#D4B2A7' : '#A38F85'};white-space:nowrap;">${formatPrice(v.price)}</span>
+          ${noDisp ? '<span class="promo-badge" style="background:#E8D8C4;color:#7A4A4E;white-space:nowrap;">Sólo encargo</span>' : ''}
+          <span style="font-size:14px;color:${i === selectedVariantIndex ? '#C8A49F' : '#7A4A4E'};white-space:nowrap;">${formatPrice(v.price)}</span>
         </div>
       </div>
     </div>`;
@@ -2009,6 +2173,31 @@ function openVerMas(id) {
   if (!p) return;
   document.getElementById('verMasBrand').textContent = p.brand;
   document.getElementById('verMasName').textContent = p.name;
+  // Foto grande (prueba .png y si no existe, .jpg)
+  const img = document.getElementById('verMasImg');
+  const ph = document.getElementById('verMasImgPh');
+  img.style.display = 'block'; ph.style.display = 'none';
+  ph.textContent = p.emoji || '';
+  img.alt = p.name;
+  img.dataset.fallback = '';
+  img.onerror = function() {
+    if (!this.dataset.fallback) { this.dataset.fallback = '1'; this.src = 'imgs/p' + p.id + '.jpg'; }
+    else { this.style.display = 'none'; ph.style.display = 'flex'; }
+  };
+  img.src = 'imgs/p' + p.id + '.png';
+  // Precio
+  document.getElementById('verMasPrice').innerHTML =
+    (p.sale && p.priceOld ? '<span class="old">' + formatPrice(p.priceOld) + '</span>' : '') +
+    formatPrice(p.price) +
+    (p.size ? '<span class="size"> · ' + p.size + '</span>' : '');
+  // Descripción corta (la de la tarjeta)
+  const shortEl = document.getElementById('verMasShort');
+  if (p.desc && p.desc !== p.desc_detallada) { document.getElementById('verMasShortText').textContent = p.desc; shortEl.style.display = 'block'; } else shortEl.style.display = 'none';
+  // Botón agregar
+  document.getElementById('verMasAdd').onclick = function() {
+    closeVerMas();
+    if (p.variants) openVariantModal(p.id); else addToCart(p.id);
+  };
   const descEl = document.getElementById('verMasDesc');
   const usoEl = document.getElementById('verMasUso');
   const linkEl = document.getElementById('verMasLink');
@@ -2256,7 +2445,7 @@ updateCartUI();
 
 (function() {
   const MESES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
-  const vuelo = new Date('2026-09-11T00:00:00');
+  const vuelo = new Date('2026-11-27T00:00:00');
   const hoy = new Date();
   const diff = Math.ceil((vuelo - hoy) / (1000 * 60 * 60 * 24));
   const cnt = document.getElementById('dias-cnt');
@@ -2267,9 +2456,9 @@ updateCartUI();
   if (diff > 0) {
     cnt.textContent = diff;
   } else if (diff === 0) {
-    box.innerHTML = '<span style="font-size:15px;">✈️</span><div style="font-family:\'DM Sans\',sans-serif;font-size:13px;color:#EDE9E3;font-weight:500;">hoy vuelas a Brasil! 🎉</div>';
+    box.innerHTML = '<span>Hoy viajo a Brasil ✈️</span>';
   } else {
-    box.innerHTML = '<span style="font-size:15px;">🇧🇷</span><div style="font-family:\'DM Sans\',sans-serif;font-size:12px;color:rgba(237,233,227,0.85);">recién llegada · nuevos productos pronto</div>';
+    box.innerHTML = '<span>Recién llegada de Brasil · nuevos productos pronto</span>';
   }
 })();
 </script>
