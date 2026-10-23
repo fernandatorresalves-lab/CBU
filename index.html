@@ -1029,15 +1029,21 @@
   .it { font-family: 'Instrument Serif', serif; font-weight: 400; font-style: italic; text-transform: none; }
 
   header.hero { background: var(--ivory); color: var(--dark); padding: 22px 22px 0; text-align: left; position: relative; overflow: hidden; }
-  .hero-leaf { position: absolute; right: -54px; top: 46px; width: 210px; height: 210px; pointer-events: none; }
+  .hero-calcadao { position: absolute; right: -46px; top: 40px; width: 190px; height: 190px; pointer-events: none; }
+  /* Colores de Brasil, apagados para que combinen */
+  :root { --br-verde: #2E7350; --br-amarillo: #E3BE45; --br-azul: #2A4580; }
+  .br-stripe { height: 4px; background: linear-gradient(90deg, var(--br-verde) 0 33.3%, var(--br-amarillo) 33.3% 66.6%, var(--br-azul) 66.6% 100%); }
   .hero-by { position: relative; font-size: 13px; color: var(--latte); }
   .hero-by a { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 17px; color: var(--dark); text-decoration: none; }
   .hero-title { font-family: 'Archivo', sans-serif; letter-spacing: 0; position: relative; margin: 34px 0 0; font-weight: 900; font-stretch: 78%; font-size: 72px; line-height: 0.88; text-transform: uppercase; color: var(--dark); }
   .hero-title .it { display: block; font-size: 64px; line-height: 1; }
-  body.in-cat .hero-title, body.in-cat .hero-line, body.in-cat .hero-leaf { display: none; }
+  body.in-cat .hero-title, body.in-cat .hero-line, body.in-cat .hero-calcadao { display: none; }
   body.in-cat header.hero { padding-top: 14px; }
   body.in-cat .hero-by { margin-bottom: 14px; }
-  .hero-line { width: 56px; height: 4px; border-radius: 4px; background: var(--pink); margin: 14px 0 26px; }
+  .hero-line { position: relative; display: flex; gap: 4px; margin: 14px 0 26px; }
+  .hero-line span { width: 22px; height: 4px; border-radius: 4px; background: var(--br-verde); }
+  .hero-line span:nth-child(2) { background: var(--br-amarillo); }
+  .hero-line span:nth-child(3) { background: var(--br-azul); }
   #flight-countdown { display: flex; align-items: center; justify-content: space-between; gap: 10px; background: var(--rose); color: var(--nude); margin: 0 -22px; padding: 14px 22px; font-size: 13px; }
   #flight-countdown .fc-pill { background: var(--pink); color: var(--rose); border-radius: 999px; padding: 9px 14px; font-weight: 600; white-space: nowrap; }
 
@@ -1129,8 +1135,9 @@
     .hero-by { font-size: 15px; }
     .hero-title { margin-top: 56px; font-size: 150px; }
     .hero-title .it { font-size: 128px; }
-    .hero-line { width: 90px; height: 5px; margin: 22px 0 44px; }
-    .hero-leaf { width: 420px; height: 420px; right: 4vw; top: 10px; }
+    .hero-line { margin: 22px 0 44px; gap: 6px; }
+    .hero-line span { width: 34px; height: 5px; }
+    .hero-calcadao { width: 400px; height: 400px; right: 6vw; top: 24px; }
     #flight-countdown { margin: 0 -6vw; padding: 18px 6vw; font-size: 16px; }
 
     .fav-block { padding: 64px 6vw; gap: 22px; }
@@ -1168,16 +1175,15 @@
 <div id="app-wrapper">
 
 <!-- ===================== HEADER ===================== -->
+<div class="br-stripe" aria-hidden="true"></div>
 <header class="hero">
-  <svg class="hero-leaf" viewBox="0 0 120 120" fill="none" stroke="#C8A49F" stroke-width="1.3" stroke-linecap="round" aria-hidden="true">
-    <path d="M20 110 C 40 80, 70 50, 110 15"/>
-    <path d="M38 88 C 30 70, 30 55, 40 40"/><path d="M38 88 C 55 85, 68 80, 80 70"/>
-    <path d="M58 66 C 52 50, 54 36, 66 24"/><path d="M58 66 C 75 66, 88 60, 98 50"/>
-    <path d="M78 46 C 76 34, 80 24, 90 16"/><path d="M78 46 C 90 46, 100 42, 108 34"/>
+  <svg class="hero-calcadao" viewBox="0 0 200 200" aria-hidden="true">
+    <defs><clipPath id="calc-clip"><circle cx="100" cy="100" r="100"/></clipPath></defs>
+    <g clip-path="url(#calc-clip)" fill="#C8A49F" fill-opacity="0.55"><path d="M-20 14 q25 -14 50 0 t50 0 t50 0 t50 0 t50 0 v20 q-25 -14 -50 0 t-50 0 t-50 0 t-50 0 t-50 0 z"/><path d="M-20 54 q25 -14 50 0 t50 0 t50 0 t50 0 t50 0 v20 q-25 -14 -50 0 t-50 0 t-50 0 t-50 0 t-50 0 z"/><path d="M-20 94 q25 -14 50 0 t50 0 t50 0 t50 0 t50 0 v20 q-25 -14 -50 0 t-50 0 t-50 0 t-50 0 t-50 0 z"/><path d="M-20 134 q25 -14 50 0 t50 0 t50 0 t50 0 t50 0 v20 q-25 -14 -50 0 t-50 0 t-50 0 t-50 0 t-50 0 z"/><path d="M-20 174 q25 -14 50 0 t50 0 t50 0 t50 0 t50 0 v20 q-25 -14 -50 0 t-50 0 t-50 0 t-50 0 t-50 0 z"/><path d="M-20 214 q25 -14 50 0 t50 0 t50 0 t50 0 t50 0 v20 q-25 -14 -50 0 t-50 0 t-50 0 t-50 0 t-50 0 z"/></g>
   </svg>
   <div class="hero-by">por <a href="https://www.instagram.com/closebyferr" target="_blank" rel="noopener">@closebyferr</a></div>
   <h1 class="hero-title">Beleza<span class="it">brasileira</span></h1>
-  <div class="hero-line"></div>
+  <div class="hero-line" aria-hidden="true"><span></span><span></span><span></span></div>
   <div id="flight-countdown">
     <span>Próximo viaje · <strong id="fecha-vuelo-txt"></strong></span>
     <span class="fc-pill">Faltan <span id="dias-cnt"></span> días</span>
@@ -1213,7 +1219,6 @@
     <div class="accordion-body" id="entregaBody">
       <button class="sub-tab" onclick="openCat('entrega')">Productos</button>
       <button class="sub-tab" onclick="window.location.href='sportwear.html'">Sport Wear</button>
-      <button class="sub-tab" id="accesoriosBtn" onclick="window.location.href='accesorios.html'">Accesorios</button>
     </div>
     <div class="accordion-body" id="accordionBody">
       <button class="sub-tab" onclick="openCat('capilar')">Capilar</button>
@@ -2214,7 +2219,8 @@ let pendingCat = null;
 function catalogCallback(remote) {
   if (Array.isArray(remote) && remote.length > 0) {
     products.length = 0;
-    remote.forEach(p => products.push(p));
+    // Solo se muestran los productos que en la columna "Mostrar" no digan NO
+    remote.filter(p => p.mostrar !== false).forEach(p => products.push(p));
     syncCartWithProducts();
   }
   catalogReady = true;
