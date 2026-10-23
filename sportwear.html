@@ -434,6 +434,14 @@ function getTallas(p) { return Array.isArray(p.tallas) ? p.tallas : null; }
 function cartKey(p, talla) { return talla ? p.id + '|' + talla : String(p.id); }
 function tallaLabel(t) { return /^no aplica$/i.test(t) ? 'Única' : t; }
 
+// Fotos: prueba varias terminaciones (.jpg, .PNG, .png, .JPG, .jpeg) hasta encontrar la que existe
+const FOTO_EXTS = ['jpg', 'PNG', 'png', 'JPG', 'jpeg', 'JPEG'];
+function tryNextExt(img, base, onFail) {
+  const k = (parseInt(img.dataset.ext, 10) || 0) + 1;
+  if (k < FOTO_EXTS.length) { img.dataset.ext = k; img.src = base + '.' + FOTO_EXTS[k]; }
+  else onFail();
+}
+
 function formatPrice(p) { return '$' + Number(p).toLocaleString('es-CL'); }
 
 // ============================================================
@@ -513,7 +521,7 @@ function renderCard(p) {
     `<div class="card-slide" id="slide-${pid}-${i-1}">
       <img src="${baseUrl}_${i}.jpg" alt="${p.name}" loading="${i===1?'eager':'lazy'}"
         onload="onSlideLoad('${pid}')"
-        onerror="if(!this.dataset.png){this.dataset.png='1';this.src='${baseUrl}_${i}.png';}else{this.closest('.card-slide').remove(); onSlideLoad('${pid}');}">
+        onerror="tryNextExt(this,'${baseUrl}_${i}',()=>{this.closest('.card-slide').remove(); onSlideLoad('${pid}');})">
     </div>`
   ).join('');
 
@@ -736,7 +744,7 @@ function openFicha(id) {
   const gal = document.getElementById('fichaGallery');
   gal.innerHTML = [1,2,3].map(i =>
     `<img src="${base}_${i}.jpg" alt="${p.name}, foto ${i}"
-      onerror="if(!this.dataset.png){this.dataset.png='1';this.src='${base}_${i}.png';}else{this.remove();fichaDots();}"
+      onerror="tryNextExt(this,'${base}_${i}',()=>{this.remove();fichaDots();})"
       onload="fichaDots()">`).join('');
   gal.scrollLeft = 0;
   gal.onscroll = fichaDots;
