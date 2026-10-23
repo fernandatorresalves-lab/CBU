@@ -1576,96 +1576,9 @@ const productImages = {
   88:"imgs/p88.png",89:"imgs/p89.png",90:"imgs/p90.png",91:"imgs/p91.png"
 };
 
-const products = [
-  { id:1,  brand:'TRUSS', name:'Ultra Hidratación', desc:'Hidratación intensa', price:23000, size:'300ml', cat:'truss', emoji:'💧', star:true, variants:[{name:'Shampoo',price:23000},{name:'Acondicionador',price:23000},{name:'Kit Shampoo + Acondicionador 🌟',price:46000}] },
-  { id:2,  brand:'TRUSS', name:'Blond', desc:'Matiza y nutre', price:23000, size:'300ml', cat:'truss', emoji:'✨', star:false, variants:[{name:'Shampoo',price:23000},{name:'Acondicionador',price:23000},{name:'Kit Shampoo + Acondicionador 🌟',price:46000}] },
-  { id:3,  brand:'TRUSS', name:'Curly', desc:'Tratamiento rulos', price:23000, size:'300ml', cat:'truss', emoji:'🌀', star:false, variants:[{name:'Shampoo',price:23000},{name:'Acondicionador',price:23000},{name:'Kit Shampoo + Acondicionador 🌟',price:46000}] },
-  { id:4,  brand:'TRUSS', name:'Miracle', desc:'Brillo', price:23000, size:'300ml', cat:'truss', emoji:'⭐', star:true, variants:[{name:'Shampoo',price:23000},{name:'Acondicionador',price:23000},{name:'Kit Shampoo + Acondicionador 🌟',price:46000}] },
-  { id:7,  brand:'TRUSS', name:'Nutri Infusión', desc:'Cabellos resecos', price:23000, size:'300ml', cat:'truss', emoji:'🌾', star:true, variants:[{name:'Shampoo',price:23000},{name:'Acondicionador',price:23000},{name:'Kit Shampoo + Acondicionador 🌟',price:46000}] },
-  { id:8,  brand:'TRUSS', name:'Uso Obrigatorio', desc:'Suavidad y nutrición', price:23000, size:'300ml', cat:'truss', emoji:'💚', star:false, variants:[{name:'Shampoo',price:23000},{name:'Acondicionador',price:23000},{name:'Kit Shampoo + Acondicionador 🌟',price:46000}] },
-  { id:9,  brand:'TRUSS', name:'Frizz Zero', desc:'Efectivo contra frizz', price:23000, size:'300ml', cat:'truss', emoji:'🌬️', star:false, variants:[{name:'Shampoo',price:23000},{name:'Acondicionador',price:23000},{name:'Kit Shampoo + Acondicionador 🌟',price:46000}] },
-  { id:10, brand:'TRUSS', name:'Night Spa', desc:'Hidratación nocturna', price:35000, size:'250ml', cat:'truss', emoji:'🌙', star:false },
-  { id:11, brand:'TRUSS', name:'Amino Spray', desc:'Termoprotector e hidratante', price:37000, size:'225ml', cat:'truss', emoji:'💫', star:true, video:'https://www.tiktok.com/@iamandaventura/video/7544476732309376312?is_from_webapp=1&sender_device=pc' },
-  { id:12, brand:'TRUSS', name:'Brush Keratin Leave In', desc:'Proteínas y aminoácidos', price:35000, size:'250ml', cat:'truss', emoji:'🪄', star:false },
-  { id:13, brand:'TRUSS', name:'Day By Day Spray', desc:'Nutrición diaria sin enjuague', price:30000, size:'250ml', cat:'truss', emoji:'☀️', star:false },
-  { id:14, brand:'TRUSS', name:'Hair Protector Crema', desc:'Protector de calor sin enjuague', price:32000, size:'250ml', cat:'truss', emoji:'🛡️', star:false },
-  { id:15, brand:'TRUSS', name:'Curly Leave In', desc:'Fijador de rizos', price:32000, size:'250ml', cat:'truss', emoji:'🌀', star:false },
-  { id:16, brand:'TRUSS', name:'Net Mask', desc:'Regeneración intensa', price:53000, size:'550gr', cat:'truss', emoji:'🔬', star:true },
-  { id:17, brand:'TRUSS', name:'Miracle Mask', desc:'Brillo', price:32000, size:'180gr', cat:'truss', emoji:'✨', star:false },
-  { id:18, brand:'TRUSS', name:'Blond Mask', desc:'Matiza, aporta brillo y nutre', price:32000, size:'180gr', cat:'truss', emoji:'💛', star:false },
-  { id:19, brand:'TRUSS', name:'Uso Obrigatorio Mask', desc:'Nutrición y reparación', price:32000, size:'180gr', cat:'truss', emoji:'💚', star:true },
-  { id:20, brand:'TRUSS', name:'Blond Revolution Mask', desc:'Antioxidante intenso', price:32000, size:'180gr', cat:'truss', emoji:'🟣', star:false },
-  { id:21, brand:'TRUSS', name:'Frizz Zero Máscara Líquida', desc:'Tratamiento frizz', price:32000, size:'260ml', cat:'truss', emoji:'💙', star:false },
-  { id:22, brand:'TRUSS', name:'Iluminate Oil', desc:'Restaura puntas, disminuye frizz', price:27000, size:'60ml', cat:'truss', emoji:'🌟', star:true, video:'https://www.tiktok.com/@radiancehaircare/video/7478893948434418950?is_from_webapp=1&sender_device=pc' },
-  { id:23, brand:'TRUSS', name:'Uso Obrigatorio Oil 30ml', desc:'Reconstructor', price:15000, size:'30ml', cat:'truss', emoji:'💚', star:true, video:'https://www.tiktok.com/@rodriguesmirella/video/7448382199130361093?is_from_webapp=1&sender_device=pc' },
-  { id:24, brand:'TRUSS', name:'Uso Obrigatorio Oil 60ml', desc:'Reconstructor', price:25000, size:'60ml', cat:'truss', emoji:'💚', star:false, video:'https://www.tiktok.com/@rodriguesmirella/video/7448382199130361093?is_from_webapp=1&sender_device=pc' },
-  { id:25, brand:'TRUSS', name:'Blond Revolution Spray', desc:'Protege el color', price:27000, size:'100ml', cat:'truss', emoji:'💜', star:false },
-  { id:26, brand:'JACQUES JANINE', name:'Just One Minute Spray', desc:'Protege contra humedad y frizz', price:15000, size:'120ml', cat:'otros-cap', emoji:'⚡', star:false },
-  { id:27, brand:'JACQUES JANINE', name:'Máscara Cachos Perfeitos', desc:'Fija rulos', price:10000, size:'80gr', cat:'otros-cap', emoji:'🌀', star:true, stock:3 },
-  { id:28, brand:'JACQUES JANINE', name:'Humedecedor Cachos Spray', desc:'Mantiene y controla frizz', price:10000, size:'60ml', cat:'otros-cap', emoji:'💧', star:true, stock:1 },
-  { id:29, brand:'JACQUES JANINE', name:'J18 Leave In', desc:'Tratamiento intensivo reparación', price:20000, size:'30ml', cat:'otros-cap', emoji:'🔬', star:true, video:'https://www.tiktok.com/@jacquesjanine_cl/video/7480247382182202630?is_from_webapp=1&sender_device=pc' },
-  { id:30, brand:'JACQUES JANINE', name:'Máscara J18', desc:'Tratamiento intensivo reparación', price:15000, size:'80gr', cat:'otros-cap', emoji:'🧴', star:false },
-  { id:31, brand:'SALON LINE', name:'Crema Rulo Niña(o)', desc:'Definición rulos niña(o)', price:12000, size:'120ml', cat:'otros-cap', emoji:'🌺', star:false },
-  { id:32, brand:'RICCA', name:'Shampoo Seco Spray', desc:'Limpia y absorbe oleosidad', price:10000, size:'150ml', cat:'otros-cap', emoji:'🧼', star:true, stock:1, video:'https://www.tiktok.com/@lanalauralawisch/video/7523038943273618693?is_from_webapp=1&sender_device=pc' },
-  { id:33, brand:'SALON LINE', name:'Modeladora Crema', desc:'Crema clean look', price:10000, size:'120gr', cat:'otros-cap', emoji:'💜', star:true, video:'https://www.instagram.com/reel/DPEA73oDSa5/?utm_source=ig_web_copy_link' },
-  { id:34, brand:'ACQUAFLORA', name:'Fuerza y Crecimiento Spray', desc:'Fuerza y resistencia', price:13000, size:'150ml', cat:'otros-cap', emoji:'🌱', star:true, stock:1 },
-  { id:35, brand:'SALON LINE', name:'Modeladora Gel', desc:'Gel clean look', price:10000, size:'120gr', cat:'otros-cap', emoji:'💚', star:true, stock:1 },
-  { id:36, brand:'NOVEX', name:'Recarga Keratina Capilar', desc:'Reconstrucción', price:8000, size:'80gr', cat:'otros-cap', emoji:'💎', star:false },
-  { id:37, brand:'XÔ FRIZZ', name:'Rimel Baby Hairs', desc:'Delineador para cabellos', price:12000, size:'', cat:'otros-cap', emoji:'🖊️', star:true, stock:2, video:'https://www.tiktok.com/@eujulianamotta/video/7267625989520362757?is_from_webapp=1&sender_device=pc' },
-  { id:38, brand:'LACAN', name:'Voluminizador', desc:'Efecto volumen capa por capa', price:14000, size:'120ml', cat:'otros-cap', emoji:'💨', star:true },
-  { id:39, brand:'LOLA', name:'Rapunzel Tónico', desc:'Crecimiento', price:13000, size:'250ml', cat:'otros-cap', emoji:'🌿', star:false, stock:1 },
-  { id:40, brand:'INOAR', name:'Agua Milagrosa Spray', desc:'Tratamiento regenerador', price:22000, size:'200ml', cat:'otros-cap', emoji:'✨', star:true, stock:2, video:'https://www.tiktok.com/@inoar.guatemala/video/7505072601073503493?is_from_webapp=1&sender_device=pc' },
-  { id:41, brand:'SALON LINE', name:'Gel Modelador Clean Look Suave', desc:'Hidratación antifrizz', price:7000, size:'', cat:'otros-cap', emoji:'💙', star:true, video:'https://www.tiktok.com/@fertorresalves/video/7632431685891525896?is_from_webapp=1&sender_device=pc' },
-  { id:42, brand:'RICCA', name:'Cera Fijadora Stick', desc:'Cera pelitos clean look', price:13000, size:'15gr', cat:'otros-cap', emoji:'🟣', star:true, video:'https://www.tiktok.com/@giovannacreator/video/7608997609625357588?is_from_webapp=1&sender_device=pc' },
-  { id:43, brand:'RICCA', name:'Ricca Flex', desc:'Cepillo anti quiebre', price:11000, size:'', cat:'otros-cap', emoji:'🪮', star:false, video:'https://www.tiktok.com/@jesyafernandes/video/7480660425227373879?is_from_webapp=1&sender_device=pc' },
-  { id:44, brand:'RICCA', name:'Ricca Cachos', desc:'Separa y define rulos', price:11000, size:'', cat:'otros-cap', emoji:'🌸', star:true, video:'https://www.tiktok.com/@eududasilva08/video/7532496926839737606?is_from_webapp=1&sender_device=pc' },
-  { id:77, brand:"JOHNSON'S", name:'Crema Rulos Bebé', desc:'Crema para rulos bebé', price:12000, size:'200ml', cat:'otros-cap', emoji:'🍼', star:false, stock:1, video:'https://www.tiktok.com/@connie_kota/video/7000546413859982598?is_from_webapp=1&sender_device=pc' },
-  { id:84, brand:'INOAR', name:'Ampolla Glycolic', desc:'Brillo e hidratación profunda', price:4000, size:'45ml', cat:'otros-cap', emoji:'✨', star:false, stock:1 },
-  { id:85, brand:'INOAR', name:'Ampolla Argan', desc:'Hidratación intensa', price:4000, size:'45ml', cat:'otros-cap', emoji:'🌿', star:false, stock:1 },
-  { id:86, brand:'NATUHAIR', name:'Aceite Ricino', desc:'Crecimiento y anti caída', price:5000, size:'30ml', cat:'otros-cap', emoji:'🌱', star:false, stock:2 },
-  { id:46, brand:'VIZZELA', name:'Fijador Cejas Incoloro', desc:'', price:12000, size:'', cat:'makeup', emoji:'🤎', star:true, video:'https://www.tiktok.com/@fabinhofiufiu/video/7579287458551008519?is_from_webapp=1&sender_device=pc' },
-  { id:47, brand:'VIZZELA', name:'Corrector Alta Cobertura', desc:'Soft matte, larga duración', price:16000, size:'', cat:'makeup', emoji:'🌟', star:true, video:'https://www.tiktok.com/@amandaoligon/video/7345247563991289094?is_from_webapp=1&sender_device=pc' },
-  { id:48, brand:'VIZZELA', name:'Polvo Translúcido', desc:'Disimula poros', price:13000, size:'', cat:'makeup', emoji:'✨', star:false },
-  { id:49, brand:'VIZZELA', name:'Fijador Maquillaje', desc:'Alta fijación', price:18000, size:'150ml', cat:'makeup', emoji:'💦', star:false },
-  { id:50, brand:'EUDORA', name:'Brocha Base', desc:'Pincel density', price:18000, size:'', cat:'makeup', emoji:'🖌️', star:true, video:'https://www.tiktok.com/@niinasecrets/video/7392287121484107013?is_from_webapp=1&sender_device=pc' },
-  { id:51, brand:'VIZZELA', name:'Contorno Stick Cremoso', desc:'', price:13000, size:'', cat:'makeup', emoji:'🤎', star:false },
-  { id:52, brand:'BRUNA TAVARES', name:'Labial Resistente Hermione', desc:'Natural rosado', price:13000, size:'', cat:'makeup', emoji:'🌸', star:true, video:'https://www.tiktok.com/@brunatavares.bt/video/7483940809344142597?is_from_webapp=1&sender_device=pc' },
-  { id:53, brand:'BRUNA TAVARES', name:'Juicy Lip Oil', desc:'Variedad de colores y PH', price:15000, size:'', cat:'makeup', emoji:'💋', star:false },
-  { id:54, brand:'OCEANE', name:'Trio Sombras', desc:'', price:20000, size:'', cat:'makeup', emoji:'👁️', star:false, video:'https://www.tiktok.com/@gabiieugenio/video/7583504127351721236?is_from_webapp=1&sender_device=pc' },
-  { id:55, brand:'BRUNA TAVARES', name:'Lip Oil Color', desc:'Destellos rojos', price:15000, size:'', cat:'makeup', emoji:'❤️', star:false, video:'https://www.tiktok.com/@anagabivls/video/7061653105821125894?is_from_webapp=1&sender_device=pc' },
-  { id:56, brand:'FRAN', name:'Paleta Iluminadores', desc:'4 tonos', price:28000, size:'', cat:'makeup', emoji:'🌟', star:true, video:'https://www.tiktok.com/@amandinhascastro/video/7473226094787759366?is_from_webapp=1&sender_device=pc' },
-  { id:57, brand:'MELU', name:'Cejas', desc:'Kit cejas completo', price:8000, size:'', cat:'makeup', emoji:'🤎', star:true, video:'https://www.tiktok.com/@evybeautyclinic/video/7305059927507242246?is_from_webapp=1&sender_device=pc' },
-  { id:58, brand:'BOCA ROSA', name:'Base Stick', desc:'Variedad de colores', price:22000, size:'', cat:'makeup', emoji:'💄', star:true, video:'https://www.tiktok.com/@chulifaveri/video/7496520208413199621?is_from_webapp=1&sender_device=pc' },
-  { id:59, brand:'BOCA ROSA', name:'Máscara Café', desc:'', price:16000, size:'', cat:'makeup', emoji:'👁️', star:true, video:'https://www.tiktok.com/@superglossmakes/video/7557071835540638987?is_from_webapp=1&sender_device=pc' },
-  { id:60, brand:'MASCAVO', name:'Bronzer Mascavo', desc:'Textura cremosa, brillo increíble', price:25000, size:'', cat:'makeup', emoji:'☀️', star:true, video:'https://vt.tiktok.com/ZS92XukRq/' },
-  { id:61, brand:'MASCAVO', name:'Iluminador', desc:'Tono Rosé o Champagne', price:22000, size:'', cat:'makeup', emoji:'✨', star:false, video:'https://www.tiktok.com/@roselynunesbeauty/video/7498090208546688261?is_from_webapp=1&sender_device=pc' },
-  { id:62, brand:'MASCAVO', name:'Contorno', desc:'Tono Almond', price:22000, size:'', cat:'makeup', emoji:'🤎', star:true, video:'https://www.tiktok.com/@melsiqueiira/video/7602310538831334664?is_from_webapp=1&sender_device=pc' },
-  { id:63, brand:'MASCAVO', name:'Blush', desc:'Tono Maple', price:22000, size:'', cat:'makeup', emoji:'🌸', star:false, video:'https://www.tiktok.com/@rayssalucna/video/7517055257835277573?is_from_webapp=1&sender_device=pc' },
-  { id:64, brand:'MASCAVO', name:'Base Mascavo', desc:'', price:30000, size:'', cat:'makeup', emoji:'💄', star:true, video:'https://vt.tiktok.com/ZS92XWcog/' },
-  { id:65, brand:'MASCAVO', name:'Brocha Rostro Angular', desc:'', price:22000, size:'', cat:'makeup', emoji:'🖌️', star:true, stock:1, video:'https://www.tiktok.com/@erickneeto/video/7435415499426516279?is_from_webapp=1&sender_device=pc' },
-  { id:66, brand:'MASCAVO', name:'Brocha Rostro Base y Corrector', desc:'', price:22000, size:'', cat:'makeup', emoji:'🖌️', star:false, video:'https://www.tiktok.com/@manubeauty_store/video/7522517615969832248?is_from_webapp=1&sender_device=pc' },
-  { id:80, brand:'VIZZELA', name:'Máscara Burdeo', desc:'Rimel de pestañas burdeo', price:13000, size:'5g', cat:'makeup', emoji:'👁️', star:true, stock:1, video:'https://www.tiktok.com/@claracvd/video/7418593688160406790?is_from_webapp=1&sender_device=pc' },
-  { id:88, brand:'BRUNA TAVARES', name:'Lip Charm Coca Cola', desc:'Charm lip balm', price:5000, size:'700mg', cat:'makeup', emoji:'💋', star:false, stock:1, video:'https://www.tiktok.com/@brunatavares.bt/video/7581861107694980359?is_from_webapp=1&sender_device=pc' },
-  { id:89, brand:'FRAN', name:'Primer Iluminado', desc:'Primer iluminado hermoso', price:18000, size:'20gr', cat:'makeup', emoji:'✨', star:true, stock:1, video:'https://www.tiktok.com/@gossipbeautyclips/video/7426811514654412037?is_from_webapp=1&sender_device=pc' },
-  { id:90, brand:'MASCAVO', name:'Brocha Multifuncional', desc:'Brocha doble multifuncional', price:22000, size:'', cat:'makeup', emoji:'🖌️', star:true, video:'https://www.tiktok.com/@ursulaandresspwf/video/7623053184763972882?is_from_webapp=1&sender_device=pc' },
-  { id:67, brand:'BELEZA BRASIL', name:'Crema Barriguinha', desc:'Flacidez y grasa', price:27000, size:'200gr', cat:'corporal', emoji:'💛', star:true },
-  { id:68, brand:'BELEZA BRASIL', name:'Crema Bumbum', desc:'Celulitis y estrías', price:27000, size:'200gr', cat:'corporal', emoji:'💚', star:true },
-  { id:69, brand:'PAIXÃO', name:'Aceite Corporal Frambuesa Negra', desc:'Hidratante corporal 24h', price:8000, size:'100ml', cat:'corporal', emoji:'🍇', star:true, stock:1 },
-  { id:70, brand:'LABOTRAT', name:'Exfoliante Aromas', desc:'Varios aromas disponibles', price:9000, size:'180gr', cat:'corporal', emoji:'🍓', star:true, variants:[{name:'Pistacho',price:9000},{name:'Cereza',price:9000},{name:'Fresa',price:9000},{name:'Pitaya',price:9000},{name:'Maracuyá',price:9000},{name:'Sandía',price:9000}] },
-  { id:71, brand:'CENOURA & BRONZE', name:'Protector Solar Spray', desc:'Hidratante FPS 50', price:18000, size:'200ml', cat:'corporal', emoji:'☀️', star:false, video:'https://www.tiktok.com/@cenouraebronzeoficial/video/7568885601320078599?is_from_webapp=1&sender_device=pc' },
-  { id:72, brand:'SUN IN', name:'Aclarador Bello Corporal', desc:'', price:10000, size:'', cat:'corporal', emoji:'🌿', star:true, stock:1, video:'https://www.tiktok.com/@dezasview/video/7230985540735159557?is_from_webapp=1&sender_device=pc' },
-  { id:78, brand:'NIVEA', name:'Bronceador Protector', desc:'Factor 30', price:14000, size:'125ml', cat:'corporal', emoji:'☀️', star:false, stock:2 },
-  { id:82, brand:'LABOTRAT', name:'Exfoliante Pitaya', desc:'Exfoliante corporal', price:9000, size:'150g', cat:'corporal', emoji:'🫐', star:false, stock:1 },
-  { id:83, brand:'GOSHBABE', name:'Cápsulas Bronceado', desc:'Mejora y durabilidad bronceado', price:20000, size:'60 un.', cat:'corporal', emoji:'🌟', star:false, stock:1 },
-  { id:91, brand:'PAIXÃO', name:'Crema Bridgerton', desc:'Aroma a rosas rico', price:8000, size:'200ml', cat:'corporal', emoji:'🌹', star:false, stock:1 },
-  { id:73, brand:'BIORÉ', name:'Marshmallow Whip Jabón Facial', desc:'Piel mixta y oleosa', price:14000, size:'150ml', cat:'skincare', emoji:'🫧', star:false },
-  { id:74, brand:'BIORÉ', name:'Makeup Remover', desc:'Todo tipo de piel', price:18000, size:'150ml', cat:'skincare', emoji:'💧', star:false },
-  { id:75, brand:'MELANO CC', name:'Vitamin C Serum', desc:'Ilumina y unifica', price:22000, size:'20ml', cat:'skincare', emoji:'🍊', star:true, video:'https://www.tiktok.com/@berryme_nic/video/7387226857952824582?is_from_webapp=1&sender_device=pc' },
-  { id:76, brand:'GARNIER', name:'Hidratante Toque Seco', desc:'Salicílico antiacne', price:11000, size:'', cat:'skincare', emoji:'💙', star:true, video:'https://www.tiktok.com/@soyaleidaflores/video/7578988811598728466?is_from_webapp=1&sender_device=pc' },
-  { id:79, brand:'DR. GOOD / FINI', name:'Melatonina', desc:'Gomitas para dormir', price:15000, size:'60 un.', cat:'otros', emoji:'😴', star:true, stock:1 },
-  { id:81, brand:'O BOTICÁRIO', name:'Aceite Térmico Corporal', desc:'Ayuda con dolor colon', price:13000, size:'110ml', cat:'otros', emoji:'🌡️', star:true, stock:2, video:'https://www.tiktok.com/@marialluizaff/video/7609706022575328532?is_from_webapp=1&sender_device=pc' },
-  { id:87, brand:'ENGOV', name:'Pastillas Resaca', desc:'Quita resaca milagroso', price:3000, size:'3 pares', cat:'otros', emoji:'💊', star:true, stock:2 },
-];
+// Los productos se cargan SOLO desde el Sheets (sin lista guardada de respaldo).
+// Mientras no carguen, no se muestra ningún producto.
+const products = [];
 
 const CART_KEY = 'cbu_cart';
 function loadCart() { try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch(e) { return []; } }
@@ -1722,6 +1635,11 @@ function openCat(cat) {
   document.getElementById('searchInput').value = '';
   window.scrollTo(0, 0);
 
+  if (catalogFailed) {
+    pendingCat = cat;
+    renderCatalogError();
+    return;
+  }
   if (!catalogReady) {
     // Mostrar spinner mientras carga
     document.getElementById('catalog').innerHTML = `
@@ -1759,6 +1677,21 @@ function getProductsForCat(cat) {
   if (cat === 'todos')       return [...products];
   if (cat === 'bestsellers') return products.filter(p => p.star);
   return [];
+}
+
+function renderCatalogError() {
+  document.getElementById('catalog').innerHTML = `
+    <div class="empty-cat">
+      <span>🌿</span>
+      No pudimos cargar los productos.<br>Revisa tu conexión y vuelve a intentarlo.<br><br>
+      <button class="add-btn" style="width:auto;padding:10px 22px;" onclick="location.reload()">Volver a cargar</button>
+    </div>`;
+}
+
+function catalogLoadFailed() {
+  catalogFailed = true;
+  catalogReady = false;
+  if (pendingCat) renderCatalogError();
 }
 
 function renderCatalog(cat) {
@@ -2214,10 +2147,13 @@ function openVerMas(id) {
 function closeVerMas() { document.getElementById('verMasModal').classList.remove('open'); }
 
 let catalogReady = false;
+let catalogFailed = false;
 let pendingCat = null;
 
 function catalogCallback(remote) {
-  if (Array.isArray(remote) && remote.length > 0) {
+  if (!Array.isArray(remote)) { catalogLoadFailed(); return; }
+  catalogFailed = false;
+  {
     products.length = 0;
     // Solo se muestran los productos que en la columna "Mostrar" no digan NO
     remote.filter(p => p.mostrar !== false).forEach(p => products.push(p));
@@ -2427,11 +2363,13 @@ function restartQuiz() {
 updateCartUI();
 
 (function initCatalog() {
-  const fallback = setTimeout(() => { catalogReady = true; if (pendingCat) { renderCatalog(pendingCat); pendingCat = null; } }, 12000);
+  // Si el Sheets no responde en 15 segundos, se muestra un aviso (nunca datos antiguos).
+  // Si la respuesta llega igual después, los productos aparecen solos.
+  const fallback = setTimeout(catalogLoadFailed, 15000);
   window._catalogCallback = function(data) { clearTimeout(fallback); catalogCallback(data); };
   const script = document.createElement('script');
   script.src = SCRIPT_URL + '?callback=_catalogCallback&t=' + Date.now();
-  script.onerror = () => { clearTimeout(fallback); catalogReady = true; };
+  script.onerror = () => { clearTimeout(fallback); catalogLoadFailed(); };
   document.head.appendChild(script);
 })();
 
