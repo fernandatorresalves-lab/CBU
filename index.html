@@ -1607,24 +1607,27 @@ function selectEntrega(el) {
 }
 
 // ACCORDION
-function toggleEntrega() {
-  const body = document.getElementById('entregaBody');
-  const btn = document.getElementById('entregaBtn');
-  const arrow = document.getElementById('entregaArrow');
-  body.classList.toggle('open');
-  btn.classList.toggle('open');
-  arrow.classList.toggle('rotated');
+// Menús "Entrega inmediata" y "Encargar": solo uno abierto a la vez
+const MENUS = {
+  entrega:  { body: 'entregaBody',   btn: 'entregaBtn',  arrow: 'entregaArrow' },
+  encargar: { body: 'accordionBody', btn: 'encargarBtn', arrow: 'encargarArrow' },
+};
+
+function setMenu(name, open) {
+  const m = MENUS[name];
+  document.getElementById(m.body).classList.toggle('open', open);
+  document.getElementById(m.btn).classList.toggle('open', open);
+  document.getElementById(m.arrow).classList.toggle('rotated', open);
 }
 
-function toggleAccordion() {
-  const body = document.getElementById('accordionBody');
-  const btn = document.getElementById('encargarBtn');
-  const arrow = document.getElementById('encargarArrow');
-  const isOpen = body.classList.contains('open');
-  body.classList.toggle('open');
-  btn.classList.toggle('open');
-  arrow.classList.toggle('rotated');
+function toggleMenu(name) {
+  const abrir = !document.getElementById(MENUS[name].body).classList.contains('open');
+  Object.keys(MENUS).forEach(k => setMenu(k, false));  // cierra los dos
+  if (abrir) setMenu(name, true);                       // abre solo el que tocaste
 }
+
+function toggleEntrega()   { toggleMenu('entrega'); }
+function toggleAccordion() { toggleMenu('encargar'); }
 
 function openCat(cat) {
   currentCat = cat;
