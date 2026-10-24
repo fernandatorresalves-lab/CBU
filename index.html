@@ -1409,7 +1409,7 @@
 
       <div id="qstep3" style="display:none">
         <div class="quiz-step-label">Pregunta 3 de 4</div>
-        <div class="quiz-question">¿Tu raíz tiende a ponerse grasa rápido?</div>
+        <div class="quiz-question">¿Tu raíz se pone grasa rápido o tienes caspa?</div>
         <div class="quiz-options">
           <button class="quiz-opt" onclick="selectSingle(3,'raiz_grasa',this)">Sí</button>
           <button class="quiz-opt" onclick="selectSingle(3,'no_grasa',this)">No</button>
@@ -1424,7 +1424,7 @@
         <div class="quiz-step-label">Pregunta 4 de 4 · Elige todas las que apliquen</div>
         <div class="quiz-question">¿Qué quieres lograr con tu pelo?</div>
         <div class="quiz-options">
-          <button class="quiz-opt-multi" onclick="toggleMulti('rizado',this)"><span class="quiz-check"></span>Definir y potenciar mis rizos</button>
+          <button class="quiz-opt-multi" onclick="toggleMulti('rizos',this)"><span class="quiz-check"></span>Definir y potenciar mis rizos</button>
           <button class="quiz-opt-multi" onclick="toggleMulti('frizz',this)"><span class="quiz-check"></span>Disminuir el frizz</button>
           <button class="quiz-opt-multi" onclick="toggleMulti('alisar',this)"><span class="quiz-check"></span>Alisar y suavizar</button>
           <button class="quiz-opt-multi" onclick="toggleMulti('hidratar',this)"><span class="quiz-check"></span>Solo hidratar y mantenerlo sano</button>
@@ -1433,6 +1433,9 @@
           <button class="quiz-opt-multi" onclick="toggleMulti('calor',this)"><span class="quiz-check"></span>Proteger del calor (plancha o secador)</button>
           <button class="quiz-opt-multi" onclick="toggleMulti('brillo',this)"><span class="quiz-check"></span>Brillo y suavidad</button>
           <button class="quiz-opt-multi" onclick="toggleMulti('volumen',this)"><span class="quiz-check"></span>Dar volumen</button>
+          <button class="quiz-opt-multi" onclick="toggleMulti('rubio',this)"><span class="quiz-check"></span>Matizar rubio o decolorado</button>
+          <button class="quiz-opt-multi" onclick="toggleMulti('canas',this)"><span class="quiz-check"></span>Disimular canas</button>
+          <button class="quiz-opt-multi" onclick="toggleMulti('ninos',this)"><span class="quiz-check"></span>Es para un niño o niña</button>
         </div>
         <div class="quiz-nav">
           <button class="quiz-btn-back" onclick="goStep(3)">← Volver</button>
@@ -2197,22 +2200,11 @@ function syncCartWithProducts() {
 // ============================================================
 const quizAnswers = { p1: null, p2: null, p3: null, p4: [] };
 
-const QUIZ_MAP = {
-  rizado:      [3, 44, 15, 27, 28],
-  frizz:       [9, 11, 21, 40, 37, 92],
-  alisar:      [75, 12, 9, 43],
-  hidratar:    [1, 100, 13, 40, 24],
-  reparar:     [11, 8, 7, 19, 29, 30, 36, 43, 92, 24],
-  crecimiento: [34, 39, 86],
-  calor:       [11, 14, 13, 100, 24],
-  brillo:      [22, 4, 84, 85, 36],
-  volumen:     [88, 26, 38, 32],
-  tenido:      [2, 18, 20, 25, 40, 36],
-  raiz_grasa:  [93, 32],
-};
-
+// Las recomendaciones salen de la pestaña "Quiz" del Sheets (columnas Quiz principal / secundario).
+// Cada producto llega con p.quiz = { p: [...], s: [...], prio: número }.
+// prio ya trae el 25% de margen + 25% de reseñas (calculado en el Apps Script, sin mostrar márgenes).
 const QUIZ_WHY = {
-  rizado:      'Para definir y potenciar tus rizos',
+  rizos:       'Para definir y potenciar tus rizos',
   frizz:       'Para controlar el frizz',
   alisar:      'Para alisar y suavizar',
   hidratar:    'Para hidratar y nutrir',
@@ -2221,18 +2213,14 @@ const QUIZ_WHY = {
   calor:       'Para proteger del calor',
   brillo:      'Para aportar brillo y suavidad',
   volumen:     'Para dar volumen',
-  tenido:      'Para cuidar el color',
-  raiz_grasa:  'Para balancear la raíz grasa',
+  color:       'Para cuidar el color',
+  graso:       'Para equilibrar la raíz grasa',
+  rubio:       'Para matizar el rubio',
+  canas:       'Para disimular las canas',
+  ninos:       'Pensado para niñas y niños',
 };
-
-const QUIZ_MARGIN = {
-  1:9800, 2:7275, 3:7275, 4:5425, 7:7275, 8:6350, 9:5610,
-  11:999999, 12:13725, 13:9650, 14:9800, 15:9800, 19:9800,
-  21:14610, 22:9425, 24:4650, 26:4750, 27:4450, 28:4450,
-  29:16300, 30:9450, 32:5005, 34:4120, 36:5595, 37:5895,
-  38:4750, 39:3750, 40:5200, 43:5265, 44:4895, 75:6100,
-  84:2150, 85:2150, 86:3150, 88:5525, 92:2300, 93:8940, 100:12275,
-};
+const QUIZ_MAX_RESULTADOS = 6;
+function quizNorm(t) { return String(t).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim(); }
 
 function openQuiz() {
   restartQuiz();
@@ -2273,55 +2261,44 @@ function goStep(n) {
 
 function calcResults() {
   const activeTags = [...quizAnswers.p4];
-  if (quizAnswers.p1 === 'rizado') activeTags.push('rizado');
-  if (quizAnswers.p2 === 'tenido') activeTags.push('tenido');
-  if (quizAnswers.p3 === 'raiz_grasa') activeTags.push('raiz_grasa');
-
-  const scores = {};
-  const reasons = {};
-
-  // Máximo 2 por tag, respetando orden del QUIZ_MAP (Amino primero en calor/reparar)
-  activeTags.forEach(tag => {
-    const ids = (QUIZ_MAP[tag] || []).slice(0, 2);
-    ids.forEach(id => {
-      scores[id] = (scores[id] || 0) + 1;
-      if (!reasons[id]) reasons[id] = [];
-      if (!reasons[id].includes(QUIZ_WHY[tag])) reasons[id].push(QUIZ_WHY[tag]);
-    });
-  });
-
-  // Amino Spray (11) siempre primero si está en resultados
-  const sorted = Object.keys(scores)
-    .map(id => ({ id: parseInt(id), score: scores[id], margin: QUIZ_MARGIN[id] || 0 }))
-    .sort((a, b) => {
-      if (a.id === 11) return -1;
-      if (b.id === 11) return 1;
-      return b.score - a.score || b.margin - a.margin;
-    });
+  if (quizAnswers.p1 === 'rizado') activeTags.push('rizos');
+  if (quizAnswers.p2 === 'tenido') activeTags.push('color');
+  if (quizAnswers.p3 === 'raiz_grasa') activeTags.push('graso');
+  const activos = [...new Set(activeTags.map(quizNorm))];
 
   document.getElementById('quizSteps').style.display = 'none';
   document.getElementById('quizResults').style.display = 'block';
   document.getElementById('quizModalTitle').textContent = 'Para tu pelo 🌿';
-
   const subtitle = quizAnswers.p1 === 'rizado' ? 'Esto es lo que necesita tu pelo rizado ✨' :
                    quizAnswers.p1 === 'ondulado' ? 'Esto es lo que necesita tu pelo ondulado ✨' :
                    'Esto es lo que necesita tu pelo liso ✨';
   document.getElementById('quizResultsSubtitle').textContent = subtitle;
-
   const list = document.getElementById('quizResultsList');
-  list.innerHTML = '';
+  const msg = t => { list.innerHTML = '<p style="color:var(--latte);font-size:13px;text-align:center;padding:20px 0;">' + t + '</p>'; };
 
-  if (!sorted.length) {
-    list.innerHTML = '<p style="color:var(--latte);font-size:13px;text-align:center;padding:20px 0;">No encontré una combinación exacta — escribime por Instagram y te ayudo 🌿</p>';
-    return;
-  }
+  if (catalogFailed) { msg('No pudimos cargar los productos. Recarga la página e inténtalo de nuevo 🌿'); return; }
+  if (!catalogReady) { msg('Estoy cargando los productos, vuelve a intentarlo en unos segundos 🌿'); return; }
 
-  sorted.forEach(({ id }) => {
-    const p = products.find(pr => pr.id == id);
-    if (!p) return;
-    const why = (reasons[id] || []).slice(0, 2).join(' · ');
+  // 50% qué tan bien calza + 25% margen + 25% reseñas (estos dos vienen juntos en quiz.prio)
+  const candidatos = [];
+  products.forEach(p => {
+    if (!p.quiz) return;
+    const prin = (p.quiz.p || []).map(quizNorm), sec = (p.quiz.s || []).map(quizNorm);
+    const tocaP = activos.filter(t => prin.includes(t));
+    const tocaS = activos.filter(t => sec.includes(t) && !prin.includes(t));
+    const calce = tocaP.length + 0.5 * tocaS.length;
+    if (calce > 0) candidatos.push({ p, calce, motivos: [...tocaP, ...tocaS] });
+  });
+  if (!candidatos.length) { msg('No encontré una combinación exacta. Escríbeme por Instagram y te ayudo 🌿'); return; }
+  const maxCalce = Math.max(...candidatos.map(c => c.calce));
+  candidatos.forEach(c => { c.puntaje = 0.5 * (c.calce / maxCalce) + (Number(c.p.quiz.prio) || 0); });
+  candidatos.sort((a, b) => b.puntaje - a.puntaje);
+
+  list.innerHTML = candidatos.slice(0, QUIZ_MAX_RESULTADOS).map(({ p, motivos }) => {
+    const id = p.id;
+    const why = motivos.slice(0, 2).map(t => QUIZ_WHY[t]).filter(Boolean).join(' · ');
     const inCart = cart.find(c => c.id === id);
-    list.innerHTML += `
+    return `
       <div class="quiz-result-card">
         <img class="quiz-result-img" src="imgs/p${id}.png" alt="${p.name}"
           onerror="if(!this.dataset.fallback){this.dataset.fallback='1';this.src='imgs/p${id}.jpg';}else{this.style.display='none';}">
@@ -2336,7 +2313,7 @@ function calcResults() {
           }
         </div>
       </div>`;
-  });
+  }).join('');
 }
 
 function quizAddToCart(id) {
