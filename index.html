@@ -1729,6 +1729,11 @@ function renderCatalog(cat) {
     if (corp.length) html += renderSection('CORPORAL', corp);
     if (skin.length) html += renderSection('SKINCARE', skin);
   } else if (cat === 'todos') {
+    // Orden: 1 = el producto que más margen deja (viene del Apps Script). Sin dato, va al final.
+    const porMargen = (a, b) => (a.orden || 9999) - (b.orden || 9999);
+    const nuevos = list.filter(p => p.nuevo === true).sort(porMargen);
+    if (nuevos.length) html += renderSection('NUEVOS INGRESOS', nuevos);
+    const resto = list.filter(p => p.nuevo !== true).sort(porMargen);
     const sections = {
       truss:      { title: 'CAPILAR TRUSS', items: [] },
       'otros-cap':{ title: 'CAPILAR OTRAS MARCAS', items: [] },
@@ -1737,7 +1742,7 @@ function renderCatalog(cat) {
       skincare:   { title: 'SKINCARE', items: [] },
       otros:      { title: 'OTROS', items: [] },
     };
-    list.forEach(p => { if (sections[p.cat]) sections[p.cat].items.push(p); });
+    resto.forEach(p => { if (sections[p.cat]) sections[p.cat].items.push(p); });
     Object.entries(sections).forEach(([, sec]) => {
       if (sec.items.length) html += renderSection(sec.title, sec.items);
     });
